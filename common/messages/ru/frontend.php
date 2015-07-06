@@ -17,13 +17,8 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'All news' => '',
-    'All projects' => '',
     'Eng' => '',
-    'Filter' => '',
-    'Go back' => '',
     'Rus' => '',
-    'Show more' => '',
     'Ukr' => '',
     'About' => 'О нас',
     'Account Settings' => 'Настройки аккаунта',
@@ -48,7 +43,7 @@ return [
     'Page not found' => 'Страница не найдена',
     'Password' => 'Пароль',
     'Password reset for {name}' => 'Сброс пароля для {name}',
-    'Portfolio' => 'Портфолио',
+    'Portfolio' => 'Кейсы',
     'Profile settings' => 'Настройки профиля',
     'Remember Me' => 'Запомнить меня',
     'Request password reset' => 'Запрос сброса пароля',

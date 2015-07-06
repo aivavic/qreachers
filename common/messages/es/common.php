@@ -17,9 +17,18 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Categories list' => '',
+    'Category ID' => '',
+    'Client ID' => '',
     'Description' => '',
+    'Head' => '',
+    'Member ID' => '',
+    'Photo' => '',
+    'Position' => '',
     'Project ID' => '',
+    'Show on about page' => '',
     'Video' => '',
+    'Video mobile' => '',
     'Weight' => '',
     '"{attribute}" must be a valid JSON' => '"{attribute}" debe de ser un JSON válido',
     'Active' => 'Activo',

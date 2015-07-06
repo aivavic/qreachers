@@ -17,15 +17,10 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'All news' => '',
-    'All projects' => '',
     'Eng' => '',
-    'Filter' => '',
-    'Go back' => '',
     'Rus' => '',
-    'Show more' => '',
     'Ukr' => '',
-    'About' => 'О нас',
+    'About' => 'Про нас',
     'Account Settings' => 'Налаштування аккаунта',
     'Body' => 'Повідомлення',
     'Check your email for further instructions.' => 'Перевірте ваш e-mail.',
@@ -48,7 +43,7 @@ return [
     'Page not found' => 'Сторінка не знайдена',
     'Password' => 'Пароль',
     'Password reset for {name}' => 'Скидання пароля для {name}',
-    'Portfolio' => 'Портфолiо',
+    'Portfolio' => 'Кейси',
     'Profile settings' => 'Налаштування профілю',
     'Remember Me' => 'Запом’ятати мене',
     'Request password reset' => 'Запит на скидання пароля',
