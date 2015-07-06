@@ -1,0 +1,206 @@
+/*-------- Projects part --------*/
+
+.projects {
+    width: 100%;
+}
+
+.project-box {
+    width: 50%;
+    height: 360px;
+    overflow: hidden;
+    float: left;
+    position: relative;
+    
+    img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 102%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        -webkit-filter: grayscale(100%);
+        -moz-filter: grayscale(100%);
+        -ms-filter: grayscale(100%);
+        filter: grayscale(100%);
+        -webkit-filter: gray;
+        filter: gray; /* IE 6-9 */
+        -webkit-transition: .2s linear;
+        transition: .2s linear;
+    }
+    
+    video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+        width: 102%;
+        opacity: 0;
+    }
+}
+
+.project-box:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: #1b1b1b;
+    opacity: .6;
+    z-index: 10;
+    -webkit-transition: .1s linear;
+    transition: .1s linear;
+}
+
+.project-box:hover:before {
+    opacity: 0;
+}
+
+.project-open {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    z-index: 10;
+}
+
+.project-box:after {
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    background: $gold;
+    -webkit-transition: .2s cubic-bezier(.65,.01,1,.2);
+    transition: .2s cubic-bezier(.65,.01,1,.2);
+    z-index: 16;
+}
+
+.project-box:hover:after {
+    width: 100%;
+}
+
+.project-desc {
+    position: absolute;
+    left: 50px;
+    bottom: 60px;
+    color: white;
+    z-index: 15;
+    
+    h3,
+    h3 a {
+        font-family: $bold;
+        font-size: 40px;
+        text-transform: uppercase;
+        width: 50%;
+        color: white;
+        -webkit-transition: .2s linear;
+        transition: .2s linear;
+    }
+    
+    p {
+        font-family: $light;
+        line-height: 21px;
+        width: 70%;
+        min-width: 70%;
+        max-width: 70%;
+        margin-top: 25px;
+        -webkit-transition: .2s linear;
+        transition: .2s linear;
+    }
+}
+
+.project-box:hover {
+    img {
+    }
+    
+    h3, h3 a, p {
+        color: $gold;
+    }
+}
+
+.go-to-projects {
+    display: block;
+    background: #1b1b1b;
+    width: 50%;
+    height: 360px;
+    content: "";
+    float: left;
+    
+    a {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        line-height: 360px;
+        color: white;
+        text-transform: uppercase;
+        text-align: right;
+    }
+    
+    .big-arrow {
+        display: inline-block;
+        width: 55px;
+        height: 38px;
+        vertical-align: middle;
+        margin: -7px 50px 0 10px;
+        background: url(../images/right-arrow.png) no-repeat right;
+        -webkit-transition: .125s ease-in;
+        transition: .125s ease-in;
+    }
+}
+
+.go-to-projects:hover {
+    .big-arrow {
+        width: 74px;
+        margin-left: 20px;
+        margin-right: 31px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .project-box {
+        width: 100%;
+        float: none;
+    }
+    
+    .go-to-projects {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1279px) {
+    
+    .project-box {
+        img,
+        video {
+            height: 100%;
+            width: auto;
+        }
+    }
+}
+
+@media screen and (max-width: 660px) {
+    
+    .project-box {
+        img,
+        video {
+            height: 100%;
+            width: auto;
+        }
+    }
+    
+}
+
+.page-bottom {
+    padding-bottom: 90px;
+}

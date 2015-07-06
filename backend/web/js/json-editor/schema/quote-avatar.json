@@ -1,0 +1,70 @@
+{
+    "type": "object",
+    "title": "Quote avatar",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___quote-avatar___"
+            }
+        },
+        "___quote-avatar___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Quote avatar"
+        },
+        "quote-avatar-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/quote-avatar/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "text": {
+            "type": "string",            
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing."
+        },
+        "name": {
+            "type": "string",
+            "title": "Person name.",
+            "default": "DefaultName"
+        },
+        "surname": {
+            "type": "string",
+            "title": "Person surname.",
+            "default": "DefaultSurname"
+        },
+        "position": {
+            "type": "string",
+            "title": "Person position.",
+            "default": "DefaultPosition"
+        },
+        "img_src": {
+            "type": "string",
+            "format": "url",
+            "title": "Person avatar if exist.",
+            "default": "/frontend/web/img/quote.png",
+            "options": {
+                "upload": true
+            },
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "rel": "View file"
+                }
+            ]
+        }
+    }
+}

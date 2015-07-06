@@ -1,0 +1,45 @@
+{
+    "type": "object",
+    "title": "Small text",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___text___"
+            }
+        },
+        "___text___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Text"
+        },
+        "text-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/text/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "text": {
+            "type": "string",
+            "format": "html",
+            "options": {
+                "wysiwyg": true
+            },
+            "title": "Text.",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing."
+        }
+    }
+}

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Главная</title>
+        <meta charset="utf-8">
+        <link href="css/style.css" rel="stylesheet">        
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery.bxslider.min.js"></script>
+    </head>
+
+    <body>
+
+        <div class="main-container">
+
+            <nav>
+                <section class="nav-logo">
+                    <a href="index.html"><img src="images/header-logo.png"></a>
+                </section>
+                <a href="index.html" class="nav-item nav-active hidden-xs">Главная</a>
+                <a href="about.html" class="nav-item hidden-xs">О нас</a>
+                <a href="projects.html" class="nav-item hidden-xs">Кейсы</a>
+                <a href="news.html" class="nav-item hidden-xs">Новости</a>
+                <a href="contacts.html" class="nav-item hidden-xs">Контакты</a>
+                <section class="lang-box hidden-xs">
+                    <a href="#" class="lang-item lang-active">Rus</a>
+                    <a href="#" class="lang-item">Ukr</a>
+                    <a href="#" class="lang-item">Eng</a>
+                </section>
+                
+                <div class="clearfix"></div>
+            </nav>
+
+            <!-- Header part -->
+            <div class="head-video">
+                <div class="wrapper">
+                    <div class="vertical-centered-content">
+                        <h1>
+                            Lorem ipsum dolor sit amet,
+    consectetur adipiscing.
+                        </h1>
+                        
+                        <a href="https://vimeo.com/42784827" target="_blank" class="watch-fullscreen"></a>
+                    </div>
+                </div>
+                <video loop="" src="images/bg.mp4" autoplay muted style="width: 100%; height: auto; position: absolute; top: 0; left: 0;"></video>
+            </div>
+            <script>
+                $(document).ready(function(){
+                    $(".head-video").height($(window).height()-90);
+                    if ($(window).width()/$(window).height() < 1.7) $(".head-video").find("video").addClass("vertical-video");
+                    else $(".head-video").find("video").removeClass("vertical-video");
+                });
+
+                $(window).resize(function(){
+                    $(".head-video").height($(window).height()-90);
+                    if ($(window).width()/$(window).height() < 1.7) $(".head-video").find("video").addClass("vertical-video");
+                    else $(".head-video").find("video").removeClass("vertical-video");
+                });
+            </script>
+            <div class="video-fullscreen">
+                <div class="video-wrap">
+                    <iframe src="https://player.vimeo.com/video/29017040?title=0&byline=0&portrait=0" width="100%" height="auto" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <button id="close-popup">×</button>
+                </div>
+            </div>
+            <script>                
+                $("#close-popup").click(function() {
+                    setTimeout(function() {
+                        $(".video-fullscreen").children().fadeOut(); }, 200);
+                    setTimeout(function() {
+                        $(".video-fullscreen").fadeOut(); }, 600);
+                })
+
+                $(".watch-fullscreen").click(function(e) {
+                    if ($(window).width() > 767) {
+                        e.preventDefault();
+                    
+                        var video = $(".video-fullscreen").find("iframe");
+                        video.width($(window).width()/100*70);
+
+                        if (video.width() > 1080) {
+                            video.width(1080);
+                        }
+                        video.height(video.width()/16*9);
+                        
+                        setTimeout(function() {
+                            $(".video-fullscreen").fadeIn(); }, 200);
+                        setTimeout(function() {
+                            $(".video-fullscreen").find("iframe").fadeIn(); 
+                            $(".video-fullscreen").find("button").css({ "top":video.offset().top-40, "left": video.offset().left+video.width()+20, "display": "block" }); 
+                        }, 600);
+                    }
+                });
+            </script>
+            <!-- end of Header -->
+            
+            <!-- About part -->
+            <div class="about">
+                <h2>Блок назывется Elevator pitch</h2>
+                <p>Женя говорит, этот текст можно прочитать за одну поездку в лифте. Не уверен, так ли это, но проверять не будем.</p>
+            </div>
+            <!-- end of About -->
+            
+            <!-- Work part -->
+            <div class="work">
+                <h2>
+                    Что мы делаем?
+                </h2>
+                <div class="work-wrap">
+                <div class="work-box">
+                    <section class="work-picture">
+                        <img src="images/pictures/idea.png">
+                    </section>
+                    <section class="work-description">
+                        <h4>Разработка идеи</h4>
+                        <p>Шла Саша по шоссе и сосала сушку</p>
+                    </section>
+                </div>
+                <div class="work-box">
+                    <section class="work-picture">
+                        <img src="images/pictures/preproduction.png">
+                    </section>
+                    <section class="work-description">
+                        <h4>Пре-продакшн</h4>
+                        <p>Шла Саша по шоссе и сосала сушку</p>
+                    </section>
+                </div>
+                <div class="work-box">
+                    <section class="work-picture">
+                        <img src="images/pictures/production.png">
+                    </section>
+                    <section class="work-description">
+                        <h4>Продакшн</h4>
+                        <p>Шла Саша по шоссе и сосала сушку</p>
+                    </section>
+                </div>
+                <div class="work-box">
+                    <section class="work-picture">
+                        <img src="images/pictures/postproduction.png">
+                    </section>
+                    <section class="work-description">
+                        <h4>Пост-продакшн</h4>
+                        <p>Шла Саша по шоссе и сосала сушку</p>
+                    </section>
+                </div>
+                </div>
+            </div>
+            <!-- end of Work part -->
+            
+            <!-- Projects part -->
+            <div class="projects">
+                <div class="project-box">
+                    <img src="images/8sec_small.png">
+                    <video src="images/8sec_small.mov?id=124" loop="" muted id="video"></video>
+                    <section class="project-desc">
+                        <h3><a href="project-page.html">Название проекта</a></h3>
+                        <p>Краткое описание проекта в несколько строк (не больше трех)</p>
+                    </section>
+                    <a href="project-page.html" class="project-open"></a>
+                </div>
+                <div class="project-box">
+                    <img src="images/8sec_small.png">
+                    <video src="images/8sec_small.mov?id=754" loop="" muted></video>
+                    <section class="project-desc">
+                        <h3><a href="project-page.html">Название проекта</a></h3>
+                        <p>Краткое описание проекта в несколько строк (не больше трех)</p>
+                    </section>
+                    <a href="project-page.html" class="project-open"></a>
+                </div>
+                <div class="project-box">
+                    <img src="images/8sec_small.png">
+                    <video src="images/8sec_small.mov?id=824" loop="" muted></video>
+                    <section class="project-desc">
+                        <h3><a href="project-page.html">Название проекта</a></h3>
+                        <p>Краткое описание проекта в несколько строк (не больше трех)</p>
+                    </section>
+                    <a href="project-page.html" class="project-open"></a>
+                </div>
+                <div class="go-to-projects">
+                    <a href="projects.html">Все кейсы <span class="big-arrow"></span></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <script>
+                var animation = null;
+                
+                $(".project-box").hover(function() {
+                    animation = $(this).find("video").animate({ opacity: 1 }, 200, function() {
+                        $(this).parent().find("video").get(0).play();
+                    });
+                        
+                }, 
+                                       function() {
+                    animation.stop();
+                    $(this).find("video").css("opacity", "0");
+                    $(this).find("video").get(0).currentTime = 0;
+                    $(this).find("video").get(0).pause();
+                });
+            </script>
+            <!-- end of Projects -->
+            
+            <!-- News part -->
+            <div class="news">
+                <div class="news-box">
+                    <section class="news-picture">
+                        <img src="images/news/post-bg.jpg">
+                        <a href="news-page.html" class="go-to-post"><span class="news-arrow"></span></a>
+                    </section>
+                    <section class="news-body">
+                        <h4><a href="news-page.html">Вот тут будет заголовок новости, похожий на описание</a></h4>
+                    </section>
+                </div>
+                
+                <div class="news-box">
+                    <section class="news-picture">
+                        <img src="images/news/post-bg.jpg">
+                        <a href="news-page.html" class="go-to-post"><span class="news-arrow"></span></a>
+                    </section>
+                    <section class="news-body">
+                        <h4><a href="news-page.html">Вот тут будет заголовок новости, похожий на описание</a></h4>
+                    </section>
+                </div>
+                
+                <div class="news-box">
+                    <section class="news-picture">
+                        <img src="images/news/image1.jpg">
+                        <a href="news-page.html" class="go-to-post"><span class="news-arrow"></span></a>
+                    </section>
+                    <section class="news-body">
+                        <h4><a href="news-page.html">Вот тут будет заголовок новости, похожий на описание</a></h4>
+                    </section>
+                </div>
+                
+                <div class="news-box">
+                    <section class="news-picture">
+                        <img src="images/news/image3.jpg">
+                        <a href="news-page.html" class="go-to-post"><span class="news-arrow"></span></a>
+                    </section>
+                    <section class="news-body">
+                        <h4><a href="news-page.html">Вот тут будет заголовок новости, похожий на описание</a></h4>
+                    </section>
+                </div>
+                
+                <div></div>
+                <a href="news-all.html" class="all-news">Все новости</a>
+            </div>
+            <!-- end of News -->
+            
+            <!-- Partners part -->
+            <div class="partners">
+                <ul class="bxslider">
+                    <li><a href="#"><img src="images/partners/1+1.png"></a></li>
+                    <li><a href="#"><img src="images/partners/1+1.png"></a></li>
+                    <li><a href="#"><img src="images/partners/1+1.png"></a></li>
+                    <li><a href="#"><img src="images/partners/1+1.png"></a></li>
+                    <li><a href="#"><img src="images/partners/1+1.png"></a></li>
+                    <li><a href="#"><img src="images/partners/1+1.png"></a></li>
+                    <li><a href="#"><img src="images/partners/1+1.png"></a></li>
+                    <li><a href="#"><img src="images/partners/1+1.png"></a></li>
+                </ul>
+            </div>
+            <script>
+                $(document).ready(function(){
+                    $('.bxslider').bxSlider({
+                        minSlides: 1,
+                        maxSlides: 5,
+                        moveSlides: 1,
+                        slideWidth: 160,
+                        slideMargin: 10,
+                        pager: false,
+                        adaptive: true
+                    }); 
+                });
+            </script>
+            <!-- end of Partners -->
+            
+            <footer>
+                <div class="wrapper">
+                    <section class="footer-contacts">
+                        <div class="adress">
+                            <span class="contact-item">г.Киев, ул. Красноармейская, 16</span>
+                        </div>
+                        <div class="phones">
+                            <span class="contact-item">+38 (044) 152 47 29</span>
+                            <span class="contact-item">+38 (099) 472 24 94</span>
+                        </div>
+                        <div class="social-box">
+                            <a href="facebook.com" class="fb"></a>
+                            <a href="vimeo.com" class="vimeo"></a>
+                            <a href="youtube.com" class="youtube"></a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </section>
+                    <section class="footer-nav">
+                        <a href="index.html" class="nav-item">Главная</a>
+                        <a href="about.html" class="nav-item">О нас</a>
+                        <a href="cases.html" class="nav-item">Кейсы</a>
+                        <a href="news.html" class="nav-item">Новости</a>
+                        <a href="contacts.html" class="nav-item">Контакты</a>
+                    </section>
+                </div>
+            </footer>
+
+        </div>
+
+    </body>
+
+</html>

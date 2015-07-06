@@ -1,0 +1,16 @@
+{{#if iframe_src}}
+<div class="content-wrap inline-video">
+    <iframe src="{{iframe_src}}" width="100%" height="auto" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>    
+</div>
+{{/if}}
+
+<script type="text/javascript">
+    var trueWidth = 0;
+    $(window).scroll(function () {
+        if ($(window).width < 768 && trueWidth != 1)
+        {
+            $(".inline-video").find("iframe").height($("iframe").width() / 16 * 9);
+            trueWidth = 1;
+        }
+    });
+</script>

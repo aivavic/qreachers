@@ -1,0 +1,36 @@
+{
+    "type": "object",
+    "title": "Categories",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___categories___"
+            }
+        },
+        "___categories___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Categories"
+        },
+        "categories-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/categories/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        }
+    }
+}

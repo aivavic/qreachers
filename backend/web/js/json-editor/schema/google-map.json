@@ -1,0 +1,93 @@
+{
+    "type": "object",
+    "title": "Google map",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___google-map___"
+            }
+        },
+        "___google-map___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Google map"
+        },
+        "google-map-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/google-map/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "img_src": {
+            "type": "string",
+            "format": "url",
+            "propertyOrder": "10",
+            "title": "Logo image",
+            "default": "/img/family-16x9.png",
+            "options": {
+                "upload": true
+            },
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "rel": "View file"
+                }
+            ]
+        },
+        "address": {
+            "type": "string",
+            "title": "Address",
+            "default": "default address"
+        },
+        "phone1": {
+            "type": "string",
+            "title": "Phone 1",
+            "default": "default phone"
+        },
+        "phone2": {
+            "type": "string",
+            "title": "Phone 2",
+            "default": "default phone"
+        },
+        "email": {
+            "type": "string",
+            "title": "Email",
+            "default": "default email",
+            "propertyOrder": "1200"
+        },
+        "map_y": {
+            "type": "string",
+            "title": "Map y",
+            "default": "50.43571"
+        },
+        "map_x": {
+            "type": "string",
+            "title": "Map x",
+            "default": "30.512806"
+        },
+        "marker_y": {
+            "type": "string",
+            "title": "Marker y",
+            "default": "50.43451"
+        },
+        "marker_x": {
+            "type": "string",
+            "title": "Marker x",
+            "default": "30.512806"
+        }
+    }
+}

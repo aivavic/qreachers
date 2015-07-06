@@ -1,0 +1,228 @@
+<div class="head-video">
+    <div class="wrapper">
+        <div class="vertical-centered-content">
+            <h1>{{text}}</h1>
+            {{#if iframe_src}}
+            <div class="fullscr-btn-wrap">
+                <a href="{{href}}" target="_blank" class="watch-fullscreen" data-link="{{iframe_src}}"></a>
+            </div>
+            {{/if}}
+            {{#if share_buttons}}
+            <div class="share-box" id="head-video-share-box">
+                <div class="fb-share">
+                    <a href="{{facebookHref}}"></a>
+                    <span>0</span>
+                </div>
+                <div class="twitter-share">
+                    <a href="{{twitterHref}}"></a>
+                    <span>0</span>
+                </div>
+            </div>
+            {{/if}}
+            {{#if published_at}}
+            <div class="post-date">{{published_at}}</div>
+            {{/if}}
+        </div>
+    </div>
+    {{#if video_src}}
+    <video loop="" autoplay="" muted="" poster="{{img_src}}" style="width: 100%; height: auto; position: absolute; top: 50%; left: 0; transform: translateY(-50%); -webkit-transform: translateY(-50%);">
+        <source src="{{video_src}}" type="video/mp4" />
+    </video>
+    <img src="{{img_src}}" style="display:none"/>
+
+    {{else}}
+    <img src="{{img_src}}">
+    {{/if}}
+
+    <div class="scroll-box">
+    </div>
+</div>
+{{#if iframe_src}}
+<div class="video-fullscreen">
+    <div class="video-wrap">
+        <iframe src="{{iframe_src}}?title=0&amp;byline=0&amp;portrait=0" width="100%" height="auto" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="">
+        </iframe>
+        <button id="close-popup">×</button>
+    </div>
+</div>
+{{/if}}
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        if ($(window).height() > 600)
+            $(".head-video").height($(window).height() - 90);
+
+        else if ($(window).height() < 601) {
+            $(".head-video").height(600);
+
+            if ($(window).width() < 767) {
+                $(".head-video").find("video").addClass("vertical-video");
+                $(".head-video").find("img").addClass("vertical-video");
+            }
+        }
+
+        if ($(window).width() / $(window).height() < 1.5) {
+            $(".head-video").find("video").addClass("vertical-video");
+            $(".head-video").find("img").addClass("vertical-video");
+        }
+
+        else if ($(window).width() > 767) {
+            $(".head-video").find("video").removeClass("vertical-video");
+            $(".head-video").find("img").removeClass("vertical-video");
+        }
+
+        if ($(window).width() < 768) {
+            $("head-video").find("video").hide(function () {
+                $("head-video").find("img").show();
+            });
+        }
+    });
+
+    $(window).resize(function () {
+        if ($(window).height() > 600)
+            $(".head-video").height($(window).height() - 90);
+
+        else if ($(window).height() < 601) {
+            $(".head-video").height(600);
+
+            if ($(window).width() < 767) {
+                $(".head-video").find("video").addClass("vertical-video");
+                $(".head-video").find("img").addClass("vertical-video");
+            }
+
+            else {
+                $(".head-video").find("video").removeClass("vertical-video");
+                $(".head-video").find("img").removeClass("vertical-video");
+            }
+        }
+
+        if ($(window).width() / $(window).height() < 1.5) {
+            $(".head-video").find("video").addClass("vertical-video");
+            $(".head-video").find("img").addClass("vertical-video");
+        }
+
+        else if ($(window).width() > 767) {
+            $(".head-video").find("video").removeClass("vertical-video");
+            $(".head-video").find("img").removeClass("vertical-video");
+
+            $("head-video").find("video:hidden").show(function () {
+                $("head-video").find("img").hide();
+            });
+        }
+
+        if ($(window).width() < 768) {
+            $("head-video").find("video").hide(function () {
+                $("head-video").find("img").show();
+            });
+        }
+    });
+
+    $(".watch-fullscreen").click(function (e) {
+        var link = $(this).data("link");
+
+        var videoElement = $(".head-video").find("video").get(0);
+
+        if (!$.isEmptyObject(videoElement)) {
+            videoElement.pause();
+        }
+
+        $(".video-wrap").html('<iframe src="' + link + '?title=0&amp;byline=0&amp;portrait=0" width="100%" height="auto" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe><button id="close-popup">×</button>');
+
+        if ($(window).width() > 767 && $(window).height() > 500) {
+            e.preventDefault();
+
+            var video = $(".video-fullscreen").find("iframe");
+            video.width($(window).width() / 100 * 70);
+
+            if (video.width() > 1080) {
+                video.width(1080);
+            }
+            video.height(video.width() / 16 * 9);
+
+            setTimeout(function () {
+                $(".video-fullscreen").fadeIn();
+            }, 200);
+            setTimeout(function () {
+                $(".video-fullscreen").find("iframe").fadeIn();
+                $(".video-fullscreen").find("button").css({"top": video.offset().top - 40, "left": video.offset().left + video.width() + 20, "display": "block"});
+            }, 600);
+        }
+
+        $("#close-popup, .video-fullscreen").click(function () {
+            setTimeout(function () {
+                $(".video-fullscreen").find("iframe").fadeOut();
+            }, 200);
+
+            $(".video-wrap").html('');
+
+            setTimeout(function () {
+                $(".video-fullscreen").fadeOut();
+            }, 600);
+
+            var videoElement = $(".head-video").find("video").get(0);
+
+            if (!$.isEmptyObject(videoElement)) {
+                videoElement.play();
+            }
+        });
+    });
+
+    $('#head-video-share-box .fb-share a').click(function () {
+        var social_box = $(this).parent('div');
+
+        FB.ui({
+            method: 'share',
+            href: location.href,
+        }, function (response) {
+            if (response && !response.error_code) {
+                app.logger.text('Post was published.');
+                app.logger.var(response);
+
+                var count = parseInt($('span', social_box).text());
+                if (!isNaN(count)) {
+                    count = count + 1;
+                    $('span', social_box).text(count);
+                }
+            } else {
+                app.logger.text('Post was not published.');
+                app.logger.var(response);
+            }
+        });
+
+        return false;
+    });
+
+    //Once twttr is ready, bind a callback function to the tweet event
+    twttr.ready(function (twttr) {
+        twttr.events.bind('tweet', function (event) {
+            app.logger.text('twttr event tweet');
+
+            // увеличиваем значение счетчика социалки на 1
+            var span = $('#head-video-share-box .twitter-share span');
+
+            var count = parseInt(span.text());
+            if (!isNaN(count)) {
+                count = count + 1;
+                span.text(count);
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        $.getJSON('http://graph.facebook.com/fql?q=SELECT url, total_count FROM link_stat WHERE url="' + urlencode(location.href) + '"', function (data) {
+            // вставляем в DOM
+            app.logger.text('facebook data');
+            app.logger.var(data);
+            $('#head-video-share-box .fb-share span').text(data.data[0].total_count);
+        });
+
+        $.getJSON('http://urls.api.twitter.com/1/urls/count.json?url=' + urlencode(location.href) + '&callback=?', function (data) {
+            app.logger.text('twitter data');
+            app.logger.var(data);
+            // вставляем в DOM
+            $('#head-video-share-box .twitter-share span').text(data.count);
+        });
+    });
+
+</script>

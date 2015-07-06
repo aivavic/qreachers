@@ -1,0 +1,126 @@
+/*-------- Footer --------*/
+
+footer {
+    background: #1b1b1b;
+    padding: 80px 0 65px;
+    
+    .wrapper {
+        width: 620px;
+        margin: 0 auto;
+    }
+    
+    .nav-item {
+        color: #545454;
+        font-family: $medium;
+        font-size: 15px;
+    }
+    
+    .nav-item:after {
+        display: none;
+    }
+}
+
+.footer-nav {
+    margin-top: 30px;
+    border-top: 1px solid #3e3e3e;
+    text-align: center;
+}
+
+.adress,
+.phones {
+    width: 200px;
+    float: left;
+}
+
+.contact-item {
+    display: block;
+    color: white;
+    font-family: $light;
+    line-height: 27px;
+}
+
+.social-box {
+    float: right;
+    width: 200px;
+    text-align: right;
+    
+    a {
+        display: inline-block;
+        content: "";
+        width: 40px;
+        height: 40px;
+        border: 1px solid #3e3e3e;
+        transition: .2s linear;
+        margin-left: 18px;
+    }
+}
+
+.fb {
+    background: url(../images/fb.png) no-repeat center;
+}
+
+.vimeo {
+    background: url(../images/vimeo.png) no-repeat center;
+}
+
+.youtube {
+    background: url(../images/youtube.png) no-repeat center;
+}
+
+.fb:hover {
+    background: url(../images/fb-hover.png) no-repeat center;
+}
+
+.vimeo:hover {
+    background: url(../images/vimeo-hover.png) no-repeat center;
+}
+
+.youtube:hover {
+    background: url(../images/youtube-hover.png) no-repeat center;
+}
+
+@media screen and (max-width: 767px) {
+    footer {
+        padding-bottom: 35px;
+        
+        .wrapper {
+            width: 100%;
+        }
+    }
+    
+    .footer-nav {
+        padding-top: 50px;
+        width: 164px;
+        margin: 0 auto;
+        
+        .nav-item {
+            display: block;
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: normal;
+        }
+    }
+    
+    .adress, .phones, .social-box {
+        width: 100%;
+        float: none;
+        text-align: center;
+    }
+    
+    .social-box {
+        margin: 45px auto;
+    }
+    
+    .contact-item {
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    footer {
+        .social-box {
+            width: 210px;
+        }
+    }
+}

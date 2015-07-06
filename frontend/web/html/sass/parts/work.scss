@@ -1,0 +1,102 @@
+/*-------- Work part --------*/
+
+.work {
+    color: #1b1b1b;
+    text-align: center;
+    padding: 85px 0 125px;
+    
+    h2 {
+        margin-bottom: 70px;
+    }
+}
+
+.we-are {
+    color: #1b1b1b;
+    text-align: center;
+    padding: 85px 0 125px;
+    
+    h2 {
+        margin-bottom: 70px;
+    }
+}
+
+.grey-bg {
+    background: #f9f9f9;
+}
+
+.work-box {
+    width: 250px;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.work-picture {
+    min-height: 130px;
+    margin-bottom: 15px;
+    
+    img {
+        margin: 0 auto;
+    }
+}
+
+.work-description {
+    h4 {
+        font-family: $bold;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+    
+    p {
+        font-family: $light;
+    }
+}
+
+@media screen and (max-width: 1040px) {
+    .work-box {
+        margin: 0 5px 40px;
+    }   
+}
+
+@media screen and (max-width: 991px) {
+    
+    .work {
+        padding-bottom: 50px;
+    }
+    
+    .work-wrap {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .work-box {
+        margin: 0 25px 40px;
+    }
+    
+    .we-are {
+        padding: 70px 0 80px;
+        
+        .work-box {
+            width: 220px;
+            margin: 0 10px 40px;
+        }
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1279px) {
+    .work-box {
+        width: 230px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .work, .we-are {
+        padding-bottom: 50px;
+    }
+    
+    .we-are {
+        worl-box {
+            width: 240px;
+            margin: 0 25px 40px;
+        }
+    }
+}

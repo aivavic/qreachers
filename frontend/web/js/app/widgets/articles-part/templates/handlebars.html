@@ -1,0 +1,19 @@
+<div class="news" id="main-article-list-container">
+    
+    {{#each items}}
+    <div class="news-box">
+        <section class="news-picture">
+            <img src="{{previewImg}}">
+            <a href="{{viewUrl}}" class="go-to-post ajaxLink"><span class="news-arrow"></span></a>
+        </section>
+        <section class="news-body">
+            <h4><a href="{{viewUrl}}" class="ajaxLink">{{title}}</a></h4>
+        </section>
+    </div>
+    {{/each}}
+
+    <div></div>
+    <a href="{{urlToNews}}" class="all-news ajaxLink">{{all_articles}}</a>
+</div>
+
+

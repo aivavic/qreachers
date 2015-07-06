@@ -1,0 +1,57 @@
+{
+    "type": "array",
+    "title": "Body",
+    "format": "tabs",
+    "items": {
+        "title": "Widgets",
+        "id": "widget",
+        "headerTemplate": "{{i1}} - {{self.tab_title}}",
+        "oneOf": [
+            {
+                "$ref": "/js/json-editor/schema/head-video.json",
+                "title": "Head video"
+            },
+            {
+                "$ref": "/js/json-editor/schema/categories.json",
+                "title": "Categories"
+            },
+            {
+                "$ref": "/js/json-editor/schema/text-indent.json",
+                "title": "Text indent"
+            },
+            {
+                "$ref": "/js/json-editor/schema/quote-avatar.json",
+                "title": "Quote-avatar"
+            },
+            {
+                "$ref": "/js/json-editor/schema/iframe-video.json",
+                "title": "Iframe video"
+            },
+            {
+                "$ref": "/js/json-editor/schema/images-slider.json",
+                "title": "Images slider"
+            },
+            {
+                "$ref": "/js/json-editor/schema/text-indent-title.json",
+                "title": "Text indent with title"
+            },
+            {
+                "$ref": "/js/json-editor/schema/image.json",
+                "title": "Image"
+            },
+            {
+                "$ref": "/js/json-editor/schema/text.json",
+                "title": "Text"
+            },
+            {
+                "$ref": "/js/json-editor/schema/statistics.json",
+                "title": "Statistics"
+            },
+            {
+                "$ref": "/js/json-editor/schema/go-back.json",
+                "title": "Go back footer"
+            }
+
+        ]
+    }
+}

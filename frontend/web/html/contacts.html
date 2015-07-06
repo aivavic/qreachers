@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Главная</title>
+        <meta charset="utf-8">
+        <link href="css/style.css" rel="stylesheet">        
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery.bxslider.min.js"></script>
+        
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    </head>
+
+    <body>
+        
+        <!-- Google map -->
+        <script>
+            var map;
+
+        function initialize() {
+            
+            var mapOptions = {
+                zoom: 17,
+                center: new google.maps.LatLng(50.43571, 30.512806),
+                disableDefaultUI: true,
+                scrollWheel: false,
+                styles: [{"stylers":[{"hue":"#ff1a00"},{"invert_lightness":true},{"saturation":-100},{"lightness":33},{"gamma":0.5}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#2D333C"}]}]
+            };
+            
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            
+            var image = 'images/pointer-clear.png';
+            var hover = 'images/pointer.png';
+            
+            var myLatLng = new google.maps.LatLng(50.43571-0.0012, 30.512806);
+            var Marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                icon: image
+            });
+            
+            google.maps.event.addListener(Marker, 'mouseover', function() {
+                Marker = new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                    icon: hover
+                });
+            });
+
+            google.maps.event.addListener(Marker, 'mouseout', function() {
+                Marker = new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                    icon: image
+                });
+            });
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+        google.maps.event.addDomListener(window, 'resize', initialize);
+        
+        </script>
+    
+
+        <div class="main-container">
+
+            <nav>
+                <section class="nav-logo">
+                    <a href="index.html"><img src="images/header-logo.png"></a>
+                </section>
+                <a href="index.html" class="nav-item hidden-xs">Главная</a>
+                <a href="about.html" class="nav-item hidden-xs">О нас</a>
+                <a href="projects.html" class="nav-item hidden-xs">Кейсы</a>
+                <a href="news.html" class="nav-item hidden-xs">Новости</a>
+                <a href="contacts.html" class="nav-item hidden-xs">Контакты</a>
+                <section class="lang-box hidden-xs">
+                    <a href="#" class="lang-item lang-active">Rus</a>
+                    <a href="#" class="lang-item">Ukr</a>
+                    <a href="#" class="lang-item">Eng</a>
+                </section>
+                
+                <div class="clearfix"></div>
+            </nav>
+            
+            <div class="contacts-map">
+                <div id="map"></div>
+                <div class="contacts-box">
+                    <section><img src="images/family-16x9.png"></section>
+                    
+                    <section>
+                        <div class="adress">
+                            <span class="contact-item">г.Киев, ул. Красноармейская, 16</span>
+                        </div>
+                        
+                        <div class="phones">
+                            <span class="contact-item">+38 (044) 152 47 29</span>
+                            <span class="contact-item">+38 (099) 472 24 94</span>
+                        </div>
+                        
+                        <div class="mail">
+                            <a href="mailto:welcome@16on9.com" class="contact-item">welcome@16on9.com</a>
+                        </div>
+                    </section>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            
+            <footer>
+                <div class="wrapper">
+                    <section class="footer-contacts">
+                        <div class="adress">
+                            <span class="contact-item">г.Киев, ул. Красноармейская, 16</span>
+                        </div>
+                        <div class="phones">
+                            <span class="contact-item">+38 (044) 152 47 29</span>
+                            <span class="contact-item">+38 (099) 472 24 94</span>
+                        </div>
+                        <div class="social-box">
+                            <a href="facebook.com" class="fb"></a>
+                            <a href="vimeo.com" class="vimeo"></a>
+                            <a href="youtube.com" class="youtube"></a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </section>
+                    <section class="footer-nav">
+                        <a href="index.html" class="nav-item">Главная</a>
+                        <a href="about.html" class="nav-item">О нас</a>
+                        <a href="cases.html" class="nav-item">Кейсы</a>
+                        <a href="news.html" class="nav-item">Новости</a>
+                        <a href="contacts.html" class="nav-item">Контакты</a>
+                    </section>
+                </div>
+            </footer>
+
+        </div>
+
+    </body>
+
+    <!-- Map layout -->
+    <script>
+        $(window).load(function() {
+            if ($(window).height() > 1150) $(".contacts-map").height($(window).height()-$("nav").outerHeight()-$("footer").outerHeight());
+            else $(".contacts-map").attr({"style":""});
+        });
+        $(window).resize(function() {
+            if ($(window).height() > 1150) $(".contacts-map").height($(window).height()-$("nav").outerHeight()-$("footer").outerHeight());
+            else $(".contacts-map").attr({"style":""});
+        });
+    </script>
+</html>

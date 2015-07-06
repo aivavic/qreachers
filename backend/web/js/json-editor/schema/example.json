@@ -1,0 +1,66 @@
+{
+    "type": "object",
+    "title": "Test",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___test___"
+            }
+        },
+        "___test___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Test"
+        },
+        "test-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/head-video/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "wysiwyg": {
+            "type": "string",
+            "format": "html",
+            "options": {
+                "wysiwyg": true
+            },
+            "title": "Text.",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing."
+        },
+        "multiselect": {
+            "type": "array",
+            "uniqueItems": true,
+            "format": "select",
+            "$ref": "/member/enum"
+        },
+        "upload": {
+            "type": "string",
+            "format": "url",
+            "title": "Some image.",
+            "options": {
+                "upload": true
+            },
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "rel": "View file"
+                }
+            ]
+        }
+    }
+
+}

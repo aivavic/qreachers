@@ -1,0 +1,3 @@
+.re-blocklist:before {
+   content: "\e60a";      
+}

@@ -1,0 +1,84 @@
+{
+    "type": "object",
+    "title": "What we do",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___what-we-do___"
+            }
+        },
+        "___what-we-do___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "What we do"
+        },
+        "what-we-do-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/what-we-do/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "title": {
+            "type": "string",
+            "title": "Title",
+            "default": "What we do?"
+        },
+        "items": {
+            "type": "array",
+            "title": "Some works.",
+            "options": {
+                "collapsed": true
+            },
+            "items": {
+                "type": "object",
+                "title": "work",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "title": "Some title.",
+                        "default": "Default title"
+                    },
+                    "content": {
+                        "type": "string",
+                        "title": "Some content.",
+                        "default": "Default content"
+                    },
+                    "img_src": {
+                        "type": "string",
+                        "format": "url",
+                        "title": "Some image.",
+                        "options": {
+                            "upload": true
+                        },
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "rel": "View file"
+                            }
+                        ]
+                    }
+
+                }
+            }
+        }
+
+    }
+
+}

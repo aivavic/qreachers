@@ -1,0 +1,72 @@
+{
+    "type": "object",
+    "title": "News list",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___news___"
+            }
+        },
+        "___news___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "news"
+        },
+        "news-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/news/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "filter": {
+            "type": "string",
+            "title": "Filter button text.",
+            "default": "Filter"
+        },
+        "order_by": {
+            "type": "string",
+            "title": "Order by filed.",
+            "enum": [
+                "id",
+                "weight",
+                "created_at",
+                "updated_at"
+            ],
+            "options": {
+                "enum_titles": ["Id", "Weight", "Created at", "Updated at"]
+            },
+            "default": "id"
+        },
+        "sort_order": {
+            "type": "string",
+            "title": "Sort order.",
+            "enum": [
+                "asc",
+                "desc"
+            ],
+            "options": {
+                "enum_titles": ["asc", "desc"]
+            },
+            "default": "desc"
+        },
+        "count": {
+            "type": "string",
+            "title": "News count.",
+            "default": "20"
+        }
+    }
+}

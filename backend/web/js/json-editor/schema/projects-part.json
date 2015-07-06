@@ -1,0 +1,72 @@
+{
+    "type": "object",
+    "title": "Projects part",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___projects-part___"
+            }
+        },
+        "___projects-part___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Projects part"
+        },
+        "projects-part-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/projects-part/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "all_projects": {
+            "type": "string",
+            "title": "All projects text.",
+            "default": "All projects."
+        },
+        "order_by": {
+            "type": "string",
+            "title": "Order by filed.",
+            "enum": [
+                "id",
+                "weight",
+                "created_at",
+                "updated_at"
+            ],
+            "options": {
+                "enum_titles": ["Id", "Weight", "Created at", "Updated at"]
+            },
+            "default": "id"
+        },
+        "sort_order": {
+            "type": "string",
+            "title": "Sort order.",
+            "enum": [
+                "asc",
+                "desc"
+            ],
+            "options": {
+                "enum_titles": ["asc", "desc"]
+            },
+            "default": "desc"
+        },
+        "count": {
+            "type": "string",
+            "title": "Projects count.",
+            "default": "3"
+        }
+    }
+}

@@ -1,0 +1,69 @@
+{
+    "type": "object",
+    "title": "Statistics", 
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___statistics___"
+            }
+        },
+        "___statistics___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Statistics"
+        },
+        "statistics-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/statistics/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "title": {
+            "type": "string",
+            "title": "Title",
+            "default": "Statistics"
+        },
+        "items": {
+            "type": "array",
+            "title": "Some works.",
+            "options": {
+                "collapsed": true
+            },
+            "items": {
+                "type": "object",
+                "title": "work",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "time": {
+                        "type": "string",
+                        "title": "Time.",
+                        "default": "12"
+                    },
+                    "text": {
+                        "type": "string",
+                        "title": "Some content.",
+                        "default": "Default content"
+                    }
+                }
+            }
+        }
+
+    }
+
+}

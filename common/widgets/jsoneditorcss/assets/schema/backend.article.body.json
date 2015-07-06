@@ -1,0 +1,457 @@
+{
+    "title": "Body",
+    "type": "array",
+    "id": "body",
+    "options": {
+        "collapsed": true
+    },
+    "items": {
+        "type": "object",
+        "title": "widget",
+        "options": {
+            "collapsed": true
+        },
+        "properties": {
+            "wselect": {
+                "type": "string",
+                "title": "select widget",
+                "propertyOrder": 10,
+                "options": {
+                    "enum_titles": ["- - -", "Head video", "Categories", "Text indent", "Quote avatar", "External video", "Images slider", "Text indent with title", "Image", "Text", "Current project tasks", "Statistics"]
+                },
+                "enum": [
+                    "-",
+                    "head-video",
+                    "categories",
+                    "text-indent",
+                    "quote-avatar",
+                    "iframe-video",
+                    "images-slider",
+                    "text-indent-title",
+                    "image",
+                    "text",
+                    "what-we-do",
+                    "statistics"
+                ],
+                "default": "-"
+            },
+            "head-video": {
+                "type": "object",
+                "title": "Head video",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "preview": {
+                        "title": "Example:",
+                        "type": "string",
+                        "format": "hidden",
+                        "default": "/frontend/web/js/app/widgets/head-video/img/preview.jpg",
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "mediaType": "image"
+                            }
+                        ]
+
+                    },
+                    "text": {
+                        "type": "string",
+                        "description": "Text above video.",
+                        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing."
+                    },
+                    "href": {
+                        "type": "string",
+                        "description": "Url to external site.",
+                        "default": "https://vimeo.com/42784827"
+                    },
+                    "iframe_src": {
+                        "type": "string",
+                        "description": "Iframe src ...",
+                        "default": "https://player.vimeo.com/video/29017040"
+                    },
+                    "video_src": {
+                        "type": "string",
+                        "description": "Video ...",
+                        "default": "/img/bg.mp4"
+                    }
+                }
+
+            },
+            "categories": {
+                "type": "object",
+                "title": "Categories",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "preview": {
+                        "title": "Example:",
+                        "type": "string",
+                        "format": "hidden",
+                        "default": "/frontend/web/js/app/widgets/categories/img/preview.jpg",
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "mediaType": "image"
+                            }
+                        ]
+
+                    }
+                }
+            },
+            "text-indent": {
+                "type": "object",
+                "title": "Text indent",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "preview": {
+                        "title": "Example:",
+                        "type": "string",
+                        "format": "hidden",
+                        "default": "/frontend/web/js/app/widgets/text-indent/img/preview.jpg",
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "mediaType": "image"
+                            }
+                        ]
+
+                    },
+                    "text": {
+                        "type": "string",
+                        "description": "Text.",
+                        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing."
+                    }
+                }
+            },
+            "quote-avatar": {
+                "type": "object",
+                "title": "Quote avatar",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "preview": {
+                        "title": "Example:",
+                        "type": "string",
+                        "format": "hidden",
+                        "default": "/frontend/web/js/app/widgets/quote-avatar/img/preview.jpg",
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "mediaType": "image"
+                            }
+                        ]
+
+                    },
+                    "text": {
+                        "type": "string",
+                        "description": "Text.",
+                        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing."
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Person name.",
+                        "default": "DefaultName"
+                    },
+                    "surname": {
+                        "type": "string",
+                        "description": "Person surname.",
+                        "default": "DefaultSurname"
+                    },
+                    "position": {
+                        "type": "string",
+                        "description": "Person position.",
+                        "default": "DefaultPosition"
+                    },
+                    "img_src": {
+                        "type": "string",
+                        "description": "Person avatar if exist.",
+                        "default": "/img/quote.png"
+                    }
+                }
+            },
+            "iframe-video": {
+                "type": "object",
+                "title": "External video",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "preview": {
+                        "title": "Example:",
+                        "type": "string",
+                        "format": "hidden",
+                        "default": "/frontend/web/js/app/widgets/iframe-video/img/preview.jpg",
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "mediaType": "image"
+                            }
+                        ]
+
+                    },
+                    "iframe_src": {
+                        "type": "string",
+                        "description": "External video url.",
+                        "default": "https://player.vimeo.com/video/29017040?title=0&byline=0&portrait=0"
+                    }
+                }
+            },
+            "images-slider": {
+                "type": "object",
+                "title": "Images slider",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "preview": {
+                        "title": "Example:",
+                        "type": "string",
+                        "format": "hidden",
+                        "default": "/frontend/web/js/app/widgets/images-slider/img/preview.jpg",
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "mediaType": "image"
+                            }
+                        ]
+
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description.",
+                        "default": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    },
+                    "items": {
+                        "type": "array",
+                        "title": "Images",
+                        "description": "Images for slider.",
+                        "options": {
+                            "collapsed": true
+                        },
+                        "items": {
+                            "type": "object",
+                            "title": "image",
+                            "options": {
+                                "collapsed": true
+                            },
+                            "properties": {
+                                "img_src": {
+                                    "type": "string",
+                                    "description": "Some image.",
+                                    "default": "/img/news/post-bg.jpg"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "text-indent-title": {
+                "type": "object",
+                "title": "Text indent with title",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "preview": {
+                        "title": "Example:",
+                        "type": "string",
+                        "format": "hidden",
+                        "default": "/frontend/web/js/app/widgets/text-indent-title/img/preview.jpg",
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "mediaType": "image"
+                            }
+                        ]
+
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "Title.",
+                        "default": "Default title."
+                    },
+                    "text": {
+                        "type": "string",
+                        "description": "Text.",
+                        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing."
+                    }
+                }
+            },
+            "image": {
+                "type": "object",
+                "title": "Image",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "preview": {
+                        "title": "Example:",
+                        "type": "string",
+                        "format": "hidden",
+                        "default": "/frontend/web/js/app/widgets/image/img/preview.jpg",
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "mediaType": "image"
+                            }
+                        ]
+
+                    },
+                    "img_src": {
+                        "type": "string",
+                        "description": "Image url",
+                        "default": "/img/news/image1.jpg"
+                    }
+                }
+            },
+            "text": {
+                "type": "object",
+                "title": "Small text",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "preview": {
+                        "title": "Example:",
+                        "type": "string",
+                        "format": "hidden",
+                        "default": "/frontend/web/js/app/widgets/text/img/preview.jpg",
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "mediaType": "image"
+                            }
+                        ]
+
+                    },
+                    "text": {
+                        "type": "string",
+                        "description": "Text.",
+                        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing."
+                    }
+                }
+            },
+            "what-we-do": {
+                "type": "object",
+                "title": "Current project tasks",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "preview": {
+                        "title": "Example:",
+                        "type": "string",
+                        "format": "hidden",
+                        "default": "/frontend/web/js/app/widgets/what-we-do/img/preview.jpg",
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "mediaType": "image"
+                            }
+                        ]
+
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "Title",
+                        "default": "What we do?"
+                    },
+                    "items": {
+                        "type": "array",
+                        "description": "Some works.",
+                        "options": {
+                            "collapsed": true
+                        },
+                        "items": {
+                            "type": "object",
+                            "title": "work",
+                            "options": {
+                                "collapsed": true
+                            },
+                            "properties": {
+                                "title": {
+                                    "type": "string",
+                                    "description": "Some title.",
+                                    "default": "Default title"
+                                },
+                                "content": {
+                                    "type": "string",
+                                    "description": "Some content.",
+                                    "default": "Default content"
+                                },
+                                "img_src": {
+                                    "type": "string",
+                                    "description": "Some image.",
+                                    "default": "/img/pictures/idea.png"
+                                }
+
+                            }
+                        }
+                    }
+
+                }
+
+            },
+            "statistics": {
+                "type": "object",
+                "title": "Statistics",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "preview": {
+                        "title": "Example:",
+                        "type": "string",
+                        "format": "hidden",
+                        "default": "/frontend/web/js/app/widgets/statistics/img/preview.jpg",
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "mediaType": "image"
+                            }
+                        ]
+
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "Title",
+                        "default": "Statistics"
+                    },
+                    "items": {
+                        "type": "array",
+                        "description": "Some works.",
+                        "options": {
+                            "collapsed": true
+                        },
+                        "items": {
+                            "type": "object",
+                            "title": "work",
+                            "options": {
+                                "collapsed": true
+                            },
+                            "properties": {
+                                "time": {
+                                    "type": "string",
+                                    "description": "Time.",
+                                    "default": "12"
+                                },
+                                "text": {
+                                    "type": "string",
+                                    "description": "Some content.",
+                                    "default": "Default content"
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+            }
+        }
+    }
+}

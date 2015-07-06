@@ -1,0 +1,82 @@
+{
+    "type": "object",
+    "title": "Work part",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___work-part___"
+            }
+        },
+        "___work-part___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Work part"
+        },
+        "work-part-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/work-part/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "title": {
+            "type": "string",
+            "title": "Some title.",
+            "default": "What we do?"
+        },
+        "work": {
+            "type": "array",
+            "title": "Some works.",
+            "options": {
+                "collapsed": true
+            },
+            "items": {
+                "type": "object",
+                "title": "work",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "title": "Some title.",
+                        "default": "Default title"
+                    },
+                    "content": {
+                        "type": "string",
+                        "title": "Some content.",
+                        "default": "Default content"
+                    },
+                    "img_src": {
+                        "type": "string",
+                        "format": "url",
+                        "title": "Some image.",
+                        "options": {
+                            "upload": true
+                        },
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "rel": "View file"
+                            }
+                        ]
+                    }
+
+                }
+            }
+        }
+    }
+}

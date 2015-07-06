@@ -1,0 +1,83 @@
+{{#each items}}
+<div class="news-wrap {{dataFilterCategories}}">
+    <div class="news-box">
+        <section class="news-picture">
+            <img src="{{previewImg}}">
+            <a href="{{viewUrl}}" class="go-to-post ajaxLink"><span class="news-arrow"></span></a>
+        </section>
+        <section class="news-body">
+            <h4><a href="{{viewUrl}}" class="ajaxLink">{{title}}</a></h4>
+        </section>
+    </div>
+</div>
+{{/each}}
+
+<script type="text/javascript">
+
+    $(function () {
+        // init Isotope
+        var $grid = $('.news-container').isotope({
+            itemSelector: '.news-wrap',
+            layoutMode: 'fitRows'
+        });
+
+        // filter functions
+        var filterFns = {
+            // show if number is greater than 50
+            numberGreaterThan50: function () {
+                var number = $(this).find('.number').text();
+                return parseInt(number, 10) > 50;
+            },
+            // show if name ends with -ium
+            ium: function () {
+                var name = $(this).find('.name').text();
+                return name.match(/ium$/);
+            }
+        };
+
+        var cid = sessionStorage.getItem('articles.index.filter.category_id');
+
+        if (cid) {
+            var filterValue = '.data-filter-' + cid;
+            // use filterFn if matches value
+            filterValue = filterFns[ filterValue ] || filterValue;
+
+            $grid.isotope({filter: filterValue});
+        }
+
+        // bind filter button click
+        $('.filter-box .tags-box').on('click', 'button', function () {
+            var filterValue = $(this).attr('data-filter');
+            // use filterFn if matches value
+            filterValue = filterFns[ filterValue ] || filterValue;
+            $grid.isotope({filter: filterValue});
+        });
+
+        // bind filter button click
+        $('#resetCategories').click(function () {
+            $grid.isotope({filter: "*"});
+            $('.filter-box .tags-box button').removeClass("active");
+            sessionStorage.removeItem('articles.index.filter.category_id');
+        });
+
+        // change is-checked class on buttons
+        $('.filter-box .tags-box button').click(function () {
+            $('.filter-box .tags-box button').removeClass("active");
+            $(this).addClass('active');
+        });
+
+    });
+
+
+    setTimeout(function () {
+        imagesLoaded('.news-container', function () {
+            var $container = $('.news-container');
+
+            $container.isotope({
+                itemSelector: '.news-wrap',
+                masonry: {
+                }
+            });
+        });
+    }, 1000);
+</script>

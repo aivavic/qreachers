@@ -1,0 +1,37 @@
+<div class="partners">
+    <div class="partners-slider">
+        {{#each items}}
+        <div class="partner">
+            <img src="{{previewImg}}">
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<script type="text/javascript">
+    setTimeout(function () {
+        $(".partners-slider").owlCarousel({
+            loop: true,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 3,
+                    slideBy: 1
+                },
+                768: {
+                    items: 3,
+                    slideBy: 3
+                },
+                1000: {
+                    items: 5,
+                    slideBy: 5
+                },
+                1100: {
+                    items: 6,
+                    slideBy: 6
+                }
+            }
+        });
+    }, 2000);
+
+</script>

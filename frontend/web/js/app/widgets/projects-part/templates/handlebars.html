@@ -1,0 +1,62 @@
+<div class="projects" id="main-project-list-container">    
+
+    <!-- Template main-project-list-template  -->
+
+    {{#each items}}
+    <div class="project-box">
+        <img src="{{previewImg}}">
+        <video src="{{previewVideo}}" loop="" muted id="video"></video>
+        <section class="project-desc">
+            <h3><a href="{{viewUrl}}" class="ajaxLink">{{title}}</a></h3>
+            <p>{{description}}</p>
+        </section>
+        <a href="{{viewUrl}}" class="project-open ajaxLink"></a>
+    </div>    
+    {{/each}}
+
+    <div class="go-to-projects">
+        <a href="{{urlToPortfolio}}" class="ajaxLink">{{all_projects}}<span class="big-arrow"></span></a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var animation = null;
+
+    $(".project-box").hover(function () {
+        animation = $(this).find("video").animate({opacity: 1}, 200, function () {
+            $(this).parent().find("video").get(0).play();
+        });
+    }, function () {
+        animation.stop();
+        $(this).find("video").css("opacity", "0");
+        $(this).find("video").get(0).currentTime = 0;
+        $(this).find("video").get(0).pause();
+    });
+
+    $(document).ready(function () {
+        setTimeout(function() {
+            if ($(window).width() < 768) {
+                $("#main-project-list-container").owlCarousel({
+                    items: 1,
+                    nav: true,
+                    loop: false
+                });
+            }
+        }, 3000);
+    });
+
+    $(window).resize(function () {
+        if ($(window).width() > 767) {
+            $('.projects').trigger('destroy.owl.carousel').removeClass('owl-carousel owl-loaded');
+            $('.projects').find('.owl-stage-outer').children().unwrap();
+        }
+        if ($(window).width() < 768) {
+            $("#main-project-list-container").owlCarousel({
+                items: 1,
+                nav: true,
+                loop: false
+            });
+        }
+    });    
+    
+</script>

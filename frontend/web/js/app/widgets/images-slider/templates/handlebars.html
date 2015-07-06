@@ -1,0 +1,27 @@
+<!-- Images slider -->
+<div class="content-wrap">
+    <div class="image-slider">
+        <ul class="bxslider">
+            {{#each items}}
+            <li><img src="{{img_src}}"></li>
+            {{/each}}                      
+        </ul>
+    </div>
+    <!-- Slider desc -->
+    <p>{{description}} </p>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        setTimeout(function () {
+            $('.bxslider').bxSlider({
+                moveSlides: 1,
+                pager: true,
+                pagerType: 'short',
+                touchEnabled: true,
+                pagerShortSeparator: '/',
+                adaptive: true
+            });
+        }, 2000);
+    });
+</script>

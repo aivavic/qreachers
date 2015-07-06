@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Главная</title>
+        <meta charset="utf-8">
+        <link href="css/style.css" rel="stylesheet">        
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery.bxslider.min.js"></script>
+        <script src="js/preload.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    </head>
+
+    <body>
+        
+        <a href="#" class="press-me">PRESSSSSSSMMMMMEEEEEEE</a>
+        <div class="mask">
+            <div class="logo">
+                <span class="number-left">16</span>
+                <span class="number-right">9</span>
+            </div>
+        </div>
+        
+        <script>
+
+            $(document).ready(function() {
+                preloadStart();
+            });
+
+            $(".press-me").click(function() {
+                preloadFadeIn();    
+            });
+
+            $(".logo").click(function() {
+                preloadFadeOut();
+            });
+        </script>
+    </body>
+
+</html>

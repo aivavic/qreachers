@@ -1,0 +1,340 @@
+{
+    "title": "Head",
+    "type": "object",
+    "id": "head",
+    "options": {
+        "collapsed": true
+    },
+    "properties": {
+        "common": {
+            "type": "object",
+            "title": "Common",
+            "options": {
+                "collapsed": false
+            },
+            "properties": {
+                "title": {
+                    "type": "object",
+                    "format": "grid",
+                    "options": {
+                        "collapsed": false
+                    },
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "default": "title"
+                        },
+                        "content": {
+                            "type": "string",
+                            "default": "16on9 agency"
+                        }
+                    }
+                },
+                "description": {
+                    "type": "object",
+                    "format": "grid",
+                    "options": {
+                        "collapsed": true
+                    },
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "default": "description"
+                        },
+                        "content": {
+                            "type": "string",
+                            "default": "Агентство видео"
+                        }
+                    }
+                },
+                "image": {
+                    "type": "object",
+                    "format": "grid",
+                    "options": {
+                        "collapsed": true
+                    },
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "default": "image"
+                        },
+                        "content": {
+                            "type": "string",
+                            "format": "url",
+                            "title": "Some image.",
+                            "default" : "/frontend/web/img/og_image_16on9.jpg",
+                            "options": {
+                                "upload": true
+                            },
+                            "links": [
+                                {
+                                    "href": "{{self}}",
+                                    "rel": "View file"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "facebook": {
+            "type": "object",
+            "title": "Facebook",
+            "options": {
+                "collapsed": true
+            },
+            "properties": {
+                "title": {
+                    "type": "object",
+                    "format": "grid",
+                    "options": {
+                        "collapsed": true
+                    },
+                    "properties": {
+                        "property": {
+                            "type": "string",
+                            "default": "og:title"
+                        },
+                        "content": {
+                            "type": "string",
+                            "description": "This is generated automatically from the common title field",
+                            "template": "{{title}}",
+                            "watch": {
+                                "title": "head.common.title.content"
+                            }
+                        }
+                    }
+                },
+                "description": {
+                    "type": "object",
+                    "format": "grid",
+                    "options": {
+                        "collapsed": true
+                    },
+                    "properties": {
+                        "property": {
+                            "type": "string",
+                            "default": "og:description"
+                        },
+                        "content": {
+                            "type": "string",
+                            "description": "This is generated automatically from the common description field",
+                            "template": "{{description}}",
+                            "watch": {
+                                "description": "head.common.description.content"
+                            }
+                        }
+                    }
+                },
+                "image": {
+                    "type": "object",
+                    "format": "grid",
+                    "options": {
+                        "collapsed": true
+                    },
+                    "properties": {
+                        "property": {
+                            "type": "string",
+                            "default": "og:image"
+                        },
+                        "content": {
+                            "type": "string",
+                            "description": "This is generated automatically from the common image field",
+                            "template": "{{image}}",
+                            "watch": {
+                                "image": "head.common.image.content"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "twitter": {
+            "type": "object",
+            "title": "Twitter",
+            "options": {
+                "collapsed": true
+            },
+            "properties": {
+                "title": {
+                    "type": "object",
+                    "format": "grid",
+                    "options": {
+                        "collapsed": true
+                    },
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "default": "twitter:title"
+                        },
+                        "content": {
+                            "type": "string",
+                            "description": "This is generated automatically from the common title field",
+                            "template": "{{title}}",
+                            "watch": {
+                                "title": "head.common.title.content"
+                            }
+                        }
+                    }
+                },
+                "description": {
+                    "type": "object",
+                    "format": "grid",
+                    "options": {
+                        "collapsed": true
+                    },
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "default": "twitter:description"
+                        },
+                        "content": {
+                            "type": "string",
+                            "description": "This is generated automatically from the common description field",
+                            "template": "{{description}}",
+                            "watch": {
+                                "description": "head.common.description.content"
+                            }
+                        }
+                    }
+                },
+                "image": {
+                    "type": "object",
+                    "format": "grid",
+                    "options": {
+                        "collapsed": true
+                    },
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "default": "twitter:image:src"
+                        },
+                        "content": {
+                            "type": "string",
+                            "description": "This is generated automatically from the common image field",
+                            "template": "{{image}}",
+                            "watch": {
+                                "image": "head.common.image.content"
+                            }
+                        }
+                    }
+                },
+                "card": {
+                    "type": "object",
+                    "format": "grid",
+                    "options": {
+                        "collapsed": true
+                    },
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "default": "twitter:card"
+                        },
+                        "content": {
+                            "type": "string",
+                            "default": "summary"
+                        }
+                    }
+                }
+            }
+        },
+        "vkontakte": {
+            "type": "object",
+            "title": "Vkontakte",
+            "options": {
+                "collapsed": true
+            },
+            "properties": {
+                "title": {
+                    "type": "object",
+                    "format": "grid",
+                    "options": {
+                        "collapsed": true
+                    },
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "default": "title"
+                        },
+                        "content": {
+                            "type": "string",
+                            "description": "This is generated automatically from the common title field",
+                            "template": "{{title}}",
+                            "watch": {
+                                "title": "head.common.title.content"
+                            }
+                        }
+                    }
+                },
+                "description": {
+                    "type": "object",
+                    "format": "grid",
+                    "options": {
+                        "collapsed": true
+                    },
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "default": "description"
+                        },
+                        "content": {
+                            "type": "string",
+                            "description": "This is generated automatically from the common description field",
+                            "template": "{{description}}",
+                            "watch": {
+                                "description": "head.common.description.content"
+                            }
+                        }
+                    }
+                },
+                "image": {
+                    "type": "object",
+                    "format": "grid",
+                    "options": {
+                        "collapsed": true
+                    },
+                    "properties": {
+                        "rel": {
+                            "type": "string",
+                            "default": "image_src"
+                        },
+                        "href": {
+                            "type": "string",
+                            "description": "This is generated automatically from the common image field",
+                            "template": "{{image}}",
+                            "watch": {
+                                "image": "head.common.image.content"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "custom": {
+            "type": "array",
+            "format": "table",
+            "title": "Custom",
+            "uniqueItems": true,
+            "options": {
+                "collapsed": true
+            },
+            "items": {
+                "type": "object",
+                "properties": {
+                    "first key": {
+                        "type": "string"
+                    },
+                    "first value": {
+                        "type": "string"
+                    },
+                    "second key": {
+                        "type": "string"
+                    },
+                    "second value": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

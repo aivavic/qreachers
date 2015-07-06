@@ -1,0 +1,79 @@
+{
+    "type": "object",
+    "title": "We are",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___we-are___"
+            }
+        },
+        "___we-are___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "We are"
+        },
+        "we-are-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/we-are/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "title": {
+            "type": "string",
+            "title": "Title",
+            "default": "We are ..."
+        },
+        "items": {
+            "type": "array",
+            "title": "Some works.",
+            "options": {
+                "collapsed": true
+            },
+            "items": {
+                "type": "object",
+                "title": "work",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "title": "Some title.",
+                        "default": "Default title"
+                    },
+                    "img_src": {
+                        "type": "string",
+                        "format": "url",
+                        "title": "Some image.",
+                        "options": {
+                            "upload": true
+                        },
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "rel": "View file"
+                            }
+                        ]
+                    }
+
+                }
+            }
+        }
+
+    }
+
+}

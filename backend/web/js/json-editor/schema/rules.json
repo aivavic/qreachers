@@ -1,0 +1,64 @@
+{
+    "type": "object",
+    "title": "Rules",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___rules___"
+            }
+        },
+        "___rules___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Rules"
+        },
+        "rules-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/rules/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "title": {
+            "type": "string",
+            "title": "Title",
+            "default": "Rules"
+        },
+        "items": {
+            "type": "array",
+            "title": "Some rules.",
+            "options": {
+                "collapsed": true
+            },
+            "items": {
+                "type": "object",
+                "title": "rule",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "title": "Some title.",
+                        "default": "Default title"
+                    }
+                }
+            }
+        }
+
+    }
+
+}

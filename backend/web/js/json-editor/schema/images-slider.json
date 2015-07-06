@@ -1,0 +1,72 @@
+{
+    "type": "object",
+    "title": "Images slider",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___images-slider___"
+            }
+        },
+        "___images-slider___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Images slider"
+        },
+        "images-slider-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/images-slider/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "description": {
+            "type": "string",
+            "title": "Description.",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        "items": {
+            "type": "array",
+            "title": "Images",
+            "title": "Images for slider.",
+            "options": {
+                "collapsed": true
+            },
+            "items": {
+                "type": "object",
+                "title": "image",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "img_src": {
+                        "type": "string",
+                        "format": "url",
+                        "title": "Some image.",
+                        "options": {
+                            "upload": true
+                        },
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "rel": "View file"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

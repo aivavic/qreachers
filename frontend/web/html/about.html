@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Главная</title>
+        <meta charset="utf-8">
+        <link href="css/style.css" rel="stylesheet">        
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery.bxslider.min.js"></script>
+    </head>
+
+    <body>
+
+        <div class="main-container">
+
+            <nav>
+                <section class="nav-logo">
+                    <a href="index.html"><img src="images/header-logo.png"></a>
+                </section>
+                <a href="index.html" class="nav-item hidden-xs">Главная</a>
+                <a href="about.html" class="nav-item nav-active hidden-xs">О нас</a>
+                <a href="cases.html" class="nav-item hidden-xs">Кейсы</a>
+                <a href="news.html" class="nav-item hidden-xs">Новости</a>
+                <a href="contacts.html" class="nav-item hidden-xs">Контакты</a>
+                <section class="lang-box hidden-xs">
+                    <a href="#" class="lang-item lang-active">Rus</a>
+                    <a href="#" class="lang-item">Ukr</a>
+                    <a href="#" class="lang-item">Eng</a>
+                </section>
+                
+                <div class="clearfix"></div>
+            </nav>
+
+            <!-- Header part -->
+            <div class="head-video">
+                <div class="wrapper">
+                    <div class="vertical-centered-content">
+                        <h1>
+                            Создаем видео для бизнеса
+                        </h1>
+                        
+                        <a href="https://vimeo.com/42784827" target="_blank" class="watch-fullscreen"></a>
+                    </div>
+                </div>
+                <video loop="" src="images/bg.mp4" autoplay muted style="width: 100%; height: auto; position: absolute; top: 0; left: 0;"></video>
+            </div>
+            <script>
+                $(document).ready(function(){
+                    $(".head-video").height($(window).height()-90);
+                    if ($(window).width()/$(window).height() < 1.5) $(".head-video").find("video").addClass("vertical-video");
+                    else $(".head-video").find("video").removeClass("vertical-video");
+                });
+
+                $(window).resize(function(){
+                    $(".head-video").height($(window).height()-90);
+                    if ($(window).width()/$(window).height() < 1.4) $(".head-video").find("video").addClass("vertical-video");
+                    else $(".head-video").find("video").removeClass("vertical-video");
+                });
+            </script>
+            <!-- end of Header -->
+            
+            <!-- Short about part -->
+            <div class="we-are">
+                <h2>
+                    Мы - это ...
+                </h2>
+                <div class="work-box">
+                    <section class="work-picture">
+                        <img src="images/pictures/preproduction.png">
+                    </section>
+                    <section class="work-description">
+                        <p>Шла Саша по шоссе и сосала сушку</p>
+                    </section>
+                </div>
+                <div class="work-box">
+                    <section class="work-picture">
+                        <img src="images/pictures/production.png">
+                    </section>
+                    <section class="work-description">
+                        <p>Шла Саша по шоссе и сосала сушку</p>
+                    </section>
+                </div>
+                <div class="work-box">
+                    <section class="work-picture">
+                        <img src="images/pictures/postproduction.png">
+                    </section>
+                    <section class="work-description">
+                        <p>Шла Саша по шоссе и сосала сушку</p>
+                    </section>
+                </div>
+            </div>
+            <!-- end of Tasks -->
+            
+            <!-- Tasks -->
+            <div class="work grey-bg">
+                <h2>
+                    Что мы делаем?
+                </h2>
+                <div class="work-wrap">
+                    <div class="work-box">
+                        <section class="work-picture">
+                            <img src="images/pictures/idea.png">
+                        </section>
+                        <section class="work-description">
+                            <h4>Разработка идеи</h4>
+                            <p>Шла Саша по шоссе и сосала сушку</p>
+                        </section>
+                    </div>
+                    <div class="work-box">
+                        <section class="work-picture">
+                            <img src="images/pictures/preproduction.png">
+                        </section>
+                        <section class="work-description">
+                            <h4>Пре-продакшн</h4>
+                            <p>Шла Саша по шоссе и сосала сушку</p>
+                        </section>
+                    </div>
+                    <div class="work-box">
+                        <section class="work-picture">
+                            <img src="images/pictures/production.png">
+                        </section>
+                        <section class="work-description">
+                            <h4>Продакшн</h4>
+                            <p>Шла Саша по шоссе и сосала сушку</p>
+                        </section>
+                    </div>
+                    <div class="work-box">
+                        <section class="work-picture">
+                            <img src="images/pictures/postproduction.png">
+                        </section>
+                        <section class="work-description">
+                            <h4>Пост-продакшн</h4>
+                            <p>Шла Саша по шоссе и сосала сушку</p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <!-- end of Tasks -->
+            
+            <!-- Family part -->
+            <div class="family">
+                <h2>16on9 family</h2>
+                <p>
+                    До конца 2014 года 16on9 существовала как одна студия, которая занималась съемкой  семейного, социального и бизнес видео. В конце 2014 студия разделилась на отдельные направления, 
+                    за развитие которых отвечают отдельные  координаторы.
+                </p>
+                <div></div>
+                <div class="family-box">
+                    <section>
+                        <img src="images/family-16x9.png">
+                    </section>
+                    
+                    <h5>Бизнес-видео</h5>
+                </div>
+                <div class="family-box">
+                    <section>
+                        <img src="images/family-16x9.png">
+                    </section>
+                    
+                    <h5>Бизнес-видео</h5>
+                </div>
+                <div class="family-box">
+                    <section>
+                        <img src="images/family-16x9.png">
+                    </section>
+                    
+                    <h5>Бизнес-видео</h5>
+                </div>
+            </div>
+            <!-- end of Family part -->
+            
+            <!-- Services part -->
+            <div class="service">
+                <h2>Услуги 16on9</h2>
+                <img src="images/service.jpg">
+                <span>Контент-видео</span>
+                <span>Видео-презентация данных</span>
+                <span>Корпоративные видео</span>
+                <span>Рекламные ролики</span>
+            </div>
+            <!-- end of Services -->
+            
+            <div class="content-wrap centered-headline">
+                <!-- Members part -->
+                <div class="members">
+                    <h2>Ключевые люди 16on9</h2>
+                    
+                    <div class="member-single">
+                        <section class="member-pic">
+                            <img src="images/portraits/olga.jpg">
+                        </section>
+                        <div class="member-mask"></div>
+                        <section class="member-bio">
+                            <a href="#" class="member-video"></a>
+                            <span>Имя Фамилия</span>
+                            <span>Должность</span>
+                        </section>
+                    </div>
+                    
+                    <div class="member-single">
+                        <section class="member-pic">
+                            <img src="images/portraits/olga.jpg">
+                        </section>
+                        <div class="member-mask"></div>
+                        <section class="member-bio">
+                            <a href="#" class="member-video"></a>
+                            <span>Имя Фамилия</span>
+                            <span>Должность</span>
+                        </section>
+                    </div>
+                    
+                    <div class="member-single">
+                        <section class="member-pic">
+                            <img src="images/portraits/olga.jpg">
+                        </section>
+                        <div class="member-mask"></div>
+                        <section class="member-bio">
+                            <a href="#" class="member-video"></a>
+                            <span>Имя Фамилия</span>
+                            <span>Должность</span>
+                        </section>
+                    </div>
+                    
+                    <div class="member-single">
+                        <section class="member-pic">
+                            <img src="images/portraits/olga.jpg">
+                        </section>
+                        <div class="member-mask"></div>
+                        <section class="member-bio">
+                            <a href="#" class="member-video"></a>
+                            <span>Имя Фамилия</span>
+                            <span>Должность</span>
+                        </section>
+                    </div>
+                    
+                    <div class="member-single">
+                        <section class="member-pic">
+                            <img src="images/portraits/olga.jpg">
+                        </section>
+                        <div class="member-mask"></div>
+                        <section class="member-bio">
+                            <a href="#" class="member-video"></a>
+                            <span>Имя Фамилия</span>
+                            <span>Должность</span>
+                        </section>
+                    </div>
+                    
+                    <div class="member-single">
+                        <section class="member-pic">
+                            <img src="images/portraits/olga.jpg">
+                        </section>
+                        <div class="member-mask"></div>
+                        <section class="member-bio">
+                            <a href="#" class="member-video"></a>
+                            <span>Имя Фамилия</span>
+                            <span>Должность</span>
+                        </section>
+                    </div>
+                    
+                    <div class="clearfix"></div>
+                </div>
+                <!-- end of Members -->
+                
+                <!-- Rules part -->
+                <div class="rules">
+                    <h2>5 принципов 16on9 family</h2>
+                    
+                    <ol>
+                        <li>Видео, которое мы снимаем, должно быть как хорошее кино.
+Построенным на идее, захватывающим, технически и визуально качественным</li>
+                        <li>Мы продвигаем общечеловеческие ценности. И не снимаем промо для алкоголя, сигарет и других вещей, противоречащих этим ценностям</li>
+                        <li>Мы постоянно развиваемся. Четвертую часть рабочего времени используем для обучения, чтобы завтра наши видео и сервис были еще лучше, чем вчера.</li>
+                        <li>Наша команда – это хорошие специалисты и развитые личности. Выбирая сотрудников, мы смотрим, насколько они интересуются окружающим миром, стремятся к чему-то и не засиживаются на месте</li>
+                        <li>Мы беремся за проекты только тогда, когда точно уверенны, 
+что сможем сделать работу хорошо</li>
+                    </ol>
+                </div>
+                <!-- end of Rules part -->
+            </div>
+            
+            <footer>
+                <div class="wrapper">
+                    <section class="footer-contacts">
+                        <div class="adress">
+                            <span class="contact-item">г.Киев, ул. Красноармейская, 16</span>
+                        </div>
+                        <div class="phones">
+                            <span class="contact-item">+38 (044) 152 47 29</span>
+                            <span class="contact-item">+38 (099) 472 24 94</span>
+                        </div>
+                        <div class="social-box">
+                            <a href="facebook.com" class="fb"></a>
+                            <a href="vimeo.com" class="vimeo"></a>
+                            <a href="youtube.com" class="youtube"></a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </section>
+                    <section class="footer-nav">
+                        <a href="index.html" class="nav-item">Главная</a>
+                        <a href="about.html" class="nav-item">О нас</a>
+                        <a href="cases.html" class="nav-item">Кейсы</a>
+                        <a href="news.html" class="nav-item">Новости</a>
+                        <a href="contacts.html" class="nav-item">Контакты</a>
+                    </section>
+                </div>
+            </footer>
+
+        </div>
+
+    </body>
+
+</html>

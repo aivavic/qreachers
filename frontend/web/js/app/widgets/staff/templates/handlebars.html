@@ -1,0 +1,35 @@
+<div class="content-wrap centered-headline">
+    <div class="members">
+        <h2>{{title}}</h2>
+        {{#each items}}
+        <div class="member-single">
+            <section class="member-pic">
+                <img src="{{previewImg}}">
+            </section>
+            <div class="member-mask">
+            </div>
+            <section class="member-bio">
+                <a href="{{video}}" class="member-video">
+                    <span>{{firstname}} {{lastname}}</span>
+                    <span>{{position}}</span>
+                </a>
+            </section>
+        </div>
+        {{/each}}
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.bxslider').bxSlider({
+            minSlides: 1,
+            maxSlides: 5,
+            moveSlides: 1,
+            slideWidth: 160,
+            slideMargin: 10,
+            pager: false,
+            adaptive: true
+        });
+    });
+</script>

@@ -1,0 +1,27 @@
+{{#each items}}
+<div class="news-wrap">
+    <div class="news-box">
+        <section class="news-picture">
+            <img src="{{previewImg}}">
+            <a href="{{viewUrl}}" class="go-to-post ajaxLink"><span class="news-arrow"></span></a>
+        </section>
+        <section class="news-body">
+            <h4><a href="{{viewUrl}}" class="ajaxLink">{{title}}</a></h4>
+        </section>
+    </div>
+</div>
+{{/each}}
+
+<script type="text/javascript">
+/*    setTimeout(function () {
+        imagesLoaded('.news-container', function () {
+            var $container = $('.news-container');
+
+            $container.isotope({
+                itemSelector: '.news-wrap',
+                masonry: {
+                }
+            });
+        });
+    }, 3000);*/
+</script>
