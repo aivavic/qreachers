@@ -23,7 +23,11 @@
         var params = {
             "fields": 'id,slug,title,description,thumbnail_base_url,thumbnail_path,description,video_base_url,video_path',
             "per-page": data.count,
-            "sort": sort
+            "sort": sort,
+            "where" :{
+                locale: app.config.frontend_app_locale
+            }
+            
         };
 
         $.getJSON(

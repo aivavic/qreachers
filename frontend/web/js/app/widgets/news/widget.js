@@ -131,15 +131,18 @@
         };
 
         var cid = sessionStorage.getItem('articles.index.filter.category_id');
-         
-         if (cid) {
-         params.category_id = cid;
-         }
+
+        if (cid) {
+            params.category_id = cid;
+        }
 
         var page = sessionStorage.getItem('page.view.news.news.filter.page');
 
         if (page) {
             params.page = page;
+            params.where = {
+                locale: app.config.frontend_app_locale
+            };
         }
 
         $.getJSON(

@@ -76,6 +76,7 @@ $config  = [
                         'common'   => 'common.php',
                         'backend'  => 'backend.php',
                         'frontend' => 'frontend.php',
+                        'api' => 'api.php',
                     ]
                 ],
                 // Uncomment this code to use DbMessageSource

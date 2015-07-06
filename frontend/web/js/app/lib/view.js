@@ -125,7 +125,7 @@ window.app.view = (function () {
 
     function afterPageRender() {
         //add ga
-        $.getScript(app.config.frontend_app_web_url + '/js/lib/google.analytics.js');
+        //$.getScript(app.config.frontend_app_web_url + '/js/lib/google.analytics.js');
     }
 
     function changeHomeUrl() {

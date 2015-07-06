@@ -59,7 +59,7 @@ class PageController extends ActiveController
         $where  = Yii::$app->request->get('where', []);
         $limit  = Yii::$app->request->get('limit', 20);
 
-        $where['locale'] = Yii::$app->language;
+        //$where['locale'] = Yii::$app->language;
 
         //print_r($where) ; die();
 

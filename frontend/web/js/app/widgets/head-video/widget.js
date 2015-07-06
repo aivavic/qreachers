@@ -34,7 +34,8 @@
             fields: 'id, published_at',
             limit: 1,
             where: {
-                slug: app.router.slug
+                slug: app.router.slug,             
+                locale: app.config.frontend_app_locale            
             }
 
         };

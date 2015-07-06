@@ -15,7 +15,7 @@ $shortLocale = explode('-',Yii::$app->language)[0];
 
     <section class = "lang-box hidden-xs">
         <a href = "<?= Url::to(['/site/set-locale','locale'=>'ru-RU']); ?>" class = "lang-item <?= ('ru-RU' == Yii::$app->language)? 'lang-active':''; ?>"><?= Yii::t('frontend','Rus'); ?></a>        
-        <a href = "<?= Url::to(['/site/set-locale','locale'=>'en-US']); ?>" class = "lang-item <?= ('en-US' == Yii::$app->language)? 'lang-active':''; ?>" style="display:none;"><?= Yii::t('frontend','Eng'); ?></a>
+        <a href = "<?= Url::to(['/site/set-locale','locale'=>'en-US']); ?>" class = "lang-item <?= ('en-US' == Yii::$app->language)? 'lang-active':''; ?>"><?= Yii::t('frontend','Eng'); ?></a>
         <a href = "<?= Url::to(['/site/set-locale','locale'=>'uk-UA']); ?>" class = "lang-item <?= ('uk-UA' == Yii::$app->language)? 'lang-active':''; ?>" style="display:none;"><?= Yii::t('frontend','Ukr'); ?></a>
     </section>
 

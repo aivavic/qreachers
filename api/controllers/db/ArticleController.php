@@ -57,7 +57,7 @@ class ArticleController extends ActiveController
     {        
         $onlyCategory   = Yii::$app->request->get('category_id');
         $where          = Yii::$app->request->get('where', []);
-        $where['locale'] = Yii::$app->language;
+        //$where['locale'] = Yii::$app->language;
  
         return new ActiveDataProvider(array(
             'query'      => Article::find()

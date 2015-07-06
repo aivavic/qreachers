@@ -26,7 +26,7 @@ window.app.router = (function () {
                         case 'view':
                             $.getJSON(
                                     app.config.frontend_app_api_url + '/db/page',
-                                    {where: {slug: this.slug}, fields: 'id,slug,head,body,title'},
+                                    {where: {slug: this.slug, locale: app.config.frontend_app_locale}, fields: 'id,slug,head,body,title'},
                             function (data) {
                                 app.view.renderPage(data.items[0]);
                             });
@@ -43,7 +43,7 @@ window.app.router = (function () {
                         case 'view':
                             $.getJSON(
                                     app.config.frontend_app_api_url + '/db/article',
-                                    {where: {slug: this.slug}, fields: 'id,slug,head,body,title'},
+                                    {where: {slug: this.slug, locale: app.config.frontend_app_locale}, fields: 'id,slug,head,body,title'},
                             function (data) {
                                 app.view.renderPage(data.items[0]);
                             });
@@ -60,7 +60,7 @@ window.app.router = (function () {
                         case 'view':
                             $.getJSON(
                                     app.config.frontend_app_api_url + '/db/project',
-                                    {where: {slug: this.slug}, fields: 'id,slug,head,body,title'},
+                                    {where: {slug: this.slug, locale: app.config.frontend_app_locale}, fields: 'id,slug,head,body,title'},
                             function (data) {
                                 app.view.renderPage(data.items[0]);
                             });

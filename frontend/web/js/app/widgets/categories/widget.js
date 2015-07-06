@@ -62,7 +62,8 @@
             "expand": 'categories',
             "limit": 1,
             where: {
-                slug: app.router.slug
+                slug: app.router.slug,             
+                locale: app.config.frontend_app_locale            
             }
 
         };
@@ -73,7 +74,7 @@
                 function (controllerData) {
                     var options = {
                         where: {
-                            id: getCatgoriesFromControllerData(controllerData.items[0].categories)
+                            id: getCatgoriesFromControllerData(controllerData.items[0].categories)                            
                         }
                         
                     };

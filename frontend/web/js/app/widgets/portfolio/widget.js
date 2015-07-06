@@ -140,6 +140,9 @@
 
         if (page) {
             params.page = page;
+            params.where = {
+                locale: app.config.frontend_app_locale
+            };
         }
 
         $.getJSON(
