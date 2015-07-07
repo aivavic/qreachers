@@ -1,312 +1,525 @@
-<!DOCTYPE html>
-
+<!doctype html> 
 <html>
-    <head>
-        <title>Главная</title>
-        <meta charset="utf-8">
-        <link href="css/style.css" rel="stylesheet">        
-        <script src="js/jquery.js"></script>
-        <script src="js/jquery.bxslider.min.js"></script>
-    </head>
+<head>
+<meta charset="UTF-8">
+<title>QReachers</title>
 
-    <body>
+<meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=no">
 
-        <div class="main-container">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="animate.min.css">
+<link rel="stylesheet" href="style.css">
 
-            <nav>
-                <section class="nav-logo">
-                    <a href="index.html"><img src="images/header-logo.png"></a>
-                </section>
-                <a href="index.html" class="nav-item hidden-xs">Главная</a>
-                <a href="about.html" class="nav-item nav-active hidden-xs">О нас</a>
-                <a href="cases.html" class="nav-item hidden-xs">Кейсы</a>
-                <a href="news.html" class="nav-item hidden-xs">Новости</a>
-                <a href="contacts.html" class="nav-item hidden-xs">Контакты</a>
-                <section class="lang-box hidden-xs">
-                    <a href="#" class="lang-item lang-active">Rus</a>
-                    <a href="#" class="lang-item">Ukr</a>
-                    <a href="#" class="lang-item">Eng</a>
-                </section>
-                
-                <div class="clearfix"></div>
-            </nav>
+<!--[if IE]><script src="js/html5.js"></script><![endif]-->
+<!--[if lte IE 8]><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><![endif]-->
+<!--[if gt IE 8]><!--><script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script><!--<![endif]-->
+<script src="js/jquery.html5Loader.min.js"></script>
 
-            <!-- Header part -->
-            <div class="head-video">
-                <div class="wrapper">
-                    <div class="vertical-centered-content">
-                        <h1>
-                            Создаем видео для бизнеса
-                        </h1>
-                        
-                        <a href="https://vimeo.com/42784827" target="_blank" class="watch-fullscreen"></a>
-                    </div>
-                </div>
-                <video loop="" src="images/bg.mp4" autoplay muted style="width: 100%; height: auto; position: absolute; top: 0; left: 0;"></video>
-            </div>
-            <script>
-                $(document).ready(function(){
-                    $(".head-video").height($(window).height()-90);
-                    if ($(window).width()/$(window).height() < 1.5) $(".head-video").find("video").addClass("vertical-video");
-                    else $(".head-video").find("video").removeClass("vertical-video");
-                });
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/jquery.nav.js"></script>
+<script src="js/jquery.flexslider-min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/additional-methods.min.js"></script>
+<script src="js/jquery.appear.min.js"></script>
+<script src="js/jquery.countTo.js"></script>
+<script src="js/design.js"></script>
+</head>
 
-                $(window).resize(function(){
-                    $(".head-video").height($(window).height()-90);
-                    if ($(window).width()/$(window).height() < 1.4) $(".head-video").find("video").addClass("vertical-video");
-                    else $(".head-video").find("video").removeClass("vertical-video");
-                });
-            </script>
-            <!-- end of Header -->
-            
-            <!-- Short about part -->
-            <div class="we-are">
-                <h2>
-                    Мы - это ...
-                </h2>
-                <div class="work-box">
-                    <section class="work-picture">
-                        <img src="images/pictures/preproduction.png">
-                    </section>
-                    <section class="work-description">
-                        <p>Шла Саша по шоссе и сосала сушку</p>
-                    </section>
-                </div>
-                <div class="work-box">
-                    <section class="work-picture">
-                        <img src="images/pictures/production.png">
-                    </section>
-                    <section class="work-description">
-                        <p>Шла Саша по шоссе и сосала сушку</p>
-                    </section>
-                </div>
-                <div class="work-box">
-                    <section class="work-picture">
-                        <img src="images/pictures/postproduction.png">
-                    </section>
-                    <section class="work-description">
-                        <p>Шла Саша по шоссе и сосала сушку</p>
-                    </section>
-                </div>
-            </div>
-            <!-- end of Tasks -->
-            
-            <!-- Tasks -->
-            <div class="work grey-bg">
-                <h2>
-                    Что мы делаем?
-                </h2>
-                <div class="work-wrap">
-                    <div class="work-box">
-                        <section class="work-picture">
-                            <img src="images/pictures/idea.png">
-                        </section>
-                        <section class="work-description">
-                            <h4>Разработка идеи</h4>
-                            <p>Шла Саша по шоссе и сосала сушку</p>
-                        </section>
-                    </div>
-                    <div class="work-box">
-                        <section class="work-picture">
-                            <img src="images/pictures/preproduction.png">
-                        </section>
-                        <section class="work-description">
-                            <h4>Пре-продакшн</h4>
-                            <p>Шла Саша по шоссе и сосала сушку</p>
-                        </section>
-                    </div>
-                    <div class="work-box">
-                        <section class="work-picture">
-                            <img src="images/pictures/production.png">
-                        </section>
-                        <section class="work-description">
-                            <h4>Продакшн</h4>
-                            <p>Шла Саша по шоссе и сосала сушку</p>
-                        </section>
-                    </div>
-                    <div class="work-box">
-                        <section class="work-picture">
-                            <img src="images/pictures/postproduction.png">
-                        </section>
-                        <section class="work-description">
-                            <h4>Пост-продакшн</h4>
-                            <p>Шла Саша по шоссе и сосала сушку</p>
-                        </section>
-                    </div>
-                </div>
-            </div>
-            <!-- end of Tasks -->
-            
-            <!-- Family part -->
-            <div class="family">
-                <h2>16on9 family</h2>
-                <p>
-                    До конца 2014 года 16on9 существовала как одна студия, которая занималась съемкой  семейного, социального и бизнес видео. В конце 2014 студия разделилась на отдельные направления, 
-                    за развитие которых отвечают отдельные  координаторы.
-                </p>
-                <div></div>
-                <div class="family-box">
-                    <section>
-                        <img src="images/family-16x9.png">
-                    </section>
-                    
-                    <h5>Бизнес-видео</h5>
-                </div>
-                <div class="family-box">
-                    <section>
-                        <img src="images/family-16x9.png">
-                    </section>
-                    
-                    <h5>Бизнес-видео</h5>
-                </div>
-                <div class="family-box">
-                    <section>
-                        <img src="images/family-16x9.png">
-                    </section>
-                    
-                    <h5>Бизнес-видео</h5>
-                </div>
-            </div>
-            <!-- end of Family part -->
-            
-            <!-- Services part -->
-            <div class="service">
-                <h2>Услуги 16on9</h2>
-                <img src="images/service.jpg">
-                <span>Контент-видео</span>
-                <span>Видео-презентация данных</span>
-                <span>Корпоративные видео</span>
-                <span>Рекламные ролики</span>
-            </div>
-            <!-- end of Services -->
-            
-            <div class="content-wrap centered-headline">
-                <!-- Members part -->
-                <div class="members">
-                    <h2>Ключевые люди 16on9</h2>
-                    
-                    <div class="member-single">
-                        <section class="member-pic">
-                            <img src="images/portraits/olga.jpg">
-                        </section>
-                        <div class="member-mask"></div>
-                        <section class="member-bio">
-                            <a href="#" class="member-video"></a>
-                            <span>Имя Фамилия</span>
-                            <span>Должность</span>
-                        </section>
-                    </div>
-                    
-                    <div class="member-single">
-                        <section class="member-pic">
-                            <img src="images/portraits/olga.jpg">
-                        </section>
-                        <div class="member-mask"></div>
-                        <section class="member-bio">
-                            <a href="#" class="member-video"></a>
-                            <span>Имя Фамилия</span>
-                            <span>Должность</span>
-                        </section>
-                    </div>
-                    
-                    <div class="member-single">
-                        <section class="member-pic">
-                            <img src="images/portraits/olga.jpg">
-                        </section>
-                        <div class="member-mask"></div>
-                        <section class="member-bio">
-                            <a href="#" class="member-video"></a>
-                            <span>Имя Фамилия</span>
-                            <span>Должность</span>
-                        </section>
-                    </div>
-                    
-                    <div class="member-single">
-                        <section class="member-pic">
-                            <img src="images/portraits/olga.jpg">
-                        </section>
-                        <div class="member-mask"></div>
-                        <section class="member-bio">
-                            <a href="#" class="member-video"></a>
-                            <span>Имя Фамилия</span>
-                            <span>Должность</span>
-                        </section>
-                    </div>
-                    
-                    <div class="member-single">
-                        <section class="member-pic">
-                            <img src="images/portraits/olga.jpg">
-                        </section>
-                        <div class="member-mask"></div>
-                        <section class="member-bio">
-                            <a href="#" class="member-video"></a>
-                            <span>Имя Фамилия</span>
-                            <span>Должность</span>
-                        </section>
-                    </div>
-                    
-                    <div class="member-single">
-                        <section class="member-pic">
-                            <img src="images/portraits/olga.jpg">
-                        </section>
-                        <div class="member-mask"></div>
-                        <section class="member-bio">
-                            <a href="#" class="member-video"></a>
-                            <span>Имя Фамилия</span>
-                            <span>Должность</span>
-                        </section>
-                    </div>
-                    
-                    <div class="clearfix"></div>
-                </div>
-                <!-- end of Members -->
-                
-                <!-- Rules part -->
-                <div class="rules">
-                    <h2>5 принципов 16on9 family</h2>
-                    
-                    <ol>
-                        <li>Видео, которое мы снимаем, должно быть как хорошее кино.
-Построенным на идее, захватывающим, технически и визуально качественным</li>
-                        <li>Мы продвигаем общечеловеческие ценности. И не снимаем промо для алкоголя, сигарет и других вещей, противоречащих этим ценностям</li>
-                        <li>Мы постоянно развиваемся. Четвертую часть рабочего времени используем для обучения, чтобы завтра наши видео и сервис были еще лучше, чем вчера.</li>
-                        <li>Наша команда – это хорошие специалисты и развитые личности. Выбирая сотрудников, мы смотрим, насколько они интересуются окружающим миром, стремятся к чему-то и не засиживаются на месте</li>
-                        <li>Мы беремся за проекты только тогда, когда точно уверенны, 
-что сможем сделать работу хорошо</li>
-                    </ol>
-                </div>
-                <!-- end of Rules part -->
-            </div>
-            
-            <footer>
-                <div class="wrapper">
-                    <section class="footer-contacts">
-                        <div class="adress">
-                            <span class="contact-item">г.Киев, ул. Красноармейская, 16</span>
-                        </div>
-                        <div class="phones">
-                            <span class="contact-item">+38 (044) 152 47 29</span>
-                            <span class="contact-item">+38 (099) 472 24 94</span>
-                        </div>
-                        <div class="social-box">
-                            <a href="facebook.com" class="fb"></a>
-                            <a href="vimeo.com" class="vimeo"></a>
-                            <a href="youtube.com" class="youtube"></a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </section>
-                    <section class="footer-nav">
-                        <a href="index.html" class="nav-item">Главная</a>
-                        <a href="about.html" class="nav-item">О нас</a>
-                        <a href="cases.html" class="nav-item">Кейсы</a>
-                        <a href="news.html" class="nav-item">Новости</a>
-                        <a href="contacts.html" class="nav-item">Контакты</a>
-                    </section>
-                </div>
-            </footer>
+<body>
 
-        </div>
+<nav class="top">
 
-    </body>
+	<div class="container">
 
+		<div class="row">
+
+			<div class="col-lg-4 col-md-7 col-sm-8 col-xs-9">
+
+				<div class="top__logo animated">
+					<a href="#"><span></span></a>
+				</div><!--.top__logo-->
+
+				<a href="#" class="top__logo-full"></a>
+
+				<div class="top__lang animated">
+					<ul class="list-unstyled">
+						<li class="current"><a href="#">ru</a></li>
+						<li><a href="#">eng</a></li>
+						<li><a href="#">kz</a></li>
+					</ul>
+				</div><!--.top__lang-->
+
+			</div>
+
+			<div class="col-lg-1 col-lg-offset-7 col-md-2 col-md-offset-3 col-sm-4 col-sm-offset-0 col-xs-3">
+
+				<div class="top__menu-btn top__menu-btn--default">
+					<div class="top__menu-btn-txt">МЕНЮ</div>
+					<div class="top__menu-btn-sandwich">
+						<div class="top__menu-btn-sandwich1"></div>
+						<div class="top__menu-btn-sandwich2"></div>
+						<div class="top__menu-btn-sandwich3"></div>
+					</div>
+					<div class="top__menu-btn-close"></div>
+				</div><!--.top__menu-btn-->
+
+			</div>
+
+		</div>
+
+	</div><!--.container-->
+
+</nav><!--.top-->
+
+
+<nav class="main_menu">
+
+	<div class="main_menu__in">
+
+		<div class="main_menu__wrap">
+
+			<div class="main_menu__links animated">
+				<ul class="list-unstyled">
+					<li><a href="#">КЕЙСЫ</a></li>
+					<li><a href="#">КТО МЫ</a></li>
+					<li><a href="#">УСЛУГИ</a></li>
+					<li><a href="#">КЛИЕНТЫ</a></li>
+					<li><a href="#">БЛОГ</a></li>
+					<li><a href="#">КОНТАКТЫ</a></li>
+				</ul>
+			</div><!--.main_menu__links-->
+
+
+			<div class="main_menu__socials socials-blue">
+				<ul class="list-unstyled">
+					<li class="fb animated"><a href="#">Facebook</a></li>
+					<li class="sh animated"><a href="#">Slideshare</a></li>
+					<li class="yt animated"><a href="#">Youtube</a></li>
+					<li class="vm animated"><a href="#">Vimeo</a></li>
+				</ul>
+			</div><!--.main_menu__socials-->
+
+		</div>
+
+	</div><!--.main_menu__in-->
+
+</nav><!--.main_menu-->
+
+
+<section class="about_page">
+
+	<div class="about_page_top">
+	
+		<video preload="true" loop="true" autoplay="true" muted="true" class="hidden-sm hidden-xs">
+			<source src="video/Office-2.mp4" type="video/mp4">
+			<source src="video/Office-2.webm" type="video/webm">
+			<source src="video/Office-2.webm" type="video/ogg">
+		</video>
+
+		<div class="about_page_top__in">
+			<h1 class="animated">Кто мы</h1>
+		</div>
+	</div>
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-md-10 col-md-offset-1">
+
+				<div class="row">
+
+					<div class="col-md-12">
+						<div class="txt_y_line">
+							<h2>QREACHERS ЭТО</h2>
+							<p>Интернет медиа агентство нового типа, концентрируются на решении проблем конверсии и продаж для больших брендов. Использует уникальные технологии в планировании и проведении кампаний, которые не имеют аналогов в мире. Потому что просто показы контекстных сообщений и баннеров не приводят к продажам. А мы знаем и умеем.</p>
+						</div>
+					</div>
+
+				</div><!--.row-->
+			
+			<div class="type_items">
+				<div class="row">
+					<div class="col-md-3 col-sm-6">
+						<div class="type_item type_item__smart wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.6s" data-wow-offset="100">
+							<h4>Smart</h4>
+							<p>Используем только performance-based инструменты</p>
+						</div><!--.type_item-->
+					</div>
+
+					<div class="col-md-3 col-sm-6">
+						<div class="type_item type_item__digital wow fadeIn" data-wow-duration="0.7s" data-wow-delay="0.6s" data-wow-offset="100">
+							<h4>Digital</h4>
+							<p>Работаем только с цифровыми каналами</p>
+						</div><!--.type_item-->
+					</div>
+
+					<div class="cf visible-sm"></div>
+
+					<div class="col-md-3 col-sm-6">
+						<div class="type_item type_item__media wow fadeIn" data-wow-duration="0.7s" data-wow-delay="0.6s" data-wow-offset="100">
+							<h4>Media</h4>
+							<p>Доносим сообщения, вовлекаем и делаем продажи вместо покупки показов</p>
+						</div><!--.type_item-->
+					</div>
+
+					<div class="col-md-3 col-sm-6">
+						<div class="type_item type_item__agency wow fadeInRight" data-wow-duration="0.7s" data-wow-delay="0.6s" data-wow-offset="100">
+							<h4>Agency</h4>
+							<p>Совмещаем гибкость проектной команды и преимущества локальной сети</p>
+						</div><!--.type_item-->
+					</div>
+				</div><!--.row-->
+			</div><!--.type_items-->
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="about__video">
+							<div class="videoWrapper">
+								<iframe width="420" height="315" src="https://www.youtube.com/embed/L_FHtjrpkcA" frameborder="0" allowfullscreen></iframe>
+							</div>
+
+							<div class="case_page__video-layer">
+								<img src="images/img-about_video.jpg" alt="#">
+								<div class="video_play-btn"><span>Play</span></div>
+							</div>
+						</div>
+					</div>
+				</div><!--.row-->
+
+				<script type="text/javascript">
+				$(document).ready(function(){
+					$('.video_play-btn').click(function(){
+						$(this).fadeOut(300);
+						$('.case_page__video-layer').fadeOut(300);
+					});
+				});
+				</script>
+			
+
+				<div class="about__exper">
+
+					<div class="row countto">
+						<div class="col-md-4 col-sm-4">
+							<div class="about__exper-item">
+								<span class="countto__number">500</span>
+								<p>УСПЕШНЫХ РЕАЛИЗОВАННЫХ DIGITAL КАМПАНИЙ</p>
+							</div>
+						</div>
+
+						<div class="col-md-4 col-sm-4">
+							<div class="about__exper-item">
+								<span class="countto__number">5</span>
+								<p>БОЛЕЕ 5 ЛЕТ ЕЖЕДНЕВНОГО ОПЫТА В DIGITAL</p>
+							</div>
+						</div>
+
+						<div class="col-md-4 col-sm-4">
+							<div class="about__exper-item">
+								<span class="countto__number">80</span>
+								<p>ПРОФЕССИОНАЛОВ В УКРАИНЕ, РОССИИ И КАЗАХСТАНЕ</p>
+							</div>
+						</div>
+					</div><!--.row-->
+
+				</div><!--.about__exper-->
+
+
+				<div class="about__info">
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="about__info-txt wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.6s" data-wow-offset="100">
+								<div class="thumb"><img src="images/img-about_places.png" alt="#"></div>
+								<p>Qreachers является частью группы кампаний Smartica, включающей в себя digital агентства полного цикла в России, Украине и Казахстане.</p>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="about__info-sert wow fadeInRight" data-wow-duration="0.7s" data-wow-delay="0.6s" data-wow-offset="100">
+								<div class="thumb"><img src="images/img-about_certif.png" alt="#"></div>
+								<p>Сертификация Google Partners / Yandex</p>
+							</div>
+						</div>
+					</div><!--.row-->
+				
+				</div><!--.about__info-->
+
+
+			</div><!--.col-offset-1-->
+
+
+
+
+		</div><!--.row-->
+
+	</div><!--.container-->
+
+
+	<div class="about_page__command">
+
+		<div class="container">
+
+		<div class="row">
+
+			<div class="col-md-10 col-md-offset-1">
+
+			<div class="row">
+				
+				<div class="col-md-12">
+					<h2>КОМАНДА QREACHERS</h2>
+				</div>
+
+				<div class="col-md-4 col-sm-6">
+					<div class="about_page__command-item wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.6s" data-wow-offset="100">
+						<div class="thumb">
+							<img src="images/img-comm1.png" alt="#">
+						</div>
+						<h4>Александр<br> Грекчишников</h4>
+						<p>директор</p>
+					</div><!--.about_page__command-item-->
+				</div>
+
+				<div class="col-md-4 col-sm-6">
+					<div class="about_page__command-item wow fadeIn" data-wow-duration="0.7s" data-wow-delay="0.6s" data-wow-offset="100">
+						<div class="thumb">
+							<img src="images/img-comm2.png" alt="#">
+						</div>
+						<h4>Дмитрий<br> Назарук</h4>
+						<p>руководитель</p>
+					</div><!--.about_page__command-item-->
+				</div>
+
+				<div class="cf visible-sm"></div>
+
+				<div class="col-md-4 col-sm-6">
+					<div class="about_page__command-item wow fadeInRight" data-wow-duration="0.7s" data-wow-delay="0.6s" data-wow-offset="100">
+						<div class="thumb">
+							<img src="images/img-comm3.png" alt="#">
+						</div>
+						<h4>Ростислав<br> Стрелковский</h4>
+						<p>начальник</p>
+					</div><!--.about_page__command-item-->
+				</div>
+
+				<div class="col-md-4 col-sm-6">
+					<div class="about_page__command-item wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.6s" data-wow-offset="100">
+						<div class="thumb">
+							<img src="images/img-comm1.png" alt="#">
+						</div>
+						<h4>Александр<br> Грекчишников</h4>
+						<p>директор</p>
+					</div><!--.about_page__command-item-->
+				</div>
+
+				<div class="cf visible-sm"></div>
+
+				<div class="col-md-4 col-sm-6">
+					<div class="about_page__command-item wow fadeIn" data-wow-duration="0.7s" data-wow-delay="0.6s" data-wow-offset="100">
+						<div class="thumb">
+							<img src="images/img-comm2.png" alt="#">
+						</div>
+						<h4>Дмитрий<br> Назарук</h4>
+						<p>руководитель</p>
+					</div><!--.about_page__command-item-->
+				</div>
+
+				<div class="col-md-4 col-sm-6">
+					<div class="about_page__command-item wow fadeInRight" data-wow-duration="0.7s" data-wow-delay="0.6s" data-wow-offset="100">
+						<div class="thumb">
+							<img src="images/img-comm3.png" alt="#">
+						</div>
+						<h4>Ростислав<br> Стрелковский</h4>
+						<p>начальник</p>
+					</div><!--.about_page__command-item-->
+				</div>
+
+			</div><!--.row-->
+
+			</div>
+
+		</div>
+
+		</div>
+
+	</div><!--.about_page__command-->
+
+</section>
+
+
+
+<section class="contacts_box" id="contacts">
+
+<div class="cube">
+	<div class="cube__wrap">
+    	<div class="face front">
+	    	<div class="container">
+
+				<div class="row">
+
+					<div class="col-md-6 col-md-offset-3 col-sm-7 col-sm-offset-3">
+
+						<div class="contacts_box__default">
+
+							<div class="contacts_box__tabs">
+								<ul class="contacts_box__switch" role="tablist">
+									<li class="active"><a href="#contacts-ukraine" aria-controls="contacts-ukraine" role="tab" data-toggle="tab">УКРАИНА</a></li>
+									<li><a href="#contacts-kz" aria-controls="contacts-kz" role="tab" data-toggle="tab">КАЗАХСТАН</a></li>
+								</ul>
+
+								<div class="tab-content">
+									<div role="tabpanel" class="tab-pane active" id="contacts-ukraine">
+										Киев, ул. Льва Толстого, 9А, офис 402<br>
+										<a href="tel:+380442237060">+38(044) 223 70 60</a><br>
+										<a href="mailto:welcome@skykillers.com">welcome@skykillers.com</a>
+									</div>
+
+									<div role="tabpanel" class="tab-pane fade" id="contacts-kz">
+										Казахстан, ул. Толстого Льва, 1А, офис 204<br>
+										<a href="tel:+380442237060">+38(3123) 423 44 61</a><br>
+										<a href="mailto:welcome@skykillers.com">welcome@skykillers.com</a>
+									</div>
+								</div><!--.tab-content-->
+
+							</div><!--.contacts_box__tabs-->
+
+							<div class="contacts_box__default-btn">
+								<div class="btn btn-bw flip-btn">
+									НАПИСАТЬ НАМ!
+								</div>
+							</div>
+
+							<div class="socials-blue">
+								<ul class="list-unstyled">
+									<li class="fb"><a href="#">Facebook</a></li>
+									<li class="sh"><a href="#">Slideshare</a></li>
+									<li class="yt"><a href="#">Youtube</a></li>
+									<li class="vm"><a href="#">Vimeo</a></li>
+								</ul>
+							</div>
+						</div><!--.contacts_box__default-->
+
+					</div><!--.col-->
+				</div><!--.row-->
+			</div><!--.container-->
+		</div><!--.front-->
+       	 		
+       	<div class="face side">
+	       	<div class="container">
+
+	       	 	<div class="row">
+
+					<div class="col-md-6 col-md-offset-3 col-sm-7 col-sm-offset-3">
+
+						<div class="contacts_box__feedback">
+							
+							<p>По вопросам сотрудничества, пожалуйста,<br> заполните форму обратной связи<br> или напишите нам!</p>
+
+							<form action="#" id="contact_form">
+								<div class="inp-group">
+									<input type="text" name="name" placeholder="ваше имя" class="inp-style">
+								</div>
+
+								<div class="inp-group">
+									<input type="email" name="mail" placeholder="e-mail" class="inp-style">
+								</div>
+
+								<div class="inp-group">
+									<textarea name="msg" rows="3" placeholder="приятные слова" class="inp-style"></textarea>
+								</div>
+
+								<span class="btn btn-bordered-blue contacts_box__feedback--cancel">Отмена</span>
+								<input type="submit" value="Отправить" class="btn btn-bw-d contacts_box__feedback--submit">
+							</form>
+						</div><!--.contacts_box__feedback-->
+
+						<div class="contacts_box__thanks">
+							СПАСИБО, МЫ СВЯЖЕМСЯ С ВАМИ<br>
+							В БЛИЖАЙШЕЕ ВРЕМЯ!
+						</div>
+
+					</div><!--.col-->
+
+				</div><!--.row-->
+			</div><!--.container-->
+		</div><!--.side-->
+
+	</div><!--.cube__wrap-->
+</div><!--.cube-->
+
+</section><!--.contacts_box-->
+
+
+<footer class="footer">
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-lg-7 col-md-7 col-sm-7 col-xs-8">
+
+				<div class="footer__copy">
+					<p>QREACHERS. 2015. В качестве продолжения предыдущей статьи о мировых тенденциях в использовании мобильной рекламы</p>
+				</div>
+
+			</div>
+
+			<div class="col-lg-2 col-lg-offset-3 col-md-3 col-md-offset-2 col-sm-4 col-sm-offset-1 col-xs-4 col-xs-offset-0">
+				
+				<div class="footer__logo">
+					<a href="#"><img src="images/logo-gp.jpg" alt="#"></a>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div><!--.container-->
+</footer>
+
+
+<div class="preloader animated">
+	<div class="preloader__wrap">
+		<div class="preloader__logo preloader__logo--spin animated"></div>
+	</div>
+
+	<div class="preloader__status animated"></div>
+</div><!--.preloader-->
+
+<script type="text/javascript">
+$.html5Loader({
+	filesToLoad: 'video/files.json',
+	
+	onUpdate: function(percentage) {
+		$('.preloader__status').css({'width': percentage + '%'});
+	},
+	onComplete: function() {
+		setTimeout(function(){
+			$('.preloader__logo--spin').removeClass('preloader__logo--spin');
+			$('.preloader__logo').addClass('fadeOutDown');
+			$('.preloader__status').addClass('fadeOut');
+
+			document.getElementById('main_video1').play();
+		}, 1250);
+
+		setTimeout(function(){
+			$('.preloader').addClass('slideOutUp');
+		}, 2500);
+
+		setTimeout(function(){
+			$('.top__logo').addClass('fadeInUp');
+			$('.top__lang').addClass('fadeInDownBig');
+			$('.top__menu-btn').addClass('fadeInDownBig');
+
+			$('.about_page_top__in h1').addClass('fadeInDown');
+		}, 3000);
+
+		setTimeout(function(){
+		}, 4000);
+	}
+});
+</script>
+
+
+</body>
 </html>
