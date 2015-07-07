@@ -66,6 +66,10 @@
             {
                 "$ref": "/js/json-editor/schema/portfolio.json",
                 "title": "Portfolio"
+            },
+            {
+                "$ref": "/js/json-editor/schema/images-slider.json",
+                "title": "Images slider"
             }
         ]
     }
