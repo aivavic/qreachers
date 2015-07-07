@@ -20,4 +20,4 @@ $config = \yii\helpers\ArrayHelper::merge(
 );
 
 (new yii\web\Application($config))->run();
- 
+  
