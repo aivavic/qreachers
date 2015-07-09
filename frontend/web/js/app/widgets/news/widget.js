@@ -76,48 +76,6 @@
         }
     }
 
-    function bindCategoryClickEvent(selector) {
-        app.logger.func('bindCategoryClickEvent(' + selector + ')');
-
-        $(selector).find('.article-category-item').off('click');
-        $(selector).find('.article-category-item').click(function () {
-            app.logger.text($(this).attr('article-id'));
-
-            var cid = $(this).attr('categoryId');
-            var currentCid = sessionStorage.getItem('articles.index.filter.category_id');
-
-            if ($(this).hasClass('active')) {
-                $(this).removeClass('active');
-
-                if (currentCid) {
-                    cid = unsetStringElement(currentCid, cid);
-                }
-            }
-            else {
-                $(this).addClass('active');
-
-                if (currentCid) {
-                    cid = currentCid + ',' + cid;
-                }
-            }
-
-            sessionStorage.setItem('articles.index.filter.category_id', cid);
-
-            loadArticles();
-        });
-
-        $('#resetCategories').click(function () {
-            $(this).toggleClass('active');
-
-            sessionStorage.removeItem('articles.index.filter.category_id');
-            sessionStorage.setItem('page.view.news.news.filter.page', 1);
-
-            loadArticles();
-        });
-
-
-    }
-
     function loadArticles() {
         var sort = data.order_by;
         if ("desc" == data.sort_order)
@@ -127,7 +85,12 @@
             "fields": 'id,category_id,slug,thumbnail_base_url,thumbnail_path,title',
             "per-page": data.count,
             "expand": 'categories',
-            "sort": sort
+            "sort": sort,
+            "where_operator_format": [
+                "like",
+                "domain",
+                location.protocol + '//' + location.hostname,
+            ]
         };
 
         var cid = sessionStorage.getItem('articles.index.filter.category_id');
@@ -154,6 +117,7 @@
                         artData.items[key].previewImg = val.thumbnail_base_url + '/' + val.thumbnail_path;
                         artData.items[key].viewUrl = app.view.helper.preffix + '/article/view/' + val.slug;
                         artData.items[key].dataFilterCategories = getDataFilterCategories(val.categories);
+                        artData.items[key].categoryTitles = getCategoryTitles(val.categories);
                     });
 
                     data.items = artData.items;
@@ -187,6 +151,7 @@
         app.logger.func('renderWidget(html)');
 
         $(".news-container .news-wrap").remove();
+        
         $(".news-container").prepend(html);
 
         setTimeout(function () {
@@ -214,6 +179,20 @@
         });
 
         return result;
+    }
+    
+    function getCategoryTitles(categories) {
+        var result = [];
+
+        $.each(categories, function (k, v) {
+            if (v.category_id) {
+                result.push(v.category_id);
+            }
+        });
+
+        //TODO: get category title from data.categories
+
+        return result.join(',');
     }
 
 

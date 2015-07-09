@@ -76,48 +76,6 @@
         }
     }
 
-    function bindCategoryClickEvent(selector) {
-        app.logger.func('bindCategoryClickEvent(' + selector + ')');
-
-        $(selector).find('.project-category-item').off('click');
-        $(selector).find('.project-category-item').click(function () {
-            app.logger.text($(this).attr('categoryId'));
-
-            var cid = $(this).attr('categoryId');
-            /*var currentCid = sessionStorage.getItem('projects.index.filter.category_id');
-
-            if ($(this).hasClass('active')) {
-                $(this).removeClass('active');
-
-                if (currentCid) {
-                    cid = unsetStringElement(currentCid, cid);
-                }
-            }
-            else {
-                $(this).addClass('active');
-
-                if (currentCid) {
-                    cid = currentCid + ',' + cid;
-                }
-            }*/
-
-            sessionStorage.setItem('projects.index.filter.category_id', cid);
-
-            loadProjects();
-        });
-
-        $('#resetCategories').click(function () {
-            $(this).toggleClass('active');
-
-            sessionStorage.removeItem('projects.index.filter.category_id');
-            sessionStorage.setItem('page.view.portfolio.portfolio.filter.page', 1);
-
-            loadProjects();
-        });
-
-
-    }
-
     function loadProjects() {
         var sort = data.order_by;
         if ("desc" == data.sort_order)
@@ -128,13 +86,18 @@
             "expand": 'categories',
             "per-page": data.count,
             "sort": sort,
+            "where_operator_format": [
+                "like",
+                "domain",
+                location.protocol + '//' + location.hostname,
+            ]
         };
 
         var cid = sessionStorage.getItem('projects.index.filter.category_id');
-         
-         if (cid) {
+
+        if (cid) {
             params.category_id = cid;
-         }
+        }
 
         var page = sessionStorage.getItem('page.view.portfolio.portfolio.filter.page');
 
@@ -154,7 +117,9 @@
                         artData.items[key].previewImg = val.thumbnail_base_url + '/' + val.thumbnail_path;
                         artData.items[key].viewUrl = app.view.helper.preffix + '/project/view/' + val.slug;
                         artData.items[key].video = val.video_base_url + '/' + val.video_path;
-                        artData.items[key].dataFilterCategories = getDataFilterCategories(val.categories);                        
+                        artData.items[key].dataFilterCategories = getDataFilterCategories(val.categories);
+                        artData.items[key].categoryTitles = getCategoryTitles(val.categories);
+
                     });
 
                     data.items = artData.items;
@@ -188,16 +153,16 @@
         app.logger.func('renderWidget(html)');
 
         $(".project-box").remove();
-        $(".projects").prepend(html);        
+        $(".projects").prepend(html);
 
         setTimeout(function () {
-            //bind ajax load to links                                 
-            app.bindContainerAjaxLinks(app.config.frontend_app_conainer);                        
-        }, 500);               
-        
-        setTimeout(function() {
+            //bind ajax load to links      
+            app.bindContainerAjaxLinks(app.config.frontend_app_conainer);
+        }, 500);
+
+        setTimeout(function () {
             $(window).trigger('page.view.portfolio.portfolio.renderWidgetItems');
-        },2000);        
+        }, 2000);
     }
 
     function bindShowMoreClickEvent() {
@@ -211,15 +176,31 @@
             loadProjects();
         });
     }
-    
+
     function getDataFilterCategories(categories) {
         var result = '';
-        $.each(categories, function(k, v){
+        $.each(categories, function (k, v) {
             result = result + ' data-filter-' + v.category_id;
         });
-        
+
         return result;
     }
+
+    function getCategoryTitles(categories) {
+        var result = [];
+
+        $.each(categories, function (k, v) {
+            if (v.category_id) {
+                result.push(v.category_id);
+            }
+        });
+
+        //TODO: get category title from data.categories
+
+        return result.join(',');
+    }
+
+
 
 })();
 

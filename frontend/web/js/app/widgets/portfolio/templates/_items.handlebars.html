@@ -1,31 +1,18 @@
 {{#each items}}
-<div class="project-box {{dataFilterCategories}}">
-    <img src="{{previewImg}}">
-    <video src="{{video}}" loop="" muted id="video"></video>
-    <section class="project-desc">
-        <h3><a href="{{viewUrl}}" class="ajaxLink">{{title}}</a></h3>
-        <p>{{description}}</p>
-    </section>
-    <a href="{{viewUrl}}" class="project-open ajaxLink"></a>
-</div>
+<a href="{{viewUrl}}" class="ajaxLink">
+    <div class="col-md-5 col-md-offset-1 project-box {{dataFilterCategories}}">
+        <div class="projects_box__item">
+            <div class="projects_box__thumb">
+                <img src="{{previewImg}}" alt="#">
+            </div>
+
+            <div class="projects_box__txt">
+                <span>{{categoryTitles}}</span>
+                <h4>{{title}}</h4>
+                <p>{{description}}</p>
+            </div>
+        </div>
+
+    </div>	
+</a>
 {{/each}}
-
-<script type="text/javascript">
-    var animation = null;
-
-    $(".project-box").hover(function () {
-        animation = $(this).find("video").animate({opacity: 1}, 200, function () {
-            $(this).parent().find("video").get(0).play();
-        });
-
-    },
-            function () {
-                animation.stop();
-                $(this).find("video").css("opacity", "0");
-                $(this).find("video").get(0).currentTime = 0;
-                $(this).find("video").get(0).pause();
-            });
-
-
-
-</script>

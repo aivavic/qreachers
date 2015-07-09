@@ -1,57 +1,71 @@
-<style>
-    .tags-box .active {        
-        color: black;
-    }
-</style>
+<section class="cases_page">
 
-<div class="filter-box">    
-    <a href="javascript:void(0);" class="filter-btn">{{filter}}</a>
-    <button class="tags-close" id = "resetCategories"></button>    
-    <div class="tags-box">
-        {{#each categories}}
-        <a href="javascript:void(0);" class="single-tag project-category-item" data-filter=".data-filter-{{id}}" categoryId = "{{id}}">{{title}}</a> 
-        {{/each}}
+    <div class="cases_top">
+
+        <video preload="true" loop="true" autoplay="true" muted="true" class="hidden-sm hidden-xs">
+            <source src="../video/Office-3.mp4" type="video/mp4">
+            <source src="../video/Office-3.webm" type="video/webm">
+            <source src="../video/Office-3.webm" type="video/ogg">
+        </video>
+
+        <div class="cases_top__in">
+            <h1 class="animated">Кейсы</h1>
+        </div>
     </div>
-</div>
 
-<div class="projects">
+    <div class="container">
 
-</div>
+        <div class="row">
 
-<div class="clearfix page-bottom"></div>
-<!--div class="btn-wrap">
-    <a class="show-more" id="portfolioShowMore" href="javascript:void(0);">{{show_more}}</a>
-</div-->
+            <div class="col-md-10 col-md-offset-1">
 
-<script type="text/javascript">
-    $(".filter-btn").click(function (e) {
-        e.preventDefault();
+                <div class="top_filters">
+                    <div class="top_filters__sort">
+                        <ul class="list-unstyled">
+                            <li class="desc">{{filter}}<div class="ico"></div></li>
+                        </ul>
+                    </div><!--.top_filters__sort-->
 
-        $(this).animate(function () {
-            opacity: 1
-        }, 200, function () {
-            $(".filter-box").animate({
-                height: $(".tags-box").outerHeight() + 15
-            }, 200);
-            $(".filter-btn").hide();
-            $(".tags-close").fadeIn();
-            $(".tags-box").addClass("opened-tags");
-        });
-    });
+                    <div class="top_filters__multi">
+                        <h4>ТИП КАМПАНИИ:</h4>
+                        <ul class="list-unstyled">
+                            {{#each categories}}                                
+                            <li class="active project-category-item" data-filter=".data-filter-{{id}}" categoryId = "{{id}}">{{title}}<div class="ico"></div></li>
+                            {{/each}}
+                        </ul>
+                    </div><!--.top_filters__multi-->
 
-    $(".tags-close").click(function (e) {
-        e.preventDefault();
+                    <div class="top_filters__multi">
+                        <h4>Клиент:</h4>
+                        <ul class="list-unstyled">
+                            {{#each clients}}                                
+                                <li class="active project-category-item" data-filter=".data-filter-{{id}}" categoryId = "{{id}}">{{title}}<div class="ico"></div></li>                                
+                            {{/each}}                            
+                        </ul>
+                    </div><!--.top_filters__multi-->
 
-        $(".tags-box").removeClass("opened-tags");
-        $(this).fadeOut();
-        setTimeout(function () {
-            $(".filter-btn").fadeIn();
-            $(".filter-box").animate({
-                height: 145
-            }, 200);
-        }, 400);
+                </div><!--.top_filters-->
 
-    });
+            </div><!--.col-10-->
+
+        </div><!--.row-->
+
+        <div class="row projects">
+
+        </div><!--.row-->
+
+
+        <div class="more_btn">
+            <a href="javascript:void(0);" id="portfolioShowMore" class="btn btn-bb animated">{{show_more}}</a>
+        </div>
+
+
+    </div><!--.container-->
+
+
+</section><!--.cases_page-->
+
+<script type="text/javascript">     
 
     $(window).on('page.view.portfolio.portfolio.renderWidgetItems', function () {
         app.logger.text('$grid = $(".projects").isotope');
@@ -88,30 +102,17 @@
         }
 
         // bind filter a click
-        $('.filter-box .tags-box').on('click', 'a', function () {
+        $('.project-category-item').on('click',function () {
             var filterValue = $(this).attr('data-filter');
             app.logger.text('.filter-box .tags-box a click() filterValue:' + filterValue);
             // use filterFn if matches value
             filterValue = filterFns[ filterValue ] || filterValue;
             $grid.isotope({filter: filterValue});
-        });
 
-        // bind filter a click
-        $('#resetCategories').click(function () {
-            $grid.isotope({filter: "*"});
-            $('.filter-box .tags-box a').removeClass("active");
-            sessionStorage.removeItem('projects.index.filter.category_id');
-        });
-
-        // change is-checked class on a
-        $('.filter-box .tags-box a').click(function () {
-            $('.filter-box .tags-box a').removeClass("active");
+            $('.project-category-item').removeClass("active");
             $(this).addClass('active');
         });
 
     });
-
-
-
 
 </script>
