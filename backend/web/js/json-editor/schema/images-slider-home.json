@@ -23,7 +23,7 @@
             "title": "Example:",
             "type": "string",
             "format": "hidden",
-            "default": "/frontend/web/js/app/widgets/images-slider/img/preview.jpg",
+            "default": "/frontend/web/js/app/widgets/images-slider-home/img/preview.jpg",
             "links": [
                 {
                     "href": "{{self}}",
