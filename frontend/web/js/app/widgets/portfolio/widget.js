@@ -44,7 +44,7 @@
     function renderWidget(html, data) {
         app.logger.func('renderWidget(html)');
 
-        app.container.html(html);
+        app.container.prepend(html);
 
         setTimeout(function () {
             changeFilterButtonsState();
