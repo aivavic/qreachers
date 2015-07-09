@@ -1,0 +1,67 @@
+{
+    "type": "object",
+    "title": "Clients box",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___clients-box___"
+            }
+        },
+        "___clients-box___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Clients box"
+        },
+        "clients-box-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/clients-box/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "order_by": {
+            "type": "string",
+            "title": "Order by filed.",
+            "enum": [
+                "id",
+                "weight",
+                "created_at",
+                "updated_at"
+            ],
+            "options": {
+                "enum_titles": ["Id", "Weight", "Created at", "Updated at"]
+            },
+            "default": "id"
+        },
+        "sort_order": {
+            "type": "string",
+            "title": "Sort order.",
+            "enum": [
+                "asc",
+                "desc"
+            ],
+            "options": {
+                "enum_titles": ["asc", "desc"]
+            },
+            "default": "desc"
+        },
+        "count": {
+            "type": "string",
+            "title": "Clients count.",
+            "default": "10"
+        }
+    }
+}

@@ -1,0 +1,188 @@
+
+<section class="contacts_box" id="contacts">
+
+<div class="cube">
+	<div class="cube__wrap">
+    	<div class="face front">
+	    	<div class="container">
+
+				<div class="row">
+
+					<div class="col-md-6 col-md-offset-3 col-sm-7 col-sm-offset-3">
+
+						<div class="contacts_box__default">
+
+							<div class="contacts_box__tabs">
+								<ul class="contacts_box__switch" role="tablist">
+									<li class="active"><a href="#contacts-ukraine" aria-controls="contacts-ukraine" role="tab" data-toggle="tab">УКРАИНА</a></li>
+									<li><a href="#contacts-kz" aria-controls="contacts-kz" role="tab" data-toggle="tab">КАЗАХСТАН</a></li>
+								</ul>
+
+								<div class="tab-content">
+									<div role="tabpanel" class="tab-pane active" id="contacts-ukraine">
+										Киев, ул. Льва Толстого, 9А, офис 402<br>
+										<a href="tel:+380442237060">+38(044) 223 70 60</a><br>
+										<a href="mailto:welcome@skykillers.com">welcome@skykillers.com</a>
+									</div>
+
+									<div role="tabpanel" class="tab-pane fade" id="contacts-kz">
+										Казахстан, ул. Толстого Льва, 1А, офис 204<br>
+										<a href="tel:+380442237060">+38(3123) 423 44 61</a><br>
+										<a href="mailto:welcome@skykillers.com">welcome@skykillers.com</a>
+									</div>
+								</div><!--.tab-content-->
+
+							</div><!--.contacts_box__tabs-->
+
+							<div class="contacts_box__default-btn">
+								<div class="btn btn-bw flip-btn">
+									НАПИСАТЬ НАМ!
+								</div>
+							</div>
+
+							<div class="socials-blue">
+								<ul class="list-unstyled">
+									<li class="fb"><a href="#">Facebook</a></li>
+									<li class="sh"><a href="#">Slideshare</a></li>
+									<li class="yt"><a href="#">Youtube</a></li>
+									<li class="vm"><a href="#">Vimeo</a></li>
+								</ul>
+							</div>
+						</div><!--.contacts_box__default-->
+
+					</div><!--.col-->
+				</div><!--.row-->
+			</div><!--.container-->
+		</div><!--.front-->
+       	 		
+       	<div class="face side">
+	       	<div class="container">
+
+	       	 	<div class="row">
+
+					<div class="col-md-6 col-md-offset-3 col-sm-7 col-sm-offset-3">
+
+						<div class="contacts_box__feedback">
+							
+							<p>По вопросам сотрудничества, пожалуйста,<br> заполните форму обратной связи<br> или напишите нам!</p>
+
+							<form action="#" id="contact_form">
+								<div class="inp-group">
+									<input type="text" name="name" placeholder="ваше имя" class="inp-style">
+								</div>
+
+								<div class="inp-group">
+									<input type="email" name="mail" placeholder="e-mail" class="inp-style">
+								</div>
+
+								<div class="inp-group">
+									<textarea name="msg" rows="3" placeholder="приятные слова" class="inp-style"></textarea>
+								</div>
+
+								<span class="btn btn-bordered-blue contacts_box__feedback--cancel">Отмена</span>
+								<input type="submit" value="Отправить" class="btn btn-bw-d contacts_box__feedback--submit">
+							</form>
+						</div><!--.contacts_box__feedback-->
+
+						<div class="contacts_box__thanks">
+							СПАСИБО, МЫ СВЯЖЕМСЯ С ВАМИ<br>
+							В БЛИЖАЙШЕЕ ВРЕМЯ!
+						</div>
+
+					</div><!--.col-->
+
+				</div><!--.row-->
+			</div><!--.container-->
+		</div><!--.side-->
+
+	</div><!--.cube__wrap-->
+</div><!--.cube-->
+
+</section><!--.contacts_box-->
+<script>
+// Contacts box
+	$('.contacts_box__default-btn .flip-btn').click(function(){
+		$('.contacts_box').addClass('flip');
+		//$('.wrapper').animate({'height':'500px'}, 250);
+	});
+
+	$('.contacts_box__feedback--cancel').click(function(){
+		$('.contacts_box').removeClass('flip');
+		//$('.wrapper').animate({'height':'400px'}, 250);
+
+		$('#contact_form').validate().resetForm();
+	});
+
+	/*$('.contacts_box__feedback--submit').click(function(){
+		$('.flip-panel').fadeOut(300, function(){
+			$('.contacts_box__thanks').fadeIn(300);
+		});
+
+		setTimeout(function() {
+			$('.hover').removeClass('flip');
+			$('.contacts_box__thanks').fadeOut(250, function(){
+				$('.wrapper').animate({'height':'400px'}, 250);
+				$('.flip-panel').fadeIn(300);
+			})
+		}, 3000);
+
+	});*/
+
+	// Validate contact form
+	if($('#contact_form').length) {
+
+		$('#contact_form').validate({
+			//debug: true,
+			errorClass: 'inp-error',
+			errorElement: 'p',
+
+			highlight: function (element, errorClass, validClass) { 
+	            $(element).addClass(errorClass).removeClass(validClass); 
+	        }, 
+	        
+	        unhighlight: function (element, errorClass, validClass) { 
+	            $(element).removeClass(errorClass).addClass(validClass); 
+	        },
+
+			rules: {
+
+				mail: {
+					required: true,
+					email: true
+				},
+				msg: {
+					required: true,
+					minlength: 2
+				},
+			},
+			messages: {
+
+				mail: "Введите корректные данные",
+				msg: {
+					required: "Введите ваше сообщение",
+					minlength: "Сообщение должно быть больше двух символов"
+				},
+
+			},
+
+			submitHandler: function(form) {
+				$('.contacts_box__feedback').fadeOut(300, function(){
+					$('.contacts_box__thanks').fadeIn(300);
+				});
+
+				setTimeout(function() {
+					$('.contacts_box').removeClass('flip');
+					$('.contacts_box__thanks').fadeOut(250, function(){
+						$('.contacts_box__feedback').fadeIn(300);
+						//$('.wrapper').animate({'height':'400px'}, 250);
+					});
+
+					//alert('Submitted!');
+
+				}, 3000);
+
+			}
+
+		});
+	}
+</script>

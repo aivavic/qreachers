@@ -8,58 +8,6 @@
         "headerTemplate": "{{i1}} - {{self.tab_title}}",
         "oneOf": [
             {
-                "$ref": "/js/json-editor/schema/head-video.json",
-                "title": "Head video"
-            },
-            {
-                "$ref": "/js/json-editor/schema/about-part.json",
-                "title": "About part"
-            },
-            {
-                "$ref": "/js/json-editor/schema/work-part.json",
-                "title": "Work part"
-            },
-            {
-                "$ref": "/js/json-editor/schema/projects-part.json",
-                "title": "Projects-part"
-            },
-            {
-                "$ref": "/js/json-editor/schema/articles-part.json",
-                "title": "Articles part"
-            },
-            {
-                "$ref": "/js/json-editor/schema/clients-part.json",
-                "title": "Clients part"
-            },
-            {
-                "$ref": "/js/json-editor/schema/we-are.json",
-                "title": "We are"
-            },
-            {
-                "$ref": "/js/json-editor/schema/what-we-do.json",
-                "title": "What we do"
-            },
-            {
-                "$ref": "/js/json-editor/schema/family.json",
-                "title": "Family"
-            },
-            {
-                "$ref": "/js/json-editor/schema/services.json",
-                "title": "Services"
-            },
-            {
-                "$ref": "/js/json-editor/schema/members.json",
-                "title": "Members"
-            },
-            {
-                "$ref": "/js/json-editor/schema/rules.json",
-                "title": "Rules"
-            },
-            {
-                "$ref": "/js/json-editor/schema/google-map.json",
-                "title": "Google map"
-            },
-            {
                 "$ref": "/js/json-editor/schema/news.json",
                 "title": "News"
             },
@@ -68,8 +16,20 @@
                 "title": "Portfolio"
             },
             {
-                "$ref": "/js/json-editor/schema/images-slider.json",
-                "title": "Images slider"
+                "$ref": "/js/json-editor/schema/anchor-nav.json",
+                "title": "Anchor menu"
+            },
+            {
+                "$ref": "/js/json-editor/schema/contacts-box.json",
+                "title": "Contacts box"
+            },
+            {
+                "$ref": "/js/json-editor/schema/clients-box.json",
+                "title": "Clients box"
+            },
+            {
+                "$ref": "/js/json-editor/schema/head-image-box.json",
+                "title": "Head image box"
             }
         ]
     }

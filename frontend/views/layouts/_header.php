@@ -5,41 +5,47 @@ use common\models\Page;
 
 $shortLocale = explode('-',Yii::$app->language)[0];
 ?>
+	<nav class="top">
 
-<nav>
-    <section class = "nav-logo">
-        <a href = "<?= Url::to('/' . $shortLocale . '/page/view/home'); ?>" class=""><img src="<?= Url::to('@web/img/header-logo.png'); ?>"></a>
-    </section>
+		<div class="container">
 
-    <?php require_once '_topMenu.php'; ?>
+			<div class="row">
 
-    <section class = "lang-box hidden-xs">
-        <a href = "<?= Url::to(['/site/set-locale','locale'=>'ru-RU']); ?>" class = "lang-item <?= ('ru-RU' == Yii::$app->language)? 'lang-active':''; ?>"><?= Yii::t('frontend','Rus'); ?></a>        
-        <a href = "<?= Url::to(['/site/set-locale','locale'=>'en-US']); ?>" class = "lang-item <?= ('en-US' == Yii::$app->language)? 'lang-active':''; ?>"><?= Yii::t('frontend','Eng'); ?></a>
-        <a href = "<?= Url::to(['/site/set-locale','locale'=>'uk-UA']); ?>" class = "lang-item <?= ('uk-UA' == Yii::$app->language)? 'lang-active':''; ?>" style="display:none;"><?= Yii::t('frontend','Ukr'); ?></a>
-    </section>
+				<div class="col-lg-4 col-md-7 col-sm-8 col-xs-9">
 
-    <div class="nav-drop visible-xs">
-        <button class="burger cmn-toggle-switch cmn-toggle-switch__htla">
-            <span></span>
-        </button>
-        <section class="dropdown">
-            <div class="drop-wrap">
-                <a href = "<?= Url::to('/' . $shortLocale . '/page/view/home'); ?>" class = "nav-item nav-active ajaxLink"><?= Yii::t('frontend', 'Home'); ?></a>
-                <a href = "<?= Url::to('/' . $shortLocale . '/page/view/about'); ?>" class = "nav-item ajaxLink"><?= Yii::t('frontend', 'About'); ?></a>
-                <a href = "<?= Url::to('/' . $shortLocale . '/page/view/portfolio'); ?>" class = "nav-item ajaxLink"><?= Yii::t('frontend', 'Portfolio'); ?></a>
-                <a href = "<?= Url::to('/' . $shortLocale . '/page/view/news'); ?>" class = "nav-item ajaxLink"><?= Yii::t('frontend', 'News'); ?></a>
-                <a href = "<?= Url::to('/' . $shortLocale . '/page/view/contact'); ?>" class = "nav-item ajaxLink"><?= Yii::t('frontend', 'Contact'); ?></a>
-            </div>
-            <section class="lang-box">
-                <a href = "<?= Url::to(['/site/set-locale','locale'=>'ru-RU']); ?>" class = "lang-item <?= ('ru-RU' == Yii::$app->language)? 'lang-active':''; ?>"><?= Yii::t('frontend','Rus'); ?></a>
-                <a style="display: none" href = "<?= Url::to(['/site/set-locale','locale'=>'uk-UA']); ?>" class = "lang-item <?= ('uk-UA' == Yii::$app->language)? 'lang-active':''; ?>"><?= Yii::t('frontend','Ukr'); ?></a>
-                <a style="display:none;"href = "<?= Url::to(['/site/set-locale','locale'=>'en-US']); ?>" class = "lang-item <?= ('en-US' == Yii::$app->language)? 'lang-active':''; ?>"><?= Yii::t('frontend','Eng'); ?></a>
-            </section>
-        </section>
-    </div>
-    <div class = "clearfix"></div>
-</nav>
-<script>
-    
-</script>
+							<div class="top__logo animated fadeInUp">
+								<a href="<?= Url::to('/' . $shortLocale . '/page/view/home'); ?>"><span></span></a>
+							</div><!--.top__logo-->
+
+							<a href="#" class="top__logo-full"></a>
+                                                        
+							<div class="top__lang animated fadeInDownBig">
+								<ul class="list-unstyled">
+									<li class = "<?= ('ru-RU' == Yii::$app->language)? 'current':''; ?>"><a href="<?= Url::to(['/site/set-locale','locale'=>'ru-RU']); ?>" class = "lang-item"><?= Yii::t('frontend','Rus'); ?></a></li>
+									<li class = "<?= ('en-US' == Yii::$app->language)? 'current':''; ?>"><a href="<?= Url::to(['/site/set-locale','locale'=>'en-US']); ?>" class = "lang-item"><?= Yii::t('frontend','Eng'); ?></a></li>
+								</ul>
+							</div><!--.top__lang-->
+
+				</div>
+
+				<div class="col-lg-1 col-lg-offset-7 col-md-1 col-md-offset-4 col-sm-2 col-sm-offset-0 col-xs-3">
+
+					<div class="top__menu-btn top__menu-btn--default">
+						<div class="top__menu-btn-txt"><?= Yii::t('frontend','Menu'); ?></div>
+						<div class="top__menu-btn-sandwich">
+							<div class="top__menu-btn-sandwich1"></div>
+							<div class="top__menu-btn-sandwich2"></div>
+							<div class="top__menu-btn-sandwich3"></div>
+						</div>
+						<div class="top__menu-btn-close"></div>
+					</div><!--.top__menu-btn-->
+
+				</div>
+
+			</div>
+
+		</div><!--.container-->
+
+	</nav><!--.top-->
+        
+        <?php require_once '_topMenu.php'; ?>

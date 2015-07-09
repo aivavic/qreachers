@@ -1,3 +1,7 @@
-<div class="mask">
-    <div class="logo"><span class="number-left">16</span><span class="number-right">9</span></div>
-</div>
+	<div class="preloader animated">
+		<div class="preloader__wrap">
+			<div class="preloader__logo preloader__logo--spin animated"></div>
+		</div>
+
+		<div class="preloader__status animated"></div>
+	</div><!--.preloader-->

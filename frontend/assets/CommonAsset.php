@@ -19,7 +19,7 @@ class CommonAsset extends AssetBundle
     public $baseUrl  = '@web';    
 
     public $js       = [
-        'js/lib/jquery-ui.min.js',
+        /*'js/lib/jquery-ui.min.js',
         'js/lib/jquery.bxslider.min.js',
         'js/lib/preload.js',
         'js/lib/isotope.pkgd.min.js',
@@ -27,8 +27,22 @@ class CommonAsset extends AssetBundle
         'https://maps.googleapis.com/maps/api/js?v=3.exp',
         'js/lib/owl.carousel.min.js',
         'js/lib/facebook.sdk.js',
-        'js/lib/twitter.widget.js',        
-
+        'js/lib/twitter.widget.js',*/        
+        'http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js',
+        'js/js/jquery.html5Loader.min.js',
+        'js/lib/preload.js',
+        'bootstrap/js/bootstrap.min.js',
+        'js/js/wow.min.js',
+        'js/js/jquery.nav.js',
+        'js/js/jquery.flexslider-min.js',
+        'js/lib/jquery.bxslider.min.js', #old widget
+        'js/js/jquery.validate.min.js',
+        'js/js/additional-methods.min.js',
+        'js/js/design.js',
+        'js/lib/facebook.sdk.js',
+        'js/lib/twitter.widget.js',
+        'js/lib/isotope.pkgd.min.js',
+        
         'js/common.js'
     ];
     public $depends = [

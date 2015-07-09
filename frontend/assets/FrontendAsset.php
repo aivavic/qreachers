@@ -18,6 +18,8 @@ class FrontendAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'bootstrap/css/bootstrap.min.css',
+        'css/animate.min.css',
         'css/style.css',
         //'css/style.css.map'
     ];

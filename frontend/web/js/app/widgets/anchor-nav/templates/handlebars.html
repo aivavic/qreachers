@@ -1,0 +1,90 @@
+	<div class="ctrls__wrap">
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-lg-1 col-lg-offset-11 col-md-1 col-md-offset-11 col-sm-1 col-sm-offset-11 hidden-xs">
+
+				<nav class="bullets__nav">
+
+					<div class="bullets__in">
+
+						<ul class="list-unstyled">
+							<li class="active"><a href="#main"></a></li>
+							<li><a href="#about"></a></li>
+							<li><a href="#projects"></a></li>
+							<li><a href="#tools"></a></li>
+							<li><a href="#clients"></a></li>
+							<li><a href="#news"></a></li>
+							<li><a href="#contacts"></a></li>
+						</ul>
+
+					</div>
+
+				</nav><!--.bullets__nav-->
+
+				<div class="scroll_arrow__wrap">
+					<div class="scroll_arrow__in">
+						<div class="scroll_arrow"><span></span></div>
+					</div>
+				</div>
+
+			</div>
+
+		</div><!--.row-->
+
+	</div><!--.container-->
+
+	</div><!--.ctrls__wrap-->
+<script>
+var arr_scrollheight = $(document).height();
+var arr_scrollwinheight = $(window).height();
+
+$(window).scroll(function() {
+
+	var scrl_top = $(window).scrollTop();
+   
+	// Top menu add bg
+	if(scrl_top > 100) {
+		$('.top').addClass('top--fixed');
+	} else {
+		$('.top').removeClass('top--fixed');
+	}
+
+
+	// ScrollTop arrow event
+	$('.scroll_arrow').click(function(){
+		$('html, body').animate({ScrollTop: arr_scrollwinheight}, 300);
+	});
+
+	// Switch arrow up/down
+	if((scrl_top + arr_scrollwinheight + 500) > arr_scrollheight) {
+		$('.scroll_arrow').css({opacity: 1});
+		$('.scroll_arrow').removeClass('scroll_arrow--active').addClass('scroll_arrow--up');
+	} else {
+		$('.scroll_arrow').removeClass('scroll_arrow--up');
+	}
+
+});
+
+// Bullets nav
+	$('.bullets__nav').onePageNav({
+		scrollOffset: 100,
+	    currentClass: 'active',
+	    changeHash: true,
+	    scrollSpeed: 1000,
+	    easing: 'swing',
+	    //scrollChange: true,
+
+	    begin: function() {
+        	$('body').append('<div id="device-dummy" style="height: 1px;"></div>');
+	    },
+	    end: function() {
+	        $('#device-dummy').remove();
+	    }
+
+	});
+</script>
+ 
+ 

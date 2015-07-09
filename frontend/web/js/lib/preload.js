@@ -1,148 +1,41 @@
-// При первом заходе на сайт
 
-var preload;
-var animated = false;
-
-function preloadStart() {
-    var currentFrame = 0;
-
-    if (!animated) window.preload = setInterval(function () {
-        switch (currentFrame) {
-        case 0:
-            $(".logo").width(75);
-            $(".logo").height(55);
-            currentFrame = 1;
-            break;
-        case 1:
-            $(".logo").width(77);
-            $(".logo").height(25);
-            currentFrame = 2;
-            break;
-        case 2:
-            $(".logo").width(51);
-            $(".logo").height(57);
-            currentFrame = 3;
-            break;
-        case 3:
-            $(".logo").width(38);
-            $(".logo").height(39);
-            currentFrame = 4;
-            break;
-        case 4:
-            $(".logo").width(75);
-            $(".logo").height(26);
-            currentFrame = 5;
-            break;
-        case 5:
-            $(".logo").width(97);
-            $(".logo").height(53);
-            currentFrame = 0;
-            break;
-        }
-    }, 700);
-
-    animated = true;
-}
-
-// Выключаем прелоадер при первой загрузке страницы
-
-function preloadLogoEnd() {
-    clearInterval(window.preload);
-
-    $(".logo").animate({
-        width: 120,
-        height: 67
-    }, function () {
-        $(".number-left").animate({
-            opacity: 1,
-            right: "3px"
-        }, function () {
-            $(".number-right").animate({
-                opacity: 1,
-                right: "-15px"
-            });
-        });
-        setTimeout(function () {
-            $(".logo").fadeOut(function () {
-                $(".logo").children().hide();
-            });
-
-            setTimeout(function () {
-                $(".mask").fadeOut()
-            }, 1400);
-        }, 1000);
-    });
-
-    animated = false;
-}
-
-// Вызов прелоадера при переходе между страницами
-
-function preloadFadeIn() {
-    var currentFrame = 0;
-
-    if (!animated) {
-        $(".mask").fadeIn(function () {
-            $(".logo").show();
-            $(".logo").animate({
-                opacity: 1
-            });
-        });
-        
-        window.preload = setInterval(function () {
-            switch (currentFrame) {
-            case 0:
-                $(".logo").width(75);
-                $(".logo").height(55);
-                currentFrame = 1;
-                break;
-            case 1:
-                $(".logo").width(77);
-                $(".logo").height(25);
-                currentFrame = 2;
-                break;
-            case 2:
-                $(".logo").width(51);
-                $(".logo").height(57);
-                currentFrame = 3;
-                break;
-            case 3:
-                $(".logo").width(38);
-                $(".logo").height(39);
-                currentFrame = 4;
-                break;
-            case 4:
-                $(".logo").width(75);
-                $(".logo").height(26);
-                currentFrame = 5;
-                break;
-            case 5:
-                $(".logo").width(97);
-                $(".logo").height(53);
-                currentFrame = 0;
-                break;
-            }
-        }, 700);
+    function preloadLogoEnd(){
         
     }
     
-    animated = true;
-}
+    function preloadStart() {
+             $.html5Loader({
+                filesToLoad: app.config.frontend_app_frontend_url + '/video/files.json',
+		onUpdate: function(percentage) {
+			$('.preloader__status').css({'width': percentage + '%'});
+		},
+		onComplete: function() {
+			setTimeout(function(){
+				$('.preloader__logo--spin').removeClass('preloader__logo--spin');
+				$('.preloader__logo').addClass('fadeOutDown');
+				$('.preloader__status').addClass('fadeOut');
+			
+				//document.getElementById('main_video1').play();
+			
+			}, 1250);
 
-// Выключение прелоадера при полной загрузке контента
+			setTimeout(function(){
+				$('.preloader').addClass('slideOutUp');
+			}, 2500);
 
-function preloadFadeOut() {
+			setTimeout(function(){
+				$('.top__logo').addClass('fadeInUp');
+				$('.top__lang').addClass('fadeInDownBig');
+				$('.top__menu-btn').addClass('fadeInDownBig');
 
-    if (animated) {        
-        setTimeout(function () {
-            $(".logo").fadeOut(function () {
-                $(".mask").fadeOut(function () {                    
-                    clearInterval(window.preload);
-                });
-            });
-        }, 2000);
+				$('.main_slider__cell h2').addClass('fadeInDown');
+				$('.main_slider__cell .btn').addClass('fadeInUp');
+			}, 3000);
+
+			setTimeout(function(){
+				$('.bullets__in').parent().addClass('bullets__nav--active');
+				$('.scroll_arrow').addClass('scroll_arrow--active');
+			}, 4000);
+		}
+	});   
     }
-
-    animated = false;
-
-}
