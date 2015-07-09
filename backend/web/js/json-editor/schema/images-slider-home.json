@@ -1,0 +1,86 @@
+{
+    "type": "object",
+    "title": "Images slider home",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___images-slider-home___"
+            }
+        },
+        "___images-slider-home___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Images slider home"
+        },
+        "images-slider-home-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/images-slider/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "title": {
+            "type": "string",
+            "title": "Title.",
+            "default": "Lorem ipsum dolor..."
+        },
+        "items": {
+            "type": "array",
+            "title": "Video",
+            "title": "Video for home page",
+            "options": {
+                "collapsed": true
+            },
+            "items": {
+                "type": "object",
+                "title": "video",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "video_src": {
+                        "type": "string",
+                        "format": "url",
+                        "title": "Some video.",
+                        "options": {
+                            "upload": true
+                        },
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "rel": "View file"
+                            }
+                        ]
+                    },
+                    "img_src": {
+                        "type": "string",
+                        "format": "url",
+                        "title": "Some image.",
+                        "options": {
+                            "upload": true
+                        },
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "rel": "View file"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

@@ -34,9 +34,9 @@ use yii\web\Response;
         <?php $this->beginBody() ?>        
 
             <?php require_once '_header.php'; ?>
-
+            <section>
             <?php echo $content ?>
-        
+            </section>
             <?php require_once '_footer.php'; ?>
 
             <?php require_once '_loader.php'; ?>

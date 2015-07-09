@@ -8,6 +8,10 @@
         "headerTemplate": "{{i1}} - {{self.tab_title}}",
         "oneOf": [
             {
+                "$ref": "/js/json-editor/schema/images-slider-home.json",
+                "title": "Video home slider"
+            },
+            {
                 "$ref": "/js/json-editor/schema/news.json",
                 "title": "News"
             },
@@ -30,6 +34,10 @@
             {
                 "$ref": "/js/json-editor/schema/head-image-box.json",
                 "title": "Head image box"
+            },
+            {
+                "$ref": "/js/json-editor/schema/head-video.json",
+                "title": "Head video"
             }
         ]
     }

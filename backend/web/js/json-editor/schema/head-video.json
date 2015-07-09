@@ -1,0 +1,56 @@
+{
+    "type": "object",
+    "title": "Head video",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___head-video___"
+            }
+        },
+        "___head-video___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Head video"
+        },
+        "head-video-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/head-video/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "video_src": {
+            "type": "string",
+            "title": "Video if need.",
+            "format": "url",
+            "options": {
+                "upload": true
+            },
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "rel": "View file"
+                }
+            ]
+        },
+        "title": {
+            "type": "string",
+            "title": "Title image.",
+            "default": "Lorem ipsum dolor sit amet"
+        }
+    }
+
+}

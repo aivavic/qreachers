@@ -1,0 +1,31 @@
+<section class="main_top" id="main">
+
+	<div class="main_slider">
+
+		<ul class="slides list-unstyled">
+                    {{#each items}}
+			<li class="main_slider__{{items}}">
+			
+				<div class="main__wrap">
+	
+					<video poster="{{img_src}}" preload="none" loop autoplay muted class="hidden-sm hidden-xs" id="main_video1">
+						<source src="{{video_src}}" type="video/mp4">
+					</video>
+
+					<div class="main_slider__in" data-anchor-target=".main_top" data-start="opacity: 1; margin-top: 0%;" data-top-center="opacity: 0; margin-top: 50%;">
+						<div class="main_slider__cell">
+							<h2 class="animated">{{title}}</h2>
+							
+							<a href="{{link_button}}" class="btn btn-bw animated">{{name_button}}</a>
+						</div>
+					</div>
+
+				</div><!--.main__wrap-->
+				
+			</li>
+                    {{/each}}  
+		</ul>
+
+	</div><!--.main_slider-->
+
+</section><!--.main_top-->
