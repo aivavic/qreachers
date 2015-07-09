@@ -4,7 +4,7 @@
 
 		<ul class="slides list-unstyled">
                     {{#each items}}
-			<li class="main_slider__{{items}}">
+			<li class="main_slider__1">
 			
 				<div class="main__wrap">
 	
@@ -29,3 +29,11 @@
 	</div><!--.main_slider-->
 
 </section><!--.main_top-->
+<script>
+    	if($('.main_slider').length) {
+		$('.main_slider').flexslider({
+			//smoothHeight: true,
+			slideshow: false,
+		});
+	}
+</script>

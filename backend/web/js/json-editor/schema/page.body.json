@@ -38,7 +38,12 @@
             {
                 "$ref": "/js/json-editor/schema/head-video.json",
                 "title": "Head video"
+            },
+            {
+                "$ref": "/js/json-editor/schema/google-map-slider.json",
+                "title": "Google map slider"
             }
+            
         ]
     }
 }

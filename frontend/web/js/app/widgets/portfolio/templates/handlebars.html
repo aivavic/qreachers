@@ -1,5 +1,5 @@
 <section class="cases_page">
-
+    <br>
     <div class="container">
 
         <div class="row">
@@ -26,7 +26,7 @@
                         <h4>Клиент:</h4>
                         <ul class="list-unstyled">
                             {{#each clients}}                                
-                                <li class="active project-category-item" data-filter=".data-filter-{{id}}" categoryId = "{{id}}">{{title}}<div class="ico"></div></li>                                
+                            <li class="active project-category-item" data-filter=".data-filter-{{id}}" categoryId = "{{id}}">{{title}}<div class="ico"></div></li>                                
                             {{/each}}                            
                         </ul>
                     </div><!--.top_filters__multi-->
@@ -52,18 +52,16 @@
 
 </section><!--.cases_page-->
 
-<script type="text/javascript">     
+<script type="text/javascript">
 
     $(window).on('page.view.portfolio.portfolio.renderWidgetItems', function () {
         app.logger.text('$grid = $(".projects").isotope');
         $('.filter-box .tags-box').off('click');
-
         // init Isotope
         var $grid = $('.projects').isotope({
             itemSelector: '.project-box',
             layoutMode: 'fitRows'
         });
-
         // filter functions
         var filterFns = {
             // show if number is greater than 50
@@ -77,29 +75,38 @@
                 return name.match(/ium$/);
             }
         };
-
         var cid = sessionStorage.getItem('projects.index.filter.category_id');
-
         if (cid) {
             var filterValue = '.data-filter-' + cid;
             // use filterFn if matches value
             filterValue = filterFns[ filterValue ] || filterValue;
-
             $grid.isotope({filter: filterValue});
         }
 
         // bind filter a click
-        $('.project-category-item').on('click',function () {
+        $('.project-category-item').on('click', function () {
             var filterValue = $(this).attr('data-filter');
-            app.logger.text('.filter-box .tags-box a click() filterValue:' + filterValue);
+            app.logger.text('.project-category-item a click() filterValue:' + filterValue);
             // use filterFn if matches value
             filterValue = filterFns[ filterValue ] || filterValue;
             $grid.isotope({filter: filterValue});
-
             $('.project-category-item').removeClass("active");
             $(this).addClass('active');
         });
+        // Page filters
+        if ($('.top_filters__multi').length) {
+            //$('.top_filters__multi').hide();
+            $('.top_filters__sort li').click(function () {
+                $(this).toggleClass('asc').toggleClass('desc');
+                $('.top_filters__multi').slideToggle(300);
+            });
+            $('.top_filters__multi li').click(function () {
+                $(this).toggleClass('active');
+            });
+        }
 
     });
+
+
 
 </script>

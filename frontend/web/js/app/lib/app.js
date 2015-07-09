@@ -146,7 +146,7 @@ window.app = (function () {
         setTimeout(function() {
             changePage(url, params);
         },1000);
-        
+                
         // Prevent default action
         return false;
     })

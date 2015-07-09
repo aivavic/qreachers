@@ -11,7 +11,7 @@ $shortLocale = explode('-',Yii::$app->language)[0];
 
 				<div class="main_menu__links animated">
 					<ul class="list-unstyled">
-						<li><a href="<?= Url::to('/' . $shortLocale . '/page/view/potfolio'); ?>" class = "ajaxLink"><?= Yii::t('frontend','Cases') ?></a></li>
+						<li><a href="<?= Url::to('/' . $shortLocale . '/page/view/portfolio'); ?>" class = "ajaxLink"><?= Yii::t('frontend','Cases') ?></a></li>
 						<li><a href="<?= Url::to('/' . $shortLocale . '/page/view/about'); ?>" class = "ajaxLink"><?= Yii::t('frontend','About') ?></a></li>
 						<li><a href="<?= Url::to('/' . $shortLocale . '/page/view/services'); ?>" class = "ajaxLink"><?= Yii::t('frontend','Services') ?></a></li>
 						<li><a href="<?= Url::to('/' . $shortLocale . '/page/view/clients'); ?>" class = "ajaxLink"><?= Yii::t('frontend','Clients') ?></a></li>
