@@ -1,5 +1,5 @@
 <section class="about_page">    
-    
+
     <div class="container">
 
         <div class="row">
@@ -55,9 +55,9 @@
 </section>
 
 <script type="text/javascript">
-    $(window).on('page.view.article.article.renderWidgetItems', function () {        
+    $(window).on('page.view.article.article.renderWidgetItems', function () {
         app.logger.text('$grid = $(".news-container").isotope');
-        
+
         // init Isotope
         var $grid = $('.news-container').isotope({
             itemSelector: '.news-wrap',
@@ -98,6 +98,20 @@
             $('.article-category-item').removeClass("active");
             $(this).addClass('active');
         });
+
+        // Page filters
+        if ($('.top_filters__multi').length) {
+            //$('.top_filters__multi').hide();
+
+            $('.top_filters__sort li').click(function () {
+                $(this).toggleClass('asc').toggleClass('desc');
+                $('.top_filters__multi').slideToggle(300);
+            });
+
+            $('.top_filters__multi li').click(function () {
+                $(this).toggleClass('active');
+            });
+        }
 
     });
 </script>

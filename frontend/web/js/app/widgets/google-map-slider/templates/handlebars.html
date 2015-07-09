@@ -1,0 +1,82 @@
+<section class="contacts_page">
+
+    <div class="contacts_page__map">
+
+        <div class="contacts_page__map-embed" id="bigmap"></div>
+
+
+        <div class="contacts_page__addr">
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-5 col-lg-offset-7 col-md-6 col-md-offset-6">
+
+                        <div class="contacts_box__default animated fadeInDown">
+
+                            <div class="contacts_box__tabs">
+                                <ul class="contacts_box__switch" role="tablist">
+                                    <li class="active"><a href="#contacts-ukraine" aria-controls="contacts-ukraine" role="tab" data-toggle="tab">УКРАИНА</a></li>
+                                    <li><a href="#contacts-kz" aria-controls="contacts-kz" role="tab" data-toggle="tab">КАЗАХСТАН</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="contacts-ukraine">
+                                        Киев, ул. Льва Толстого, 9А, офис 402<br>
+                                        <a href="tel:+380442237060">+38(044) 223 70 60</a><br>
+                                        <a href="mailto:welcome@skykillers.com">welcome@skykillers.com</a>
+
+                                        <div class="show-inmap">
+                                            <a href="http://www.google.com.ua/maps" class="btn btn-bb animated">
+                                                ПОКАЗАТЬ НА КАРТЕ
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div role="tabpanel" class="tab-pane fade" id="contacts-kz">
+                                        Казахстан, ул. Толстого Льва, 1А, офис 204<br>
+                                        <a href="tel:+380442237060">+38(3123) 423 44 61</a><br>
+                                        <a href="mailto:welcome@skykillers.com">welcome@skykillers.com</a>
+
+                                        <div class="show-inmap">
+                                            <a href="http://www.google.com.ua/maps" class="btn btn-bb animated">
+                                                ПОКАЗАТЬ НА КАРТЕ
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div><!--.tab-content-->
+
+                            </div><!--.contacts_box__tabs-->
+
+                        </div><!--.contacts_box__default-->
+
+                    </div><!--.col-->
+
+                </div><!--.row-->
+
+            </div><!--.container-->
+
+        </div><!--.contacts_page__addr-->
+
+    </div><!--.contacts_page-->
+
+</section>
+
+<script>
+    // About page count
+    if ($('.countto').length) {
+        $('.countto').appear(function () {
+            $('.countto__number').each(function () {
+                var count_element = $(this).html();
+                $(this).countTo({
+                    from: 0,
+                    to: count_element,
+                    speed: 750,
+                    refreshInterval: 50,
+                });
+            });
+        });
+    }   
+
+
+</script>

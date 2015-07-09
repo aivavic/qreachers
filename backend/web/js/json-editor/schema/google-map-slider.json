@@ -1,0 +1,74 @@
+{
+    "type": "object",
+    "title": "Google map slider",    
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___google-map-slider___"
+            }
+        },
+        "___google-map-slider___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Google map slider"
+        },
+        "google-map-slider-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/google-map-slider/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "items": {
+            "type": "array",
+            "title": "Places.",
+            "options": {
+                "collapsed": true
+            },
+            "items": {
+                "type": "object",
+                "title": "Place",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "city": {
+                        "type": "string",
+                        "title": "City.",
+                        "default": "Default city"
+                    },
+                    "street": {
+                        "type": "string",
+                        "title": "Street.",
+                        "default": "Default street"
+                    },
+                    "latitude": {
+                        "type": "string",
+                        "title": "Latitude.",
+                        "default": "50.43451"
+                    },
+                    "longitude": {
+                        "type": "string",
+                        "title": "Longitude.",
+                        "default": "30.512806"
+                    }
+                }
+            }
+        }
+
+    }
+
+}

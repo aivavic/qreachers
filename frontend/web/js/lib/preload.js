@@ -9,9 +9,8 @@ function preloadLogoEnd() {
 }
 
 //on ajax link click
-function preloadFadeIn() {
-    //runLoader();
-    
+function preloadFadeIn() {    
+     $('.preloader__status').css({'width': percentage + '%'});
 }
 
 //on ajax link click end

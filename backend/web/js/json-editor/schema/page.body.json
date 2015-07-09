@@ -30,7 +30,12 @@
             {
                 "$ref": "/js/json-editor/schema/head-image-box.json",
                 "title": "Head image box"
+            },
+            {
+                "$ref": "/js/json-editor/schema/google-map-slider.json",
+                "title": "Google map slider"
             }
+            
         ]
     }
 }

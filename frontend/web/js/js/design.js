@@ -66,7 +66,7 @@ $(document).ready(function() {
 
 
 	// Page filters
-	if($('.top_filters__multi').length) {
+	/*if($('.top_filters__multi').length) {
 		$('.top_filters__multi').hide();
 
 		$('.top_filters__sort li').click(function(){
@@ -77,14 +77,14 @@ $(document).ready(function() {
 		$('.top_filters__multi li').click(function(){
 			$(this).toggleClass('active');
 		});
-	}
+	}*/
 
 	// Cases show/hide description
-	if($('.projects_box__txt p').length) {
+	/*if($('.projects_box__txt p').length) {
 		$('.projects_box__item').hover(function(){
 			$(this).find('.projects_box__txt p').slideToggle(250);
 		});
-	}
+	}*/
 
 
 	// Case page slider
@@ -184,7 +184,7 @@ $(document).ready(function() {
 
 
 	// About page count
-	if($('.countto').length) {
+	/*if($('.countto').length) {
 		$('.countto').appear(function() {
 			$('.countto__number').each(function() {
 				var count_element = $(this).html();
@@ -196,7 +196,7 @@ $(document).ready(function() {
 				});
 			});
 		});
-	}
+	}*/
 
 	/*setTimeout(function() {
 		//$('.trio_nav').addClass('trio_nav--active');
