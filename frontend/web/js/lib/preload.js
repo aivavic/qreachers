@@ -9,12 +9,13 @@ function preloadLogoEnd() {
 }
 
 //on ajax link click
-function preloadFadeIn() {    
-     $('.preloader__status').css({'width': percentage + '%'});
+function preloadFadeIn() {
+    $(".main_menu__links").hide();
 }
 
 //on ajax link click end
 function preloadFadeOut() {
+    $(".main_menu__links").show();
     $(".top__menu-btn-sandwich").click();
 }
 
