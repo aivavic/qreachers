@@ -133,7 +133,7 @@ class ArticleController extends Controller
             return $this->render('update', [
                     'model'      => $model,
                     'categories' => ArticleCategory::find()->active()->all(),
-                    'domains' => explode(',', Yii::getAlias('@frontendUrls'))
+                    'domains'    => array_combine(explode(',', Yii::getAlias('@frontendUrls')), explode(',', Yii::getAlias('@frontendUrls')))
             ]);
         }
     }
