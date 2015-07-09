@@ -157,6 +157,10 @@
         setTimeout(function () {
             app.bindContainerAjaxLinks(app.config.frontend_app_conainer);
         }, 500);
+        
+        setTimeout(function () {
+            $(window).trigger('page.view.article.article.renderWidgetItems');            
+        }, 2000);
 
     }
 

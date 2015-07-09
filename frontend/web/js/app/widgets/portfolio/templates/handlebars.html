@@ -1,5 +1,5 @@
 <section class="cases_page">
-
+    <br>
     <div class="container">
 
         <div class="row">
@@ -91,7 +91,7 @@
         // bind filter a click
         $('.project-category-item').on('click',function () {
             var filterValue = $(this).attr('data-filter');
-            app.logger.text('.filter-box .tags-box a click() filterValue:' + filterValue);
+            app.logger.text('.project-category-item a click() filterValue:' + filterValue);
             // use filterFn if matches value
             filterValue = filterFns[ filterValue ] || filterValue;
             $grid.isotope({filter: filterValue});
