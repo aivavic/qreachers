@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');*/
     <?php echo $this->render('_tab', [
         'model' => $model,
         'categories' => $categories,
+        'domains' => $domains
     ]) ?>
 
 </div>

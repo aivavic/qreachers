@@ -23,6 +23,7 @@ use common\models\ProjectCategories;
  * @property string $thumbnail_path
  * @property string $video_base_url
  * @property string $video_path
+ * @property string $domain
  * @property array $attachments
  * @property integer $author_id
  * @property integer $updater_id
@@ -131,7 +132,7 @@ class Project extends \yii\db\ActiveRecord
             [['author_id', 'updater_id', 'status', 'weight'], 'integer'],
             [['slug', 'thumbnail_base_url', 'thumbnail_path', 'video_base_url', 'video_path'], 'string', 'max' => 1024],
             [['title', 'description'], 'string', 'max' => 512],
-            [['attachments', 'thumbnail', 'video', 'categoriesList'], 'safe']
+            [['attachments', 'thumbnail', 'video', 'categoriesList', 'domain'], 'safe']
         ];
     }
 
@@ -157,7 +158,8 @@ class Project extends \yii\db\ActiveRecord
             'created_at'     => Yii::t('common', 'Created At'),
             'updated_at'     => Yii::t('common', 'Updated At'),
             'weight'         => Yii::t('common', 'Weight'),
-            'categoriesList' => Yii::t('common', 'Categories list')
+            'categoriesList' => Yii::t('common', 'Categories list'),
+            'domain'         => Yii::t('common', 'Domain')
         ];
     }
 
@@ -167,6 +169,11 @@ class Project extends \yii\db\ActiveRecord
             if (!$this->published_at) {
                 $this->published_at = $this->created_at;
             }
+
+            if ($this->domain) {
+                $this->domain = implode(',', $this->domain);
+            }
+
             return true;
         } else {
             return false;

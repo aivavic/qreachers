@@ -21,7 +21,7 @@ use yii\bootstrap\Tabs;
             'label'   => Yii::$app->params['availableLocales'][$key],
             'content' => $this->render('_form', [
                 'model'      => $currentModel,
-                'form'      => $form
+                'form'      => $form,
             ]),
         ];
     }

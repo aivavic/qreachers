@@ -90,7 +90,12 @@ echo $form->field($model, 'attachments')->widget(
 ]);
 ?>
 
-<?php echo $form->field($model, 'status')->checkbox() ?>
+<?php
+echo $form->field($model, 'domain')->dropDownList($domains, ['prompt' => '', 'multiple' => true]);
+
+$js = '$("#' . $mId . '-domain").select2();';
+$this->registerJs($js);
+?>
 
 <?php
 echo $form->field($model, 'published_at')->widget(
@@ -99,3 +104,5 @@ echo $form->field($model, 'published_at')->widget(
     ]
 )
 ?>
+
+<?php echo $form->field($model, 'status')->checkbox() ?>

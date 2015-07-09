@@ -26,6 +26,7 @@ use yii\bootstrap\Tabs;
                 'model'      => $currentModel,
                 'form'      => $form,
                 'categories' => $categories,
+                'domains' => $domains
             ]),
         ];
     }

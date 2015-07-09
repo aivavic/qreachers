@@ -30,6 +30,7 @@ use common\models\ArticleCategories;
  * @property integer $updated_at
  * @property integer $weight
  * @property string $locale
+ * @property string $domain
  * @property integer $last_group_id
  *
  *
@@ -121,7 +122,7 @@ class Article extends \yii\db\ActiveRecord
             [['author_id', 'updater_id', 'status', 'weight'], 'integer'],
             [['slug', 'thumbnail_base_url', 'thumbnail_path'], 'string', 'max' => 1024],
             [['title'], 'string', 'max' => 512],
-            [['attachments', 'thumbnail', 'categoriesList'], 'safe']
+            [['attachments', 'thumbnail', 'categoriesList', 'domain'], 'safe']
         ];
     }
 
@@ -145,7 +146,8 @@ class Article extends \yii\db\ActiveRecord
             'created_at'     => Yii::t('common', 'Created At'),
             'updated_at'     => Yii::t('common', 'Updated At'),
             'weight'         => Yii::t('common', 'Weight'),
-            'categoriesList' => Yii::t('common', 'Categories list')
+            'categoriesList' => Yii::t('common', 'Categories list'),
+            'domain' => Yii::t('common', 'Domain')
         ];
     }
 
@@ -155,6 +157,11 @@ class Article extends \yii\db\ActiveRecord
             if (!$this->published_at) {
                 $this->published_at = $this->created_at;
             }
+
+            if ($this->domain) {                
+                $this->domain = implode(',',$this->domain);
+            }
+            
             return true;
         } else {
             return false;

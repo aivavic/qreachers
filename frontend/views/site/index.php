@@ -28,19 +28,6 @@ foreach (Page::getMetaTags() as $tag) {
     $this->registerMetaTag($tag);
 }
 
-/* use kartik\social\FacebookPlugin;
-  use kartik\social\TwitterPlugin;
-
-  echo FacebookPlugin::widget([
-  'type'     => FacebookPlugin::SHARE,
-  'settings' => [
-  ['size' => 'large'],
-  'layout' => 'button_count'
-  ]
-  ]);
-
-  echo TwitterPlugin::widget(['type' => TwitterPlugin::SHARE, 'settings' => ['size' => 'large']]);
- */
 \frontend\assets\AppAsset::register($this);
 ?>
 

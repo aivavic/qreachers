@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'slug',
-            'title',
+            'title',            
             [
                 'attribute'=>'category_id',
                 'value'=>function ($model) {
@@ -52,8 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'published_at:datetime',
             'created_at:datetime',
-            'weight',
-            // 'updated_at',
+            'weight',            
 
             [
                 'class' => 'yii\grid\ActionColumn',

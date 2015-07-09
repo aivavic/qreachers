@@ -74,6 +74,7 @@ class ProjectController extends Controller
             return $this->render('create', [
                     'model'      => $model,
                     'categories' => ProjectCategory::find()->active()->all(),
+                    'domains'    => array_combine(explode(',', Yii::getAlias('@frontendUrls')), explode(',', Yii::getAlias('@frontendUrls')))
             ]);
         }
     }
@@ -89,14 +90,19 @@ class ProjectController extends Controller
         $firstModel = $this->findModel($id);
 
         foreach (Yii::$app->params['availableLocales'] as $key => $value) {
-            $currentModel = Project::getLocaleInstance($key);
-            $dataModel    = $currentModel::find()
+            $currentModel              = Project::getLocaleInstance($key);
+            $dataModel                 = $currentModel::find()
                 ->andWhere([
                     'locale_group_id' => $firstModel->locale_group_id,
                     'locale'          => $key
                 ])
                 ->one();
             $dataModel->categoriesList = $this->getCategoriesListIds($dataModel->id);
+
+            if (!empty($dataModel->domain)) {
+                $dataModel->domain = explode(',', $dataModel->domain);
+            }
+
             $models[$key] = $dataModel;
 
             if (!$models[$key]) {
@@ -126,6 +132,7 @@ class ProjectController extends Controller
             return $this->render('update', [
                     'model'      => $model,
                     'categories' => ProjectCategory::find()->active()->all(),
+                    'domains'    => array_combine(explode(',', Yii::getAlias('@frontendUrls')), explode(',', Yii::getAlias('@frontendUrls')))
             ]);
         }
     }
@@ -159,7 +166,8 @@ class ProjectController extends Controller
         }
     }
 
-    private function getCategoriesListIds($id) {
+    private function getCategoriesListIds($id)
+    {
         $arr = [];
 
         $models = ProjectCategories::find()->andWhere(['project_id' => $id])->all();
@@ -170,5 +178,4 @@ class ProjectController extends Controller
 
         return $arr;
     }
-    
 }

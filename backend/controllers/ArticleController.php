@@ -72,9 +72,12 @@ class ArticleController extends Controller
         if ($model->load(Yii::$app->request->post()) && Article::multiSave($model)) {
             return $this->redirect(['index']);
         } else {
+            //print_r(array_combine(explode(',', Yii::getAlias('@frontendUrls')), explode(',', Yii::getAlias('@frontendUrls'))));
+            //die()
             return $this->render('create', [
                     'model'      => $model,
                     'categories' => ArticleCategory::find()->active()->all(),
+                    'domains' => array_combine(explode(',', Yii::getAlias('@frontendUrls')), explode(',', Yii::getAlias('@frontendUrls')))
             ]);
         }
     }
@@ -98,6 +101,11 @@ class ArticleController extends Controller
                 ])
                 ->one();
             $dataModel->categoriesList = $this->getCategoriesListIds($dataModel->id);
+            
+            if(!empty($dataModel->domain)) {
+                $dataModel->domain = explode(',', $dataModel->domain);
+            }
+
             $models[$key]              = $dataModel;
 
             if (!$models[$key]) {
@@ -125,6 +133,7 @@ class ArticleController extends Controller
             return $this->render('update', [
                     'model'      => $model,
                     'categories' => ArticleCategory::find()->active()->all(),
+                    'domains' => explode(',', Yii::getAlias('@frontendUrls'))
             ]);
         }
     }
