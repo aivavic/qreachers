@@ -1,0 +1,83 @@
+{
+    "type": "object",
+    "title": "About video",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___about-video___"
+            }
+        },
+        "___about-video___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "About video"
+        },
+        "we-are-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/about-video/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "vieo": {
+            "type": "string",
+            "title": "Title",
+            "default": "About video ..."
+        },
+        "img_src": {
+                        "type": "string",
+                        "format": "url",
+                        "title": "Some image.",
+                        "options": {
+                            "upload": true
+                        },
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "rel": "View file"
+                            }
+                        ]
+                    },
+        "items": {
+            "type": "array",
+            "title": "Some works.",
+            "options": {
+                "collapsed": true
+            },
+            "items": {
+                "type": "object",
+                "title": "work",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "count": {
+                        "type": "string",
+                        "title": "Count.",
+                        "default": "Default title"
+                    },
+                    "title": {
+                        "type": "string",
+                        "title": "title text.",
+                        "default": "Default title..."
+                    }
+                }
+            }
+        }
+
+    }
+
+}

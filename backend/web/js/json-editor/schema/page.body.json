@@ -48,6 +48,14 @@
                 "title": "About static"
             },
             {
+                "$ref": "/js/json-editor/schema/qreachers-us.json",
+                "title": "Qreachers-us"
+            },
+            {
+                "$ref": "/js/json-editor/schema/about-video.json",
+                "title": "About video"
+            },
+            {
                 "$ref": "/js/json-editor/schema/members.json",
                 "title": "Members"
             },

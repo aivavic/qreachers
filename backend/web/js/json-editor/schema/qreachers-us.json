@@ -1,6 +1,6 @@
 {
     "type": "object",
-    "title": "About static",
+    "title": "Qreachers-us",
     "properties": {
         "tab_title": {
             "type": "string",
@@ -9,21 +9,21 @@
             },
             "template": "{{title}}",
             "watch": {
-                "title": "widget.___about-static___"
+                "title": "widget.___qreachers-us___"
             }
         },
-        "___about-static___": {
+        "___qreachers-us___": {
             "type": "string",
             "options": {
                 "hidden": true
             },
-            "default": "About static"
+            "default": "Qreachers-us"
         },
-        "about-static-preview": {
+        "we-are-preview": {
             "title": "Example:",
             "type": "string",
             "format": "hidden",
-            "default": "/frontend/web/js/app/widgets/about-static/img/preview.jpg",
+            "default": "/frontend/web/js/app/widgets/qreachers-us/img/preview.jpg",
             "links": [
                 {
                     "href": "{{self}}",
@@ -31,6 +31,20 @@
                 }
             ]
 
+        },
+        "title": {
+            "type": "string",
+            "title": "Title",
+            "default": "Qreachers-us ..."
+        },
+        "text": {
+                        "type": "string",
+                        "format": "html",
+                        "options": {
+                            "wysiwyg": true
+                        },
+                        "title": "Text.",
+                        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing."
         },
         "items": {
             "type": "array",
@@ -45,24 +59,21 @@
                     "collapsed": true
                 },
                 "properties": {
-                    "fadeIn": {
+                    
+                    "title": {
                         "type": "string",
-                        "title": "fadeIn animate",
-                        "default": "fadeIn"
-                    },
-                    "class": {
-                        "type": "string",
-                        "title": "Class style",
-                        "default": "Class style ..."
+                        "title": "Some title.",
+                        "default": "Default title"
                     },
                     "text": {
                         "type": "string",
-                        "format": "html",
-                        "options": {
-                            "wysiwyg": true
-                        },
-                        "title": "Text.",
-                        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing."
+                        "title": "Some text.",
+                        "default": "Default title..."
+                    },
+                    "fade": {
+                        "type": "string",
+                        "title": "Animate image.",
+                        "default": "fadeIn"
                     },
                     "img_src": {
                         "type": "string",
@@ -78,9 +89,11 @@
                             }
                         ]
                     }
+
                 }
             }
         }
+
     }
 
 }
