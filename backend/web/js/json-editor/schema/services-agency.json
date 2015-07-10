@@ -1,0 +1,93 @@
+{
+    "type": "object",
+    "title": "Services agency",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___services-agency___"
+            }
+        },
+        "___services-agency___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Services agency"
+        },
+        "we-are-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/services-agency/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "title": {
+            "type": "string",
+            "title": "Title",
+            "default": "Services tools ..."
+        },
+        "items": {
+            "type": "array",
+            "title": "Some works.",
+            "options": {
+                "collapsed": true
+            },
+            "items": {
+                "type": "object",
+                "title": "work",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "title": "Some title.",
+                        "default": "Default title"
+                    },
+                    "text": {
+                        "type": "string",
+                        "title": "Some text.",
+                        "default": "Default title..."
+                    },
+                    "img_src": {
+                        "type": "string",
+                        "format": "url",
+                        "title": "Some image.",
+                        "options": {
+                            "upload": true
+                        },
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "rel": "View file"
+                            }
+                        ]
+                    },
+                    "text": {
+                        "type": "string",
+                        "format": "html",
+                        "options": {
+                            "wysiwyg": true
+                        },
+                        "title": "Text.",
+                        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing."
+                    }
+
+                }
+            }
+        }
+
+    }
+
+}

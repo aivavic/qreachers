@@ -1,0 +1,73 @@
+{
+    "type": "object",
+    "title": "Services type", 
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___services-type___"
+            }
+        },
+        "___services-type___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Services type"
+        },
+        "services-type-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/services-type/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "title": {
+            "type": "string",
+            "title": "Title",
+            "default": "Services type"
+        },
+        "items": {
+            "type": "array",
+            "title": "Some works.",
+            "options": {
+                "collapsed": true
+            },
+            "items": {
+                "type": "object",
+                "title": "work",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "title": "Time.",
+                        "default": "Ttitle ..."
+                    },
+                    "text": {
+                        "type": "string",
+                        "format": "html",
+                        "options": {
+                            "wysiwyg": true
+                        },
+                        "title": "Text.",
+                        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing."
+                    }
+                }
+            }
+        }
+
+    }
+
+}

@@ -1,0 +1,25 @@
+<div class="services_page__type">	
+	<div class="container">
+
+		<div class="row">
+
+			<h2 class="wow fadeInDown" data-wow-duration="0.5s" data-wow-delay="0.5s" data-wow-offset="200">{{title}}</h2>
+                        
+                        {{#each items}}
+			<div class="col-md-4 wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.8s" data-wow-offset="100">
+				<div class="row">
+					<div class="col-md-12 col-sm-4">
+						<h3>{{title}}</h3>
+					</div>
+					
+					<div class="col-md-12 col-sm-8">
+                                            {{{text}}}
+					</div>
+				</div><!--.row-->
+			</div>
+                        {{/each}}
+
+		</div><!--.row-->
+
+	</div><!--.container-->
+</div><!--.services_page__type-->

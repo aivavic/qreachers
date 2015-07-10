@@ -50,8 +50,19 @@
             {
                 "$ref": "/js/json-editor/schema/members.json",
                 "title": "Members"
+            },
+            {
+                "$ref": "/js/json-editor/schema/services-tools.json",
+                "title": "Services tools"
+            },
+            {
+                "$ref": "/js/json-editor/schema/services-type.json",
+                "title": "Services type"
+            },
+            {
+                "$ref": "/js/json-editor/schema/services-agency.json",
+                "title": "Services agency"
             }
-            
         ]
     }
 }

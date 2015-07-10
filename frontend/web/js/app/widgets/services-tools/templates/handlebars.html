@@ -1,0 +1,22 @@
+<div class="services_page__tools">
+	<div class="container">
+
+		<div class="services_page__tools-top">
+			<h2 class="wow fadeIn" data-wow-duration="0.5s" data-wow-delay="0.5s" data-wow-offset="200">{{title}}</h2>
+			<p class="wow fadeIn" data-wow-duration="0.5s" data-wow-delay="0.5s" data-wow-offset="200">{{title_tools}}</p>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+                        {{#each items}}
+				<div class="services_page__tools-item services_page__tools-search">
+					<div class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.9s" data-wow-offset="100">
+                                            <h4 style="background: url({{img_src}}) center 20px no-repeat;">{{title}}</h4>
+						<p>{{text}}</p>
+					</div>
+				</div>
+                        {{/each}}
+			</div><!--.col-->
+		</div><!--.row-->
+	</div><!--.container-->
+</div><!--.services_page__tools-->
