@@ -17,9 +17,9 @@
             "options": {
                 "hidden": true
             },
-            "default": "Test"
+            "default": "About static"
         },
-        "test-preview": {
+        "about-static-preview": {
             "title": "Example:",
             "type": "string",
             "format": "hidden",
