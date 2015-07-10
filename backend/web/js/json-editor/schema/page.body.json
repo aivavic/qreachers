@@ -42,6 +42,14 @@
             {
                 "$ref": "/js/json-editor/schema/google-map-slider.json",
                 "title": "Google map slider"
+            },
+            {
+                "$ref": "/js/json-editor/schema/about-static.json",
+                "title": "About static"
+            },
+            {
+                "$ref": "/js/json-editor/schema/members.json",
+                "title": "Members"
             }
             
         ]
