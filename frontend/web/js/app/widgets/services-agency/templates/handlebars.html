@@ -1,0 +1,32 @@
+	<div class="container">
+
+		<div class="services_page__info">
+
+		<div class="row">
+
+			<div class="col-md-10 col-md-offset-1">
+
+				<h2>{{title}}</h2>
+                        {{#each items}}
+				<div class="row">
+
+					<div class="col-md-4 col-sm-4 wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.5s" data-wow-offset="100">
+                                            <div class="services_page__info-ico services_page__info-audit" style="background: url({{img_src}}) 0 center no-repeat;"></div>
+					</div>
+
+					<div class="col-md-8 col-sm-8 wow fadeInRight" data-wow-duration="0.7s" data-wow-delay="0.5s" data-wow-offset="100">
+
+						<h3>{{title}}</h3>
+                                                {{{text}}}
+
+					</div>
+
+				</div><!--.row-->
+                        {{/each}}
+			</div><!--.col-offset-1-->
+
+		</div><!--.row-->
+
+	</div><!--.services_page__info-->
+
+	</div><!--.container-->
