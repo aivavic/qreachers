@@ -12,6 +12,14 @@
                 "title": "Video home slider"
             },
             {
+                "$ref": "/js/json-editor/schema/about-box-home.json",
+                "title": "About box home"
+            },
+            {
+                "$ref": "/js/json-editor/schema/services-tools-home.json",
+                "title": "Services tools home"
+            },
+            {
                 "$ref": "/js/json-editor/schema/news.json",
                 "title": "News"
             },

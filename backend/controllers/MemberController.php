@@ -49,9 +49,9 @@ class MemberController extends Controller
      * Lists all Member models.
      * @return mixed
      */
-    public function actionEnum()
+    public function actionEnum($domain_type)
     {
-        $membersArray = Member::find()->published()->all();
+        $membersArray = Member::find()->published()->andWhere(['like', 'domain', Yii::getAlias('@frontendUrl_'.$domain_type)])->all();
 
         $enum       = [];
         $enumTitles = [];
@@ -88,6 +88,7 @@ class MemberController extends Controller
             return $this->render('create', [
                     'model'      => $model,
                     'categories' => MemberCategory::find()->active()->all(),
+                    'domains' => array_combine(explode(',', Yii::getAlias('@frontendUrls')), explode(',', Yii::getAlias('@frontendUrls'))),
             ]);
         }
     }
@@ -102,12 +103,16 @@ class MemberController extends Controller
     {
         $model = $this->findModel($id);
 
+        if(!empty($model->domain)) {
+                $model->domain = explode(',', $model->domain);
+        }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                     'model'      => $model,
                     'categories' => MemberCategory::find()->active()->all(),
+                    'domains'    => array_combine(explode(',', Yii::getAlias('@frontendUrls')), explode(',', Yii::getAlias('@frontendUrls'))),
             ]);
         }
     }

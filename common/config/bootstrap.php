@@ -12,6 +12,8 @@ Yii::setAlias('@tests', realpath(__DIR__ . '/../../tests'));
 // Url Aliases
 Yii::setAlias('@frontendUrl', getenv('FRONTEND_URL'));
 Yii::setAlias('@frontendUrls', getenv('FRONTEND_URLS'));
+Yii::setAlias('@frontendUrl_ua', getenv('FRONTEND_URL_UA'));
+Yii::setAlias('@frontendUrl_kz', getenv('FRONTEND_URL_KZ'));
 Yii::setAlias('@backendUrl', getenv('BACKEND_URL'));
 Yii::setAlias('@storageUrl', getenv('STORAGE_URL'));
 Yii::setAlias('@apiUrl', getenv('API_URL'));
@@ -25,4 +27,11 @@ $domain       = 'http://' . $_SERVER['HTTP_HOST'];
 
 if (in_array($domain, $frontendUrls)) {
     Yii::setAlias('@frontendUrl', $domain);
+}
+
+if (Yii::getAlias('@frontendUrl') == Yii::getAlias('@frontendUrl_ua')){
+Yii::setAlias('@siteType', 'ua');   
+}
+if (Yii::getAlias('@frontendUrl') == Yii::getAlias('@frontendUrl_kz')){
+Yii::setAlias('@siteType', 'kz');   
 }

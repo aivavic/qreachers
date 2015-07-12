@@ -57,6 +57,18 @@ backend\assets\CustomImperaviRedactorPluginAsset::register($this);
         ->textInput(['maxlength' => 1024])
     ?>
 
+    <?php
+
+    $content = '<style>.select2-container-multi { border: none;  padding: 0;} </style>';
+    $content .= '<style>.select2-container { border: none;  padding: 0;} </style>';
+    echo $content;
+    
+    echo $form->field($model, 'domain')->dropDownList($domains, ['prompt' => '', 'multiple' => true]);
+
+    $js = '$("#member-domain").select2();';
+    $this->registerJs($js);
+    ?>
+    
     <?php echo $form->field($model, 'status')->checkbox() ?>
 
     <div class="form-group">

@@ -1,6 +1,6 @@
 {
     "type": "object",
-    "title": "Members",
+    "title": "About box home", 
     "properties": {
         "tab_title": {
             "type": "string",
@@ -9,21 +9,21 @@
             },
             "template": "{{title}}",
             "watch": {
-                "title": "widget.___members___"
+                "title": "widget.___about-box-home___"
             }
         },
-        "___members___": {
+        "___about-box-home___": {
             "type": "string",
             "options": {
                 "hidden": true
             },
-            "default": "Members"
+            "default": "About box home"
         },
-        "members-preview": {
+        "about-box-home-preview": {
             "title": "Example:",
             "type": "string",
             "format": "hidden",
-            "default": "/frontend/web/js/app/widgets/members/img/preview.jpg",
+            "default": "/frontend/web/js/app/widgets/about-box-home/img/preview.jpg",
             "links": [
                 {
                     "href": "{{self}}",
@@ -35,19 +35,21 @@
         "title": {
             "type": "string",
             "title": "Title",
-            "default": "default title"
+            "default": "About box home ..."
         },
-        "members_ua": {
-            "type": "array",
-            "uniqueItems": true,
-            "format": "select",
-            "$ref": "/member/enum?domain_type=ua"
+        "text": {
+                "type": "string",
+                "format": "html",
+                "options": {
+                "wysiwyg": true
+            },
+            "title": "Text.",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing."
         },
-        "members_kz": {
-            "type": "array",
-            "uniqueItems": true,
-            "format": "select",
-            "$ref": "/member/enum?domain_type=kz"
+        "link": {
+            "type": "string",
+            "title": "Link",
+            "default": "Link ..."
         }
     }
 }

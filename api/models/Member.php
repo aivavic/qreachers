@@ -13,7 +13,7 @@ class Member extends \common\models\Member implements Linkable
 {
     public function fields()
     {
-        return ['id', 'category_id', 'title', 'head', 'body', 'published_at', 'thumbnail_base_url','thumbnail_path',  'firstname' , 'lastname', 'position', 'locale', 'gender', 'video', 'video_mobile', 'status_home'];
+        return ['id', 'category_id', 'title', 'head', 'body', 'published_at', 'thumbnail_base_url','thumbnail_path',  'firstname' , 'lastname', 'position', 'locale', 'gender', 'video', 'video_mobile', 'status_home', 'domain'];
     }
 
     public function extraFields()

@@ -16,8 +16,24 @@ function preloadFadeIn() {
 
 //on ajax link click end
 function preloadFadeOut() {
-    $(".top__menu-btn-sandwich").click();    
+    //$(".top__menu-btn-sandwich").click();
     fOnLoaderComplete();
+    
+    if ($('body').hasClass('lock')){
+      $('body').removeClass('lock'); 
+    }
+    
+    if ($('.main_menu').css('display') == 'block'){
+      $('.main_menu').hide(); 
+    }
+    
+    if ($('.top__menu-btn').hasClass('top__menu-btn--close')){
+      $('.top__menu-btn').removeClass('top__menu-btn--close');
+    }
+    
+    if (!$('.top__menu-btn').hasClass('top__menu-btn--default')){
+      $('.top__menu-btn').addClass('top__menu-btn--default');        
+    }
 }
 
 function runLoader() {

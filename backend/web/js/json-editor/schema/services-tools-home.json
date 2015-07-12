@@ -1,0 +1,99 @@
+{
+    "type": "object",
+    "title": "Services tools home",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___services-tools-home___"
+            }
+        },
+        "___services-tools-home___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Services tools home"
+        },
+        "services-tools-home-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/services-tools-home/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "title": {
+            "type": "string",
+            "title": "Title",
+            "default": "Title ..."
+        },
+        "button_title": {
+            "type": "string",
+            "title": "button_title",
+            "default": "Title ..."
+        },
+        "slug": {
+            "type": "string",
+            "title": "Link page",
+            "default": "Link ..."
+        },
+        "items": {
+            "type": "array",
+            "title": "Some works.",
+            "options": {
+                "collapsed": true
+            },
+            "items": {
+                "type": "object",
+                "title": "work",
+                "options": {
+                    "collapsed": true
+                },
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "title": "Some title.",
+                        "default": "Default title"
+                    },
+                    "class": {
+                        "type": "string",
+                        "title": "class",
+                        "default": "tools_box"
+                    },
+                    "fadeIn": {
+                        "type": "string",
+                        "title": "Animate box.",
+                        "default": "fadeIn"
+                    },
+                    "img_src": {
+                        "type": "string",
+                        "format": "url",
+                        "title": "Some image.",
+                        "options": {
+                            "upload": true
+                        },
+                        "links": [
+                            {
+                                "href": "{{self}}",
+                                "rel": "View file"
+                            }
+                        ]
+                    }
+
+                }
+            }
+        }
+
+    }
+
+}

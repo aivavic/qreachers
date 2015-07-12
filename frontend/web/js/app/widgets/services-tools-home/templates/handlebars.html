@@ -1,0 +1,29 @@
+<section class="tools_box" id="tools">
+	<h2 class="wow fadeInDown" data-wow-duration="0.5s" data-wow-delay="0.5s" data-wow-offset="200">{{title}}</h2>
+
+	<div class="container">
+		
+		<div class="row">
+                    {{#each items}}
+			<div class="tools_box__item {{class}} col-md-4 col-sm-4 wow fadeIn" data-wow-duration="0.7s" data-wow-delay="0.8s" data-wow-offset="100">
+				<div class="ico wow {{fadeIn}}" data-wow-duration="0.7s" data-wow-delay="0.8s" data-wow-offset="100" style="background: url({{img_src}}) center 5px no-repeat;"></div>
+				<p>{{title}}</p>
+			</div>
+                    {{/each}}
+		</div><!--.row-->
+
+	</div><!--.container-->
+
+	<div class="btn_hidden">
+		<a href="{{urlToServices}}" class="btn-an btn-320 animated wow fadeInUp ajaxLink" data-wow-duration="0.5s" data-wow-delay="0.9s" data-wow-offset="50">
+			<div class="btn__wrap">
+				<div class="btn btn-amore btn-norm">
+					{{button_title}}
+				</div>
+
+				<div class="btn btn-amore-hov btn-hov"></div>
+			</div>
+		</a>
+	</div>
+	
+</section><!--.tools_box-->

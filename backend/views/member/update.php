@@ -13,10 +13,11 @@ $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'i
 $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
 ?>
 <div class="member-update">
-
+    
     <?php echo $this->render('_form', [
         'model' => $model,
         'categories' => $categories,
+        'domains' => $domains,
     ]) ?>
 
 </div>

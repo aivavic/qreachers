@@ -17,8 +17,7 @@
 
         var data = widget;        
         var ids = [];
-        
-        $.each(data.members, function(k,v) {
+        $.each(data['members_' + app.config.frontend_app_site_type], function(k,v) {
             ids[k] = v.split('#')[1];
         });
         
@@ -36,7 +35,22 @@
                     $.extend(data, membersData);
 
                     $.each(data.items, function (key, val) {
-                        data.items[key].previewImg = val.thumbnail_base_url + '/' + val.thumbnail_path;                        
+                        data.items[key].previewImg = val.thumbnail_base_url + '/' + val.thumbnail_path;
+                        if (key % 3 == 0){
+                            data.items[key].itemClass  = 'fadeInLeft';
+                        }
+                        if (key % 3 == 1){
+                            data.items[key].itemClass  = 'fadeIn';
+                        } 
+                        if (key % 3 == 2){
+                            data.items[key].itemClass  = 'fadeInRight';
+                        } 
+                        /*
+                         *0 3 6 9  - fadeInLeft
+                         *1 4 7 10 - fadeIn
+                         *2 5 8 11 - fadeInRight
+                         * 
+                         */
                     });
 
                     loadTemplate(data);

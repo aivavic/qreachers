@@ -15,6 +15,7 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $id
  * @property string $slug
  * @property string $title
+ * @property string $domain
  * @property string $body
  * @property string $head
  * @property string $thumbnail_base_url
@@ -125,7 +126,7 @@ class Member extends \yii\db\ActiveRecord
             [['author_id', 'updater_id', 'status', 'status_home', 'gender', 'weight'], 'integer'],
             [['slug', 'thumbnail_base_url', 'thumbnail_path'], 'string', 'max' => 1024],
             [['title'], 'string', 'max' => 512],
-            [['attachments', 'thumbnail'], 'safe'],
+            [['attachments', 'thumbnail', 'domain'], 'safe'],
             [['gender'], 'in', 'range' => [self::GENDER_FEMALE, self::GENDER_MALE]],
             [['firstname', 'lastname', 'position', 'video', 'video_mobile'], 'string', 'max' => 255],
             ['locale', 'default', 'value' => Yii::$app->language],
@@ -160,10 +161,26 @@ class Member extends \yii\db\ActiveRecord
             'gender'       => Yii::t('common', 'Gender'),
             'video'        => Yii::t('common', 'Video'),
             'video_mobile'        => Yii::t('common', 'Video mobile'),
-            'status_home'  => Yii::t('common', 'Show on about page')
+            'status_home'  => Yii::t('common', 'Show on about page'),
+            'domain' => Yii::t('common', 'Domain'),
         ];
     }
 
+    
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+
+            if ($this->domain) {                
+                $this->domain = implode(',',$this->domain);
+            }
+            
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     /**
      * @return \yii\db\ActiveQuery
      */
