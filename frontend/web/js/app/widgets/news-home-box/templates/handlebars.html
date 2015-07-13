@@ -1,0 +1,120 @@
+<section class="about_page">    
+    <br><br><br>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-10 col-lg-offset-1 col-md-12">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div class="top_filters">
+                            <div class="top_filters__sort">
+                                <ul class="list-unstyled">
+                                    <li class="desc">{{filter}}<div class="ico"></div></li>
+                                </ul>
+                            </div><!--.top_filters__sort-->
+
+
+                            <div class="top_filters__multi">
+                                <ul class="list-unstyled">
+                                    {{#each categories}}                                        
+                                    <li class="active article-category-item" data-filter=".data-filter-{{id}}" categoryId = "{{id}}"> {{title}} <div class="ico"></div></li>                                    
+                                    {{/each}}
+
+                                </ul>
+                            </div><!--.top_filters__multi-->
+
+                        </div><!--.top_filters-->
+
+                    </div><!--.col-->
+
+                </div><!--.row-->
+
+                <div class="row news-container">
+
+
+
+                </div><!--.row-->
+
+
+
+                <div class="more_btn">
+                    <a href="#" class="btn btn-bb animated">БОЛЬШЕ ПОСТОВ</a>
+                </div>
+
+            </div><!--.col-offset-1-->
+
+
+        </div><!--.row-->
+
+    </div><!--.container-->
+
+</section>
+
+<script type="text/javascript">
+    $(window).on('page.view.article.article.renderWidgetItems', function () {
+        app.logger.text('$grid = $(".news-container").isotope');
+
+        // init Isotope
+        var $grid = $('.news-container').isotope({
+            itemSelector: '.news-wrap',
+            layoutMode: 'fitRows'
+        });
+
+        // filter functions
+        var filterFns = {
+            // show if number is greater than 50
+            numberGreaterThan50: function () {
+                var number = $(this).find('.number').text();
+                return parseInt(number, 10) > 50;
+            },
+            // show if name ends with -ium
+            ium: function () {
+                var name = $(this).find('.name').text();
+                return name.match(/ium$/);
+            }
+        };
+
+        var cid = sessionStorage.getItem('articles.index.filter.category_id');
+
+        if (cid) {
+            var filterValue = '.data-filter-' + cid;
+            // use filterFn if matches value
+            filterValue = filterFns[ filterValue ] || filterValue;
+
+            $grid.isotope({filter: filterValue});
+        }
+
+        // bind filter button click
+        $('.article-category-item').on('click', function () {
+            var filterValue = $(this).attr('data-filter');
+            // use filterFn if matches value
+            filterValue = filterFns[ filterValue ] || filterValue;
+            $grid.isotope({filter: filterValue});
+
+            $('.article-category-item').removeClass("active");
+            $(this).addClass('active');
+        });
+
+        // Page filters
+        if ($('.top_filters__multi').length) {
+            //$('.top_filters__multi').hide();
+
+            $('.top_filters__sort li').click(function () {
+                $(this).toggleClass('asc').toggleClass('desc');
+                $('.top_filters__multi').slideToggle(300);
+            });
+
+            $('.top_filters__multi li').click(function () {
+                $(this).toggleClass('active');
+            });
+        }
+
+    });
+</script>
+
+
+

@@ -16,7 +16,7 @@
         app.logger.func('loadData()');
 
         var data = widget;
-
+        data.urlToCases = app.config.frontend_app_web_url + '/' + app.router.locale + '/page/view/portfolio';
         loadTemplate(data);
     }
 

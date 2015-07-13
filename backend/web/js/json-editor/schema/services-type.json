@@ -55,6 +55,11 @@
                         "title": "Time.",
                         "default": "Ttitle ..."
                     },
+                    "fadeIn": {
+                        "type": "string",
+                        "title": "Animate items.",
+                        "default": "fadeIn"
+                    },
                     "text": {
                         "type": "string",
                         "format": "html",

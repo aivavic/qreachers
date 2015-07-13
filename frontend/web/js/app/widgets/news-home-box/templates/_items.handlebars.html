@@ -1,0 +1,23 @@
+{{#each items}}
+    <div class="col-md-6 news-wrap {{dataFilterCategories}}" >
+
+        <div class="news_box__item">
+            <a href="{{viewUrl}}" class="ajaxLink">
+                <div class="news_box__thumb">
+                    <img src="{{previewImg}}" alt="#">
+                </div>
+
+                <div class="news_box__txt">
+                    <div class="news_box__txt-in">
+                        <h4>{{title}}</h4>
+                        <span>{{categoryTitles}}</span>
+                    </div>
+                    <div class="news_box__txt-top"></div>
+                    <div class="news_box__txt-bt"></div>
+                </div>
+            </a>
+        </div><!--.news_box__item-->
+
+    </div>
+{{/each}}
+

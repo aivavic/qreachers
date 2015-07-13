@@ -60,6 +60,11 @@
                         "title": "Some title.",
                         "default": "Default title"
                     },
+                    "fadeIn": {
+                        "type": "string",
+                        "title": "Animate items.",
+                        "default": "fadeIn"
+                    },
                     "text": {
                         "type": "string",
                         "title": "Some text.",

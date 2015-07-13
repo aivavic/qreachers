@@ -17,6 +17,7 @@
 
         var data = widget;        
         var ids = [];
+
         $.each(data['members_' + app.config.frontend_app_site_type], function(k,v) {
             ids[k] = v.split('#')[1];
         });

@@ -32,11 +32,6 @@
             ]
 
         },
-        "title": {
-            "type": "string",
-            "title": "Title.",
-            "default": "Lorem ipsum dolor..."
-        },
         "items": {
             "type": "array",
             "title": "Video",
@@ -51,6 +46,16 @@
                     "collapsed": true
                 },
                 "properties": {
+                    "title": {
+                        "type": "string",
+                        "title": "Title.",
+                        "default": "Lorem ipsum dolor..."
+                    },
+                    "title_button": {
+                        "type": "string",
+                        "title": "Title button.",
+                        "default": "Lorem ipsum dolor..."
+                    },
                     "video_src": {
                         "type": "string",
                         "format": "url",

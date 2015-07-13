@@ -1,0 +1,112 @@
+<section class="cases_page">
+    <br>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-10 col-md-offset-1">
+
+                <div class="top_filters">
+                    <div class="top_filters__sort">
+                        <ul class="list-unstyled">
+                            <li class="desc">{{filter}}<div class="ico"></div></li>
+                        </ul>
+                    </div><!--.top_filters__sort-->
+
+                    <div class="top_filters__multi">
+                        <h4>ТИП КАМПАНИИ:</h4>
+                        <ul class="list-unstyled">
+                            {{#each categories}}                                
+                            <li class="active project-category-item" data-filter=".data-filter-{{id}}" categoryId = "{{id}}">{{title}}<div class="ico"></div></li>
+                            {{/each}}
+                        </ul>
+                    </div><!--.top_filters__multi-->
+
+                    <div class="top_filters__multi">
+                        <h4>Клиент:</h4>
+                        <ul class="list-unstyled">
+                            {{#each clients}}                                
+                            <li class="active project-category-item" data-filter=".data-filter-{{id}}" categoryId = "{{id}}">{{title}}<div class="ico"></div></li>                                
+                            {{/each}}                            
+                        </ul>
+                    </div><!--.top_filters__multi-->
+
+                </div><!--.top_filters-->
+
+            </div><!--.col-10-->
+
+        </div><!--.row-->
+
+        <div class="row projects">
+
+        </div><!--.row-->
+
+
+        <div class="more_btn">
+            <a href="javascript:void(0);" id="portfolioShowMore" class="btn btn-bb animated">{{show_more}}</a>
+        </div>
+
+
+    </div><!--.container-->
+
+
+</section><!--.cases_page-->
+
+<script type="text/javascript">
+
+    $(window).on('page.view.portfolio.portfolio.renderWidgetItems', function () {
+        app.logger.text('$grid = $(".projects").isotope');
+        $('.filter-box .tags-box').off('click');
+        // init Isotope
+        var $grid = $('.projects').isotope({
+            itemSelector: '.project-box',
+            layoutMode: 'fitRows'
+        });
+        // filter functions
+        var filterFns = {
+            // show if number is greater than 50
+            numberGreaterThan50: function () {
+                var number = $(this).find('.number').text();
+                return parseInt(number, 10) > 50;
+            },
+            // show if name ends with -ium
+            ium: function () {
+                var name = $(this).find('.name').text();
+                return name.match(/ium$/);
+            }
+        };
+        var cid = sessionStorage.getItem('projects.index.filter.category_id');
+        if (cid) {
+            var filterValue = '.data-filter-' + cid;
+            // use filterFn if matches value
+            filterValue = filterFns[ filterValue ] || filterValue;
+            $grid.isotope({filter: filterValue});
+        }
+
+        // bind filter a click
+        $('.project-category-item').on('click', function () {
+            var filterValue = $(this).attr('data-filter');
+            app.logger.text('.project-category-item a click() filterValue:' + filterValue);
+            // use filterFn if matches value
+            filterValue = filterFns[ filterValue ] || filterValue;
+            $grid.isotope({filter: filterValue});
+            $('.project-category-item').removeClass("active");
+            $(this).addClass('active');
+        });
+        // Page filters
+        if ($('.top_filters__multi').length) {
+            //$('.top_filters__multi').hide();
+            $('.top_filters__sort li').click(function () {
+                $(this).toggleClass('asc').toggleClass('desc');
+                $('.top_filters__multi').slideToggle(300);
+            });
+            $('.top_filters__multi li').click(function () {
+                $(this).toggleClass('active');
+            });
+        }
+
+    });
+
+
+
+</script>

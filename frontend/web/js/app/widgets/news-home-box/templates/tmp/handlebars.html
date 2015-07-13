@@ -1,0 +1,62 @@
+<style>
+    .tags-box .active {        
+        color: black;
+    }
+</style>
+
+<div class="filter-box">
+    <a href="javascript:void(0);" class="filter-btn">{{filter}}</a>
+    <a href="javascript:void(0);" class="tags-close" id = "resetCategories"><span></span><span></span></a>
+    <div class="tags-box">
+        {{#each categories}}
+        <button class="single-tag article-category-item" categoryId = "{{id}}"> {{title}}</button>
+        {{/each}}
+    </div>
+</div>
+
+<div class="news-container waterfall">
+    <div class="clearfix page-bottom"></div>    
+</div>
+
+
+<script type="text/javascript">
+    $(".filter-btn").click(function (e) {
+        e.preventDefault();
+
+        $(this).animate(function () {
+            opacity: 1
+        }, 200, function () {
+            $(".filter-box").animate({
+                height: $(".tags-box").outerHeight() + 15
+            }, 200);
+            $(".filter-btn").hide();
+            $(".tags-close").fadeIn();
+            $(".tags-box").addClass("opened-tags");
+        });
+    });
+
+    $(".tags-close").click(function (e) {
+        e.preventDefault();
+
+        $(".tags-box").removeClass("opened-tags");
+        $(this).fadeOut();
+        setTimeout(function () {
+            $(".filter-btn").fadeIn();
+            $(".filter-box").animate({
+                height: 145
+            }, 200);
+        }, 400);
+
+    });
+
+    $(document).ready(function () {
+        setTimeout(function () {
+            $(".filter-btn").css({"margin-left": $(".news-box:first").offset().left});
+        }, 3000);
+    });
+
+    $(window).resize(function () {
+        $(".filter-btn").css({"margin-left": $(".news-box:first").offset().left});
+    });
+
+</script>
