@@ -1,0 +1,64 @@
+<div class="case_page__top cf">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm-7 col-sm-offset-0">
+
+                <div class="case_page__slide">
+                    <h4 class="animated">конверсионная кампания</h4>
+                    <h2 class="animated">Лэндинг<br> общественного<br> WI-FI <span class="line animated"></span></h2>
+
+                    <div class="trio_nev__wrap">
+                        <div class="trio_nev animated">
+                            <div class="trio_nev__in">
+                                <div class="trio_nev__left">Пред.</div>
+                                <a href="#">
+                                    <span class="trio_nev__ico"></span>
+                                    <span class="trio_nev__txt">Все кейсы</span>
+                                </a>
+                                <div class="trio_nev__right">След.</div>
+                            </div>
+                        </div><!--.trio_nev-->
+                    </div><!--.trio_nev__wrap-->
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-5 hidden-xs">
+                <div class="case_page__kv">
+                    <img src="/img/img-case-kv.png" alt="#">
+                </div>
+            </div>
+        </div><!--.row-->
+    </div><!--.container-->
+</div><!--.blog_post__top-->
+<script>
+$(document).ready(function() {
+	// Case page slider
+	if($('.case_page__slider-in').length) {
+		$('.case_page__slider-in').flexslider();
+	}
+
+
+	// Case page height title
+	function btitle_name() {
+		if($(document).width() >= 767) {
+
+			$('.btitle_name').each(function(){
+			  var btitle_height = $(this).parent().parent().find('.btitle_name__body').height() - 15;
+				$(this).css({height: btitle_height});
+			});
+
+		} else {
+			$('.btitle_name').css({'height':'auto;'})
+		}
+	}
+
+	if($('.btitle_name').length) {
+		btitle_name();
+
+		$(window).resize(function(){
+			btitle_name();
+		});
+	}
+});
+</script>

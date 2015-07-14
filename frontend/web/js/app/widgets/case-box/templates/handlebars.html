@@ -1,0 +1,19 @@
+<div class="case_page__more_cases">
+    <h2>{{all_projects}}</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+
+                <div class="row">
+                    {{#each items}}
+                    <div class="col-md-4 col-sm-4">
+                        <a href="{{viewUrl}}"><img src="{{previewImg}}" alt="#"></a>
+                    </div>
+                    {{/each}}
+                </div><!--.row-->
+
+            </div>
+        </div><!--.row-->
+    </div><!--.container-->
+</div><!--.case_page__more_cases-->

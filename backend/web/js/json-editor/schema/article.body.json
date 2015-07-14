@@ -8,6 +8,34 @@
         "headerTemplate": "{{i1}} - {{self.tab_title}}",
         "oneOf": [
             {
+                "$ref": "/js/json-editor/schema/post-text.json",
+                "title": "Post text"
+            },
+            {
+                "$ref": "/js/json-editor/schema/post-text-simple.json",
+                "title": "Post text simple"
+            },
+            {
+                "$ref": "/js/json-editor/schema/post-head-box.json",
+                "title": "Post head box"
+            },
+            {
+                "$ref": "/js/json-editor/schema/post-text-progress.json",
+                "title": "Post text progress"
+            },
+            {
+                "$ref": "/js/json-editor/schema/post-head-social.json",
+                "title": "Post head social"
+            },
+            {
+                "$ref": "/js/json-editor/schema/post-button-social.json",
+                "title": "Post button social"
+            },
+            {
+                "$ref": "/js/json-editor/schema/news-home-box.json",
+                "title": "News home box"
+            },
+            {
                 "$ref": "/js/json-editor/schema/contacts-box.json",
                 "title": "Contacts box"
             }

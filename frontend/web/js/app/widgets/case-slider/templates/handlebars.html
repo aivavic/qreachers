@@ -1,0 +1,26 @@
+<div class="case_page__slider">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+
+                <div class="case_page__slider-in cf">
+                    <ul class="list-unstyled slides">
+                        {{#each items}} 
+                        <li>
+                            <img src="{{img_src}}" alt="#">
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div><!--.case_page__slider-in-->
+
+            </div><!--.col-of-1-->
+        </div><!--.row-->
+    </div><!--.container-->
+</div><!--.case_page__slider-->
+<script>
+$(document).ready(function() {
+	if($('.case_page__slider-in').length) {
+		$('.case_page__slider-in').flexslider();
+	}
+});
+</script>

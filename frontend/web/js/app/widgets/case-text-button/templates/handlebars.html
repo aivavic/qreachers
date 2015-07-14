@@ -1,0 +1,74 @@
+<div class="case_page__solution">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+
+                <div class="row">
+
+                    <div class="col-md-3 col-sm-4">
+                        <div class="btitle_name">
+                            <div class="btitle_name__in">
+                                <h3>{{title}}</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-9 col-sm-8 btitle_name__body">
+                        {{{text}}}
+                    </div>
+
+                </div><!--.row-->
+
+            </div><!--.col-of-1-->
+        </div><!--.row-->
+    </div><!--.container-->
+</div><!--.case_page__solution-->
+<script>
+    $(document).ready(function() {
+            // Case page slider
+            if ($('.case_page__slider-in').length) {
+                $('.case_page__slider-in').flexslider();
+            }
+
+
+            // Case page height title
+            function btitle_name() {
+             if($(document).width() >= 767) {
+             
+             $('.btitle_name').each(function(){
+             var btitle_height = $(this).parent().parent().find('.btitle_name__body').height() - 15;
+             $(this).css({height: btitle_height});
+             });
+             
+             } else {
+             $('.btitle_name').css({'height':'auto;'})
+             }
+             }
+             
+             if($('.btitle_name').length) {
+             btitle_name();
+             
+             $(window).resize(function(){
+             btitle_name();
+             });
+             }
+
+             // Bullets nav
+             $('.bullets__nav').onePageNav({
+             scrollOffset: 100,
+             currentClass: 'active',
+             changeHash: true,
+             scrollSpeed: 1000,
+             easing: 'swing',
+             //scrollChange: true,
+             
+             begin: function() {
+             $('body').append('<div id="device-dummy" style="height: 1px;"></div>');
+             },
+             end: function() {
+             $('#device-dummy').remove();
+             }
+             
+             });
+        });
+</script>
