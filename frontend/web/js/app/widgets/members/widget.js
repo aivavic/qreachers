@@ -50,8 +50,7 @@
                          *0 3 6 9  - fadeInLeft
                          *1 4 7 10 - fadeIn
                          *2 5 8 11 - fadeInRight
-                         * 
-                         */
+                        */
                     });
 
                     loadTemplate(data);

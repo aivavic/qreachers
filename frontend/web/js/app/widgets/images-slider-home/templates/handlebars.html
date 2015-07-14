@@ -16,7 +16,7 @@
 						<div class="main_slider__cell">
 							<h2 class="animated">{{title}}</h2>
 							
-							<a href="{{urlToCases}}" class="btn btn-bw animated">{{title_button}}</a>
+							<a href="{{url_pages}}" class="btn btn-bw animated">{{title_button}}</a>
 						</div>
 					</div>
 
@@ -30,10 +30,18 @@
 
 </section><!--.main_top-->
 <script>
-    	if($('.main_slider').length) {
+    	 //Main slider
+	if($('.main_slider').length) {
 		$('.main_slider').flexslider({
 			//smoothHeight: true,
 			slideshow: false,
+		});
+	}
+	if($('.btitle_name').length) {
+		btitle_name();
+
+		$(window).resize(function(){
+			btitle_name();
 		});
 	}
 </script>

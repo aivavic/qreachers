@@ -78,6 +78,14 @@
             {
                 "$ref": "/js/json-editor/schema/services-agency.json",
                 "title": "Services agency"
+            },
+            {
+                "$ref": "/js/json-editor/schema/news-home-box.json",
+                "title": "News home box"
+            },
+            {
+                "$ref": "/js/json-editor/schema/cases-home-box.json",
+                "title": "Cases home box"
             }
         ]
     }

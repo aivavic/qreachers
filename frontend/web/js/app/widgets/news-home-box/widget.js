@@ -9,26 +9,61 @@
 
     function run() {
         app.logger.func('run');
-
-        //set default values
-        sessionStorage.setItem('page.view.news.news.filter.page', 1);
-
         loadData();
     }
 
     function loadData() {
         app.logger.func('loadData()');
 
-        data = widget;
+        var data = widget;
 
-        //load categories
+        var sort = data.order_by;
+        if ("desc" == data.sort_order) sort = "-" + sort;         
+        
+        var params = {
+            "fields": 'id,slug,title,description,thumbnail_base_url,thumbnail_path,description,video_base_url,video_path',
+            "expand": 'categories',
+            "per-page": data.count,
+            "sort": sort,
+            "where" :{
+                locale: app.config.frontend_app_locale
+            }
+            
+        };
+
         $.getJSON(
-                app.config.frontend_app_api_url + '/db/article-categories',
-                function (catData) {
-                    data.categories = catData.items;
+                app.config.frontend_app_api_url + '/db/articles',
+                params,
+                function (articlesData) {
+                    $.extend(data, articlesData);
+                    var i = 0;
+                    $.each(data.items, function (key, val) {
+                        data.items[key].previewImg = val.thumbnail_base_url + '/' + val.thumbnail_path;
+                        data.items[key].viewUrl = app.view.helper.preffix + '/article/view/' + val.slug;
+                        data.items[key].description = val.description;
+                        data.items[key].previewVideo = val.video_base_url + '/' + val.video_path;
+                        data.items[key].category_id = (val.categories[0]) ? val.categories[0].id : '-';
+                        if(i == 0){
+                            data.items[key].boxLineBotton = '<div class="news_box__txt-top wow fadeInLeft animated" data-wow-duration="1.2s" data-wow-delay="1s" data-wow-offset="60" style="visibility: visible; -webkit-animation: fadeInLeft 1.2s 1s;"></div><div class="news_box__txt-bt wow fadeInLeft animated" data-wow-duration="1.2s" data-wow-delay="1s" data-wow-offset="60" style="visibility: visible; -webkit-animation: fadeInLeft 1.2s 1s;"></div>';   
+                        } else if(i == 1) {
+                            data.items[key].boxLineBotton = '<div class="news_box__txt-top wow fadeInLeft animated" data-wow-duration="1.2s" data-wow-delay="1s" data-wow-offset="60" style="visibility: visible; -webkit-animation: fadeInLeft 1.2s 1s;"></div><div class="news_box__txt-bt wow fadeInLeft animated" data-wow-duration="1.2s" data-wow-delay="1s" data-wow-offset="60" style="visibility: visible; -webkit-animation: fadeInLeft 1.2s 1s;"></div>';
+                        } else if(i == 2) {
+                            data.items[key].boxLineBotton = '<div class="news_box__txt-bt wow fadeInLeft" data-wow-duration="1.2s" data-wow-delay="1s" data-wow-offset="60"></div>';
+                        } else if(i == 3) {
+                            data.items[key].boxLineBotton = '<div class="news_box__txt-bt wow fadeInLeft" data-wow-duration="1.2s" data-wow-delay="1s" data-wow-offset="60"></div>';
+                            return i = 0;
+                        }
+                        i++;
+                    });
+
+                    data.urlToNews = app.view.helper.preffix + '/page/view/news';
+
+                    data.groups = items_array_chunk(data.items, 4);
+                    app.logger.var(data.groups);
                     loadTemplate(data);
                 });
     }
+
 
     function loadTemplate(data) {
         app.logger.func('loadTemplate(data)');
@@ -37,169 +72,19 @@
             params = '?_' + Date.now();
         }
         app.templateLoader.getTemplateAjax(app.config.frontend_app_web_url + '/js/app/widgets/' + widget.widgetName + '/templates/handlebars.html' + params, function (template) {
-            renderWidget(template(data), data);
+            renderWidget(template(data));
         });
     }
 
-    function renderWidget(html, data) {
+    function renderWidget(html) {
         app.logger.func('renderWidget(html)');
-
         app.container.append(html);
 
-        setTimeout(function () {
-            changeFilterButtonsState();
-            //bind ajax load to links                                 
-            app.bindContainerAjaxLinks(app.config.frontend_app_conainer);
-
-            //bindCategoryClickEvent(app.config.frontend_app_conainer);
-            bindShowMoreScrollEvent();
-        }, 500);
-
-        loadArticles(data);
+        //bind ajax load to links                                 
+        app.bindContainerAjaxLinks("#main-article-list-container");
 
         app.view.afterWidget(widget);
     }
-
-    function changeFilterButtonsState() {
-
-        var cid = sessionStorage.getItem('articles.index.filter.category_id');
-
-        if (cid) {
-            app.logger.text('changeFilterButtonsState, cid: ' + cid);
-            $('.filter-btn').trigger('click');
-            var arr = cid.split(',');
-            $('.filter-box').find('.article-category-item').each(function (k, v) {
-                if (-1 != arr.indexOf($(v).attr('categoryid'))) {
-                    $(v).addClass('active');
-                }
-            });
-        }
-    }
-
-    function loadArticles() {
-        var sort = data.order_by;
-        if ("desc" == data.sort_order)
-            sort = "-" + sort;
-
-        var params = {
-            "fields": 'id,category_id,slug,thumbnail_base_url,thumbnail_path,title',
-            "per-page": data.count,
-            "expand": 'categories',
-            "sort": sort,
-            "where_operator_format": [
-                "like",
-                "domain",
-                location.protocol + '//' + location.hostname,
-            ]
-        };
-
-        var cid = sessionStorage.getItem('articles.index.filter.category_id');
-
-        if (cid) {
-            params.category_id = cid;
-        }
-
-        var page = sessionStorage.getItem('page.view.news.news.filter.page');
-
-        if (page) {
-            params.page = page;
-            params.where = {
-                locale: app.config.frontend_app_locale
-            };
-        }
-
-        $.getJSON(
-                app.config.frontend_app_api_url + '/db/articles',
-                params,
-                function (artData) {
-
-                    $.each(artData.items, function (key, val) {
-                        artData.items[key].previewImg = val.thumbnail_base_url + '/' + val.thumbnail_path;
-                        artData.items[key].viewUrl = app.view.helper.preffix + '/article/view/' + val.slug;
-                        artData.items[key].dataFilterCategories = getDataFilterCategories(val.categories);
-                        artData.items[key].categoryTitles = getCategoryTitles(val.categories);
-                    });
-
-                    data.items = artData.items;
-
-                    loadTemplateItems(data);
-                });
-    }
-
-    function unsetStringElement(old, id) {
-        var arr = old.split(',');
-        var index = arr.indexOf(id);
-        if (-1 != index) {
-            arr.splice(index, 1);
-        }
-
-        return arr.join(',');
-    }
-
-    function loadTemplateItems(data) {
-        app.logger.func('loadTemplate(data)');
-        var params = '';
-        if (true == app.config.frontend_app_debug) {
-            params = '?_' + Date.now();
-        }
-        app.templateLoader.getTemplateAjax(app.config.frontend_app_web_url + '/js/app/widgets/' + widget.widgetName + '/templates/_items.handlebars.html' + params, function (template) {
-            renderWidgetItems(template(data));
-        });
-    }
-
-    function renderWidgetItems(html) {
-        app.logger.func('renderWidget(html)');
-
-        $(".news-container .news-wrap").remove();
-        
-        $(".news-container").prepend(html);
-
-        setTimeout(function () {
-            app.bindContainerAjaxLinks(app.config.frontend_app_conainer);
-        }, 500);
-        
-        setTimeout(function () {
-            $(window).trigger('page.view.article.article.renderWidgetItems');            
-        }, 2000);
-
-    }
-
-    function bindShowMoreScrollEvent() {
-        $(".projects .show-more").click(function () {
-            var page = sessionStorage.getItem('page.view.news.news.filter.page');
-
-            if (page) {
-                sessionStorage.setItem('page.view.news.news.filter.page', page + 1);
-            }
-
-            loadArticles();
-        });
-    }
-
-    function getDataFilterCategories(categories) {
-        var result = '';
-        $.each(categories, function (k, v) {
-            result = result + ' data-filter-' + v.category_id;
-        });
-
-        return result;
-    }
-    
-    function getCategoryTitles(categories) {
-        var result = [];
-
-        $.each(categories, function (k, v) {
-            if (v.category_id) {
-                result.push(v.category_id);
-            }
-        });
-
-        //TODO: get category title from data.categories
-
-        return result.join(',');
-    }
-
-
 
 })();
 

@@ -130,3 +130,27 @@ $(window).scroll(function () {
 function urlencode(v) {
     return encodeURIComponent(v).replace(/%20/g, '+');
 }
+
+function array_chunk( input, size ) {
+
+	for(var x, i = 0, c = -1, l = input.length, n = []; i < l; i++){
+		(x = i % size) ? n[c][x] = input[i] : n[++c] = [input[i]];
+	}
+
+	return n;
+}
+function items_array_chunk( input, size ) {
+
+	for(var x, i = 0, c = -1, l = input.length, n = []; i < l; i++){
+		if (x = i % size) { 
+                    n[c][x] = input[i] 
+                } else {
+                    n[++c] = [input[i]];
+                }
+	}
+        var groups = [];
+        $.each(n,function(k,v){
+            groups[k] = {'items':v}; 
+        });
+	return groups;
+}

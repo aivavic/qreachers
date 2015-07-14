@@ -56,6 +56,11 @@
                         "title": "Title button.",
                         "default": "Lorem ipsum dolor..."
                     },
+                    "url_pages": {
+                        "type": "string",
+                        "title": "Url.",
+                        "default": "Url..."
+                    },
                     "video_src": {
                         "type": "string",
                         "format": "url",

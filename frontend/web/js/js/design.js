@@ -24,7 +24,7 @@ new WOW().init({
 $(document).ready(function() {
 
 	// Main page case slider
-	if($('.projects_box__in').length) {
+	/*if($('.projects_box__in').length) {
 		$('.projects_box__in').flexslider({
 			slideshow: false,
 			directionNav: false,
@@ -41,7 +41,7 @@ $(document).ready(function() {
 				});
 			}
 		});
-	}
+	}*/
 
 
 	// Main page news slider
@@ -80,11 +80,11 @@ $(document).ready(function() {
 	}*/
 
 	// Cases show/hide description
-	/*if($('.projects_box__txt p').length) {
-		$('.projects_box__item').hover(function(){
-			$(this).find('.projects_box__txt p').slideToggle(250);
-		});
-	}*/
+//	if($('.projects_box__txt p').length) {
+//		$('.projects_box__item').hover(function(){
+//			$(this).find('.projects_box__txt p').slideToggle(250);
+//		});
+//	}
 
 
 	// Case page slider
@@ -170,7 +170,7 @@ $(document).ready(function() {
 
 
 	// Trio nav
-	if($('.trio_nav').length) {
+	/*if($('.trio_nav').length) {
 		$('.trio_nav').hover(function(){
 			$(this).addClass('trio_nav--hovered');
 		});
@@ -180,7 +180,7 @@ $(document).ready(function() {
 		$('.trio_nev').hover(function(){
 			$(this).addClass('trio_nev--hovered');
 		});
-	}
+	}*/
 
 
 	// About page count
