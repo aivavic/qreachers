@@ -10,6 +10,7 @@ use \yii\helpers\ArrayHelper;
 use common\models\Article;
 use common\models\Project;
 use \yii\helpers\Url;
+use yii\web\NotFoundHttpException;
 
 /**
  * This is the model class for table "page".
@@ -92,16 +93,16 @@ class Page extends \yii\db\ActiveRecord
 
     public static function getMetaTags()
     {
-        $tags = [];
+        $tags   = [];
         $locale = null;
 
         preg_match('/^(.+)\/(.+)\/(.+)\/(.+)/', Yii::$app->request->pathInfo, $matches);
 
         if (!empty($matches[1]) and ! empty($matches[2]) and ! empty($matches[3])) {
-            $shortLocale     = $matches[1];
-            $controller = $matches[2];
-            $action     = $matches[3];
-            $slug       = $matches[4];
+            $shortLocale = $matches[1];
+            $controller  = $matches[2];
+            $action      = $matches[3];
+            $slug        = $matches[4];
 
             foreach (Yii::$app->params['availableLocales'] as $k => $v) {
                 if ($shortLocale == explode('-', $k)[0]) {
@@ -112,13 +113,13 @@ class Page extends \yii\db\ActiveRecord
 
             switch ($controller) {
                 case 'page':
-                    $model = self::find()->published()->andWhere(['slug' => $slug, 'locale'=> $locale])->one();
+                    $model = self::find()->published()->andWhere(['slug' => $slug, 'locale' => $locale])->one();
                     break;
                 case 'article':
-                    $model = Article::find()->published()->andWhere(['slug' => $slug, 'locale'=> $locale])->one();
+                    $model = Article::find()->published()->andWhere(['slug' => $slug, 'locale' => $locale])->one();
                     break;
                 case 'project':
-                    $model = Project::find()->published()->andWhere(['slug' => $slug, 'locale'=> $locale])->one();
+                    $model = Project::find()->published()->andWhere(['slug' => $slug, 'locale' => $locale])->one();
                     break;
             }
 
@@ -127,9 +128,19 @@ class Page extends \yii\db\ActiveRecord
                 $arr = json_decode($model->head, true);
                 foreach ($arr as $key => $value) {
                     foreach ($value as $key2 => $value2) {
+                        //custom meta tag
+                        if (4 == count($value2)) {
+                            $value2 = array_values($value2);
+                            $value2 = [$value2[0] => $value2[1], $value2[2] => $value2[3]];
+                        }
+
                         $tags[] = $value2;
                     }
                 }
+            }
+
+            if (empty($model)) {
+                throw new NotFoundHttpException('The requested page does not exist.');
             }
 
             Yii::$app->view->title = $model->title;
@@ -220,10 +231,10 @@ class Page extends \yii\db\ActiveRecord
 
     public static function switchToUrlLocale()
     {
-        /*if ('site' == Yii::$app->controller->id and 'set-locale' == Yii::$app->controller->action->id) {
-            return;
-        }*/
-           
+        /* if ('site' == Yii::$app->controller->id and 'set-locale' == Yii::$app->controller->action->id) {
+          return;
+          } */
+
         $url = Yii::$app->request->pathInfo;
 
         $arr = explode('/', $url);
@@ -239,23 +250,19 @@ class Page extends \yii\db\ActiveRecord
                 $_SESSION['altRef'] = Yii::$app->request->absoluteUrl;
                 Yii::$app->response->redirect(Url::to(['/site/set-locale', 'locale' => $locale]));
             }
-        }
-        else {
+        } else {
             //$_SESSION['altRef'] = Yii::$app->request->absoluteUrl;
-            
+
             if (!empty($arr[0]) and 'en' == $arr[0]) {
                 //Yii::$app->request->referrer = '/en/page/view/home';
                 $_SESSION['altRef'] = Yii::$app->request->absoluteUrl . '/page/view/home';
                 Yii::$app->response->redirect(Url::to(['/site/set-locale', 'locale' => 'en-US']));
-            }
-            elseif (!empty($arr[0]) and 'ru' == $arr[0]) {
+            } elseif (!empty($arr[0]) and 'ru' == $arr[0]) {
                 $_SESSION['altRef'] = Yii::$app->request->absoluteUrl . '/page/view/home';
                 Yii::$app->response->redirect(Url::to(['/site/set-locale', 'locale' => 'ru-RU']));
-            }
-            else {
+            } else {
                 Yii::$app->response->redirect(Url::to(['/site/set-locale', 'locale' => Yii::$app->language]));
             }
-            
         }
     }
 }
