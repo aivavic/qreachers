@@ -8,6 +8,38 @@
         "headerTemplate": "{{i1}} - {{self.tab_title}}",
         "oneOf": [
             {
+                "$ref": "/js/json-editor/schema/case-text.json",
+                "title": "Case text"
+            },
+            {
+                "$ref": "/js/json-editor/schema/case-text-button.json",
+                "title": "Case text button"
+            },
+            {
+                "$ref": "/js/json-editor/schema/case-text-result.json",
+                "title": "Case text result"
+            },
+            {
+                "$ref": "/js/json-editor/schema/case-head-box.json",
+                "title": "Case head box"
+            },
+            {
+                "$ref": "/js/json-editor/schema/case-box.json",
+                "title": "Case box"
+            },
+            {
+                "$ref": "/js/json-editor/schema/case-slider.json",
+                "title": "Case slider"
+            },
+            {
+                "$ref": "/js/json-editor/schema/case-info.json",
+                "title": "Case info"
+            },
+            {
+                "$ref": "/js/json-editor/schema/case-video.json",
+                "title": "Case video"
+            },
+            {
                 "$ref": "/js/json-editor/schema/contacts-box.json",
                 "title": "Contacts box"
             }

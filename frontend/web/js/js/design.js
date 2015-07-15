@@ -94,7 +94,7 @@ $(document).ready(function() {
 
 
 	// Case page height title
-	function btitle_name() {
+	/*function btitle_name() {
 		if($(document).width() >= 767) {
 
 			$('.btitle_name').each(function(){
@@ -113,7 +113,7 @@ $(document).ready(function() {
 		$(window).resize(function(){
 			btitle_name();
 		});
-	}
+	}*/
 
 	/*
 	// Bullets nav

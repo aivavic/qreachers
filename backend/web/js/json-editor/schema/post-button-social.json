@@ -1,0 +1,41 @@
+{
+    "type": "object",
+    "title": "Post button social",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___post-button-social___"
+            }
+        },
+        "___post-button-social___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Post button social"
+        },
+        "post-button-social-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/post-button-social/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "author": {
+            "type": "string",
+            "title": "Author",
+            "default": "Author 21/01/2015"
+        }
+    }
+}

@@ -1,0 +1,94 @@
+{
+    "type": "object",
+    "title": "Case info",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___case-info___"
+            }
+        },
+        "___case-info___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Case info"
+        },
+        "case-info-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/case-info/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "link_toSite": {
+            "type": "string",
+            "title": "Url to clients",
+            "default": "Url to clients"
+        },
+        "title_button": {
+            "type": "string",
+            "title": "Title button",
+            "default": "Title button"
+        },
+        "client": {
+            "type": "string",
+            "title": "Client",
+            "default": "client"
+        },
+        "client_part": {
+            "type": "string",
+            "title": "Client part",
+            "default": "client part"
+        },
+        "country": {
+            "type": "string",
+            "title": "Country",
+            "default": "Country"
+        },
+        "country_part": {
+            "type": "string",
+            "title": "Country part",
+            "default": "Country part"
+        },
+        "year": {
+            "type": "string",
+            "title": "Year",
+            "default": "year"
+        },
+        "year_part": {
+            "type": "string",
+            "title": "Year part",
+            "default": "year part"
+        },
+        "text_first": {
+            "type": "string",
+            "format": "html",
+            "options": {
+                "wysiwyg": true
+            },
+            "title": "Text left",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing..."
+        },
+        "text_two": {
+            "type": "string",
+            "format": "html",
+            "options": {
+                "wysiwyg": true
+            },
+            "title": "Text right",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing..."
+        }
+    }
+}
