@@ -1,0 +1,148 @@
+<section class="contacts_box" id="contacts">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-6 col-md-offset-3 col-sm-7 col-sm-offset-3">
+
+                <div class="contacts_box__feedback">
+
+                    <p>По вопросам сотрудничества, пожалуйста,<br> заполните форму обратной связи<br> или напишите нам!</p>
+
+                    <form action="#" id="contact_form">
+                        <div class="inp-group">
+                            <input type="text" name="name" placeholder="ваше имя" class="inp-style">
+                        </div>
+
+                        <div class="inp-group">
+                            <input type="text" name="mail" placeholder="e-mail" class="inp-style">
+                        </div>
+
+                        <div class="inp-group">
+                            <textarea name="msg" rows="3" placeholder="приятные слова" class="inp-style"></textarea>
+                        </div>
+
+                        <input type="submit" value="ОТПРАВИТЬ" class="btn btn-bw">
+
+                    </form>
+
+                    <div class="socials-blue">
+                        <ul class="list-unstyled">
+                            <li class="fb"><a href="#">Facebook</a></li>
+                            <li class="sh"><a href="#">Slideshare</a></li>
+                            <li class="yt"><a href="#">Youtube</a></li>
+                            <li class="vm"><a href="#">Vimeo</a></li>
+                        </ul>
+                    </div>
+
+                </div><!--.contacts_box__feedback-->
+
+            </div>
+
+        </div><!--.row-->
+
+    </div><!--.container-->
+
+</section><!--.contacts_box-->
+<script>
+$(document).ready(function(){
+        // Contacts box
+	$('.contacts_box__default-btn .flip-btn').click(function(){
+		$('.contacts_box').addClass('flip');
+		//$('.wrapper').animate({'height':'500px'}, 250);
+	});
+
+	$('.contacts_box__feedback--cancel').click(function(){
+		$('.contacts_box').removeClass('flip');
+		//$('.wrapper').animate({'height':'400px'}, 250);
+
+		$('#contact_form').validate().resetForm();
+	});
+
+	$('.contacts_box__feedback--submit').click(function(){
+		$('.flip-panel').fadeOut(300, function(){
+			$('.contacts_box__thanks').fadeIn(300);
+		});
+
+		setTimeout(function() {
+			$('.hover').removeClass('flip');
+			$('.contacts_box__thanks').fadeOut(250, function(){
+				$('.wrapper').animate({'height':'400px'}, 250);
+				$('.flip-panel').fadeIn(300);
+			})
+		}, 3000);
+
+	});
+});
+	// Validate contact form
+	if($('#contact_form').length) {
+
+		$('#contact_form').validate({
+			//debug: true,
+			errorClass: 'inp-error',
+			errorElement: 'p',
+
+			highlight: function (element, errorClass, validClass) { 
+	            $(element).addClass(errorClass).removeClass(validClass); 
+	        }, 
+	        
+	        unhighlight: function (element, errorClass, validClass) { 
+	            $(element).removeClass(errorClass).addClass(validClass); 
+	        },
+
+			rules: {
+
+				mail: {
+					required: true,
+					email: true
+				},
+				msg: {
+					required: true,
+					minlength: 2
+				},
+			},
+			messages: {
+
+				mail: "Введите корректные данные",
+				msg: {
+					required: "Введите ваше сообщение",
+					minlength: "Сообщение должно быть больше двух символов"
+				},
+
+			},
+
+			submitHandler: function(form) {
+				$('.contacts_box__feedback').fadeOut(300, function(){
+					$('.contacts_box__thanks').fadeIn(300);
+				});
+
+				setTimeout(function() {
+					$('.contacts_box').removeClass('flip');
+					$('.contacts_box__thanks').fadeOut(250, function(){
+						$('.contacts_box__feedback').fadeIn(300);
+						//$('.wrapper').animate({'height':'400px'}, 250);
+					});
+
+					//alert('Submitted!');
+
+				}, 3000);
+
+			}
+
+		});
+         $('#contact_form').on('submit',function(){
+                var form = $(this);
+                $.ajax({
+                    url: '/site/feedback',
+                    type: "POST",
+                    cashe: false,
+                    data: form.serialize(),
+                    success: function (data) {
+                        var data = $.parseJSON(data);
+                        console.log(data);
+                    }
+                });
+        });
+	}
+</script>

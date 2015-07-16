@@ -1,58 +1,62 @@
 <section class="projects_box" id="projects">
 
-	<div class="container">
+    <div class="container">
 
-	<div class="projects_box__in cf">
+        <div class="projects_box__in cf">
 
-		<ul class="list-unstyled slides">
-                    {{#each groups}}
-			<li>
-				<div class="row wow fadeIn" data-wow-duration="0.3s" data-wow-delay="0.3s" data-wow-offset="50">
-                                        {{#each items}}
-                                        
-					<div class="col-md-5 {{rows}}">
+            <ul class="list-unstyled slides">
+                {{#each groups}}
+                <li>
+                    <div class="row wow fadeIn" data-wow-duration="0.3s" data-wow-delay="0.3s" data-wow-offset="50">
+                        {{#each items}}
 
-						<div class="projects_box__item">
-							<div class="projects_box__thumb wow fadeInDownMin" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="200">
-								<img src="{{previewImg}}" alt="#">
-							</div>
+                        <div class="col-md-5 {{rows}}">
 
-							<div class="projects_box__txt wow fadeInUpMin" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="50">
-								<div class="wow fadeIn" data-wow-duration="0.7s" data-wow-delay="1.4s" data-wow-offset="50">
-									<span>{{category_id}}</span>
-									<h4>{{title}}</h4>
-									<p>{{description}}</p>
-								</div>
-							</div>
-						</div>
+                            <div class="projects_box__item">
+                                <div class="projects_box__thumb wow fadeInDownMin" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="200">
+                                    <img src="{{previewImg}}" alt="#">
+                                </div>
 
-					</div><!--.col-->
-                                        {{/each}}
-				</div><!--.row-->
-			</li>
+                                <div class="projects_box__txt wow fadeInUpMin" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="50">
+                                    <div class="wow fadeIn" data-wow-duration="0.7s" data-wow-delay="1.4s" data-wow-offset="50">
+                                        <span>{{category_id}}</span>
+                                        <h4>{{title}}</h4>
+                                        <p>{{description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><!--.col-->
                         {{/each}}
-		</ul>
-	</div><!--.projects_box__in-->
+                    </div><!--.row-->
+                </li>
+                {{/each}}
+            </ul>
+        </div><!--.projects_box__in-->
 
-	<div class="trio_nav__wrap wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.8s">
-		<div class="trio_nav">
-			<div class="trio_nav__in">
-				<div class="trio_nav__left"></div>
-					<a href="{{urlToPortfolio}}">
-						<span class="trio_nav__ico"></span>
-						<span class="trio_nav__txt">{{all_projects}}</span>
-					</a>
-				<div class="trio_nav__right"></div>
-			</div>
-		</div><!--.trio_nav-->
-	</div><!--.trio_nav__wrap-->
+        <div class="trio_nav__wrap wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.8s">
+            <div class="trio_nav">
+                <div class="trio_nav__in">
+                    <div class="trio_nav__left"></div>
+                    <a href="{{urlToPortfolio}}">
+                        <span class="trio_nav__ico"></span>
+                        <span class="trio_nav__txt">{{all_projects}}</span>
+                    </a>
+                    <div class="trio_nav__right"></div>
+                </div>
+            </div><!--.trio_nav-->
+        </div><!--.trio_nav__wrap-->
 
-	</div><!--.container-->
+    </div><!--.container-->
 
 
 </section><!--.projects_box-->
 <script>
 $(document).ready(function() {
+    var count = $('.projects_box__in ul > li').length;
+    if(count == 1){
+       $('.trio_nav__wrap').hide(); 
+    }
     	if($('.projects_box__in').length) {
 		$('.projects_box__in').flexslider({
 			slideshow: false,

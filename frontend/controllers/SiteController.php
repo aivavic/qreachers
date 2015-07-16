@@ -45,4 +45,9 @@ class SiteController extends Controller
             'message' => $message,
         ]);
     }
+    
+    public function actionFeedback()
+    {
+        var_dump($_POST);
+    }
 }

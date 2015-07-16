@@ -37,6 +37,16 @@
             "title": "Filter button text.",
             "default": "Filter"
         },
+        "type": {
+            "type": "string",
+            "title": "Type company.",
+            "default": "Type company"
+        },
+        "client": {
+            "type": "string",
+            "title": "Client.",
+            "default": "Client"
+        },
         "order_by": {
             "type": "string",
             "title": "Order by filed.",

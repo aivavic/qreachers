@@ -46,6 +46,20 @@
                 }
             ]
         },
+        "img_src": {
+            "type": "string",
+            "format": "url",
+            "title": "Image for modile varsion.",
+            "options": {
+            "upload": true
+            },
+                "links": [
+                {
+                    "href": "{{self}}",
+                    "rel": "View file"
+                }
+                        ]
+        },
         "title": {
             "type": "string",
             "title": "Title image.",

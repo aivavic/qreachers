@@ -32,10 +32,6 @@
                 "title": "Anchor menu"
             },
             {
-                "$ref": "/js/json-editor/schema/contacts-box.json",
-                "title": "Contacts box"
-            },
-            {
                 "$ref": "/js/json-editor/schema/clients-box.json",
                 "title": "Clients box"
             },
@@ -86,6 +82,14 @@
             {
                 "$ref": "/js/json-editor/schema/cases-home-box.json",
                 "title": "Cases home box"
+            },
+            {
+                "$ref": "/js/json-editor/schema/contacts-box.json",
+                "title": "Contacts box"
+            },
+            {
+                "$ref": "/js/json-editor/schema/contacts.json",
+                "title": "Contacts"
             }
         ]
     }

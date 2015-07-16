@@ -19,7 +19,7 @@
             },
             "default": "About video"
         },
-        "we-are-preview": {
+        "about-video-preview": {
             "title": "Example:",
             "type": "string",
             "format": "hidden",
@@ -32,9 +32,9 @@
             ]
 
         },
-        "vieo": {
+        "video": {
             "type": "string",
-            "title": "Title",
+            "title": "Video",
             "default": "About video ..."
         },
         "img_src": {
