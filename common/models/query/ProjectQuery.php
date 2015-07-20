@@ -20,6 +20,14 @@ class ProjectQuery extends ActiveQuery
         $this->andWhere(['<', '{{%project}}.published_at', time()]);
         return $this;
     }
+    
+    public function ignore($ids)
+    {
+        $this->andWhere('{{%project}}.id NOT IN (' . $ids . ')');
+
+        return $this;
+    }
+    
 
     /**
      *

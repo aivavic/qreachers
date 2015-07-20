@@ -26,7 +26,12 @@
             "sort" : sort,              
             "where" :{
                 locale: app.config.frontend_app_locale
-            }           
+            },
+            "where_operator_format": [
+                "not like",
+                "slug",
+                app.router.slug
+            ]
         };
 
         $.getJSON(

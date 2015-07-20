@@ -54,14 +54,16 @@ class ProjectController extends ActiveController
      * @return ActiveDataProvider
      */
     public function prepareDataProvider()
-    {         
+    { 
+        $ignore         = Yii::$app->request->get('ignore', 0);
         $onlyCategory   = Yii::$app->request->get('category_id');
         $where          = Yii::$app->request->get('where', []);
         $whereOperatorFormat = Yii::$app->request->get('where_operator_format', []);
 
         return new ActiveDataProvider(array(
             'query'      => Project::find()
-                ->published()                
+                ->published() 
+                ->ignore($ignore)
                 ->onlyCategory($onlyCategory)
                 ->andFilterWhere($where)
                 ->andFilterWhere($whereOperatorFormat)

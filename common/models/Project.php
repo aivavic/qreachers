@@ -149,7 +149,7 @@ class Project extends \yii\db\ActiveRecord
             'head'           => Yii::t('common', 'Head'),
             'body'           => Yii::t('common', 'Body'),
             'thumbnail'      => Yii::t('common', 'Thumbnail'),
-            'video'          => Yii::t('common', 'Video'),
+            'video'          => Yii::t('common', 'Main image'),
             'author_id'      => Yii::t('common', 'Author'),
             'updater_id'     => Yii::t('common', 'Updater'),
             'category_id'    => Yii::t('common', 'Category'),
