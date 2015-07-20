@@ -15,6 +15,7 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $id
  * @property string $slug
  * @property string $title
+ * @property string $domain
  * @property string $body
  * @property string $head
  * @property string $thumbnail_base_url
@@ -112,7 +113,7 @@ class Client extends \yii\db\ActiveRecord
             [['author_id', 'updater_id', 'status', 'weight'], 'integer'],
             [['slug', 'thumbnail_base_url', 'thumbnail_path'], 'string', 'max' => 1024],
             [['title'], 'string', 'max' => 512],
-            [['attachments', 'thumbnail'], 'safe']
+            [['attachments', 'thumbnail', 'domain'], 'safe']
         ];
     }
 
@@ -135,10 +136,25 @@ class Client extends \yii\db\ActiveRecord
             'published_at' => Yii::t('common', 'Published At'),
             'created_at'   => Yii::t('common', 'Created At'),
             'updated_at'   => Yii::t('common', 'Updated At'),
-            'weight'       => Yii::t('common', 'Weight')
+            'weight'       => Yii::t('common', 'Weight'),
+            'domain' => Yii::t('common', 'Domain'),
         ];
     }
 
+    
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+
+            if ($this->domain) {                
+                $this->domain = implode(',',$this->domain);
+            }
+            
+            return true;
+        } else {
+            return false;
+        }
+    }
     /**
      * @return \yii\db\ActiveQuery
      */

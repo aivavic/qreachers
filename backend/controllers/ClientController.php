@@ -59,10 +59,35 @@ class ClientController extends Controller
             return $this->render('create', [
                 'model' => $model,
                 'categories' => ClientCategory::find()->active()->all(),
+                'domains' => array_combine(explode(',', Yii::getAlias('@frontendUrls')), explode(',', Yii::getAlias('@frontendUrls'))),
             ]);
         }
     }
 
+    public function actionEnum($domain_type)
+    {
+        $membersArray = Client::find()->published()->andWhere(['like', 'domain', Yii::getAlias('@frontendUrl_'.$domain_type)])->all();
+
+        $enum       = [];
+        $enumTitles = [];
+        foreach ($membersArray as $k => $v) {
+            $enum[] = $v->title.' #' .$v->id;
+        }
+
+        //\yii\helpers\VarDumper::dump($members,11,1); die();
+        Yii::$app->response->data = [
+            "items" => [
+                "type" => "string",
+                "enum" => $enum
+            ]
+        ];
+
+        Yii::$app->response->format = yii\web\Response::FORMAT_JSON;
+
+        return Yii::$app->response;
+    }
+    
+    
     /**
      * Updates an existing Client model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -73,12 +98,17 @@ class ClientController extends Controller
     {
         $model = $this->findModel($id);
 
+        if(!empty($model->domain)) {
+                $model->domain = explode(',', $model->domain);
+        }
+        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
                 'categories' => ClientCategory::find()->active()->all(),
+                'domains'    => array_combine(explode(',', Yii::getAlias('@frontendUrls')), explode(',', Yii::getAlias('@frontendUrls'))),
             ]);
         }
     }

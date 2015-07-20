@@ -33,7 +33,8 @@
                 {{/each}}
             </ul>
         </div><!--.projects_box__in-->
-
+        
+        {{#if itemsCount}}
         <div class="trio_nav__wrap wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.8s">
             <div class="trio_nav">
                 <div class="trio_nav__in">
@@ -46,17 +47,17 @@
                 </div>
             </div><!--.trio_nav-->
         </div><!--.trio_nav__wrap-->
-
+        {{/if}}
     </div><!--.container-->
 
 
 </section><!--.projects_box-->
 <script>
 $(document).ready(function() {
-    var count = $('.projects_box__in ul > li').length;
+    /*var count = $('.projects_box__in ul > li').length;
     if(count == 1){
        $('.trio_nav__wrap').hide(); 
-    }
+    }*/
     	if($('.projects_box__in').length) {
 		$('.projects_box__in').flexslider({
 			slideshow: false,

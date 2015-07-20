@@ -60,6 +60,10 @@
 
                     data.groups = items_array_chunk(data.items, 4);
                     app.logger.var(data.groups);
+                    app.logger.var(data.items.length);
+                    if(data.items.length > 4){
+                        data.itemsCount = true;                        
+                    }
                     loadTemplate(data);
                 });
     }

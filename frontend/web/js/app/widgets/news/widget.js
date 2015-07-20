@@ -121,7 +121,10 @@
                     });
 
                     data.items = artData.items;
-
+                    app.logger.var(data.items.length);
+                    if(data.items.length > 8){
+                        data.itemsCount = true;                        
+                    }
                     loadTemplateItems(data);
                 });
     }

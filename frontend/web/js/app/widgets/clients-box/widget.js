@@ -16,14 +16,22 @@
         app.logger.func('loadData()');
 
         var data = widget;
-        var sort = data.order_by;
-    
-        if ("desc" == data.sort_order) sort = "-" + sort;         
+        //var sort = data.order_by;
+        var ids = [];
+
+        $.each(data['client_' + app.config.frontend_app_site_type], function(k,v) {
+            ids[k] = v.split('#')[1];
+        });
         
+        //if ("desc" == data.sort_order) sort = "-" + sort;         
+
         var params = {
-            "fields": 'id,slug,title,description,thumbnail_base_url,thumbnail_path,description,video_base_url,video_path',
-            "limit": data.count,        
-            "sort": sort,
+            fields: 'id,slug,title,description,thumbnail_base_url,thumbnail_path,description,video_base_url,video_path',
+            /*"limit": data.count,        
+            "sort": sort,*/
+            where : {
+                id : ids
+            }
         };
 
         $.getJSON(

@@ -32,36 +32,22 @@
             ]
 
         },
-        "order_by": {
+        "title": {
             "type": "string",
-            "title": "Order by filed.",
-            "enum": [
-                "id",
-                "weight",
-                "created_at",
-                "updated_at"
-            ],
-            "options": {
-                "enum_titles": ["Id", "Weight", "Created at", "Updated at"]
-            },
-            "default": "id"
+            "title": "Title button.",
+            "default": "Title button."
         },
-        "sort_order": {
-            "type": "string",
-            "title": "Sort order.",
-            "enum": [
-                "asc",
-                "desc"
-            ],
-            "options": {
-                "enum_titles": ["asc", "desc"]
-            },
-            "default": "desc"
+        "client_ua": {
+            "type": "array",
+            "uniqueItems": true,
+            "format": "select",
+            "$ref": "/client/enum?domain_type=ua"
         },
-        "count": {
-            "type": "string",
-            "title": "Clients count.",
-            "default": "10"
+        "client_kz": {
+            "type": "array",
+            "uniqueItems": true,
+            "format": "select",
+            "$ref": "/client/enum?domain_type=kz"
         }
     }
 }

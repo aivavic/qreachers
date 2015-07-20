@@ -54,6 +54,10 @@
                     data.urlToPortfolio = app.view.helper.preffix + '/page/view/portfolio';
                     data.groups = items_array_chunk(data.items, 2);
                     app.logger.var(data.groups);
+                    app.logger.var(data.items.length);
+                    if(data.items.length > 2){
+                        data.itemsCount = true;                        
+                    }
                     loadTemplate(data);
                 });
     }
