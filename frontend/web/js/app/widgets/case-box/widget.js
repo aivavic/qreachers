@@ -21,16 +21,16 @@
         if ("desc" == data.sort_order) sort = "-" + sort;         
 
         var params = {
-            "fields": 'id,slug,title,description,thumbnail_base_url,thumbnail_path,description,video_base_url,video_path',            
-            "per-page": data.count,
-            "sort" : sort,              
+            "fields": 'id,slug,title,description,thumbnail_base_url,thumbnail_path,description,video_base_url,video_path,domain',            
+            /*"per-page": data.count,*/
+            "sort" : sort,
             "where" :{
                 locale: app.config.frontend_app_locale
             },
             "where_operator_format": [
                 "not like",
                 "slug",
-                app.router.slug
+                app.router.slug,
             ]
         };
 
@@ -39,14 +39,24 @@
                 params,
                 function (projectsData) {
                     $.extend(data, projectsData);
-
+                    var currentDomain = location.protocol + '//' + location.hostname;  
+                    var tmpItems = [];
+                    var i = 0;
                     $.each(data.items, function (key, val) {
-                        data.items[key].previewImg = val.thumbnail_base_url + '/' + val.thumbnail_path;
-                        data.items[key].viewUrl = app.view.helper.preffix + '/project/view/' + val.slug;
-                        data.items[key].description = val.description;
-                        data.items[key].previewVideo = val.video_base_url + '/' + val.video_path;
-                    });
+                        if (i != data.count) {
+                            data.items[key].previewImg = val.thumbnail_base_url + '/' + val.thumbnail_path;
+                            data.items[key].viewUrl = app.view.helper.preffix + '/project/view/' + val.slug;
+                            data.items[key].description = val.description;
+                            data.items[key].previewVideo = val.video_base_url + '/' + val.video_path;
 
+                            if (val.domain.match(currentDomain)) {
+                                tmpItems.push(data.items[key]);
+                                i++;
+                            }
+                        }
+                    });
+                    data.items = tmpItems;
+                    app.logger.var(data.items);
                     data.urlToPortfolio = app.view.helper.preffix + '/page/view/portfolio';
 
                     loadTemplate(data);
