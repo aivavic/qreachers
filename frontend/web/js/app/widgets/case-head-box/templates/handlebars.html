@@ -1,22 +1,29 @@
+<section class="blog_post">
 <div class="case_page__top cf">
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm-7 col-sm-offset-0">
 
                 <div class="case_page__slide">
-                    <h4 class="animated">конверсионная кампания</h4>
-                    <h2 class="animated">Лэндинг<br> общественного<br> WI-FI <span class="line animated"></span></h2>
+                    <h4 class="animated">{{category_title}}</h4>
+                    <h2 class="animated">{{currentItem.title}}<span class="line animated"></span></h2>
 
                     <div class="trio_nev__wrap">
                         <div class="trio_nev animated">
+                            
                             <div class="trio_nev__in">
-                                <div class="trio_nev__left">Пред.</div>
-                                <a href="#">
+                                
+                                <div class="trio_nev__left"><a href="{{prevUrl}}"  class="ajaxLink">{{next}}</a></div>
+                                
+                                <a href="{{urlToPortfolio}}" class="ajaxLink">
                                     <span class="trio_nev__ico"></span>
-                                    <span class="trio_nev__txt">Все кейсы</span>
+                                    <span class="trio_nev__txt">{{title_button}}</span>
                                 </a>
-                                <div class="trio_nev__right">След.</div>
+                                
+                                <div class="trio_nev__right"><a href="{{nextUrl}}"  class="ajaxLink">{{prew}}</a></div>
+                            
                             </div>
+                            
                         </div><!--.trio_nev-->
                     </div><!--.trio_nev__wrap-->
                 </div>
@@ -31,34 +38,55 @@
         </div><!--.row-->
     </div><!--.container-->
 </div><!--.blog_post__top-->
+</section>
 <script>
 $(document).ready(function() {
-	// Case page slider
-	if($('.case_page__slider-in').length) {
-		$('.case_page__slider-in').flexslider();
-	}
+	if($('.projects_box__in').length) {
+		$('.projects_box__in').flexslider({
+			slideshow: false,
+			directionNav: false,
+			controlNav: false,
+			start: function(slider) {
+			    $('.projects_box .trio_nav__left').click(function(event){
+			        event.preventDefault();
+			        slider.flexAnimate(slider.getTarget('prev'));
+				});
 
-
-	// Case page height title
-	function btitle_name() {
-		if($(document).width() >= 767) {
-
-			$('.btitle_name').each(function(){
-			  var btitle_height = $(this).parent().parent().find('.btitle_name__body').height() - 15;
-				$(this).css({height: btitle_height});
-			});
-
-		} else {
-			$('.btitle_name').css({'height':'auto;'})
-		}
-	}
-
-	if($('.btitle_name').length) {
-		btitle_name();
-
-		$(window).resize(function(){
-			btitle_name();
+				$('.projects_box .trio_nav__right').click(function(event){
+			        event.preventDefault();
+			        slider.flexAnimate(slider.getTarget('next'));
+				});
+			}
 		});
 	}
+        if($('.trio_nav').length) {
+		$('.trio_nav').hover(function(){
+			$(this).addClass('trio_nav--hovered');
+		});
+	}
+
+	if($('.trio_nev').length) {
+		$('.trio_nev').hover(function(){
+			$(this).addClass('trio_nev--hovered');
+		});
+	}
+		setTimeout(function(){
+			$('.top__logo').addClass('fadeInUp');
+			$('.top__lang').addClass('fadeInDownBig');
+			$('.top__menu-btn').addClass('fadeInDownBig');
+
+			$('.case_page__slide h4, .case_page__slide h2').addClass('fadeInDown');
+			$('.case_page__slide h2 .line').addClass('fadeIn');
+		}, 3000);
+
+		setTimeout(function(){
+			$('.trio_nev__wrap').addClass('animated');
+			$('.trio_nev').addClass('fadeInUp');
+		}, 3000);
+
+		setTimeout(function(){
+			$('.trio_nev').addClass('trio_nev--active');
+		}, 4500);
+                
 });
 </script>

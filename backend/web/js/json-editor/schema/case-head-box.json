@@ -32,11 +32,22 @@
             ]
 
         },
-        "all_projects": {
+        "title_button": {
             "type": "string",
-            "title": "All projects text.",
-            "default": "All projects."
+            "title": "Title button.",
+            "default": "Title button."
         },
+        "next": {
+            "type": "string",
+            "title": "next text.",
+            "default": "next text."
+        },
+        "prew": {
+            "type": "string",
+            "title": "prew text.",
+            "default": "prew text."
+        },
+        
         "order_by": {
             "type": "string",
             "title": "Order by filed.",

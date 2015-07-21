@@ -22,12 +22,13 @@
 
         var params = {
             "fields": 'id,slug,title,description,thumbnail_base_url,thumbnail_path,description,video_base_url,video_path',            
-            "per-page": data.count,
+            //"per-page": data.count,
             "expand": 'categories',
-            "sort" : sort,              
+            //"sort" : sort,              
             "where" :{
-                locale: app.config.frontend_app_locale
-            }           
+                locale: app.config.frontend_app_locale,
+                slug: app.router.slug
+            },
         };
 
         $.getJSON(
@@ -35,30 +36,35 @@
                 params,
                 function (projectsData) {
                     $.extend(data, projectsData);
-                    var i = 0;
-                    $.each(data.items, function (key, val) {
-                        data.items[key].previewImg = val.thumbnail_base_url + '/' + val.thumbnail_path;
-                        data.items[key].viewUrl = app.view.helper.preffix + '/project/view/' + val.slug;
-                        data.items[key].description = val.description;
-                        data.items[key].previewVideo = val.video_base_url + '/' + val.video_path;
-                        data.items[key].category_id = (val.categories[0]) ? val.categories[0].id : '-';
-                        if(i == 0){
-                            data.items[key].rows = 'col-md-offset-1';    
-                        } else if(i == 1) {
-                            data.items[key].rows = 'hidden-sm hidden-xs';
-                            return i = 0;
-                        }
-                        i++;
-                    });
-
+                    data.currentItem = {};
+                    data.currentItem.title = data.items[0].title;
+                    data.currentItem.category_id = (data.items[0].categories[0]) ? data.items[0].categories[0].id : '-';
                     data.urlToPortfolio = app.view.helper.preffix + '/page/view/portfolio';
-                    data.groups = items_array_chunk(data.items, 2);
-                    app.logger.var(data.groups);
-
-                    loadTemplate(data);
+                    loadDataAll(data);
                 });
     }
 
+
+    function loadCategory(data) {
+        app.logger.func('loadCategory()');
+
+        var data = widget;
+
+        var params = {
+            "fields": 'id,title',
+            "where": {
+                'id': data.category_id
+            }
+        };
+
+        $.getJSON(
+                app.config.frontend_app_api_url + '/db/project-categories',
+                params,
+                function (catData) {
+                    data.category_title = catData.items[0].title;
+                    loadTemplate(data);
+                });
+    }
 
     function loadTemplate(data) {
         app.logger.func('loadTemplate(data)');
@@ -70,13 +76,50 @@
             renderWidget(template(data));
         });
     }
+    
+    function loadDataAll(data) {
+        app.logger.func('loadDataAll()');
+
+        var data = widget;
+        
+        var params = {
+            "fields": 'id,slug,title,description,thumbnail_base_url,thumbnail_path,description,video_base_url,video_path',
+            "sort" : '-id',              
+            "where": {
+                locale: app.config.frontend_app_locale,
+            },
+            "where_operator_format": [
+                "like",
+                "domain",
+                location.protocol + '//' + location.hostname,
+            ]
+        };
+
+        $.getJSON(
+                app.config.frontend_app_api_url + '/db/projects',
+                params,
+                function (projectsData) {
+                    $.each(projectsData.items, function (key,val) {
+                        if(val.slug == app.router.slug){
+                        if(projectsData.items[key-1]){  
+                          data.prevUrl = app.view.helper.preffix + '/project/view/' + projectsData.items[key-1].slug;
+                        }
+                        if(projectsData.items[key+1]){ 
+                          data.nextUrl = app.view.helper.preffix + '/project/view/' + projectsData.items[key+1].slug;
+                        }  
+                       }
+                       
+                    });
+                    loadCategory(data);
+                });
+    }
 
     function renderWidget(html) {
         app.logger.func('renderWidget(html)');
         app.container.append(html);
 
         //bind ajax load to links                                 
-        app.bindContainerAjaxLinks("#main-project-list-container");
+        app.bindContainerAjaxLinks(".blog_post");
 
         app.view.afterWidget(widget);
     }
