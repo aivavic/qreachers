@@ -292,7 +292,7 @@ $(document).ready(function() {
 	}
 */
 
-/*var arr_scrollheight = $(document).height();
+var arr_scrollheight = $(document).height();
 var arr_scrollwinheight = $(window).height();
 
 $(window).scroll(function() {
@@ -321,7 +321,7 @@ $(window).scroll(function() {
 	}
 
 });
-*/
+
 	
 });
 
