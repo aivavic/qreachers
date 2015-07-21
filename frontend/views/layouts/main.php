@@ -37,7 +37,7 @@ use yii\web\Response;
         
             <?php echo $content ?>
        
-            <?php require_once '_footer.php'; ?>
+            <?php //require_once '_footer.php'; ?>
 
             <?php require_once '_loader.php'; ?>
         
