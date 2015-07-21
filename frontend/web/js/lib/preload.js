@@ -14,7 +14,7 @@ function preloadFadeIn() {
     $('body').append(html);
 	setTimeout(function(){
 		$('.preloader').addClass('active');
-	}, 500);
+	}, 20);
 }
 
 //on ajax link click end
@@ -47,6 +47,9 @@ function runLoader() {
         },
         onComplete: fOnLoaderComplete
     });
+	setTimeout(function(){
+		$('.preloader').addClass('active');
+	}, 20);
 }
 
 var fOnLoaderComplete = function () {

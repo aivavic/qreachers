@@ -123,7 +123,7 @@ body {
 	
 	background-color: #00567C;
 	
-	transition: top 1s ease;
+	transition: top 1s linear;
 }
 
 .preloader.active{
