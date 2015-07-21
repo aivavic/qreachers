@@ -46,38 +46,6 @@
             "type": "string",
             "title": "prew text.",
             "default": "prew text."
-        },
-        
-        "order_by": {
-            "type": "string",
-            "title": "Order by filed.",
-            "enum": [
-                "id",
-                "weight",
-                "created_at",
-                "updated_at"
-            ],
-            "options": {
-                "enum_titles": ["Id", "Weight", "Created at", "Updated at"]
-            },
-            "default": "id"
-        },
-        "sort_order": {
-            "type": "string",
-            "title": "Sort order.",
-            "enum": [
-                "asc",
-                "desc"
-            ],
-            "options": {
-                "enum_titles": ["asc", "desc"]
-            },
-            "default": "desc"
-        },
-        "count": {
-            "type": "string",
-            "title": "Projects count.",
-            "default": "2"
         }
     }
 }
