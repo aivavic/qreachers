@@ -36,6 +36,10 @@
                 "title": "Clients box"
             },
             {
+                "$ref": "/js/json-editor/schema/clients-home-box.json",
+                "title": "Clients home box"
+            },
+            {
                 "$ref": "/js/json-editor/schema/head-image-box.json",
                 "title": "Head image box"
             },

@@ -48,9 +48,7 @@
                     });
 
                     //data.urlToPortfolio = app.view.helper.preffix + '/client/index';
-                    if(data.items.length > 12){
-                        data.itemsCount = true;                        
-                    }
+                    data.urlToCases = app.config.frontend_app_web_url + '/' + app.router.locale + '/page/view/portfolio';
                     loadTemplate(data);
                 });
     }

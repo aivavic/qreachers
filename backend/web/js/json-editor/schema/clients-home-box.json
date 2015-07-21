@@ -1,0 +1,53 @@
+{
+    "type": "object",
+    "title": "Clients home box",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "widget.___clients-home-box___"
+            }
+        },
+        "___clients-home-box___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Clients box"
+        },
+        "clients-home-box-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/frontend/web/js/app/widgets/clients-home-box/img/preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "title": {
+            "type": "string",
+            "title": "Title button.",
+            "default": "Title button."
+        },
+        "client_ua": {
+            "type": "array",
+            "uniqueItems": true,
+            "format": "select",
+            "$ref": "/client/enum?domain_type=ua"
+        },
+        "client_kz": {
+            "type": "array",
+            "uniqueItems": true,
+            "format": "select",
+            "$ref": "/client/enum?domain_type=kz"
+        }
+    }
+}
