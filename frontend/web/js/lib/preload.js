@@ -72,7 +72,7 @@ var fOnLoaderComplete = function () {
     }, 500);
 
     setTimeout(function () {
-        $('.top__logo').addClass('fadeInUp');
+        /*$('.top__logo').addClass('fadeInUp');*/
         $('.top__lang').addClass('fadeInDownBig');
         $('.top__menu-btn').addClass('fadeInDownBig');
 
