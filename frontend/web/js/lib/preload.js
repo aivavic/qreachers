@@ -59,6 +59,10 @@ var fOnLoaderComplete = function () {
         $('.preloader__status').addClass('fadeOut');
 
         //document.getElementById('main_video1').play();
+		
+		
+		$('.top__logo-full').removeClass('top__logo-full--active');
+		$('.top__logo').removeClass('top__logo--active');
 
     }, 1250);
 
