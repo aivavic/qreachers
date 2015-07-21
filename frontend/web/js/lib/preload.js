@@ -12,8 +12,7 @@ function preloadLogoEnd() {
 function preloadFadeIn() {
     var html = '<div class="preloader preloader_ajax_link">		<div class="preloader__wrap">			<div class="preloader__logo preloader__logo--spin animated"></div>		</div>		<div class="preloader__status animated"></div>	</div>';
     $('body').append(html);
-	$('.preloader').addClass('active2');
-	//$('.preloader').addClass('active');
+	$('.preloader').addClass('active');
 }
 
 //on ajax link click end
