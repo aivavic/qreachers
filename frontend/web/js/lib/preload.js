@@ -65,7 +65,7 @@ var fOnLoaderComplete = function () {
     setTimeout(function () {
         /*$('.preloader').addClass('slideOutUp');*/
         $('.preloader').removeClass('active');
-    }, 2500);
+    }, 500);
 
     setTimeout(function () {
         $('.top__logo').addClass('fadeInUp');
