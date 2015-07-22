@@ -66,7 +66,7 @@ var fOnLoaderComplete = function () {
 
     setTimeout(function () {
         /*$('.preloader').addClass('slideOutUp');*/
-        $('.preloader').removeClass('pl-1 active');
+        //$('.preloader').removeClass('pl-1 active');
     }, 2250);
 
     setTimeout(function () {
