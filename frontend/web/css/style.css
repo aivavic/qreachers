@@ -1739,7 +1739,8 @@ top:0;}
 }
 
 .projects_box__thumb img {
-	display: block;
+	/*display: block;*/
+	display:inline-block;
 	width: 100%;
 	height: auto;
 	
