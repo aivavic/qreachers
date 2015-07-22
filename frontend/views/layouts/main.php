@@ -25,6 +25,7 @@ use yii\web\Response;
     <head>
         <meta charset="<?php echo Yii::$app->charset ?>"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="fb:app_id" content="1671684663080056" />
         <title><?php echo Html::encode($this->title) ?></title>
         <link rel="icon" type="image/png" href="http://qreachers.com/favicon.ico">
         <?php $this->head() ?>

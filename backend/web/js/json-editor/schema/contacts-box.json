@@ -32,26 +32,6 @@
                 }
             ]
 
-        },
-        "Facebook": {
-            "type": "string",
-            "title": "Facebook button.",
-            "default": "Facebook button."
-        },
-        "Slideshare": {
-            "type": "string",
-            "title": "Slideshare button.",
-            "default": "Slideshare button."
-        },
-        "Youtube": {
-            "type": "string",
-            "title": "Youtube button.",
-            "default": "Youtube button."
-        },
-        "Vimeo": {
-            "type": "string",
-            "title": "Vimeo button.",
-            "default": "Vimeo button."
         }
     }
 
