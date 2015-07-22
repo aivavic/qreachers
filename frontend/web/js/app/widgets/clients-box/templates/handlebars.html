@@ -1,29 +1,37 @@
-<section class="clients_box" id="clients">
+<section class="clients_page">
 
-	<div class="clients_box__list wow fadeIn" data-wow-duration="0.5s" data-wow-delay="0.5s" data-wow-offset="100">
-		<ul class="list-unstyled">
-                    {{#each items}}
-			<li>
-				<span class="wow fadeInDown" data-wow-duration="0.5s" data-wow-delay="0.7s" data-wow-offset="100">
-					<img src="{{previewImg}}" alt="#">
-				</span>
-			</li>
-                    {{/each}}
-		</ul>
-	</div>
-        
-        {{#if itemsCount}}
-	<div class="btn_hidden">
-		<a href="#" class="btn-an btn-260 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.85s">
-			<div class="btn__wrap">
-				<div class="btn btn-amore btn-norm">
-					{{title}}
-				</div>
+    <div class="container">
 
-				<div class="btn btn-amore-hov btn-hov"></div>
-			</div>
-		</a>
-	</div>
-        {{/if}}
-        
-</section><!--.clients_box-->
+        <div class="row">
+
+            <div class="col-md-10 col-md-offset-1">
+
+                <div class="clients_box__list">
+                    <ul class="list-unstyled">
+                        {{#each items}}
+                        <li><img src="{{previewImg}}" alt="#"></li>
+                        {{/each}}
+                    </ul>
+                </div>
+
+            </div><!--.col-offset-1-->
+
+        </div><!--.row-->
+
+    </div><!--.container-->
+
+    {{#if itemsCount}}
+    <div class="btn_hidden">
+        <a href="#" class="btn-an btn-260 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.85s">
+            <div class="btn__wrap">
+                <div class="btn btn-amore btn-norm">
+                    {{title}}
+                </div>
+
+                <div class="btn btn-amore-hov btn-hov"></div>
+            </div>
+        </a>
+    </div>
+    {{/if}}
+
+</section><!--.clients_page-->
