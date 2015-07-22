@@ -4,21 +4,19 @@
             <div class="col-lg-10 col-lg-offset-1">
 
                 <div class="blog_post__slide">
-                    <h4 class="animated">Образование</h4>
-                    <h2 class="animated">Урок 2:<br>
-                        Портрет пользователя и инструменты мобильной рекламы
-                        <span class="line animated"></span>
+                    <h4 class="animated">{{category_title}}</h4>
+                    <h2 class="animated">{{currentItem.title}}<span class="line animated"></span>
                     </h2>
 
                     <div class="trio_nev__wrap">
                         <div class="trio_nev animated">
                             <div class="trio_nev__in">
-                                <div class="trio_nev__left">Пред.</div>
-                                <a href="#">
+                                <div><a href="{{prevUrl}}"  class="ajaxLink trio_nev__left">{{prev}}</a></div>
+                                <a href="{{urlToNews}}">
                                     <span class="trio_nev__ico"></span>
-                                    <span class="trio_nev__txt">Все материалы</span>
+                                    <span class="trio_nev__txt">{{title_button}}</span>
                                 </a>
-                                <div class="trio_nev__right">След.</div>
+                                <div><a href="{{nextUrl}}"  class="ajaxLink trio_nev__right">{{next}}</a></div>
                             </div>
                         </div><!--.trio_nev-->
                     </div><!--.trio_nev__wrap-->
@@ -28,3 +26,37 @@
         </div>
     </div>
 </div><!--.blog_post__top-->
+<script>
+$(document).ready(function() {
+        if($('.trio_nav').length) {
+		$('.trio_nav').hover(function(){
+			$(this).addClass('trio_nav--hovered');
+		});
+	}
+
+	if($('.trio_nev').length) {
+		$('.trio_nev').hover(function(){
+			$(this).addClass('trio_nev--hovered');
+		});
+	}
+		setTimeout(function(){
+			$('.top__logo').addClass('fadeInUp');
+			$('.top__lang').addClass('fadeInDownBig');
+			$('.top__menu-btn').addClass('fadeInDownBig');
+
+			$('.blog_post__slide h4, .blog_post__slide h2').addClass('fadeInDown');
+			$('.blog_post__slide h2 .line').addClass('fadeIn');
+		}, 3000);
+
+		setTimeout(function(){
+			$('.trio_nev__wrap').addClass('animated');
+			$('.trio_nev').addClass('fadeInUp');
+		}, 3000);
+
+		setTimeout(function(){
+			$('.trio_nev').addClass('trio_nev--active');
+		}, 4500);
+
+                
+});
+</script>

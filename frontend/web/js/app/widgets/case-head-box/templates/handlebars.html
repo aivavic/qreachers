@@ -13,14 +13,14 @@
                             
                             <div class="trio_nev__in">
                                 
-                                <div class="trio_nev__left"><a href="{{prevUrl}}"  class="ajaxLink">{{next}}</a></div>
+                                <div><a href="{{prevUrl}}"  class="ajaxLink trio_nev__left">{{next}}</a></div>
                                 
                                 <a href="{{urlToPortfolio}}" class="ajaxLink">
                                     <span class="trio_nev__ico"></span>
                                     <span class="trio_nev__txt">{{title_button}}</span>
                                 </a>
                                 
-                                <div class="trio_nev__right"><a href="{{nextUrl}}"  class="ajaxLink">{{prew}}</a></div>
+                                <div><a href="{{nextUrl}}"  class="ajaxLink trio_nev__right">{{prew}}</a></div>
                             
                             </div>
                             
@@ -32,7 +32,7 @@
 
             <div class="col-lg-6 col-md-6 col-sm-5 hidden-xs">
                 <div class="case_page__kv">
-                    <img src="/img/img-case-kv.png" alt="#">
+                    <img src="{{currentItem.video}}" alt="#">
                 </div>
             </div>
         </div><!--.row-->
@@ -41,31 +41,12 @@
 </section>
 <script>
 $(document).ready(function() {
-	if($('.projects_box__in').length) {
-		$('.projects_box__in').flexslider({
-			slideshow: false,
-			directionNav: false,
-			controlNav: false,
-			start: function(slider) {
-			    $('.projects_box .trio_nav__left').click(function(event){
-			        event.preventDefault();
-			        slider.flexAnimate(slider.getTarget('prev'));
-				});
-
-				$('.projects_box .trio_nav__right').click(function(event){
-			        event.preventDefault();
-			        slider.flexAnimate(slider.getTarget('next'));
-				});
-			}
-		});
-	}
         if($('.trio_nav').length) {
 		$('.trio_nav').hover(function(){
 			$(this).addClass('trio_nav--hovered');
 		});
 	}
-
-	if($('.trio_nev').length) {
+        if($('.trio_nev').length) {
 		$('.trio_nev').hover(function(){
 			$(this).addClass('trio_nev--hovered');
 		});

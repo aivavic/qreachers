@@ -107,28 +107,34 @@
                 locale: app.config.frontend_app_locale
             };
         }
-
         $.getJSON(
                 app.config.frontend_app_api_url + '/db/articles',
                 params,
                 function (artData) {
-
+                    var i = 0;
                     $.each(artData.items, function (key, val) {
                         artData.items[key].previewImg = val.thumbnail_base_url + '/' + val.thumbnail_path;
                         artData.items[key].viewUrl = app.view.helper.preffix + '/article/view/' + val.slug;
                         artData.items[key].dataFilterCategories = getDataFilterCategories(val.categories);
                         artData.items[key].categoryTitles = getCategoryTitles(val.categories);
+                        if(i == 0){
+                            artData.items[key].boxLineBotton = '<div class="news_box__txt-top"></div><div class="news_box__txt-bt"></div>';   
+                        } else if(i == 1) {
+                            artData.items[key].boxLineBotton = '<div class="news_box__txt-top"></div><div class="news_box__txt-bt"></div>';
+                        } else {
+                            artData.items[key].boxLineBotton = '<div class="news_box__txt-bt"></div>';
+                        }
+                        i++;
                     });
 
                     data.items = artData.items;
-                    app.logger.var(data.items.length);
                     if(data.items.length > 8){
                         data.itemsCount = true;                        
                     }
                     loadTemplateItems(data);
                 });
     }
-
+    
     function unsetStringElement(old, id) {
         var arr = old.split(',');
         var index = arr.indexOf(id);
@@ -193,13 +199,13 @@
 
         $.each(categories, function (k, v) {
             if (v.category_id) {
-                result.push(v.category_id);
+                result.push(app.view.articleCategories[v.category_id]);
             }
         });
 
         //TODO: get category title from data.categories
 
-        return result.join(',');
+        return result.join(' / ');
     }
 
 

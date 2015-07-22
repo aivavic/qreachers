@@ -21,46 +21,27 @@
         if ("desc" == data.sort_order) sort = "-" + sort;         
         
         var params = {
-            "fields": 'id,slug,title,description,thumbnail_base_url,thumbnail_path,description,video_base_url,video_path',
+            "fields": 'id,slug,title,description,thumbnail_base_url,thumbnail_path,description',
             "expand": 'categories',
-            "per-page": data.count,
-            "sort": sort,
+            //"per-page": data.count,
+            //"sort": sort,
             "where" :{
-                locale: app.config.frontend_app_locale
+                locale: app.config.frontend_app_locale,
+                slug: app.router.slug
             }
             
         };
-
         $.getJSON(
                 app.config.frontend_app_api_url + '/db/articles',
                 params,
                 function (articlesData) {
                     $.extend(data, articlesData);
-                    var i = 0;
-                    $.each(data.items, function (key, val) {
-                        data.items[key].previewImg = val.thumbnail_base_url + '/' + val.thumbnail_path;
-                        data.items[key].viewUrl = app.view.helper.preffix + '/article/view/' + val.slug;
-                        data.items[key].description = val.description;
-                        data.items[key].previewVideo = val.video_base_url + '/' + val.video_path;
-                        data.items[key].category_id = (val.categories[0]) ? val.categories[0].id : '-';
-                        if(i == 0){
-                            data.items[key].boxLineBotton = '<div class="news_box__txt-top wow fadeInLeft animated" data-wow-duration="1.2s" data-wow-delay="1s" data-wow-offset="60" style="visibility: visible; -webkit-animation: fadeInLeft 1.2s 1s;"></div><div class="news_box__txt-bt wow fadeInLeft animated" data-wow-duration="1.2s" data-wow-delay="1s" data-wow-offset="60" style="visibility: visible; -webkit-animation: fadeInLeft 1.2s 1s;"></div>';   
-                        } else if(i == 1) {
-                            data.items[key].boxLineBotton = '<div class="news_box__txt-top wow fadeInLeft animated" data-wow-duration="1.2s" data-wow-delay="1s" data-wow-offset="60" style="visibility: visible; -webkit-animation: fadeInLeft 1.2s 1s;"></div><div class="news_box__txt-bt wow fadeInLeft animated" data-wow-duration="1.2s" data-wow-delay="1s" data-wow-offset="60" style="visibility: visible; -webkit-animation: fadeInLeft 1.2s 1s;"></div>';
-                        } else if(i == 2) {
-                            data.items[key].boxLineBotton = '<div class="news_box__txt-bt wow fadeInLeft" data-wow-duration="1.2s" data-wow-delay="1s" data-wow-offset="60"></div>';
-                        } else if(i == 3) {
-                            data.items[key].boxLineBotton = '<div class="news_box__txt-bt wow fadeInLeft" data-wow-duration="1.2s" data-wow-delay="1s" data-wow-offset="60"></div>';
-                            return i = 0;
-                        }
-                        i++;
-                    });
-
                     data.urlToNews = app.view.helper.preffix + '/page/view/news';
-
-                    data.groups = items_array_chunk(data.items, 4);
-                    app.logger.var(data.groups);
-                    loadTemplate(data);
+                    data.currentItem = {};
+                    data.currentItem.title = data.items[0].title;
+                    //data.currentItem.video = data.items[0].video_base_url + '/' + data.items[0].video_path;
+                    data.currentItem.category_id = (data.items[0].categories[0]) ? data.items[0].categories[0].id : '-';
+                    loadDataAll(data);
                 });
     }
 
@@ -74,6 +55,63 @@
         app.templateLoader.getTemplateAjax(app.config.frontend_app_web_url + '/js/app/widgets/' + widget.widgetName + '/templates/handlebars.html' + params, function (template) {
             renderWidget(template(data));
         });
+    }
+    function loadCategory(data) {
+        app.logger.func('loadCategory()');
+
+        var data = widget;
+
+        var params = {
+            "fields": 'id,title',
+            "where": {
+                'id': data.category_id
+            }
+        };
+
+        $.getJSON(
+                app.config.frontend_app_api_url + '/db/article-categories',
+                params,
+                function (catData) {
+                    data.category_title = catData.items[0].title;
+                    loadTemplate(data);
+                });
+    }
+    
+    function loadDataAll(data) {
+        app.logger.func('loadDataAll()');
+
+        var data = widget;
+        
+        var params = {
+            "fields": 'id,slug,title,description,thumbnail_base_url,thumbnail_path,description,video_base_url,video_path',
+            "sort" : '-id',              
+            "where": {
+                locale: app.config.frontend_app_locale,
+            },
+            "where_operator_format": [
+                "like",
+                "domain",
+                location.protocol + '//' + location.hostname,
+            ]
+        };
+
+        $.getJSON(
+                app.config.frontend_app_api_url + '/db/articles',
+                params,
+                function (articlesData) {
+                    $.each(articlesData.items, function (key,val) {
+                        if(val.slug == app.router.slug){
+                        if(articlesData.items[key-1]){  
+                          data.prevUrl = app.view.helper.preffix + '/project/view/' + articlesData.items[key-1].slug;
+                        }
+                        if(articlesData.items[key+1]){ 
+                          data.nextUrl = app.view.helper.preffix + '/project/view/' + articlesData.items[key+1].slug;
+                        }  
+                       }
+                       
+                    });
+                    loadCategory(data);
+                });
     }
 
     function renderWidget(html) {

@@ -194,7 +194,7 @@
 
         $.each(categories, function (k, v) {
             if (v.category_id) {
-                result.push(v.category_id);
+                result.push(app.view.projectCategories[v.category_id]);
             }
         });
 

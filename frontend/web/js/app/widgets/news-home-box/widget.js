@@ -42,7 +42,7 @@
                         data.items[key].viewUrl = app.view.helper.preffix + '/article/view/' + val.slug;
                         data.items[key].description = val.description;
                         data.items[key].previewVideo = val.video_base_url + '/' + val.video_path;
-                        data.items[key].category_id = (val.categories[0]) ? val.categories[0].id : '-';
+                        data.items[key].category_id = (val.categories[0]) ? getCategoryTitles(val.categories) : '-';
                         if(i == 0){
                             data.items[key].boxLineBotton = '<div class="news_box__txt-top wow fadeInLeft animated" data-wow-duration="1.2s" data-wow-delay="1s" data-wow-offset="60" style="visibility: visible; -webkit-animation: fadeInLeft 1.2s 1s;"></div><div class="news_box__txt-bt wow fadeInLeft animated" data-wow-duration="1.2s" data-wow-delay="1s" data-wow-offset="60" style="visibility: visible; -webkit-animation: fadeInLeft 1.2s 1s;"></div>';   
                         } else if(i == 1) {
@@ -88,6 +88,20 @@
         app.bindContainerAjaxLinks("#main-article-list-container");
 
         app.view.afterWidget(widget);
+    }
+
+    function getCategoryTitles(categories) {
+        var result = [];
+
+        $.each(categories, function (k, v) {
+            if (v.category_id) {
+                result.push(app.view.articleCategories[v.category_id]);
+            }
+        });
+
+        //TODO: get category title from data.categories
+
+        return result.join(' / ');
     }
 
 })();
