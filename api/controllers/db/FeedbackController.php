@@ -65,7 +65,7 @@ class FeedbackController extends ActiveController
      */
     public function prepareDataProvider()
     {
-        sendEmails();
+        $this->sendEmails();
         
         $limit          = Yii::$app->request->get('limit', 20);        
         $where          = Yii::$app->request->get('where', []);
@@ -95,7 +95,7 @@ class FeedbackController extends ActiveController
         return $model;
     }
 
-    private function sendEmails() {
+    private function sendEmails() {        
         $emails = Yii::$app->keyStorage->get('frontend_feedback_form_emals');
         $emails = explode(',',$emails);
         $subject = 'Feedback request from ' . Yii::$app->request->get('nick');
