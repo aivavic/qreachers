@@ -14,10 +14,25 @@
 
     function loadData() {
         app.logger.func('loadData()');
-        
-        var data = widget;        
-        
-        loadTemplate(data);
+
+        var data = widget;
+
+        var params = {
+            "fields": 'id,key,body',
+            where: {
+                id: 31
+            }
+        };
+
+
+        $.getJSON(
+                app.config.frontend_app_api_url + '/db/widget-text',
+                params,
+                function (Data) {
+                    data.socialBox = Data.items[0].body;
+                    loadTemplate(data);
+
+                });
     }
 
 
