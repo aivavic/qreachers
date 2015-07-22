@@ -102,10 +102,10 @@
                     $.each(articlesData.items, function (key,val) {
                         if(val.slug == app.router.slug){
                         if(articlesData.items[key-1]){  
-                          data.prevUrl = app.view.helper.preffix + '/project/view/' + articlesData.items[key-1].slug;
+                          data.prevUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[key-1].slug;
                         }
                         if(articlesData.items[key+1]){ 
-                          data.nextUrl = app.view.helper.preffix + '/project/view/' + articlesData.items[key+1].slug;
+                          data.nextUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[key+1].slug;
                         }  
                        }
                        
