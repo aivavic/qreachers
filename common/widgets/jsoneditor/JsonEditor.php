@@ -34,7 +34,7 @@ class JsonEditor extends Widget
         }
 
         if (empty($this->options['disable_properties'])) {
-            $this->options['disable_properties'] = true;
+            $this->options['disable_properties'] = false;
         }
 
         if (empty($this->options['iconlib'])) {
@@ -56,7 +56,7 @@ class JsonEditor extends Widget
 
         if (empty($this->options['required_by_default'])) {
             // Require all properties by default
-            $this->options['required_by_default'] = true;
+            $this->options['required_by_default'] = false;
         }
 
         $this->options['schema'] = ['$ref' => $this->schemaUrl];

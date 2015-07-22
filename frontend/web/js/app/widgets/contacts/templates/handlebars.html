@@ -37,7 +37,10 @@
                     </div>
 
                 </div><!--.contacts_box__feedback-->
-
+                <div class="contacts_box__thanks" style="color:red;">
+                    СПАСИБО, МЫ СВЯЖЕМСЯ С ВАМИ<br>
+                    В БЛИЖАЙШЕЕ ВРЕМЯ!
+                </div> 
             </div>
 
         </div><!--.row-->
@@ -84,7 +87,7 @@
             errorElement: 'p',
             highlight: function (element, errorClass, validClass) {
                 $(element).addClass(errorClass).removeClass(validClass);
-           },
+            },
             unhighlight: function (element, errorClass, validClass) {
                 $(element).removeClass(errorClass).addClass(validClass);
             },
