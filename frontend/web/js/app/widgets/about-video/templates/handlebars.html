@@ -1,28 +1,24 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <div class="about__video">
-                <div class="videoWrapper">
-                    <iframe width="420" height="315" src="{{video}}" frameborder="0" allowfullscreen></iframe>
-                </div>
+        <div class="col-md-10 col-md-offset-1">
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="about__video">
+                        <div class="videoWrapper">
+                            <iframe width="420" height="315" src="{{video}}" frameborder="0" allowfullscreen></iframe>
+                        </div>
 
-                <div class="case_page__video-layer">
-                    <img src="{{img_src}}" alt="#">
-                    <div class="video_play-btn"><span>Play</span></div>
+                        <div class="case_page__video-layer">
+                            <img src="{{img_src}}" alt="#">
+                            <div class="video_play-btn"><span>Play</span></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </div><!--.row-->
+
         </div>
     </div><!--.row-->
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.video_play-btn').click(function () {
-                $(this).fadeOut(300);
-                $('.case_page__video-layer').fadeOut(300);
-            });
-        });
-    </script>
-
 
     <div class="about__exper">
 
@@ -45,54 +41,60 @@
 <script>
 $(document).ready(function() {
 
-	// About page count
-	if($('.countto').length) {
-		$('.countto').appear(function() {
-			$('.countto__number').each(function() {
-				var count_element = $(this).html();
-				$(this).countTo({
-					from: 0,
-					to: count_element,
-					speed: 750,
-					refreshInterval: 50,
-				});
-			});
-		});
-	}
-
-	setTimeout(function() {
-		//$('.trio_nav').addClass('trio_nav--active');
-		$('.bullets__nav').addClass('bullets__nav--active');
-		$('.scroll_arrow').addClass('scroll_arrow--active');
-	}, 800);
+            $('.video_play-btn').click(function () {
+                $(this).fadeOut(300);
+                $('.case_page__video-layer').fadeOut(300);
+            });
 
 
-	// Contacts box
-	$('.contacts_box__default-btn .flip-btn').click(function(){
-		$('.contacts_box').addClass('flip');
-		//$('.wrapper').animate({'height':'500px'}, 250);
-	});
+        // About page count
+        if($('.countto').length) {
+                $('.countto').appear(function() {
+                        $('.countto__number').each(function() {
+                                var count_element = $(this).html();
+                                $(this).countTo({
+                                        from: 0,
+                                        to: count_element,
+                                        speed: 750,
+                                        refreshInterval: 50,
+                                });
+                        });
+                });
+        }
 
-	$('.contacts_box__feedback--cancel').click(function(){
-		$('.contacts_box').removeClass('flip');
-		//$('.wrapper').animate({'height':'400px'}, 250);
+        setTimeout(function() {
+                //$('.trio_nav').addClass('trio_nav--active');
+                $('.bullets__nav').addClass('bullets__nav--active');
+                $('.scroll_arrow').addClass('scroll_arrow--active');
+        }, 800);
 
-		$('#contact_form').validate().resetForm();
-	});
 
-	$('.contacts_box__feedback--submit').click(function(){
-		$('.flip-panel').fadeOut(300, function(){
-			$('.contacts_box__thanks').fadeIn(300);
-		});
+        // Contacts box
+        $('.contacts_box__default-btn .flip-btn').click(function(){
+                $('.contacts_box').addClass('flip');
+                //$('.wrapper').animate({'height':'500px'}, 250);
+        });
 
-		setTimeout(function() {
-			$('.hover').removeClass('flip');
-			$('.contacts_box__thanks').fadeOut(250, function(){
-				$('.wrapper').animate({'height':'400px'}, 250);
-				$('.flip-panel').fadeIn(300);
-			})
-		}, 3000);
+        $('.contacts_box__feedback--cancel').click(function(){
+                $('.contacts_box').removeClass('flip');
+                //$('.wrapper').animate({'height':'400px'}, 250);
 
-	});
-});
+            $('#contact_form').validate().resetForm();
+        });
+
+        $('.contacts_box__feedback--submit').click(function () {
+            $('.flip-panel').fadeOut(300, function () {
+                $('.contacts_box__thanks').fadeIn(300);
+            });
+
+            setTimeout(function () {
+                $('.hover').removeClass('flip');
+                $('.contacts_box__thanks').fadeOut(250, function () {
+                    $('.wrapper').animate({'height': '400px'}, 250);
+                    $('.flip-panel').fadeIn(300);
+                })
+            }, 3000);
+
+        });
+    });
 </script>

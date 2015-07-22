@@ -37,8 +37,10 @@
 
         <!--</div><!--.row-->
 
-        <div class="row projects">
-
+        <div class="row">
+            <div class="projects">
+            
+            </div>
         </div><!--.row-->
 
         {{#if itemsCount}}
@@ -53,8 +55,9 @@
 </section><!--.cases_page-->
 
 <script type="text/javascript">
-
+    
     $(window).on('page.view.portfolio.portfolio.renderWidgetItems', function () {
+        $('body').addClass('cases_body');
         app.logger.text('$grid = $(".projects").isotope');
         $('.filter-box .tags-box').off('click');
         // init Isotope
