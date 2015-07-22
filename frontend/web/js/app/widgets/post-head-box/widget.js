@@ -103,12 +103,16 @@
                 function (articlesData) {
                     $.each(articlesData.items, function (key,val) {
                         if(val.slug == app.router.slug){
-                        if(articlesData.items[key-1]){  
-                          data.prevUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[key-1].slug;
-                        }
-                        if(articlesData.items[key+1]){ 
-                          data.nextUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[key+1].slug;
-                        }  
+                            if(articlesData.items[key-1]){  
+                              data.prevUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[key-1].slug;
+                            } else {
+                               data.prevUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[articlesData.items.length-1].slug; 
+                            }
+                            if(articlesData.items[key+1]){
+                              data.nextUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[key+1].slug;
+                            } else {
+                              data.nextUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[0].slug;  
+                            }
                        }
                        
                     });

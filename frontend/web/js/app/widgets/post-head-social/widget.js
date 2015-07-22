@@ -16,7 +16,7 @@
         app.logger.func('loadData()');
 
         var data = widget;
-
+        data = getShareButtons(data);
         loadTemplate(data);
     }
 
@@ -37,6 +37,13 @@
         app.container.append(html);
 
         app.view.afterWidget(widget);
+    }
+
+    function getShareButtons(data) {
+        data.facebookHref = 'https://www.facebook.com/dialog/share';        
+        data.twitterHref = 'https://twitter.com/intent/tweet?url=' + urlencode(location.href) + '&text=' + urlencode(document.title);
+
+        return data;
     }
 
 })();

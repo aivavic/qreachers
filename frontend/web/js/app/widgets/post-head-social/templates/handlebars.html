@@ -13,9 +13,13 @@
                     <div class="col-md-6">
                         <div class="social_v_box">
                             <ul class="list-unstyled">
-                                <li class="vk"><a href="#">share <span>21</span></a></li>
-                                <li class="fb"><a href="#">share <span>128</span></a></li>
-                                <li class="tw"><a href="#">tweet <span>13</span></a></li>
+                                
+                                <li class="vk"><a href="#">share <span>0</span></a></li>
+                                
+                                <li class="fb"><a href="{{facebookHref}}">share <span>0</span></a></li>
+                                
+                                <li class="tw"><a href="{{twitterHref}}">tweet <span>0</span></a></li>
+                                
                             </ul>
                         </div><!--.social_v_box-->
                     </div>
@@ -28,3 +32,61 @@
 
 
 </div><!--.container-->
+<script>
+    $('.list-unstyled .fb a').click(function () {
+        var social_box = $(this).parent('div');
+
+        FB.ui({
+            method: 'share',
+            href: location.href,
+        }, function (response) {
+            if (response && !response.error_code) {
+                app.logger.text('Post was published.');
+                app.logger.var(response);
+
+                var count = parseInt($('span', social_box).text());
+                if (!isNaN(count)) {
+                    count = count + 1;
+                    $('span', social_box).text(count);
+                }
+            } else {
+                app.logger.text('Post was not published.');
+                app.logger.var(response);
+            }
+        });
+
+        return false;
+    });
+
+    //Once twttr is ready, bind a callback function to the tweet event
+    twttr.ready(function (twttr) {
+        twttr.events.bind('tweet', function (event) {
+            app.logger.text('twttr event tweet');
+
+            // увеличиваем значение счетчика социалки на 1
+            var span = $('.list-unstyled .tw span');
+
+            var count = parseInt(span.text());
+            if (!isNaN(count)) {
+                count = count + 1;
+                span.text(count);
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        $.getJSON('http://graph.facebook.com/fql?q=SELECT url, total_count FROM link_stat WHERE url="' + urlencode(location.href) + '"', function (data) {
+            // вставляем в DOM
+            app.logger.text('facebook data');
+            app.logger.var(data);
+            $('.list-unstyled .fb span').text(data.data[0].total_count);
+        });
+
+        $.getJSON('http://urls.api.twitter.com/1/urls/count.json?url=' + urlencode(location.href) + '&callback=?', function (data) {
+            app.logger.text('twitter data');
+            app.logger.var(data);
+            // вставляем в DOM
+            $('.list-unstyled .tw span').text(data.count);
+        });
+    });
+</script>
