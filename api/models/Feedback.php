@@ -46,19 +46,22 @@ class Feedback extends \common\models\Feedback implements Linkable
 
     private function sendEmails()
     {
-        $emails  = Yii::$app->keyStorage->get('frontend_feedback_form_emals');
-        $emails  = explode(',', $emails);
-        $subject = 'Feedback request from ' . $this->nick;
-        $message = $this->email . '<br>' . $this->message;
+        $emails = Yii::$app->keyStorage->get('frontend_feedback_form_emals');
+        $emails = explode(',', $emails);
 
         foreach ($emails as $value) {
-            mail($value, $subject, $message);
+            Yii::$app->mailer->compose('feedback_request', ['nick' => $this->nick, 'email' => $this->email, 'message' => $this->message])
+                ->setSubject(Yii::t('frontend', '{app-name} | Feedback request from', [
+                        'app-name' => Yii::$app->name
+                ]))
+                ->setTo($value)
+                ->send();
         }
     }
 
     public function scenarios()
     {
-        $scenarios = parent::scenarios();
+        $scenarios           = parent::scenarios();
         $scenarios['create'] = $scenarios['default'];
 
         return $scenarios;
