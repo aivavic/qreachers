@@ -2861,6 +2861,7 @@ top:0;}
 .contacts_page~.contacts_box {
 	padding: 70px 0 50px 0;
 	background-color: #00577A;
+	min-height:615px;
 }
 
 .contacts_page .contacts_box__default {
