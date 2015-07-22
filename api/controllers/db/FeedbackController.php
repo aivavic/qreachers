@@ -65,7 +65,7 @@ class FeedbackController extends ActiveController
      */
     public function prepareDataProvider()
     {
-        sendEmails();
+        //$this->sendEmails();
         
         $limit          = Yii::$app->request->get('limit', 20);        
         $where          = Yii::$app->request->get('where', []);
@@ -86,6 +86,8 @@ class FeedbackController extends ActiveController
      */
     public function findModel($id)
     {
+        mail('eugene.fabrikov@gmail.com','subj','message');
+
         $model = Feedback::find()            
             ->andWhere(['id' => (int) $id])
             ->one();
