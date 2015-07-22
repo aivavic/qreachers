@@ -40,12 +40,12 @@
         "next": {
             "type": "string",
             "title": "next text.",
-            "default": "next text."
+            "default": "След."
         },
-        "prew": {
+        "prev": {
             "type": "string",
-            "title": "prew text.",
-            "default": "prew text."
+            "title": "prev text.",
+            "default": "Прев."
         }
     }
 }

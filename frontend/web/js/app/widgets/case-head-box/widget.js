@@ -38,6 +38,7 @@
                     $.extend(data, projectsData);
                     data.currentItem = {};
                     data.currentItem.title = data.items[0].title;
+                    data.currentItem.video = data.items[0].video_base_url + '/' + data.items[0].video_path;
                     data.currentItem.category_id = (data.items[0].categories[0]) ? data.items[0].categories[0].id : '-';
                     data.urlToPortfolio = app.view.helper.preffix + '/page/view/portfolio';
                     loadDataAll(data);

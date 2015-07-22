@@ -20,6 +20,8 @@ use common\models\ArticleCategories;
  * @property string $head
  * @property string $thumbnail_base_url
  * @property string $thumbnail_path
+ * @property string $image_base_url
+ * @property string $image_path
  * @property array $attachments
  * @property integer $author_id
  * @property integer $updater_id
@@ -53,6 +55,8 @@ class Article extends \yii\db\ActiveRecord
     /**
      * @var array
      */
+    public $image;
+    
     public $categoriesList;
 
     /**
@@ -104,6 +108,12 @@ class Article extends \yii\db\ActiveRecord
                 'attribute'        => 'thumbnail',
                 'pathAttribute'    => 'thumbnail_path',
                 'baseUrlAttribute' => 'thumbnail_base_url'
+            ],
+            [
+                'class'            => UploadBehavior::className(),
+                'attribute'        => 'image',
+                'pathAttribute'    => 'image_path',
+                'baseUrlAttribute' => 'image_base_url'
             ]
         ];
     }
@@ -122,7 +132,7 @@ class Article extends \yii\db\ActiveRecord
             [['author_id', 'updater_id', 'status', 'weight'], 'integer'],
             [['slug', 'thumbnail_base_url', 'thumbnail_path'], 'string', 'max' => 1024],
             [['title'], 'string', 'max' => 512],
-            [['attachments', 'thumbnail', 'categoriesList', 'domain'], 'safe']
+            [['attachments', 'thumbnail', 'image', 'categoriesList', 'domain'], 'safe']
         ];
     }
 
@@ -147,7 +157,8 @@ class Article extends \yii\db\ActiveRecord
             'updated_at'     => Yii::t('common', 'Updated At'),
             'weight'         => Yii::t('common', 'Weight'),
             'categoriesList' => Yii::t('common', 'Categories list'),
-            'domain' => Yii::t('common', 'Domain')
+            'domain' => Yii::t('common', 'Domain'),
+            'image' => Yii::t('common', 'Image'),
         ];
     }
 

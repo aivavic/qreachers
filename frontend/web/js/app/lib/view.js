@@ -19,7 +19,9 @@ window.app.view = (function () {
 
             //clear all
             app.container.html('');
-
+            
+            beforePageRender();
+            
             if (undefined != twttr && undefined != twttr.events && undefined != twttr.events._handlers) {
                 twttr.events.unbind('tweet');
             }
@@ -123,6 +125,10 @@ window.app.view = (function () {
         return wname;
     }
 
+    function beforePageRender() {
+       $.getScript(app.config.frontend_app_web_url + '/js/lib/beforeRender.js'); 
+    }
+    
     function afterPageRender() {
         //add ga
         //$.getScript(app.config.frontend_app_web_url + '/js/lib/google.analytics.js');

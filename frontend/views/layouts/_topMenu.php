@@ -20,16 +20,13 @@ $shortLocale = explode('-',Yii::$app->language)[0];
 					</ul>
 				</div><!--.main_menu__links-->
 
+                            <?php
 
-				<div class="main_menu__socials socials-blue">
-					<ul class="list-unstyled">
-						<li class="fb animated"><a href="#">Facebook</a></li>
-						<li class="sh animated"><a href="#">Slideshare</a></li>
-						<li class="yt animated"><a href="#">Youtube</a></li>
-						<li class="vm animated"><a href="#">Vimeo</a></li>
-					</ul>
-				</div><!--.main_menu__socials-->
+                            use common\widgets\DbText;
 
+                            echo DbText::widget(['key' => 'frontend.layout.menu.social.' . Yii::$app->language]);
+                            ?>
+                                
 			</div>
 
 		</div><!--.main_menu__in-->

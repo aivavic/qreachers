@@ -41,7 +41,7 @@
                         data.items[key].viewUrl = app.view.helper.preffix + '/project/view/' + val.slug;
                         data.items[key].description = val.description;
                         data.items[key].previewVideo = val.video_base_url + '/' + val.video_path;
-                        data.items[key].category_id = (val.categories[0]) ? val.categories[0].id : '-';
+                        data.items[key].category_id = (val.categories[0]) ? getCategoryTitles(val.categories) : '-';
                         if(i == 0){
                             data.items[key].rows = 'col-md-offset-1';    
                         } else if(i == 1) {
@@ -82,6 +82,20 @@
         app.bindContainerAjaxLinks("#main-project-list-container");
 
         app.view.afterWidget(widget);
+    }
+
+    function getCategoryTitles(categories) {
+        var result = [];
+
+        $.each(categories, function (k, v) {
+            if (v.category_id) {
+                result.push(app.view.projectCategories[v.category_id]);
+            }
+        });
+
+        //TODO: get category title from data.categories
+
+        return result.join(' / ');
     }
 
 })();

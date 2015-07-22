@@ -112,13 +112,20 @@
                 app.config.frontend_app_api_url + '/db/projects',
                 params,
                 function (artData) {
-
+                    var i = 0;
                     $.each(artData.items, function (key, val) {
                         artData.items[key].previewImg = val.thumbnail_base_url + '/' + val.thumbnail_path;
                         artData.items[key].viewUrl = app.view.helper.preffix + '/project/view/' + val.slug;
                         artData.items[key].video = val.video_base_url + '/' + val.video_path;
                         artData.items[key].dataFilterCategories = getDataFilterCategories(val.categories);
                         artData.items[key].categoryTitles = getCategoryTitles(val.categories);
+                        if(i == 0){
+                            artData.items[key].rows = 'col-md-offset-1';    
+                        } else if(i == 1) {
+                            artData.items[key].rows = 'hidden-sm hidden-xs';
+                            return i = 0;
+                        }
+                        i++; 
 
                     });
 
@@ -194,7 +201,7 @@
 
         $.each(categories, function (k, v) {
             if (v.category_id) {
-                result.push(v.category_id);
+                result.push(app.view.projectCategories[v.category_id]);
             }
         });
 
