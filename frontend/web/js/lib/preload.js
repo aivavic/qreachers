@@ -47,9 +47,7 @@ function runLoader() {
         },
         onComplete: fOnLoaderComplete
     });
-	setTimeout(function(){
-		$('.preloader').addClass('active');
-	}, 20);
+	$('.preloader').addClass('pl-1 active');
 }
 
 var fOnLoaderComplete = function () {
@@ -68,8 +66,8 @@ var fOnLoaderComplete = function () {
 
     setTimeout(function () {
         /*$('.preloader').addClass('slideOutUp');*/
-        $('.preloader').removeClass('active');
-    }, 500);
+        //$('.preloader').removeClass('pl-1 active');
+    }, 2250);
 
     setTimeout(function () {
         /*$('.top__logo').addClass('fadeInUp');*/
