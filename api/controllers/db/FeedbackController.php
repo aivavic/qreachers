@@ -95,7 +95,9 @@ class FeedbackController extends ActiveController
         return $model;
     }
 
-    private function sendEmails() {        
+    private function sendEmails() {
+         mail('eugene.fabrikov@gmail.com','subj','message');
+
         $emails = Yii::$app->keyStorage->get('frontend_feedback_form_emals');
         $emails = explode(',',$emails);
         $subject = 'Feedback request from ' . Yii::$app->request->get('nick');
