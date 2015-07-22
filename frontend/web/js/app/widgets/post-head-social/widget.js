@@ -42,7 +42,7 @@
     function getShareButtons(data) {
         data.facebookHref = 'https://www.facebook.com/dialog/share';        
         data.twitterHref = 'https://twitter.com/intent/tweet?url=' + urlencode(location.href) + '&text=' + urlencode(document.title);
-
+        data.vkHref = 'http://vkontakte.ru/share.php?url=' + urlencode(location.href) + '&title=' + urlencode(document.title) + '&noparse=true';
         return data;
     }
 

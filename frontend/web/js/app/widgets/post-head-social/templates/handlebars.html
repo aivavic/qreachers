@@ -14,7 +14,7 @@
                         <div class="social_v_box">
                             <ul class="list-unstyled">
                                 
-                                <li class="vk"><a href="#">share <span>0</span></a></li>
+                                <li class="vk"><a href="{{vkHref}}">share <span>0</span></a></li>
                                 
                                 <li class="fb"><a href="{{facebookHref}}">share <span>0</span></a></li>
                                 
@@ -33,6 +33,13 @@
 
 </div><!--.container-->
 <script>
+    $('.list-unstyled .vk a').click(function () {
+        var url = $(this).attr('href');
+        window.open(url,'','toolbar=0,status=0,width=626,height=436');
+
+        return false;
+    });
+    
     $('.list-unstyled .fb a').click(function () {
         var social_box = $(this).parent('div');
 
@@ -88,5 +95,15 @@
             // вставляем в DOM
             $('.list-unstyled .tw span').text(data.count);
         });
+        
+        $.getJSON('http://vkontakte.ru/share.php?act=count&index=1&url=' + urlencode(location.href) + '&callback=?', function(data) {
+         });
     });
+    var VK = {
+    Share: {
+        count: function(value, count) {
+            $('.list-unstyled .vk span').html(count);
+        }
+    }
+   }
 </script>
