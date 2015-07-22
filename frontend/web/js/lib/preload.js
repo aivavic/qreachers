@@ -62,12 +62,12 @@ var fOnLoaderComplete = function () {
 		$('.top__logo-full').removeClass('top__logo-full--active');
 		$('.top__logo').removeClass('top__logo--active');
 
-    }, 1250);
+		setTimeout(function () {
+			/*$('.preloader').addClass('slideOutUp');*/
+			$('.preloader').removeClass('pl-1 active');
+		}, 1000);
 
-    setTimeout(function () {
-        /*$('.preloader').addClass('slideOutUp');*/
-        //$('.preloader').removeClass('pl-1 active');
-    }, 2250);
+    }, 1250);
 
     setTimeout(function () {
         /*$('.top__logo').addClass('fadeInUp');*/
