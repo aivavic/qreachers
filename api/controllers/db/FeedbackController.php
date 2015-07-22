@@ -52,7 +52,8 @@ class FeedbackController extends ActiveController
             'create'  => [
                 'class'      => 'yii\rest\CreateAction',
                 'modelClass' => $this->modelClass,
-                'findModel'  => [$this, 'findModel']
+                'findModel'  => [$this, 'findModel'],
+                'scenario' => 'create'
             ],
             'options' => [
                 'class' => 'yii\rest\OptionsAction'

@@ -37,22 +37,30 @@ class Feedback extends \common\models\Feedback implements Linkable
 
     public function afterSave($insert, $changedAttributes)
     {
-        $this->sendEmails();
+        if ('create' == $this->scenario) {
+            $this->sendEmails();
+        }
 
         return parent::afterSave($insert, $changedAttributes);
     }
-    
+
     private function sendEmails()
     {
-        mail('eugene.fabrikov@gmail.com','subj','message');
-
         $emails  = Yii::$app->keyStorage->get('frontend_feedback_form_emals');
         $emails  = explode(',', $emails);
-        $subject = 'Feedback request from ' . Yii::$app->request->get('nick');
-        $message = Yii::$app->request->get('email') . '<br>' . Yii::$app->request->get('message');
+        $subject = 'Feedback request from ' . $this->nick;
+        $message = $this->email . '<br>' . $this->message;
 
         foreach ($emails as $value) {
             mail($value, $subject, $message);
         }
+    }
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios['create'] = $scenarios['default'];
+
+        return $scenarios;
     }
 }
