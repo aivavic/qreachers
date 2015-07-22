@@ -104,10 +104,14 @@
                         if(val.slug == app.router.slug){
                         if(projectsData.items[key-1]){  
                           data.prevUrl = app.view.helper.preffix + '/project/view/' + projectsData.items[key-1].slug;
+                        } else {
+                          data.prevUrl = app.view.helper.preffix + '/project/view/' + projectsData.items[projectsData.items.length-1].slug; 
                         }
                         if(projectsData.items[key+1]){ 
                           data.nextUrl = app.view.helper.preffix + '/project/view/' + projectsData.items[key+1].slug;
-                        }  
+                        } else {
+                          data.nextUrl = app.view.helper.preffix + '/project/view/' + projectsData.items[0].slug;  
+                        } 
                        }
                        
                     });

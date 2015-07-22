@@ -16,7 +16,7 @@ $shortLocale = explode('-',Yii::$app->language)[0];
 						<li><a href="<?= Url::to('/' . $shortLocale . '/page/view/services'); ?>" class = "ajaxLink"><?= Yii::t('frontend','Services') ?></a></li>
 						<li><a href="<?= Url::to('/' . $shortLocale . '/page/view/clients'); ?>" class = "ajaxLink"><?= Yii::t('frontend','Clients') ?></a></li>
 						<li><a href="<?= Url::to('/' . $shortLocale . '/page/view/news'); ?>" class = "ajaxLink"><?= Yii::t('frontend','Blog') ?></a></li>
-						<li><a href="<?= Url::to('/' . $shortLocale . '/page/view/contact'); ?>" class = "ajaxLink"><?= Yii::t('frontend','Contact') ?></a></li>
+						<li><a href="<?= Url::to('/' . $shortLocale . '/page/view/contact'); ?>" class = "ajaxLink"><?= Yii::t('frontend','Contacts') ?></a></li>
 					</ul>
 				</div><!--.main_menu__links-->
 

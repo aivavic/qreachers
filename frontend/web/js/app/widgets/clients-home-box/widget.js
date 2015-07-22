@@ -48,7 +48,7 @@
                     });
 
                     //data.urlToPortfolio = app.view.helper.preffix + '/client/index';
-                    data.urlToCases = app.config.frontend_app_web_url + '/' + app.router.locale + '/page/view/portfolio';
+                    data.urlToCases = app.config.frontend_app_web_url + '/' + app.router.locale + '/page/view/clients';
                     loadTemplate(data);
                 });
     }
