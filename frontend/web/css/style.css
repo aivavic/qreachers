@@ -114,13 +114,20 @@ body {
 .preloader {
 	z-index: 10000;
 	position: fixed;
-	top: 0;
 	right: 0;
-	bottom: 0;
+	/*bottom: 0;
+	top: 0;*/
 	left: 0;
+	height:100%;
+	top:-100%;
 	
 	background-color: #00567C;
+	
+	transition: top .5s linear;
 }
+
+.preloader.active{
+top:0;}
 
 .preloader__wrap {
 	position: absolute;
@@ -832,7 +839,7 @@ body {
 	float: left;
 	
 	overflow: hidden;
-	width: 120px;
+	/*width: 120px;*/
 	margin: 10px 0 0 0;
 	
 	-webkit-transition: width 500ms ease;
@@ -2849,7 +2856,8 @@ body {
 	pointer-events: none;
 }
 
-.contacts_page .contacts_box {
+.contacts_page .contacts_box ,
+.contacts_page+.contacts_box {
 	padding: 70px 0 50px 0;
 	background-color: #00577A;
 }

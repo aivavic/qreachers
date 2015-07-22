@@ -10,8 +10,11 @@ function preloadLogoEnd() {
 
 //on ajax link click
 function preloadFadeIn() {
-    var html = '<div class="preloader animated preloader_ajax_link">		<div class="preloader__wrap">			<div class="preloader__logo preloader__logo--spin animated"></div>		</div>		<div class="preloader__status animated"></div>	</div>';
+    var html = '<div class="preloader preloader_ajax_link">		<div class="preloader__wrap">			<div class="preloader__logo preloader__logo--spin animated"></div>		</div>		<div class="preloader__status animated"></div>	</div>';
     $('body').append(html);
+	setTimeout(function(){
+		$('.preloader').addClass('active');
+	}, 20);
 }
 
 //on ajax link click end
@@ -44,6 +47,9 @@ function runLoader() {
         },
         onComplete: fOnLoaderComplete
     });
+	setTimeout(function(){
+		$('.preloader').addClass('active');
+	}, 20);
 }
 
 var fOnLoaderComplete = function () {
@@ -53,15 +59,20 @@ var fOnLoaderComplete = function () {
         $('.preloader__status').addClass('fadeOut');
 
         //document.getElementById('main_video1').play();
+		
+		
+		$('.top__logo-full').removeClass('top__logo-full--active');
+		$('.top__logo').removeClass('top__logo--active');
 
     }, 1250);
 
     setTimeout(function () {
-        $('.preloader').addClass('slideOutUp');
-    }, 2500);
+        /*$('.preloader').addClass('slideOutUp');*/
+        $('.preloader').removeClass('active');
+    }, 500);
 
     setTimeout(function () {
-        $('.top__logo').addClass('fadeInUp');
+        /*$('.top__logo').addClass('fadeInUp');*/
         $('.top__lang').addClass('fadeInDownBig');
         $('.top__menu-btn').addClass('fadeInDownBig');
 
