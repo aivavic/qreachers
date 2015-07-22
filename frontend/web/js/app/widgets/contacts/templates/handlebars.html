@@ -46,128 +46,140 @@
 
 </section><!--.contacts_box-->
 <script>
-$(document).ready(function(){
+    $(document).ready(function () {
         // Contacts box
-	$('.contacts_box__default-btn .flip-btn').click(function(){
-		$('.contacts_box').addClass('flip');
-		//$('.wrapper').animate({'height':'500px'}, 250);
-	});
+        $('.contacts_box__default-btn .flip-btn').click(function () {
+            $('.contacts_box').addClass('flip');
+            //$('.wrapper').animate({'height':'500px'}, 250);
+        });
 
-	$('.contacts_box__feedback--cancel').click(function(){
-		$('.contacts_box').removeClass('flip');
-		//$('.wrapper').animate({'height':'400px'}, 250);
+        $('.contacts_box__feedback--cancel').click(function () {
+            $('.contacts_box').removeClass('flip');
+            //$('.wrapper').animate({'height':'400px'}, 250);
 
-		$('#contact_form').validate().resetForm();
-	});
+            $('#contact_form').validate().resetForm();
+        });
 
-	$('.contacts_box__feedback--submit').click(function(){
-		$('.flip-panel').fadeOut(300, function(){
-			$('.contacts_box__thanks').fadeIn(300);
-		});
+        $('.contacts_box__feedback--submit').click(function () {
+            $('.flip-panel').fadeOut(300, function () {
+                $('.contacts_box__thanks').fadeIn(300);
+            });
 
-		setTimeout(function() {
-			$('.hover').removeClass('flip');
-			$('.contacts_box__thanks').fadeOut(250, function(){
-				$('.wrapper').animate({'height':'400px'}, 250);
-				$('.flip-panel').fadeIn(300);
-			})
-		}, 3000);
+            setTimeout(function () {
+                $('.hover').removeClass('flip');
+                $('.contacts_box__thanks').fadeOut(250, function () {
+                    $('.wrapper').animate({'height': '400px'}, 250);
+                    $('.flip-panel').fadeIn(300);
+                })
+            }, 3000);
 
-	});
-});
-	// Validate contact form
-	if($('#contact_form').length) {
+        });
+    });
+    // Validate contact form
+    if ($('#contact_form').length) {
 
-		$('#contact_form').validate({
-			//debug: true,
-			errorClass: 'inp-error',
-			errorElement: 'p',
+        $('#contact_form').validate({
+            //debug: true,
+            errorClass: 'inp-error',
+            errorElement: 'p',
+            highlight: function (element, errorClass, validClass) {
+                $(element).addClass(errorClass).removeClass(validClass);
+           },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).removeClass(errorClass).addClass(validClass);
+            },
+            rules: {
+                mail: {
+                    required: true,
+                    email: true
+                },
+                msg: {
+                    required: true,
+                    minlength: 2
+                },
+            },
+            messages: {
+                mail: "Введите корректные данные",
+                msg: {
+                    required: "Введите ваше сообщение",
+                    minlength: "Сообщение должно быть больше двух символов"
+                },
+            },
+            submitHandler: function (form) {
+                var data = {
+                    nick: $(form).find('input[name="name"]').val(),
+                    email: $(form).find('input[name="mail"]').val(),
+                    message: $(form).find('textarea[name="msg"]').val(),
+                    lang: app.router.locale
+                };
 
-			highlight: function (element, errorClass, validClass) { 
-	            $(element).addClass(errorClass).removeClass(validClass); 
-	        }, 
-	        
-	        unhighlight: function (element, errorClass, validClass) { 
-	            $(element).removeClass(errorClass).addClass(validClass); 
-	        },
-
-			rules: {
-
-				mail: {
-					required: true,
-					email: true
-				},
-				msg: {
-					required: true,
-					minlength: 2
-				},
-			},
-			messages: {
-
-				mail: "Введите корректные данные",
-				msg: {
-					required: "Введите ваше сообщение",
-					minlength: "Сообщение должно быть больше двух символов"
-				},
-
-			},
-
-			submitHandler: function(form) {
-				$('.contacts_box__feedback').fadeOut(300, function(){
-					$('.contacts_box__thanks').fadeIn(300);
-				});
-
-				setTimeout(function() {
-					$('.contacts_box').removeClass('flip');
-					$('.contacts_box__thanks').fadeOut(250, function(){
-						$('.contacts_box__feedback').fadeIn(300);
-						//$('.wrapper').animate({'height':'400px'}, 250);
-					});
-
-					//alert('Submitted!');
-
-				}, 3000);
-
-			}
-
-		});
-         $('#contact_form').on('submit',function(){
-                var form = $(this);
                 $.ajax({
-                    url: '/site/feedback',
-                    type: "POST",
-                    cashe: false,
-                    data: form.serialize(),
+                    url: app.config.frontend_app_api_url + '/db/feedback/create',
+                    data: data,
+                    cache: false,
+                    contentType: 'application/x-www-form-urlencoded',
+                    processData: true,
+                    type: 'POST',
                     success: function (data) {
-                        var data = $.parseJSON(data);
-                        console.log(data);
+                        app.logger.var(data);
                     }
                 });
+
+                $('.contacts_box__feedback').fadeOut(300, function () {
+                    $('.contacts_box__thanks').fadeIn(300);
+                });
+
+                setTimeout(function () {
+                    $('.contacts_box').removeClass('flip');
+                    $('.contacts_box__thanks').fadeOut(250, function () {
+                        $('.contacts_box__feedback').fadeIn(300);
+                        //$('.wrapper').animate({'height':'400px'}, 250);
+                    });
+
+                    //alert('Submitted!');
+
+                }, 3000);
+
+            }
+
         });
-	}
+        $('#contact_form').on('submit', function () {
+            var form = $(this);
+            $.ajax({
+                url: '/site/feedback',
+                type: "POST",
+                cashe: false,
+                data: form.serialize(),
+                success: function (data) {
+                    var data = $.parseJSON(data);
+                    console.log(data);
+                }
+            });
+        });
+    }
 </script>
-	<footer class="footer">
-		<div class="container">
+<footer class="footer">
+    <div class="container">
 
-			<div class="row">
+        <div class="row">
 
-				<div class="col-lg-6 col-lg-offset-1 col-md-7 col-sm-7 col-xs-8">
+            <div class="col-lg-6 col-lg-offset-1 col-md-7 col-sm-7 col-xs-8">
 
-					<div class="footer__copy">
-						<p>QREACHERS. 2015. В качестве продолжения предыдущей статьи о мировых тенденциях в использовании мобильной рекламы</p>
-					</div>
+                <div class="footer__copy">
+                    <p>QREACHERS. 2015. В качестве продолжения предыдущей статьи о мировых тенденциях в использовании мобильной рекламы</p>
+                </div>
 
-				</div>
+            </div>
 
-				<div class="col-lg-2 col-lg-offset-3 col-md-3 col-md-offset-2 col-sm-4 col-sm-offset-1 col-xs-4 col-xs-offset-0">
+            <div class="col-lg-2 col-lg-offset-3 col-md-3 col-md-offset-2 col-sm-4 col-sm-offset-1 col-xs-4 col-xs-offset-0">
 
-					<div class="footer__logo">
-                                            <a href="/"><img src="/img/logo-gp.jpg" alt="#"></a>
-					</div>
+                <div class="footer__logo">
+                    <a href="/"><img src="/img/logo-gp.jpg" alt="#"></a>
+                </div>
 
-				</div>
+            </div>
 
-			</div>
+        </div>
 
-		</div><!--.container-->
-	</footer>
+    </div><!--.container-->
+</footer>
