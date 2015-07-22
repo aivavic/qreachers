@@ -159,7 +159,7 @@ use yii\widgets\Breadcrumbs;
                             ['label' => Yii::t('backend', 'Members'), 'url' => ['/member/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
                             ['label' => Yii::t('backend', 'Blog Categories'), 'url' => ['/article-category/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
                             ['label' => Yii::t('backend', 'Case Categories'), 'url' => ['/project-category/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
-                            ['label' => Yii::t('backend', 'Footer'), 'url' => ['widget-text/index?WidgetTextSearch%5Bid%5D=&WidgetTextSearch%5Bkey%5D=footer'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
+                            ['label' => Yii::t('backend', 'Menu social'), 'url' => ['widget-text/index?WidgetTextSearch%5Bid%5D=&WidgetTextSearch%5Bkey%5D=footer'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
 
 
                         ]

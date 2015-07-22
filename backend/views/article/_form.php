@@ -70,6 +70,14 @@ echo $form->field($model, 'thumbnail')->widget(
 ?>
 
 <?php
+echo $form->field($model, 'image')->widget(
+    \trntv\filekit\widget\Upload::className(), [
+    'url'         => ['/file-storage/upload'],
+    'maxFileSize' => 5000000, // 5 MiB
+]);
+?>
+
+<?php
 echo $form->field($model, 'attachments')->widget(
     \trntv\filekit\widget\Upload::className(), [
     'url'              => ['/file-storage/upload'],

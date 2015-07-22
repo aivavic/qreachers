@@ -13,7 +13,7 @@ class Article extends \common\models\Article implements Linkable
 {
     public function fields()
     {
-        return ['id', 'slug', 'category_id', 'title', 'head', 'body', 'published_at', 'thumbnail_base_url','thumbnail_path', 'domain'];
+        return ['id', 'slug', 'category_id', 'title', 'head', 'body', 'published_at', 'thumbnail_base_url','thumbnail_path', 'image_base_url','image_path', 'domain'];
     }
 
     public function extraFields()

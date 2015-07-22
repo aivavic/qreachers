@@ -21,7 +21,7 @@
         if ("desc" == data.sort_order) sort = "-" + sort;         
         
         var params = {
-            "fields": 'id,slug,title,description,thumbnail_base_url,thumbnail_path,description',
+            "fields": 'id,slug,title,description,thumbnail_base_url,thumbnail_path,image_base_url,image_path,description',
             "expand": 'categories',
             //"per-page": data.count,
             //"sort": sort,
@@ -39,6 +39,8 @@
                     data.urlToNews = app.view.helper.preffix + '/page/view/news';
                     data.currentItem = {};
                     data.currentItem.title = data.items[0].title;
+                    data.currentItem.image = data.items[0].image_base_url + '/' + data.items[0].image_path;
+                    app.logger.var(data.items[0]);
                     //data.currentItem.video = data.items[0].video_base_url + '/' + data.items[0].video_path;
                     data.currentItem.category_id = (data.items[0].categories[0]) ? data.items[0].categories[0].id : '-';
                     loadDataAll(data);
@@ -83,7 +85,7 @@
         var data = widget;
         
         var params = {
-            "fields": 'id,slug,title,description,thumbnail_base_url,thumbnail_path,description,video_base_url,video_path',
+            "fields": 'id,slug,title,description,thumbnail_base_url,thumbnail_path,description,video_base_url,image_base_url,image_path,video_path',
             "sort" : '-id',              
             "where": {
                 locale: app.config.frontend_app_locale,

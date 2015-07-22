@@ -112,6 +112,7 @@ class ArticleController extends Controller
                 $currentModel->attributes      = $firstModel->attributes;
                 $currentModel->attachments     = $firstModel->attachments;
                 $currentModel->thumbnail       = $firstModel->thumbnail;
+                $currentModel->image           = $firstModel->image;
                 $currentModel->categoriesList  = $firstModel->categoriesList;
                 //$currentModel->video = $firstModel->video;
                 $currentModel->locale_group_id = $firstModel->locale_group_id;
