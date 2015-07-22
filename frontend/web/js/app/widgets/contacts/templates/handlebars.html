@@ -143,19 +143,6 @@
             }
 
         });
-        $('#contact_form').on('submit', function () {
-            var form = $(this);
-            $.ajax({
-                url: '/site/feedback',
-                type: "POST",
-                cashe: false,
-                data: form.serialize(),
-                success: function (data) {
-                    var data = $.parseJSON(data);
-                    console.log(data);
-                }
-            });
-        });
     }
 </script>
 <footer class="footer">
