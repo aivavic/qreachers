@@ -37,17 +37,17 @@
             "title": "Title",
             "default": "default title"
         },
-        "client_ua": {
+        "members_ua": {
             "type": "array",
             "uniqueItems": true,
             "format": "select",
-            "$ref": "/client/enum?domain_type=ua"
+            "$ref": "/member/enum?domain_type=ua"
         },
-        "client_kz": {
+        "members_kz": {
             "type": "array",
             "uniqueItems": true,
             "format": "select",
-            "$ref": "/client/enum?domain_type=kz"
+            "$ref": "/member/enum?domain_type=kz"
         }
     }
 }
