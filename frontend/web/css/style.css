@@ -2903,27 +2903,32 @@ top:0;}
 	margin-top: 20px;
 }
 
-.contacts_page .contacts_box__feedback {
+.contacts_page .contacts_box__feedback ,
+.contacts_page~.contacts_box .contacts_box__feedback {
 	max-width: 435px;
 	margin: 0 auto;
 }
 
-.contacts_page .contacts_box__feedback .btn {
+.contacts_page .contacts_box__feedback .btn ,
+.contacts_page~.contacts_box .contacts_box__feedback .btn {
 	float: none;
 	width: 100%;
 	margin-top: 7px;
 }
 
-.contacts_page .contacts_box__feedback form {
+.contacts_page .contacts_box__feedback form ,
+.contacts_page~.contacts_box .contacts_box__feedback form {
 	margin-bottom: 35px;
 	padding-bottom: 5px;
 }
 
-.contacts_page .contacts_box__feedback .inp-group {
+.contacts_page .contacts_box__feedback .inp-group ,
+.contacts_page~.contacts_box .contacts_box__feedback .inp-group {
 	margin-bottom: 8px;
 }
 
-.contacts_page .contacts_box__thanks {
+.contacts_page .contacts_box__thanks ,
+.contacts_page~.contacts_box .contacts_box__feedback {
 	height: 350px;
 }
 
