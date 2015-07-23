@@ -44,7 +44,8 @@ return [
         [ 'loc' => '/db/project-category'],
         [ 'loc' => '/db/user'],
         [ 'loc' => '/db/widget-text'],
-        [ 'loc' => '/db/page']
+        [ 'loc' => '/db/page'],
+        [ 'loc' => '/db/feedbacks']
     ],
     'enableGzip'  => false, // default is false
     'cacheExpire' => 1, // 1 second. Default is 24 hours

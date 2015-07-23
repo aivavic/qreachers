@@ -51,8 +51,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]
             ],
             'published_at:datetime',
-            'created_at:datetime',
-            'weight',            
+            //'created_at:datetime',
+            //'weight',
 
             [
                 'class' => 'yii\grid\ActionColumn',
