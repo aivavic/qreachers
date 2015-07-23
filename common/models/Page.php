@@ -265,4 +265,11 @@ class Page extends \yii\db\ActiveRecord
             }
         }
     }
+
+    public function afterDelete()
+    {
+        Page::deleteAll(['locale_group_id' => $this->locale_group_id]);
+
+        return parent::afterDelete();
+    }
 }

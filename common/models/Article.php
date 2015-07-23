@@ -56,7 +56,6 @@ class Article extends \yii\db\ActiveRecord
      * @var array
      */
     public $image;
-    
     public $categoriesList;
 
     /**
@@ -157,8 +156,8 @@ class Article extends \yii\db\ActiveRecord
             'updated_at'     => Yii::t('common', 'Updated At'),
             'weight'         => Yii::t('common', 'Weight'),
             'categoriesList' => Yii::t('common', 'Categories list'),
-            'domain' => Yii::t('common', 'Domain'),
-            'image' => Yii::t('common', 'Image'),
+            'domain'         => Yii::t('common', 'Domain'),
+            'image'          => Yii::t('common', 'Image'),
         ];
     }
 
@@ -169,10 +168,10 @@ class Article extends \yii\db\ActiveRecord
                 $this->published_at = $this->created_at;
             }
 
-            if ($this->domain) {                
-                $this->domain = implode(',',$this->domain);
+            if ($this->domain) {
+                $this->domain = implode(',', $this->domain);
             }
-            
+
             return true;
         } else {
             return false;
@@ -310,5 +309,12 @@ class Article extends \yii\db\ActiveRecord
 
 
         return $model->save();
+    }
+
+    public function afterDelete()
+    {
+        Article::deleteAll(['locale_group_id' => $this->locale_group_id]);
+
+        return parent::afterDelete();
     }
 }
