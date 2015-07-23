@@ -1,6 +1,6 @@
 {
     "type": "object",
-    "title": "Google map slider",    
+    "title": "Google map slider",
     "properties": {
         "tab_title": {
             "type": "string",
@@ -64,6 +64,42 @@
                         "type": "string",
                         "title": "Longitude.",
                         "default": "30.512806"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "title": "Phone.",
+                        "default": "+3 8(096) 666 66 66"
+                    },
+                    "email": {
+                        "type": "string",
+                        "title": "Email.",
+                        "default": "email@email.com"
+                    }
+                }
+            }
+        },
+        "t": {
+            "type": "array",
+            "format": "table",
+            "title": "Translations",
+            "uniqueItems": true,
+            "options": {
+                "collapsed": true
+            },
+            "items": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "options": {
+                            "input_width": "300px"
+                        }
+                    },
+                    "value": {
+                        "type": "string",
+                        "options": {
+                            "input_width": "400px"
+                        }
                     }
                 }
             }

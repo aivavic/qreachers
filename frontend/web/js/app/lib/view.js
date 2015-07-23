@@ -43,6 +43,20 @@ window.app.view = (function () {
         },
         helper: {
             preffix: null
+        },
+        getTranslationsFromData: function (data) {
+            if ($.isEmptyObject(data.t)) {
+                return {};
+            }
+            var t = {};
+
+            $.each(data.t, function (k, v) {
+                if (v.key && v.value) {
+                    t[v.key] = v.value;
+                }
+            });
+
+            return t;
         }
 
     };

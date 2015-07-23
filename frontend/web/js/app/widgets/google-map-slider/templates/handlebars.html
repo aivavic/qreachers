@@ -21,29 +21,32 @@
                                 </ul>
 
                                 <div class="tab-content">
+                                    {{#if items.0.city}}
                                     <div role="tabpanel" class="tab-pane active" id="contacts-ukraine">
-                                        Киев, ул. Льва Толстого, 9А, офис 402<br>
-                                        <a href="tel:+380442237060">+38(044) 223 70 60</a><br>
-                                        <a href="mailto:welcome@skykillers.com">welcome@skykillers.com</a>
+                                        {{items.0.city}}, {{items.0.street}}<br>
+                                        <a href="tel:+380442237060">{{items.0.phone}}</a><br>
+                                        <a href="mailto:welcome@skykillers.com">{{items.0.email}}</a>
 
                                         <div class="show-inmap">
                                             <a href="http://www.google.com.ua/maps" class="btn btn-bb animated">
-                                                ПОКАЗАТЬ НА КАРТЕ
+                                                {{t.show_on_map}}
                                             </a>
                                         </div>
                                     </div>
-
+                                    {{/if}}
+                                    {{#if items.1.city}}
                                     <div role="tabpanel" class="tab-pane fade" id="contacts-kz">
-                                        Казахстан, ул. Толстого Льва, 1А, офис 204<br>
-                                        <a href="tel:+380442237060">+38(3123) 423 44 61</a><br>
-                                        <a href="mailto:welcome@skykillers.com">welcome@skykillers.com</a>
+                                        {{items.1.city}}, {{items.1.street}}<br>
+                                        <a href="tel:+380442237060">{{items.1.phone}}</a><br>
+                                        <a href="mailto:welcome@skykillers.com">{{items.1.email}}</a>
 
                                         <div class="show-inmap">
                                             <a href="http://www.google.com.ua/maps" class="btn btn-bb animated">
-                                                ПОКАЗАТЬ НА КАРТЕ
+                                                {{t.show_on_map}}
                                             </a>
                                         </div>
                                     </div>
+                                    {{/if}}
                                 </div><!--.tab-content-->
 
                             </div><!--.contacts_box__tabs-->
