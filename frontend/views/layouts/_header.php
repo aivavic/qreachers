@@ -19,7 +19,7 @@ $shortLocale = explode('-',Yii::$app->language)[0];
 
 							<a href="#" class="top__logo-full"></a>
                                                         
-							<div class="top__lang animated fadeInDownBig">
+							<div class="top__lang animated">
 								<ul class="list-unstyled">
 									<li class = "<?= ('ru-RU' == Yii::$app->language)? 'current':''; ?>"><a href="<?= Url::to(['/site/set-locale','locale'=>'ru-RU']); ?>" class = "lang-item"><?= Yii::t('frontend','Rus'); ?></a></li>
 									<li class = "<?= ('en-US' == Yii::$app->language)? 'current':''; ?>"><a href="<?= Url::to(['/site/set-locale','locale'=>'en-US']); ?>" class = "lang-item"><?= Yii::t('frontend','Eng'); ?></a></li>

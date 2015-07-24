@@ -48,6 +48,9 @@ function runLoader() {
         onComplete: fOnLoaderComplete
     });
 	$('.preloader').addClass('pl-1 active');
+	setTimeout(function(){
+		$('.top__lang').removeClass('fadeInDownBig');
+	}, 500);
 }
 
 var fOnLoaderComplete = function () {
@@ -55,6 +58,8 @@ var fOnLoaderComplete = function () {
         $('.preloader__logo--spin').removeClass('preloader__logo--spin');
         $('.preloader__logo').addClass('fadeOutDown');
         $('.preloader__status').addClass('fadeOut');
+		
+		$('.top__lang').addClass('fadeInDownBig');
 
         //document.getElementById('main_video1').play();
 		
