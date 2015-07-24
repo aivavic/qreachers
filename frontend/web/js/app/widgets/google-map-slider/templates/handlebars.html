@@ -20,7 +20,7 @@
                                     <li><a href="#contacts-kz" aria-controls="contacts-kz" role="tab" data-toggle="tab">КАЗАХСТАН</a></li>
                                 </ul>
 
-                                <div class="tab-content">
+                                <!--<div class="tab-content">
                                     {{#if items.0.city}}
                                     <div role="tabpanel" class="tab-pane active" id="contacts-ukraine">
                                         {{items.0.city}}, {{items.0.street}}<br>
@@ -47,7 +47,36 @@
                                         </div>
                                     </div>
                                     {{/if}}
-                                </div><!--.tab-content-->
+                                </div>.tab-content-->
+                                
+                                	<div class="tab-content">
+                                                {{#if items.0.city}}
+						<div role="tabpanel" class="tab-pane active" id="contacts-ukraine">
+							Qreachers, офис в Киеве: ул. Льва Толстого 9а<br>
+							<a href="tel:+380442237060">+38(044) 223 70 60</a><br>
+							<a href="mailto:welcome@skykillers.com">welcome@qreachers.com</a>
+							
+							<div class="show-inmap">
+								<a href="http://www.google.com.ua/maps" class="btn btn-bb animated">
+									{{t.show_on_map}}
+								</a>
+							</div>
+						</div>
+                                                {{/if}}
+                                                {{#if items.1.city}}
+						<div role="tabpanel" class="tab-pane fade" id="contacts-kz">
+							Qreachers, офис в Алматы: Алматы, мкр-н 3, д.33<br>
+							<a href="tel:+380442237060">+7 (727) 276-11-81</a><br>
+							<a href="mailto:welcome@skykillers.com">welcome@qreachers.com</a>
+
+							<div class="show-inmap">
+								<a href="http://www.google.com.ua/maps" class="btn btn-bb animated">
+									{{t.show_on_map}}
+								</a>
+							</div>
+						</div>
+                                                {{/if}}
+					</div><!--.tab-content-->
 
                             </div><!--.contacts_box__tabs-->
 
