@@ -16,7 +16,7 @@ window.app = (function () {
         isFirstLoad: true,
         // ------------------ public functions ------------------ //
         run: function () {
-            app.logger.page(location.href);  
+            app.logger.page(location.href);
             app.logger.func('run()');
             init();
             bindEventListeners();
@@ -35,6 +35,12 @@ window.app = (function () {
                 app.container.find('.ajaxLink').off('click');
                 app.container.find('.ajaxLink').click(fClickAjaxLink);
             }
+        },
+        bindAllAjaxLinks: function () {
+            app.logger.func('bindAllAjaxLinks');
+                $('body').find('.ajaxLink').off('click');
+                $('body').find('.ajaxLink').click(fClickAjaxLink);
+
         },
         afterPageRender: function () {
             app.logger.func('afterPageRender()');
@@ -62,7 +68,7 @@ window.app = (function () {
 
     function bindEventListeners() {
         app.logger.func('bindEventListeners()');
-        bindAjaxLinks();        
+        bindAjaxLinks();
 
         preloadStart();
     }
@@ -71,10 +77,10 @@ window.app = (function () {
         app.logger.func('process()');
 
 
-        if (isDefaultRoute()) {            
+        if (isDefaultRoute()) {
             changePage(app.config.frontend_app_default_route, '');
         }
-        else {            
+        else {
             app.router.run(location.pathname);
         }
     }
@@ -129,9 +135,9 @@ window.app = (function () {
 
     fClickAjaxLink = (function () {
         app.logger.prefix = '[app]';
-        app.logger.page(location.href);  
+        app.logger.page(location.href);
         app.logger.func('fClickAjaxLink()');
-        
+
         app.logger.resetTimer();
 
         app.isFirstLoad = false;
@@ -142,11 +148,11 @@ window.app = (function () {
         var params = '';
 
         preloadFadeIn();
-        
-        setTimeout(function() {
+
+        setTimeout(function () {
             changePage(url, params);
-        },1000);
-                
+        }, 1000);
+
         // Prevent default action
         return false;
     })

@@ -4,8 +4,6 @@ window.app.view = (function () {
     public = {
         renderPage: function (page) {
             app.logger.prefix = '[app][view]';
-            
-            
 
             //no widgets
             if (!page.body)
@@ -14,18 +12,11 @@ window.app.view = (function () {
             app.page = page;
             document.title = app.page.title;
             app.page.widgets = getWidgetsFromBody(app.page.body);
-
             this.helper.preffix = app.config.frontend_app_web_url + '/' + app.router.locale
 
-            //clear all
-            app.container.html('');
-            
+            addHeader();
+            addFooter();
             beforePageRender();
-            
-            if (undefined != twttr && undefined != twttr.events && undefined != twttr.events._handlers) {
-                twttr.events.unbind('tweet');
-            }
-            
             selectMenuItem();
             changeHomeUrl();
             renderWidgets();
@@ -140,16 +131,24 @@ window.app.view = (function () {
     }
 
     function beforePageRender() {
-       $.getScript(app.config.frontend_app_web_url + '/js/lib/beforeRender.js'); 
+        //clear all
+        app.container.html('');
+
+        if (undefined != twttr && undefined != twttr.events && undefined != twttr.events._handlers) {
+            twttr.events.unbind('tweet');
+        }
+
+        $.getScript(app.config.frontend_app_web_url + '/js/lib/beforeRender.js');
     }
-    
+
     function afterPageRender() {
+        app.bindAllAjaxLinks();
         //add ga
         //$.getScript(app.config.frontend_app_web_url + '/js/lib/google.analytics.js');
     }
 
     function changeHomeUrl() {
-        if ('ru' == app.router.locale && 'page' == app.router.controller && 'view' == app.router.action && 'home' == app.router.slug) {            
+        if ('ru' == app.router.locale && 'page' == app.router.controller && 'view' == app.router.action && 'home' == app.router.slug) {
             // Change url            
             window.history.pushState(null, null, '/');
         }
@@ -158,6 +157,121 @@ window.app.view = (function () {
             // Change url            
             window.history.pushState(null, null, '/en');
         }
+    }
+
+    function addHeader() {
+        if (app.view.headerLoaded) {
+            return;
+        }
+
+        app.logger.func('addHeader');
+
+        var params = {
+            "fields": 'id,slug,title,body',
+            "where": {
+                "slug": "header",
+                "locale": app.config.frontend_app_locale
+            },
+            "where_operator_format": [
+                "like",
+                "domain",
+                location.protocol + '//' + location.hostname,
+            ]
+        };
+
+        $.getJSON(
+                app.config.frontend_app_api_url + '/db/blocks',
+                params,
+                function (data) {
+                    var body = data.items[0].body.replace(/^\[/, '').replace(/\]$/, '');
+                    data = JSON.parse(body);
+
+                    data.t = app.view.getTranslationsFromData(data);
+
+                    data.isRu = ('ru-RU' == app.config.frontend_app_locale) ? true : false;
+                    data.urlToRu = app.config.frontend_app_web_url + '/site/set-locale?locale=ru-RU';
+                    data.isEn = ('en-US' == app.config.frontend_app_locale) ? true : false;
+                    data.urlToEn = app.config.frontend_app_web_url + '/site/set-locale?locale=en-US';
+
+                    data.urlToHome = app.view.helper.preffix + '/page/view/home';
+
+                    $.each(data.menu, function (key, val) {
+                        if ('@frontend' == val.host) {
+                            data.menu[key].url = app.view.helper.preffix + val.url;
+                        }
+                    });
+
+                    var params = {};
+
+                    if (true == app.config.frontend_app_debug) {
+                        params = '?_' + Date.now();
+                    }
+
+                    app.templateLoader.getTemplateAjax(app.config.frontend_app_web_url + '/js/app/templates/header.html' + params, function (template) {
+                        app.logger.var(data);
+
+                        $(template(data)).insertBefore(app.container);
+                        app.view.headerLoaded = true;
+                    });
+                });
+    }
+
+    function addFooter() {
+        if (app.router.slug != 'contact') {            
+            $('#contacts').show();
+        }else {
+            $('#contacts').hide();            
+        }
+
+        if (app.view.footerLoaded) {
+            return;
+        }
+
+        app.logger.func('addFooter');
+
+        var params = {
+            "fields": 'id,slug,title,body',
+            "where": {
+                "slug": "footer",
+                "locale": app.config.frontend_app_locale
+            },
+            "where_operator_format": [
+                "like",
+                "domain",
+                location.protocol + '//' + location.hostname,
+            ]
+        };
+
+        $.getJSON(
+                app.config.frontend_app_api_url + '/db/blocks',
+                params,
+                function (data) {
+                    var body = data.items[0].body.replace(/^\[/, '').replace(/\]$/, '');
+                    data = JSON.parse(body);
+
+                    data.t = app.view.getTranslationsFromData(data);
+
+                    /*$.each(data.items, function (key, val) {
+                     //data.items[key].previewImg = val.thumbnail_base_url + '/' + val.thumbnail_path;                        
+                     });*/
+
+                    var params = {};
+
+                    if (true == app.config.frontend_app_debug) {
+                        params = '?_' + Date.now();
+                    }
+
+                    app.templateLoader.getTemplateAjax(app.config.frontend_app_web_url + '/js/app/templates/footer.html' + params, function (template) {
+                        app.logger.var(data);
+
+                        $(template(data)).insertAfter(app.container);
+                        app.view.footerLoaded = true;
+
+                        if (app.router.slug == 'contact') {
+                            $('#contacts').hide();
+                        }
+                    });
+                });
     }
 
     return public;

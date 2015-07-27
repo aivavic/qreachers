@@ -33,14 +33,8 @@ use yii\web\Response;
     </head>
     <body>  
         <?php $this->beginBody() ?>        
-
-            <?php require_once '_header.php'; ?>
         
             <?php echo $content ?>
-       
-            <?php //require_once '_footer.php'; ?>
-
-            <?php require_once '_loader.php'; ?>
         
         <?php $this->endBody() ?>
     </body>

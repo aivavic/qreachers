@@ -1,0 +1,85 @@
+<div class="preloader animated">
+    <div class="preloader__wrap">
+        <div class="preloader__logo preloader__logo--spin animated"></div>
+    </div>
+    <div class="preloader__status animated"></div>
+</div>
+
+<nav class="top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-7 col-sm-8 col-xs-9">
+                <div class="top__logo animated fadeInUp">
+                    <a href="{{urlToHome}}"><span></span></a>
+                </div><!--.top__logo-->
+                <a href="#" class="top__logo-full"></a>
+                <div class="top__lang animated">
+                    <ul class="list-unstyled">
+                        <li {{#if isRu}} class = "current" {{/if}}><a href="{{urlToRu}}" class = "lang-item">{{t.rus}}</a></li>
+                        <li {{#if isEn}} class = "current" {{/if}}><a href="{{urlToEn}}" class = "lang-item">{{t.eng}}</a></li>                        
+                    </ul>
+                </div><!--.top__lang-->
+            </div>
+            <div class="col-lg-1 col-lg-offset-7 col-md-1 col-md-offset-4 col-sm-2 col-sm-offset-0 col-xs-3">
+                <div class="top__menu-btn top__menu-btn--default">
+                    <div class="top__menu-btn-txt">{{t.menu}}</div>
+                    <div class="top__menu-btn-sandwich">
+                        <div class="top__menu-btn-sandwich1"></div>
+                        <div class="top__menu-btn-sandwich2"></div>
+                        <div class="top__menu-btn-sandwich3"></div>
+                    </div>
+                    <div class="top__menu-btn-close"></div>
+                </div><!--.top__menu-btn-->
+            </div>
+        </div>
+    </div><!--.container-->
+</nav><!--.top-->       
+
+<nav class="main_menu">
+    <div class="main_menu__in">
+        <div class="main_menu__wrap">
+            <div class="main_menu__links animated">
+                <ul class="list-unstyled">
+                    {{#each menu}}
+                    <li><a href="{{url}}" class = "ajaxLink">{{title}}</a></li>                    
+                    {{/each}}
+                </ul>
+            </div><!--.main_menu__links-->
+            <div class="main_menu__socials socials-blue">
+                <ul class="list-unstyled">
+                    <li class="fb animated"><a target="_blank" href="https://www.facebook.com/">Facebook</a></li>
+                    <li class="sh animated"><a target="_blank" href="https://www.slideshare.net/">Slideshare</a></li>
+                    <li class="yt animated"><a target="_blank" href="https://www.youtube.com/">Youtube</a></li>
+                    <li class="vm animated"><a target="_blank" href="https://www.vimeo.com/">Vimeo</a></li>
+                </ul>
+            </div>
+            <!--.main_menu__socials-->
+        </div>
+    </div><!--.main_menu__in-->
+</nav><!--.main_menu-->
+
+<script>
+    $('.top__menu-btn').click(function () {
+
+        if ($(window).scrollTop() > 100) {
+            if ($('.top').hasClass('top--fixed')) {
+                $('.top').removeClass('top--fixed');
+            } else {
+                $('.top').addClass('top--fixed');
+            }
+        }
+
+        $('.top__lang').toggleClass('top__lang--menu');
+        $('.top__logo').removeClass('animated').removeClass('fadeInUp');
+
+        $(this).toggleClass('top__menu-btn--default');
+        $(this).toggleClass('top__menu-btn--close');
+        $('.main_menu').fadeToggle(250);
+        $('.top__logo-full').toggleClass('top__logo-full--active');
+        $('.top__logo').toggleClass('top__logo--active');
+        $('.main_menu .main_menu__links').toggleClass('fadeInDown');
+        $('.main_menu .main_menu__socials li').toggleClass('fadeInUp');
+
+        $('body').toggleClass('lock');
+    });
+</script>
