@@ -13,9 +13,7 @@ window.app.view = (function () {
             document.title = app.page.title;
             app.page.widgets = getWidgetsFromBody(app.page.body);
             this.helper.preffix = app.config.frontend_app_web_url + '/' + app.router.locale
-
-            addHeader();
-            addFooter();
+                    
             beforePageRender();
             selectMenuItem();
             changeHomeUrl();
@@ -131,6 +129,8 @@ window.app.view = (function () {
     }
 
     function beforePageRender() {
+        addHeader();  
+        
         //clear all
         app.container.html('');
 
@@ -142,6 +142,7 @@ window.app.view = (function () {
     }
 
     function afterPageRender() {
+        addFooter();
         app.bindAllAjaxLinks();
         //add ga
         //$.getScript(app.config.frontend_app_web_url + '/js/lib/google.analytics.js');
