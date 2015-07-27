@@ -2952,7 +2952,8 @@ top:0;}
 /* Blog post */
 .blog_post__top {
 	overflow: hidden;
-	height: 595px;
+	/*height: 595px;*/
+	height:524px;
 	margin: 0 0 65px 0;
 	
 	background: url(../img/img-blog_post.jpg) no-repeat;
