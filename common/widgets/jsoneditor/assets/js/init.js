@@ -1,7 +1,7 @@
 function setGlobalOptions(conf) {    
     JSONEditor.plugins.sceditor.style = '//cdn.jsdelivr.net/sceditor/1.4.3/jquery.sceditor.default.min.css';
     JSONEditor.plugins.sceditor.width = "754px";    
-    JSONEditor.plugins.sceditor.toolbar = "bold|maximize|source,pastetext,bulletlist,orderedlist,removeformat|link";
+    JSONEditor.plugins.sceditor.toolbar = "source|maximize|bold,font,size|pastetext,bulletlist,orderedlist,removeformat|link|image";
 
     // Global Select2 options
     JSONEditor.plugins.select2.width = "100%";

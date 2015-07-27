@@ -70,7 +70,7 @@
         app.container.append(html);
 
         //bind ajax load to links                                 
-        app.bindContainerAjaxLinks("#main-client-list-container");        
+        app.bindContainerAjaxLinks(".clients_box");        
         
         app.view.afterWidget(widget);
     }    

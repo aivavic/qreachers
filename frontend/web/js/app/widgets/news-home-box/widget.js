@@ -85,7 +85,7 @@
         app.container.append(html);
 
         //bind ajax load to links                                 
-        app.bindContainerAjaxLinks("#main-article-list-container");
+        app.bindContainerAjaxLinks(".news_box");
 
         app.view.afterWidget(widget);
     }

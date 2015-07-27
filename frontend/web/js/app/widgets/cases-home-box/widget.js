@@ -79,7 +79,7 @@
         app.container.append(html);
 
         //bind ajax load to links                                 
-        app.bindContainerAjaxLinks("#main-project-list-container");
+        app.bindContainerAjaxLinks(".trio_nav__in");
 
         app.view.afterWidget(widget);
     }

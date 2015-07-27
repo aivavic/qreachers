@@ -35,7 +35,9 @@
     function renderWidget(html) {
         app.logger.func('renderWidget(html)');
         app.container.append(html);
-
+        
+        app.bindContainerAjaxLinks(".tools_box");
+        
         app.view.afterWidget(widget);
     }
 
