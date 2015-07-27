@@ -125,7 +125,7 @@
         app.container.append(html);
 
         //bind ajax load to links                                 
-        app.bindContainerAjaxLinks("#main-article-list-container");
+        app.bindContainerAjaxLinks(".blog_post__top");
 
         app.view.afterWidget(widget);
     }
