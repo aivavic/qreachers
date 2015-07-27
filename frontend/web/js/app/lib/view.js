@@ -210,7 +210,7 @@ window.app.view = (function () {
                     app.templateLoader.getTemplateAjax(app.config.frontend_app_web_url + '/js/app/templates/header.html' + params, function (template) {
                         app.logger.var(data);
 
-                        $(template(data)).insertBefore(app.container);
+                        $(template(data)).insertBefore(app.config.frontend_app_conainer);
                         app.view.headerLoaded = true;
                     });
                 });
@@ -264,7 +264,7 @@ window.app.view = (function () {
                     app.templateLoader.getTemplateAjax(app.config.frontend_app_web_url + '/js/app/templates/footer.html' + params, function (template) {
                         app.logger.var(data);
 
-                        $(template(data)).insertAfter(app.container);
+                        $(template(data)).insertAfter(app.config.frontend_app_conainer);
                         app.view.footerLoaded = true;
 
                         if (app.router.slug == 'contact') {
