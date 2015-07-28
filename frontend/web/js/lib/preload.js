@@ -37,6 +37,22 @@ function preloadFadeOut() {
     if (!$('.top__menu-btn').hasClass('top__menu-btn--default')){
       $('.top__menu-btn').addClass('top__menu-btn--default');        
     }
+	
+	
+
+
+/* ajax height fix */
+
+heightFix();
+
+$(window).resize(function(){
+	heightFix();
+});
+
+function heightFix(){
+	$('.main_top').css({'height':$(window).height()});
+}
+
 }
 
 function runLoader() {
