@@ -1,6 +1,6 @@
 {{#each items}}
-<a href="{{viewUrl}}" class="ajaxLink">
-    <div class="col-md-5 {{rows}} project-box {{dataFilterCategories}}">
+<div class="col-md-5 {{rows}} project-box {{dataFilterCategories}}">
+    <a href="{{viewUrl}}" class="ajaxLink">
         <div class="projects_box__item">
             <div class="projects_box__thumb">
                 <img src="{{previewImg}}" alt="#">
@@ -12,18 +12,7 @@
                 <p>{{description}}</p>
             </div>
         </div>
-
-    </div>	
-</a>
+    </a>
+</div>	
 {{/each}}
 
-<script>
-$(document).ready(function(){
-    // Cases show/hide description
-    if ($('.projects_box__txt p').length) {
-        $('.projects_box__item').hover(function () {
-            $(this).find('.projects_box__txt p').slideToggle(250);
-        });
-    }
- });
-</script>

@@ -12,6 +12,7 @@
 
         //set default values
         sessionStorage.setItem('page.view.portfolio.portfolio.filter.page', 1);
+        app.view.grid = null;
 
         loadData();
     }
@@ -26,6 +27,13 @@
                 app.config.frontend_app_api_url + '/db/project-categories',
                 function (catData) {
                     data.categories = catData.items;
+                    var cids = [];
+                    $.each(data.categories, function(k,v) {
+                        cids.push(v.id);
+                    });                    
+                    
+                    sessionStorage.setItem('projects.index.filter.category_id', cids.join(','));
+                    
                     loadTemplate(data);
                 });
     }
@@ -52,7 +60,7 @@
             app.bindContainerAjaxLinks(app.config.frontend_app_conainer);
 
             //bindCategoryClickEvent(app.config.frontend_app_conainer);
-            //bindShowMoreClickEvent();
+            bindShowMoreClickEvent();
         }, 500);
 
         loadProjects(data);
@@ -119,20 +127,23 @@
                         artData.items[key].video = val.video_base_url + '/' + val.video_path;
                         artData.items[key].dataFilterCategories = getDataFilterCategories(val.categories);
                         artData.items[key].categoryTitles = getCategoryTitles(val.categories);
-                        if(i == 0){
-                            artData.items[key].rows = 'col-md-offset-1';    
-                        } else if(i == 1) {
+                        if (i == 0) {
+                            artData.items[key].rows = 'col-md-offset-1';
+                        } else if (i == 1) {
                             artData.items[key].rows = 'hidden-sm hidden-xs';
                             return i = 0;
                         }
-                        i++; 
+                        i++;
 
                     });
 
                     data.items = artData.items;
                     app.logger.var(data.items.length);
-                    if(data.items.length > 6){
-                        data.itemsCount = true;                        
+                    if (data.items.length > 6) {
+                        $('#portfolioShowMore').show();
+                    }
+                    else {
+                        $('#portfolioShowMore').hide();
                     }
                     loadTemplateItems(data);
                 });
@@ -162,17 +173,26 @@
     function renderWidgetItems(html) {
         app.logger.func('renderWidget(html)');
 
-        $(".project-box").remove();
-        $(".projects").prepend(html);
+        if ($.isEmptyObject(app.view.grid)) {
+            $(".projects").append(html);
+            bindFilterClick();
+        }
+        else {
+            app.logger.text('app.view.grid exist, remove, insert');
+            app.view.grid.isotope('remove', $(".project-box"));
+            app.view.grid.isotope('insert', $(html));
+            //app.view.grid.isotope('layout');            
+        }
+
 
         setTimeout(function () {
             //bind ajax load to links      
             app.bindContainerAjaxLinks(app.config.frontend_app_conainer);
         }, 500);
 
-        setTimeout(function () {
-            $(window).trigger('page.view.portfolio.portfolio.renderWidgetItems');
-        }, 2000);
+        //setTimeout(function () {
+        $(window).trigger('page.view.portfolio.portfolio.renderWidgetItems');
+        //}, 2000);
     }
 
     function bindShowMoreClickEvent() {
@@ -210,7 +230,39 @@
         return result.join(',');
     }
 
+    function bindFilterClick() {
+        // bind filter a click
+        $('.project-category-item').on('click', function () {
+            var cid = $(this).attr('categoryid');
 
+            if ($(this).hasClass('active')) {
+                //remove category
+                app.logger.text('remove cid:' + cid);
+                sessionStorage.setItem('page.view.portfolio.portfolio.filter.page', 1);
+                
+                var cids = sessionStorage.getItem('projects.index.filter.category_id');
+                cids = cids.split(',');
+                var newCids = [];
+                $.each(cids, function(k,v) {
+                    if (v != cid) {
+                        newCids.push(v);    
+                    }
+                });
+                sessionStorage.setItem('projects.index.filter.category_id', newCids.join(','));
+            } else {
+                //add category
+                app.logger.text('add cid:' + cid);
+                sessionStorage.setItem('page.view.portfolio.portfolio.filter.page', 1);
+                
+                var cids = sessionStorage.getItem('projects.index.filter.category_id');
+                cids = cids.split(',');
+                cids.push(cid);                
+                sessionStorage.setItem('projects.index.filter.category_id', cids.join(','));
+            }
+            
+            loadProjects();
+        });
+    }
 
 })();
 

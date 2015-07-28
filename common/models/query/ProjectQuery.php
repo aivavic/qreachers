@@ -36,8 +36,17 @@ class ProjectQuery extends ActiveQuery
     public function onlyCategory($ids)
     {
         if (!empty($ids)) {
-            $this->leftJoin('{{project_categories}}', '{{project_categories}}.project_id = {{%project}}.id');
-            $this->andWhere('{{project_categories.category_id}} = "'.$ids.'"');
+            if (false === strpos($ids, ',')) {
+                $this->leftJoin('{{project_categories}}', '{{project_categories}}.project_id = {{%project}}.id');
+                $this->andWhere('{{project_categories.category_id}} = "'.$ids.'"');
+            }
+            else {
+                $arr = explode(',',$ids);
+                $this->leftJoin('{{project_categories}}', '{{project_categories}}.project_id = {{%project}}.id');
+                $this->andWhere('{{project_categories.category_id}} in ("' . implode('","', $arr) . '")');                 
+            }
+
+            
         }
 
         return $this;

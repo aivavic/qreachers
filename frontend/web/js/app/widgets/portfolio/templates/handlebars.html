@@ -2,18 +2,18 @@
     <br>
     <div class="container">
 
-        <!--<div class="row">
+        <div class="row">
 
-            <!--<div class="col-md-10 col-md-offset-1">
+            <div class="col-md-10 col-md-offset-1">
 
-                <!--<div class="top_filters">
+                <div class="top_filters">
                     <div class="top_filters__sort">
                         <ul class="list-unstyled">
                             <li class="desc">{{filter}}<div class="ico"></div></li>
                         </ul>
                     </div><!--.top_filters__sort-->
 
-                    <!--<div class="top_filters__multi" style="display: none;">
+                    <div class="top_filters__multi" style="display: none;">
                         <h4>{{type}}:</h4>
                         <ul class="list-unstyled">
                             {{#each categories}}                                
@@ -22,7 +22,7 @@
                         </ul>
                     </div><!--.top_filters__multi-->
 
-                    <!--<div class="top_filters__multi" style="display: none;">
+                    <div class="top_filters__multi" style="display: none;">
                         <h4>{{client}}</h4>
                         <ul class="list-unstyled">
                             {{#each clients}}                                
@@ -31,23 +31,21 @@
                         </ul>
                     </div><!--.top_filters__multi-->
 
-                <!--</div><!--.top_filters-->
+                </div><!--.top_filters-->
 
-            <!--</div><!--.col-10-->
+            </div><!--.col-10-->
 
-        <!--</div><!--.row-->
+        </div><!--.row-->
 
         <div class="row">
             <div class="projects">
-            
+
             </div>
         </div><!--.row-->
 
-        
-        <div class="more_btn">
-            {{#if itemsCount}}
-            <a href="javascript:void(0);" id="portfolioShowMore" class="btn btn-bb animated">{{show_more}}</a>
-            {{/if}}
+
+        <div class="more_btn">            
+            <a href="javascript:void(0);" id="portfolioShowMore" class="btn btn-bb animated">{{show_more}}</a>            
         </div>
 
     </div><!--.container-->
@@ -56,47 +54,31 @@
 </section><!--.cases_page-->
 
 <script type="text/javascript">
-    
+
     $(window).on('page.view.portfolio.portfolio.renderWidgetItems', function () {
-        $('body').addClass('cases_body');
-        app.logger.text('$grid = $(".projects").isotope');
-        $('.filter-box .tags-box').off('click');
-        // init Isotope
-        var $grid = $('.projects').isotope({
-            itemSelector: '.project-box',
-            layoutMode: 'fitRows'
-        });
-        // filter functions
-        var filterFns = {
-            // show if number is greater than 50
-            numberGreaterThan50: function () {
-                var number = $(this).find('.number').text();
-                return parseInt(number, 10) > 50;
-            },
-            // show if name ends with -ium
-            ium: function () {
-                var name = $(this).find('.name').text();
-                return name.match(/ium$/);
-            }
-        };
-        var cid = sessionStorage.getItem('projects.index.filter.category_id');
-        if (cid) {
-            var filterValue = '.data-filter-' + cid;
-            // use filterFn if matches value
-            filterValue = filterFns[ filterValue ] || filterValue;
-            $grid.isotope({filter: filterValue});
+        // Cases show/hide description
+        if ($('.projects_box__txt p').length) {
+            $('.projects_box__item').hover(function () {
+                $(this).find('.projects_box__txt p').slideToggle(250);
+            });
         }
 
-        // bind filter a click
-        $('.project-category-item').on('click', function () {
-            var filterValue = $(this).attr('data-filter');
-            app.logger.text('.project-category-item a click() filterValue:' + filterValue);
-            // use filterFn if matches value
-            filterValue = filterFns[ filterValue ] || filterValue;
-            $grid.isotope({filter: filterValue});
-            $('.project-category-item').removeClass("active");
-            $(this).addClass('active');
+        if (!$.isEmptyObject(app.view.grid)) {
+            return;
+        }
+
+        $('body').addClass('cases_body');
+        
+        app.logger.text('app.view.grid = $(".projects").isotope');
+        $('.filter-box .tags-box').off('click');
+        // init Isotope
+        app.view.grid = $('.projects');
+        app.view.grid.isotope({
+            itemSelector: '.project-box',
+            layoutMode: 'fitRows'
+
         });
+
         // Page filters
         if ($('.top_filters__multi').length) {
             //$('.top_filters__multi').hide();
@@ -110,7 +92,5 @@
         }
 
     });
-
-
 
 </script>
