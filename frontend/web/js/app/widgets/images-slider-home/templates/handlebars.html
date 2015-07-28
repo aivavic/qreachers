@@ -44,4 +44,19 @@
 			btitle_name();
 		});
 	}
+	
+	
+
+	/* ajax height fix */
+
+	heightFix();
+
+	$(window).resize(function(){
+		heightFix();
+	});
+
+	function heightFix(){
+		$('.main_top').css({'height':$(window).height()});
+		console.log($(window).height());
+	}
 </script>
