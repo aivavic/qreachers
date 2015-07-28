@@ -202,7 +202,7 @@ window.app.view = (function () {
                         }
                     });
 
-                    var params = {};
+                    var params = '';
 
                     if (true == app.config.frontend_app_debug) {
                         params = '?_' + Date.now();
@@ -256,7 +256,7 @@ window.app.view = (function () {
                      //data.items[key].previewImg = val.thumbnail_base_url + '/' + val.thumbnail_path;                        
                      });*/
 
-                    var params = {};
+                    var params = '';
 
                     if (true == app.config.frontend_app_debug) {
                         params = '?_' + Date.now();
