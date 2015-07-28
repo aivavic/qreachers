@@ -60,8 +60,8 @@ class Block extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            ['slug', 'unique', 'targetAttribute' => ['slug', 'locale']],
-            [['title', 'description', 'body',], 'string'],
+            //['slug', 'unique', 'targetAttribute' => ['slug', 'locale', 'domain']],
+            [['title', 'description', 'body', 'slug'], 'string'],
             [['status', 'locale_group_id'], 'integer'],
             [['domain'], 'safe']
         ];
