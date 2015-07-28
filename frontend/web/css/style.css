@@ -1401,7 +1401,7 @@ top:0;}
 	position: relative;
 
 	overflow: hidden;
-	height: 100%;
+	/*height: 100%;*/
 	min-height: 580px;
 }
 
@@ -4906,8 +4906,8 @@ only screen and (min-device-pixel-ratio: 2) {}
 .pl-1{
 transition: none;}
 
-#ajaxContent{
-height:100%;}
+/*#ajaxContent{
+height:100%;}*/
 
 .projects_box__thumb{
 height:260px;
