@@ -102,7 +102,7 @@ var fOnLoaderComplete = function () {
 
 	function heightFix(){
 		$('.main_top').css({'height':$(window).height()});
-		console.log();
+		console.log($(window).height());
 	}
 	
 }
