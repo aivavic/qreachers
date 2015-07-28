@@ -144,6 +144,8 @@ window.app.view = (function () {
     function afterPageRender() {
         addFooter();
         app.bindAllAjaxLinks();
+        
+        $.getScript(app.config.frontend_app_web_url + '/js/lib/afterRender.js');
         //add ga
         //$.getScript(app.config.frontend_app_web_url + '/js/lib/google.analytics.js');
     }
