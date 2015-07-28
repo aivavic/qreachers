@@ -89,20 +89,4 @@ var fOnLoaderComplete = function () {
         $('.scroll_arrow').addClass('scroll_arrow--active');
     }, 4000);
 	
-	
-
-
-	/* ajax height fix */
-
-	heightFix();
-
-	$(window).resize(function(){
-		heightFix();
-	});
-
-	function heightFix(){
-		$('.main_top').css({'height':$(window).height()});
-		console.log($(window).height());
-	}
-	
 }
