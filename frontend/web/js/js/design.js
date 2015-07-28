@@ -144,7 +144,7 @@ $(document).ready(function() {
 //		});
 //	}
 
-	$('.top__menu-btn').click(function(){
+	/*$('.top__menu-btn').click(function(){
 
 		if($(window).scrollTop() > 100) {
 			if($('.top').hasClass('top--fixed')) {
@@ -166,7 +166,7 @@ $(document).ready(function() {
 		$('.main_menu .main_menu__socials li').toggleClass('fadeInUp');
 
 		$('body').toggleClass('lock');
-	});
+	});*/
 
 
 	// Trio nav

@@ -31,17 +31,18 @@ use yii\web\Response;
         <?php $this->head() ?>
         <?php echo Html::csrfMetaTags() ?>        
     </head>
-    <body>  
+    <body>
+        <div class="preloader animated">
+            <div class="preloader__wrap">
+                <div class="preloader__logo preloader__logo--spin animated"></div>
+            </div>
+            <div class="preloader__status animated"></div>
+        </div>
+
         <?php $this->beginBody() ?>        
 
-            <?php require_once '_header.php'; ?>
-        
-            <?php echo $content ?>
-       
-            <?php //require_once '_footer.php'; ?>
+        <?php echo $content ?>
 
-            <?php require_once '_loader.php'; ?>
-        
         <?php $this->endBody() ?>
     </body>
 </html>

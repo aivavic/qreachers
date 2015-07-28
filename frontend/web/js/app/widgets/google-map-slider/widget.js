@@ -58,12 +58,12 @@
         
         
         // Coordinates        
-        var myLatlng = new google.maps.LatLng(lat, long-0.004);
+        var myLatlng = new google.maps.LatLng(lat, long);
 
         // Map options
         var mapOptions = {
             disableDefaultUI: true,
-            center: new google.maps.LatLng(lat, long),
+            center: new google.maps.LatLng(lat, Number(long)+0.004),
             zoom: 17,
             scrollwheel: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -79,7 +79,7 @@
             animation: google.maps.Animation.DROP,
             map: map,
             icon: '/img/ico-contacts_marker.png',
-            url: 'https://www.google.com.ua/maps/place/@' + lat + ',' + long + ',17z/data=!4m2!3m1!1s0x40d4cefec397bd8f:0xd344af779861fc77',
+            url: 'https://www.google.com.ua/maps/place/@' + lat + ',' + long + ',17z',
         });
         
         $(".show-inmap a").click(function() {

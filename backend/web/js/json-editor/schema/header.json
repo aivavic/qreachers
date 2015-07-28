@@ -1,0 +1,95 @@
+{
+    "type": "object",
+    "title": "Header",
+    "properties": {
+        "tab_title": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "template": "{{title}}",
+            "watch": {
+                "title": "block.___header___"
+            }
+        },
+        "___header___": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            },
+            "default": "Header"
+        },
+        "header-preview": {
+            "title": "Example:",
+            "type": "string",
+            "format": "hidden",
+            "default": "/img/block_header_preview.jpg",
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "mediaType": "image"
+                }
+            ]
+
+        },
+        "t": {
+            "type": "array",
+            "format": "table",
+            "title": "Translations",
+            "uniqueItems": true,
+            "options": {
+                "collapsed": true
+            },
+            "items": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "options": {
+                            "input_width": "300px"
+                        }
+                    },
+                    "value": {
+                        "type": "string",
+                        "options": {
+                            "input_width": "400px"
+                        }
+                    }
+                }
+            }
+        },
+                "menu": {
+            "type": "array",
+            "format": "table",
+            "title": "Menu",
+            "uniqueItems": true,
+            "options": {
+                "collapsed": true
+            },
+            "items": {
+                "type": "object",
+                "properties": {
+                    "host": {
+                        "type": "string",
+                        "default" : "@frontend",
+                        "options": {
+                            "input_width": "100px"
+                        }
+                    },
+                    "url": {
+                        "type": "string",
+                        "options": {
+                            "input_width": "200px"
+                        }
+                    },
+                    "title": {
+                        "type": "string",
+                        "options": {
+                            "input_width": "200px"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

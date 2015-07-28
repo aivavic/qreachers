@@ -1,0 +1,20 @@
+{
+    "type": "array",
+    "title": "Body",
+    "format": "tabs",
+    "items": {
+        "title": "Block",
+        "id": "block",
+        "headerTemplate": "{{i1}} - {{self.tab_title}}",
+        "oneOf": [
+            {
+                "$ref": "/js/json-editor/schema/header.json",
+                "title": "Header"
+            },
+            {
+                "$ref": "/js/json-editor/schema/footer.json",
+                "title": "Footer"
+            }
+        ]
+    }
+}
