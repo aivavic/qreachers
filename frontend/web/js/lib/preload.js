@@ -6,6 +6,17 @@ function preloadStart() {
 //on first load end
 function preloadLogoEnd() {
 
+	heightFix();
+
+	$(window).resize(function(){
+		heightFix();
+	});
+
+	function heightFix(){
+		$('.main_top').css({'height':$(window).height()});
+		console.log($(window).height());
+	}
+
 }
 
 //on ajax link click
