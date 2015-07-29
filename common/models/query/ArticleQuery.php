@@ -28,11 +28,22 @@ class ArticleQuery extends ActiveQuery
     public function onlyCategory($ids)
     {
         if (!empty($ids)) {
-            $this->leftJoin('{{article_categories}}', '{{article_categories}}.article_id = {{%article}}.id');
-            $this->andWhere('{{article_categories.category_id}} = "'.$ids.'"');
+            if (false === strpos($ids, ',')) {
+                $this->leftJoin('{{article_categories}}', '{{article_categories}}.article_id = {{%article}}.id');
+                $this->andWhere('{{article_categories.category_id}} = "' . $ids . '"');
+            } else {
+                $arr = explode(',', $ids);
+                $this->leftJoin('{{article_categories}}', '{{article_categories}}.article_id = {{%article}}.id');
+                $this->andWhere('{{article_categories.category_id}} in ("' . implode('","', $arr) . '")');
+            }
         }
+
+
+
+
+
+
 
         return $this;
     }
-
 }

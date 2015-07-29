@@ -28,12 +28,12 @@
                 function (catData) {
                     data.categories = catData.items;
                     var cids = [];
-                    $.each(data.categories, function(k,v) {
+                    $.each(data.categories, function (k, v) {
                         cids.push(v.id);
-                    });                    
-                    
+                    });
+
                     sessionStorage.setItem('projects.index.filter.category_id', cids.join(','));
-                    
+
                     loadTemplate(data);
                 });
     }
@@ -70,18 +70,18 @@
 
     function changeFilterButtonsState() {
 
-        var cid = sessionStorage.getItem('projects.index.filter.category_id');
-
-        if (cid) {
-            app.logger.text('changeFilterButtonsState, cid: ' + cid);
-            $('.filter-btn').trigger('click');
-            var arr = cid.split(',');
-            $('.filter-box').find('.project-category-item').each(function (k, v) {
-                if (-1 != arr.indexOf($(v).attr('categoryid'))) {
-                    $(v).addClass('active');
-                }
-            });
-        }
+        /*var cid = sessionStorage.getItem('projects.index.filter.category_id');
+         
+         if (cid) {
+         app.logger.text('changeFilterButtonsState, cid: ' + cid);
+         $('.filter-btn').trigger('click');
+         var arr = cid.split(',');
+         $('.filter-box').find('.project-category-item').each(function (k, v) {
+         if (-1 != arr.indexOf($(v).attr('categoryid'))) {
+         $(v).addClass('active');
+         }
+         });
+         }*/
     }
 
     function loadProjects() {
@@ -91,8 +91,8 @@
 
         var params = {
             "fields": 'id,category_id,description,slug,thumbnail_base_url,thumbnail_path,title,video_base_url,video_path',
-            "expand": 'categories',
             "per-page": data.count,
+            "expand": 'categories',
             "sort": sort,
             "where_operator_format": [
                 "like",
@@ -137,9 +137,10 @@
 
                     });
 
+                    //show more bitton logic
                     data.items = artData.items;
                     app.logger.var(data.items.length);
-                    if (data.items.length > 6) {
+                    if (artData._meta.pageCount > 1 && artData._meta.currentPage != artData._meta.pageCount) {
                         $('#portfolioShowMore').show();
                     }
                     else {
@@ -147,16 +148,6 @@
                     }
                     loadTemplateItems(data);
                 });
-    }
-
-    function unsetStringElement(old, id) {
-        var arr = old.split(',');
-        var index = arr.indexOf(id);
-        if (-1 != index) {
-            arr.splice(index, 1);
-        }
-
-        return arr.join(',');
     }
 
     function loadTemplateItems(data) {
@@ -184,15 +175,12 @@
             //app.view.grid.isotope('layout');            
         }
 
-
         setTimeout(function () {
             //bind ajax load to links      
             app.bindContainerAjaxLinks(app.config.frontend_app_conainer);
         }, 500);
 
-        //setTimeout(function () {
         $(window).trigger('page.view.portfolio.portfolio.renderWidgetItems');
-        //}, 2000);
     }
 
     function bindShowMoreClickEvent() {
@@ -225,8 +213,6 @@
             }
         });
 
-        //TODO: get category title from data.categories
-
         return result.join(',');
     }
 
@@ -236,32 +222,45 @@
             var cid = $(this).attr('categoryid');
 
             if ($(this).hasClass('active')) {
-                //remove category
-                app.logger.text('remove cid:' + cid);
-                sessionStorage.setItem('page.view.portfolio.portfolio.filter.page', 1);
-                
-                var cids = sessionStorage.getItem('projects.index.filter.category_id');
-                cids = cids.split(',');
-                var newCids = [];
-                $.each(cids, function(k,v) {
-                    if (v != cid) {
-                        newCids.push(v);    
-                    }
-                });
-                sessionStorage.setItem('projects.index.filter.category_id', newCids.join(','));
+                removeItemsWithCategory(cid);
             } else {
-                //add category
-                app.logger.text('add cid:' + cid);
-                sessionStorage.setItem('page.view.portfolio.portfolio.filter.page', 1);
-                
-                var cids = sessionStorage.getItem('projects.index.filter.category_id');
-                cids = cids.split(',');
-                cids.push(cid);                
-                sessionStorage.setItem('projects.index.filter.category_id', cids.join(','));
+                addItemsWithCategory(cid);
             }
-            
+
             loadProjects();
         });
+    }
+
+    function removeItemsWithCategory(cid) {
+        app.logger.text('remove cid:' + cid);
+        sessionStorage.setItem('page.view.portfolio.portfolio.filter.page', 1);
+
+        var cids = sessionStorage.getItem('projects.index.filter.category_id');
+        cids = cids.split(',');
+        var newCids = [];
+        $.each(cids, function (k, v) {
+            if (v != cid) {
+                newCids.push(v);
+            }
+        });
+        sessionStorage.setItem('projects.index.filter.category_id', newCids.join(','));
+    }
+
+    function addItemsWithCategory(cid) {
+        app.logger.text('add cid:' + cid);
+        sessionStorage.setItem('page.view.portfolio.portfolio.filter.page', 1);
+
+        var cids = sessionStorage.getItem('projects.index.filter.category_id');
+        if (!$.isEmptyObject(cids)) {
+            cids = cids.split(',');
+            cids.push(cid);
+            cids = cids.join(',');
+        }
+        else {
+            cids = cid;
+        }
+
+        sessionStorage.setItem('projects.index.filter.category_id', cids);
     }
 
 })();

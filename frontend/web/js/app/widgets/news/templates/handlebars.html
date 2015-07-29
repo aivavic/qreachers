@@ -6,7 +6,7 @@
 
             <div class="col-lg-10 col-lg-offset-1 col-md-12">
 
-                <!--<div class="row">
+                <div class="row">
 
                     <div class="col-md-12">
 
@@ -18,7 +18,7 @@
                             </div><!--.top_filters__sort-->
 
 
-                            <!--<div class="top_filters__multi" style="display: none;">
+                            <div class="top_filters__multi" style="display: none;">
                                 <ul class="list-unstyled">
                                     {{#each categories}}                                        
                                     <li class="active article-category-item" data-filter=".data-filter-{{id}}" categoryId = "{{id}}"> {{title}} <div class="ico"></div></li>                                    
@@ -27,11 +27,11 @@
                                 </ul>
                             </div><!--.top_filters__multi-->
 
-                        <!--</div><!--.top_filters-->
+                        </div><!--.top_filters-->
 
-                    <!--</div><!--.col-->
+                    </div><!--.col-->
 
-                <!--</div><!--.row-->
+                </div><!--.row-->
 
                 <div class="row news-container">
 
@@ -39,14 +39,10 @@
 
                 </div><!--.row-->
 
-
-                
-                <div class="more_btn">
-                    {{#if itemsCount}}
-                    <a href="#" class="btn btn-bb animated">БОЛЬШЕ ПОСТОВ</a>
-                    {{/if}}
+                <div class="more_btn">                    
+                    <a href="javascript:void(0);" id="newsShowMore" class="btn btn-bb animated">БОЛЬШЕ ПОСТОВ</a>                    
                 </div>
-                
+
             </div><!--.col-offset-1-->
 
 
@@ -58,51 +54,22 @@
 
 <script type="text/javascript">
     $(window).on('page.view.article.article.renderWidgetItems', function () {
-        app.logger.text('$grid = $(".news-container").isotope');
-        
-        var url_body = location.href;
-        if(url_body.search('ru/page/view/news') != -1){
-            $('.services_top').css('margin','0 0 20px 0');
+
+        if (!$.isEmptyObject(app.view.grid)) {
+            return;
         }
+
+        var url_body = location.href;
+        if (url_body.search('ru/page/view/news') != -1) {
+            $('.services_top').css('margin', '0 0 20px 0');
+        }
+
+        app.logger.text('$(".news-container").isotope');
         // init Isotope
-        var $grid = $('.news-container').isotope({
+        app.view.grid = $('.news-container');
+        app.view.grid.isotope({
             itemSelector: '.news-wrap',
             layoutMode: 'fitRows'
-        });
-
-        // filter functions
-        var filterFns = {
-            // show if number is greater than 50
-            numberGreaterThan50: function () {
-                var number = $(this).find('.number').text();
-                return parseInt(number, 10) > 50;
-            },
-            // show if name ends with -ium
-            ium: function () {
-                var name = $(this).find('.name').text();
-                return name.match(/ium$/);
-            }
-        };
-
-        var cid = sessionStorage.getItem('articles.index.filter.category_id');
-
-        if (cid) {
-            var filterValue = '.data-filter-' + cid;
-            // use filterFn if matches value
-            filterValue = filterFns[ filterValue ] || filterValue;
-
-            $grid.isotope({filter: filterValue});
-        }
-
-        // bind filter button click
-        $('.article-category-item').on('click', function () {
-            var filterValue = $(this).attr('data-filter');
-            // use filterFn if matches value
-            filterValue = filterFns[ filterValue ] || filterValue;
-            $grid.isotope({filter: filterValue});
-
-            $('.article-category-item').removeClass("active");
-            $(this).addClass('active');
         });
 
         // Page filters

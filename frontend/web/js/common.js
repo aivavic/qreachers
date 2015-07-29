@@ -7,9 +7,9 @@ $(document).ready(function () {
             width: "80px"
         }, 10);
     });
-    
+
     var containerHeight = $(window).height() - $("footer").outerHeight() - $("nav").height();
-    $(".main-container").css({"min-height": containerHeight });
+    $(".main-container").css({"min-height": containerHeight});
 });
 
 $(".filter-btn").click(function (e) {
@@ -77,11 +77,11 @@ $(".burger").click(function () {
 
 $(window).resize(function () {
     var containerHeight = $(window).height() - $("footer").outerHeight() - $("nav").height();
-    $(".main-container").css({"min-height": containerHeight });
-    
+    $(".main-container").css({"min-height": containerHeight});
+
     if ($(".dropdown").height() > 1) {
         if ($(window).height() > 400) {
-            $(".dropdown").height($(window).height() - 90);    
+            $(".dropdown").height($(window).height() - 90);
             $(".dropdown").removeClass("horisontal-nav");
         }
 
@@ -113,9 +113,9 @@ $(window).on("orientationchange", function () {
             $(".lang-box").fadeIn();
         });
     }
-    
+
     var containerHeight = $(window).height() - $("footer").outerHeight() - $("nav").height();
-    $(".main-container").css({"min-height": containerHeight });
+    $(".main-container").css({"min-height": containerHeight});
 });
 
 $(window).scroll(function () {
@@ -131,26 +131,36 @@ function urlencode(v) {
     return encodeURIComponent(v).replace(/%20/g, '+');
 }
 
-function array_chunk( input, size ) {
+function array_chunk(input, size) {
 
-	for(var x, i = 0, c = -1, l = input.length, n = []; i < l; i++){
-		(x = i % size) ? n[c][x] = input[i] : n[++c] = [input[i]];
-	}
+    for (var x, i = 0, c = -1, l = input.length, n = []; i < l; i++) {
+        (x = i % size) ? n[c][x] = input[i] : n[++c] = [input[i]];
+    }
 
-	return n;
+    return n;
 }
-function items_array_chunk( input, size ) {
+function items_array_chunk(input, size) {
 
-	for(var x, i = 0, c = -1, l = input.length, n = []; i < l; i++){
-		if (x = i % size) { 
-                    n[c][x] = input[i] 
-                } else {
-                    n[++c] = [input[i]];
-                }
-	}
-        var groups = [];
-        $.each(n,function(k,v){
-            groups[k] = {'items':v}; 
-        });
-	return groups;
+    for (var x, i = 0, c = -1, l = input.length, n = []; i < l; i++) {
+        if (x = i % size) {
+            n[c][x] = input[i]
+        } else {
+            n[++c] = [input[i]];
+        }
+    }
+    var groups = [];
+    $.each(n, function (k, v) {
+        groups[k] = {'items': v};
+    });
+    return groups;
+}
+
+function unsetStringElement(old, id) {
+    var arr = old.split(',');
+    var index = arr.indexOf(id);
+    if (-1 != index) {
+        arr.splice(index, 1);
+    }
+
+    return arr.join(',');
 }
