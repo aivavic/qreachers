@@ -17,9 +17,9 @@ use yii\bootstrap\ActiveForm;
     <?php echo $form->field($model, 'slug')
         ->hint(Yii::t('backend', 'If you\'ll leave this field empty, slug will be generated automatically'))
         ->textInput(['maxlength' => 1024]) ?>
-    <?php echo $form->field($model, 'weight')
+    <?php /*echo $form->field($model, 'weight')
         ->hint(Yii::t('backend', 'Used for sorting'))
-        ->textInput(['maxlength' => 1024]) ?>
+        ->textInput(['maxlength' => 1024])*/ ?>
 
     <?php echo $form->field($model, 'parent_id')->dropDownList(\yii\helpers\ArrayHelper::map(
         $categories,

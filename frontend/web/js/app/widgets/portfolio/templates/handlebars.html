@@ -12,24 +12,17 @@
                             <li class="desc">{{filter}}<div class="ico"></div></li>
                         </ul>
                     </div><!--.top_filters__sort-->
-
+                    
+                    {{#each categoryGroups}}
                     <div class="top_filters__multi" style="display: none;">
-                        <h4>{{type}}:</h4>
+                        <h4>{{title}}:</h4>
                         <ul class="list-unstyled">
                             {{#each categories}}                                
                             <li class="active project-category-item" data-filter=".data-filter-{{id}}" categoryId = "{{id}}">{{title}}<div class="ico"></div></li>
                             {{/each}}
                         </ul>
                     </div><!--.top_filters__multi-->
-
-                    <!--div class="top_filters__multi" style="display: none;">
-                        <h4>{{client}}</h4>
-                        <ul class="list-unstyled">
-                            {{#each clients}}                                
-                            <li class="active project-category-item" data-filter=".data-filter-{{id}}" categoryId = "{{id}}">{{title}}<div class="ico"></div></li>                                
-                            {{/each}}                            
-                        </ul>
-                    </div--><!--.top_filters__multi-->
+                    {{/each}}
 
                 </div><!--.top_filters-->
 

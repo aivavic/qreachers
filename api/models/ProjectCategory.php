@@ -14,7 +14,7 @@ class ProjectCategory extends \common\models\ProjectCategory implements Linkable
 
     public function fields()
     {
-        return ['id', 'slug', 'title', 'weight'];
+        return ['id', 'slug', 'title', 'parent_id'];
     }
 
     /**

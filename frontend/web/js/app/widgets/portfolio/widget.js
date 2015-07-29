@@ -27,6 +27,8 @@
                 app.config.frontend_app_api_url + '/db/project-categories',
                 function (catData) {
                     data.categories = catData.items;
+                    data.categoryGroups = getCategoryGroups(data.categories);
+
                     var cids = [];
                     $.each(data.categories, function (k, v) {
                         cids.push(v.id);
@@ -104,7 +106,7 @@
         var cid = sessionStorage.getItem('projects.index.filter.category_id');
 
         if (cid) {
-            params.category_id = cid;            
+            params.category_id = cid;
         }
 
         var page = sessionStorage.getItem('page.view.portfolio.portfolio.filter.page');
@@ -266,6 +268,26 @@
         }
 
         sessionStorage.setItem('projects.index.filter.category_id', cids);
+    }
+
+    function getCategoryGroups(categories) {
+        var root = {};
+        $.each(categories, function (k, v) {
+            if (!v.parent_id) {
+                root[v.id] = v;
+            }
+        })
+
+        $.each(categories, function (k, v) {
+            if (v.parent_id) {
+                if (!root[v.parent_id].categories) {
+                    root[v.parent_id].categories = [];
+                }
+                root[v.parent_id].categories.push(v);
+            }
+        })         
+
+        return root;
     }
 
 })();

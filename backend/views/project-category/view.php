@@ -30,7 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'slug',
             'title',
             'status',
-            'weight'
+            //'weight'
+            'parent_id'
         ],
     ]) ?>
 

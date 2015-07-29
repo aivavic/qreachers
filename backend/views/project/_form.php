@@ -2,13 +2,18 @@
 $mId = strtolower($model::getClassNameNoNamespace());
 
 $categoriesList = \yii\helpers\ArrayHelper::map(
-        $categories, 'id', 'title'
+        $categories, 'id', 'title', 'parent_id'
 );
 
-//$categoriesList = [ 'TYPE COMPANY' => $categoriesList, 'CLIENTS' => $categoriesList];
 
-//yii\helpers\VarDumper::dump($model,11,1);
-//yii\helpers\VarDumper::dump($categoriesList, 11, 1);
+foreach ($categoriesList as $key => $value) {
+    if (!empty($key)) {
+        $multiCategories[$categoriesList[''][$key]] = $value;
+    }
+}
+//yii\helpers\VarDumper::dump($multiCategories, 11, 1);
+//die();
+
 ?>
 
 
@@ -27,7 +32,7 @@ echo $form->field($model, 'slug')
 
 
 echo $form->field($model, 'categoriesList')->dropDownList(
-    $categoriesList, ['prompt' => '', 'multiple' => true]
+    $multiCategories, ['prompt' => '', 'multiple' => true]
 );
 
 $js = '$("#' . $mId . '-categorieslist").select2();';

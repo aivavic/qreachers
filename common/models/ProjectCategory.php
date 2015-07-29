@@ -61,7 +61,7 @@ class ProjectCategory extends \yii\db\ActiveRecord
             [['title'], 'string', 'max' => 512],
             [['slug'], 'unique'],
             [['slug'], 'string', 'max' => 1024],
-            [['status', 'weight'], 'integer']
+            [['status', 'weight', 'parent_id'], 'integer']
         ];
     }
 
