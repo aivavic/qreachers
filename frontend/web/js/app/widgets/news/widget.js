@@ -125,15 +125,17 @@
                         artData.items[key].viewUrl = app.view.helper.preffix + '/article/view/' + val.slug;
                         artData.items[key].dataFilterCategories = getDataFilterCategories(val.categories);
                         artData.items[key].categoryTitles = getCategoryTitles(val.categories);
-                        if (i == 0) {
+                        if (i == 0 && !data.removeItemsTopBorder) {
                             artData.items[key].boxLineBotton = '<div class="news_box__txt-top"></div><div class="news_box__txt-bt"></div>';
-                        } else if (i == 1) {
+                        } else if (i == 1 && !data.removeItemsTopBorder) {
                             artData.items[key].boxLineBotton = '<div class="news_box__txt-top"></div><div class="news_box__txt-bt"></div>';
                         } else {
                             artData.items[key].boxLineBotton = '<div class="news_box__txt-bt"></div>';
                         }
                         i++;
                     });
+                    
+                    data.removeItemsTopBorder = false;
 
                     //show more bitton logic
                     data.items = artData.items;
@@ -192,6 +194,7 @@
             }
 
             data.removeItems = false;
+            data.removeItemsTopBorder = true;
             loadArticles(data);
         });
     }
