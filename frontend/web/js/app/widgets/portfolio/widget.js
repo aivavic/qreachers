@@ -213,7 +213,7 @@
             }
         });
 
-        return result.join(',');
+        return result.join(' / ');
     }
 
     function bindFilterClick() {

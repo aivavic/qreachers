@@ -18,18 +18,19 @@
         var data = widget;
 
         var sort = data.order_by;
-        if ("desc" == data.sort_order) sort = "-" + sort;         
-        
+        if ("desc" == data.sort_order)
+            sort = "-" + sort;
+
         var params = {
             "fields": 'id,slug,title,description,thumbnail_base_url,thumbnail_path,image_base_url,image_path,description',
             "expand": 'categories',
             //"per-page": data.count,
             //"sort": sort,
-            "where" :{
+            "where": {
                 locale: app.config.frontend_app_locale,
                 slug: app.router.slug
             }
-            
+
         };
         $.getJSON(
                 app.config.frontend_app_api_url + '/db/articles',
@@ -43,6 +44,8 @@
                     app.logger.var(data.items[0]);
                     //data.currentItem.video = data.items[0].video_base_url + '/' + data.items[0].video_path;
                     data.currentItem.category_id = (data.items[0].categories[0]) ? data.items[0].categories[0].id : '-';
+
+                    data.category_title = getCategoryTitles(data.items[0].categories);
                     loadDataAll(data);
                 });
     }
@@ -78,15 +81,15 @@
                     loadTemplate(data);
                 });
     }
-    
+
     function loadDataAll(data) {
         app.logger.func('loadDataAll()');
 
         var data = widget;
-        
+
         var params = {
             "fields": 'id,slug,title,description,thumbnail_base_url,thumbnail_path,description,video_base_url,image_base_url,image_path,video_path',
-            "sort" : '-id',              
+            "sort": '-id',
             "where": {
                 locale: app.config.frontend_app_locale,
             },
@@ -101,22 +104,24 @@
                 app.config.frontend_app_api_url + '/db/articles',
                 params,
                 function (articlesData) {
-                    $.each(articlesData.items, function (key,val) {
-                        if(val.slug == app.router.slug){
-                            if(articlesData.items[key-1]){  
-                              data.prevUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[key-1].slug;
+                    $.each(articlesData.items, function (key, val) {
+                        if (val.slug == app.router.slug) {
+                            if (articlesData.items[key - 1]) {
+                                data.prevUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[key - 1].slug;
                             } else {
-                               data.prevUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[articlesData.items.length-1].slug; 
+                                data.prevUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[articlesData.items.length - 1].slug;
                             }
-                            if(articlesData.items[key+1]){
-                              data.nextUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[key+1].slug;
+                            if (articlesData.items[key + 1]) {
+                                data.nextUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[key + 1].slug;
                             } else {
-                              data.nextUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[0].slug;  
+                                data.nextUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[0].slug;
                             }
-                       }
-                       
+                        }
+
                     });
-                    loadCategory(data);
+
+                    //loadCategory(data);                    
+                    loadTemplate(data);
                 });
     }
 
@@ -128,6 +133,18 @@
         app.bindContainerAjaxLinks(".blog_post__top");
 
         app.view.afterWidget(widget);
+    }
+
+    function getCategoryTitles(categories) {
+        var result = [];
+
+        $.each(categories, function (k, v) {
+            if (v.category_id) {
+                result.push(app.view.projectCategories[v.category_id]);
+            }
+        });
+
+        return result.join(' / ');
     }
 
 })();
