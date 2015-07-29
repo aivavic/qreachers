@@ -1,14 +1,7 @@
 <?php
 $mId = strtolower($model::getClassNameNoNamespace());
 
-$categoriesList = \yii\helpers\ArrayHelper::map(
-        $categories, 'id', 'title'
-);
-
-//$categoriesList = [ 'TYPE COMPANY' => $categoriesList, 'CLIENTS' => $categoriesList];
-
 //yii\helpers\VarDumper::dump($model,11,1);
-//yii\helpers\VarDumper::dump($categoriesList, 11, 1);
 ?>
 
 
@@ -24,11 +17,9 @@ echo $form->field($model, 'slug')
 
 <?php
 
-
-
-echo $form->field($model, 'categoriesList')->dropDownList(
-    $categoriesList, ['prompt' => '', 'multiple' => true]
-);
+echo $form->field($model, 'categoriesList')->dropDownList(\yii\helpers\ArrayHelper::map(
+        $categories, 'id', 'title'
+    ), ['prompt' => '', 'multiple' => true]);
 
 $js = '$("#' . $mId . '-categorieslist").select2();';
 $this->registerJs($js);
@@ -52,10 +43,10 @@ echo common\widgets\jsoneditorcss\JsonEditorCss::widget([
 ?>
 
 <?php
-/* echo common\widgets\jsoneditorcss\Upload::widget([
-  'editorKey' => $mId . '-head',
-  'fieldName' => 'root[common][image][content]'
-  ]); */
+/*echo common\widgets\jsoneditorcss\Upload::widget([
+    'editorKey' => $mId . '-head',
+    'fieldName' => 'root[common][image][content]'
+]);*/
 ?>
 
 <?php
@@ -64,12 +55,12 @@ echo $form->field($model, 'body')->textarea([ 'style' => 'display:none;'])->labe
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-lg-12">
-<?php
-echo common\widgets\jsoneditor\JsonEditor::widget([
-    'fieldId'   => $mId . '-body',
-    'schemaUrl' => Yii::getAlias('@web/js/json-editor/schema/project.body.json')
-]);
-?>
+        <?php
+        echo common\widgets\jsoneditor\JsonEditor::widget([
+            'fieldId'   => $mId . '-body',
+            'schemaUrl' => Yii::getAlias('@web/js/json-editor/schema/project.body.json')
+        ]);
+        ?>
     </div>
 </div>
 
