@@ -60,7 +60,7 @@
             app.bindContainerAjaxLinks(app.config.frontend_app_conainer);
 
             //bindCategoryClickEvent(app.config.frontend_app_conainer);
-            bindShowMoreClickEvent();
+            bindShowMoreClickEvent(data);
         }, 500);
 
         loadProjects(data);
@@ -84,7 +84,7 @@
          }*/
     }
 
-    function loadProjects() {
+    function loadProjects(data) {
         var sort = data.order_by;
         if ("desc" == data.sort_order)
             sort = "-" + sort;
@@ -104,7 +104,7 @@
         var cid = sessionStorage.getItem('projects.index.filter.category_id');
 
         if (cid) {
-            params.category_id = cid;
+            params.category_id = cid;            
         }
 
         var page = sessionStorage.getItem('page.view.portfolio.portfolio.filter.page');
@@ -157,20 +157,23 @@
             params = '?_' + Date.now();
         }
         app.templateLoader.getTemplateAjax(app.config.frontend_app_web_url + '/js/app/widgets/' + widget.widgetName + '/templates/_items.handlebars.html' + params, function (template) {
-            renderWidgetItems(template(data));
+            renderWidgetItems(template(data), data);
         });
     }
 
-    function renderWidgetItems(html) {
+    function renderWidgetItems(html, data) {
         app.logger.func('renderWidget(html)');
 
         if ($.isEmptyObject(app.view.grid)) {
             $(".projects").append(html);
-            bindFilterClick();
+            bindFilterClick(data);
         }
         else {
             app.logger.text('app.view.grid exist, remove, insert');
-            app.view.grid.isotope('remove', $(".project-box"));
+            if (data.removeItems) {
+                app.view.grid.isotope('remove', $(".project-box"));
+            }
+
             app.view.grid.isotope('insert', $(html));
             //app.view.grid.isotope('layout');            
         }
@@ -183,7 +186,7 @@
         $(window).trigger('page.view.portfolio.portfolio.renderWidgetItems');
     }
 
-    function bindShowMoreClickEvent() {
+    function bindShowMoreClickEvent(data) {
         $("#portfolioShowMore").click(function () {
             var page = sessionStorage.getItem('page.view.portfolio.portfolio.filter.page');
 
@@ -191,7 +194,8 @@
                 sessionStorage.setItem('page.view.portfolio.portfolio.filter.page', parseInt(page) + 1);
             }
 
-            loadProjects();
+            data.removeItems = false;
+            loadProjects(data);
         });
     }
 
@@ -216,7 +220,7 @@
         return result.join(' / ');
     }
 
-    function bindFilterClick() {
+    function bindFilterClick(data) {
         // bind filter a click
         $('.project-category-item').on('click', function () {
             var cid = $(this).attr('categoryid');
@@ -227,7 +231,8 @@
                 addItemsWithCategory(cid);
             }
 
-            loadProjects();
+            data.removeItems = true;
+            loadProjects(data);
         });
     }
 

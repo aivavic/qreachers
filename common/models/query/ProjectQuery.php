@@ -46,6 +46,8 @@ class ProjectQuery extends ActiveQuery
                 $this->andWhere('{{project_categories.category_id}} in ("' . implode('","', $arr) . '")');                 
             }
 
+            $this->groupBy(['{{%project}}.id']);
+
             
         }
 

@@ -35,7 +35,10 @@ class ArticleQuery extends ActiveQuery
                 $arr = explode(',', $ids);
                 $this->leftJoin('{{article_categories}}', '{{article_categories}}.article_id = {{%article}}.id');
                 $this->andWhere('{{article_categories.category_id}} in ("' . implode('","', $arr) . '")');
+                //$this->andFilterWhere(['in', '{{article_categories.category_id}}', $arr]);
             }
+
+            $this->groupBy(['{{%article}}.id']);
         }
 
 
