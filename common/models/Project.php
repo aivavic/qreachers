@@ -126,11 +126,11 @@ class Project extends \yii\db\ActiveRecord
         return [
             ['slug', 'unique', 'targetAttribute' => ['slug', 'locale']],
             [['body', 'head'], 'string'],
-            [['published_at'], 'default', 'value' => time()],
-            [['published_at'], 'filter', 'filter' => 'strtotime'],
+            //[['published_at'], 'default', 'value' => time()],
+            //[['published_at'], 'filter', 'filter' => 'strtotime'],
             [['category_id'], 'exist', 'targetClass' => ProjectCategory::className(), 'targetAttribute' => 'id'],
             [['author_id', 'updater_id', 'status', 'weight'], 'integer'],
-            [['slug', 'thumbnail_base_url', 'thumbnail_path', 'video_base_url', 'video_path'], 'string', 'max' => 1024],
+            [['slug', 'thumbnail_base_url', 'thumbnail_path', 'video_base_url', 'video_path', 'published_at'], 'string', 'max' => 1024],
             [['title', 'description'], 'string', 'max' => 512],
             [['attachments', 'thumbnail', 'video', 'categoriesList', 'domain'], 'safe']
         ];
@@ -165,9 +165,12 @@ class Project extends \yii\db\ActiveRecord
 
     public function beforeSave($insert)
     {
-        if (parent::beforeSave($insert)) {
+        if (parent::beforeSave($insert)) {       
             if (!$this->published_at) {
                 $this->published_at = $this->created_at;
+            }
+            else {
+                $this->published_at = strtotime($this->published_at);
             }
 
             if ($this->domain) {
