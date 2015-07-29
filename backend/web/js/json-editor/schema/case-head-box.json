@@ -46,6 +46,21 @@
             "type": "string",
             "title": "prev text.",
             "default": "Прев."
+        },
+        "background_image": {
+            "type": "string",
+            "format": "url",
+            "title": "Background image.",
+            "default": "/img/bg-case_top.jpg",
+            "options": {
+                "upload": true
+            },
+            "links": [
+                {
+                    "href": "{{self}}",
+                    "rel": "View file"
+                }
+            ]
         }
     }
 }

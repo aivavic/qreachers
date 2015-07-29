@@ -1,73 +1,79 @@
+<style>
+    .case_page__top {
+        background-image: url({{background_image}});
+    }
+</style>
+
 <section class="blog_post">
-<div class="case_page__top cf">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm-7 col-sm-offset-0">
+    <div class="case_page__top cf">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm-7 col-sm-offset-0">
 
-                <div class="case_page__slide">
-                    <h4 class="animated">{{category_title}}</h4>
-                    <h2 class="animated">{{currentItem.title}}<span class="line animated"></span></h2>
+                    <div class="case_page__slide">
+                        <h4 class="animated">{{category_title}}</h4>
+                        <h2 class="animated">{{currentItem.title}}<span class="line animated"></span></h2>
 
-                    <div class="trio_nev__wrap">
-                        <div class="trio_nev animated">
-                            
-                            <div class="trio_nev__in">
-                                
-                                <div><a href="{{nextUrl}}"  class="ajaxLink trio_nev__left">{{prev}}</a></div>
-                                
-                                <a href="{{urlToPortfolio}}" class="ajaxLink">
-                                    <span class="trio_nev__ico"></span>
-                                    <span class="trio_nev__txt">{{title_button}}</span>
-                                </a>
-                                
-                                <div><a href="{{prevUrl}}"  class="ajaxLink trio_nev__right">{{next}}</a></div>
-                            
-                            </div>
-                            
-                        </div><!--.trio_nev-->
-                    </div><!--.trio_nev__wrap-->
+                        <div class="trio_nev__wrap">
+                            <div class="trio_nev animated">
+
+                                <div class="trio_nev__in">
+
+                                    <div><a href="{{nextUrl}}"  class="ajaxLink trio_nev__left">{{prev}}</a></div>
+
+                                    <a href="{{urlToPortfolio}}" class="ajaxLink">
+                                        <span class="trio_nev__ico"></span>
+                                        <span class="trio_nev__txt">{{title_button}}</span>
+                                    </a>
+
+                                    <div><a href="{{prevUrl}}"  class="ajaxLink trio_nev__right">{{next}}</a></div>
+
+                                </div>
+
+                            </div><!--.trio_nev-->
+                        </div><!--.trio_nev__wrap-->
+                    </div>
+
                 </div>
 
-            </div>
-
-            <div class="col-lg-6 col-md-6 col-sm-5 hidden-xs">
-                <div class="case_page__kv">
-                    <img src="{{currentItem.video}}" alt="#">
+                <div class="col-lg-6 col-md-6 col-sm-5 hidden-xs">
+                    <div class="case_page__kv">
+                        <img src="{{currentItem.video}}" alt="#">
+                    </div>
                 </div>
-            </div>
-        </div><!--.row-->
-    </div><!--.container-->
-</div><!--.blog_post__top-->
+            </div><!--.row-->
+        </div><!--.container-->
+    </div><!--.blog_post__top-->
 </section>
 <script>
-$(document).ready(function() {
-        if($('.trio_nav').length) {
-		$('.trio_nav').hover(function(){
-			$(this).addClass('trio_nav--hovered');
-		});
-	}
-        if($('.trio_nev').length) {
-		$('.trio_nev').hover(function(){
-			$(this).addClass('trio_nev--hovered');
-		});
-	}
-		setTimeout(function(){
-			$('.top__logo').addClass('fadeInUp');
-			$('.top__lang').addClass('fadeInDownBig');
-			$('.top__menu-btn').addClass('fadeInDownBig');
+    $(document).ready(function () {
+        if ($('.trio_nav').length) {
+            $('.trio_nav').hover(function () {
+                $(this).addClass('trio_nav--hovered');
+            });
+        }
+        if ($('.trio_nev').length) {
+            $('.trio_nev').hover(function () {
+                $(this).addClass('trio_nev--hovered');
+            });
+        }
+        setTimeout(function () {
+            $('.top__logo').addClass('fadeInUp');
+            $('.top__lang').addClass('fadeInDownBig');
+            $('.top__menu-btn').addClass('fadeInDownBig');
 
-			$('.case_page__slide h4, .case_page__slide h2').addClass('fadeInDown');
-			$('.case_page__slide h2 .line').addClass('fadeIn');
-		}, 3000);
+            $('.case_page__slide h4, .case_page__slide h2').addClass('fadeInDown');
+            $('.case_page__slide h2 .line').addClass('fadeIn');
+        }, 3000);
 
-		setTimeout(function(){
-			$('.trio_nev__wrap').addClass('animated');
-			$('.trio_nev').addClass('fadeInUp');
-		}, 3000);
+        setTimeout(function () {
+            $('.trio_nev__wrap').addClass('animated');
+            $('.trio_nev').addClass('fadeInUp');
+        }, 3000);
 
-		setTimeout(function(){
-			$('.trio_nev').addClass('trio_nev--active');
-		}, 4500);
-                
-});
+        setTimeout(function () {
+            $('.trio_nev').addClass('trio_nev--active');
+        }, 4500);
+
+    });
 </script>
