@@ -20,14 +20,13 @@ class ProjectQuery extends ActiveQuery
         $this->andWhere(['<', '{{%project}}.published_at', time()]);
         return $this;
     }
-    
+
     public function ignore($ids)
     {
         $this->andWhere('{{%project}}.id NOT IN (' . $ids . ')');
 
         return $this;
     }
-    
 
     /**
      *
@@ -38,17 +37,40 @@ class ProjectQuery extends ActiveQuery
         if (!empty($ids)) {
             if (false === strpos($ids, ',')) {
                 $this->leftJoin('{{project_categories}}', '{{project_categories}}.project_id = {{%project}}.id');
-                $this->andWhere('{{project_categories.category_id}} = "'.$ids.'"');
-            }
-            else {
-                $arr = explode(',',$ids);
+                $this->andWhere('{{project_categories.category_id}} = "' . $ids . '"');
+            } else {
+                $arr = explode(',', $ids);
                 $this->leftJoin('{{project_categories}}', '{{project_categories}}.project_id = {{%project}}.id');
-                $this->andWhere('{{project_categories.category_id}} in ("' . implode('","', $arr) . '")');                 
+                $this->andWhere('{{project_categories.category_id}} in ("' . implode('","', $arr) . '")');
             }
 
             $this->groupBy(['{{%project}}.id']);
+        }
 
-            
+        return $this;
+    }
+
+    /**
+     *
+     * @return $this
+     */
+    public function bothCategory($ids)
+    {
+        if (!empty($ids)) {
+            if (false !== strpos($ids, ',')) {
+                $arr = explode(',', $ids);
+
+                foreach ($arr as $key => $value) {
+                    $this->leftJoin('{{project_categories}} as pc' . $key, 'pc' . $key . '.project_id = {{%project}}.id');
+                    $this->andWhere('pc' . $key . '.category_id = "' . $value . '"');
+                }
+            }
+            else {
+                $this->leftJoin('{{project_categories}}', '{{project_categories}}.project_id = {{%project}}.id');
+                $this->andWhere('{{project_categories.category_id}} = "' . $ids . '"');
+            }
+
+            $this->groupBy(['{{%project}}.id']);
         }
 
         return $this;

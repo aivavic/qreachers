@@ -29,12 +29,14 @@
                     data.categories = catData.items;
                     data.categoryGroups = getCategoryGroups(data.categories);
 
-                    var cids = [];
-                    $.each(data.categories, function (k, v) {
-                        cids.push(v.id);
-                    });
-
-                    sessionStorage.setItem('projects.index.filter.category_id', cids.join(','));
+                    /* var cids = [];
+                     $.each(data.categories, function (k, v) {
+                     if (v.parent_id) {
+                     cids.push(v.id);
+                     }                        
+                     });
+                     
+                     sessionStorage.setItem('projects.index.filter.category_id', cids.join(','));*/
 
                     loadTemplate(data);
                 });
@@ -106,7 +108,7 @@
         var cid = sessionStorage.getItem('projects.index.filter.category_id');
 
         if (cid) {
-            params.category_id = cid;
+            params.both_category_id = cid;
         }
 
         var page = sessionStorage.getItem('page.view.portfolio.portfolio.filter.page');
@@ -128,7 +130,7 @@
                         artData.items[key].viewUrl = app.view.helper.preffix + '/project/view/' + val.slug;
                         artData.items[key].video = val.video_base_url + '/' + val.video_path;
                         artData.items[key].dataFilterCategories = getDataFilterCategories(val.categories);
-                        artData.items[key].categoryTitles = getCategoryTitles(val.categories);
+                        artData.items[key].categoryTitles = getCategoryTitles(data, val.categories);
                         if (i == 0) {
                             artData.items[key].rows = 'col-md-offset-1';
                         } else if (i == 1) {
@@ -210,11 +212,28 @@
         return result;
     }
 
-    function getCategoryTitles(categories) {
+    function getCategoryTitles(data, categories) {
         var result = [];
+        
+        // hardcode for hide clients title
+        var clientId = null;
+        var clientsArr = {};    
 
+        $.each(data.categories, function (k, v) {
+            if ('klient' == v.slug) {
+                clientId = v.id;
+            }
+        });
+                
+        $.each(data.categories, function (k, v) {
+            if (clientId == v.parent_id) {
+                clientsArr[v.id] = v;
+            }
+        });               
+
+        //
         $.each(categories, function (k, v) {
-            if (v.category_id) {
+            if (v.category_id && !clientsArr[v.category_id] ) {
                 result.push(app.view.projectCategories[v.category_id]);
             }
         });
@@ -285,7 +304,7 @@
                 }
                 root[v.parent_id].categories.push(v);
             }
-        })         
+        })
 
         return root;
     }
