@@ -16,6 +16,7 @@ window.app.view = (function () {
 
             beforePageRender();
             selectMenuItem();
+            changeLangSwitchUrls(); 
             renderWidgets();
         },
         getCurrentWidget: function () {
@@ -200,8 +201,10 @@ window.app.view = (function () {
 
                         $(template(data)).insertBefore(app.config.frontend_app_conainer);                                                
                         app.view.headerLoaded = true;
+                        setTimeout(function() {
+                            changeLangSwitchUrls(); 
+                        },2000);
                         
-                        changeLangSwitchUrls();                        
                     });
                 });
     }
@@ -264,7 +267,7 @@ window.app.view = (function () {
                 });
     }
 
-    function changeLangSwitchUrls() {
+    function changeLangSwitchUrls() {        
         $('a[short-lang]').each(function (k, v) {
             var urlpath = location.pathname;
             var linkLang = $(v).attr('short-lang');
