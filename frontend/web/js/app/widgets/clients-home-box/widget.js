@@ -42,13 +42,13 @@
 
                     $.each(data.items, function (key, val) {
                         data.items[key].previewImg = val.thumbnail_base_url + '/' + val.thumbnail_path;
-                        //data.items[key].viewUrl = app.view.helper.preffix + '/client/view/' + val.slug;
+                        //data.items[key].viewUrl = app.view.helper.preffix + '/client/' + val.slug;
                         //data.items[key].description = val.description;
                         //data.items[key].previewVideo = val.video_base_url + '/' + val.video_path;
                     });
 
                     //data.urlToPortfolio = app.view.helper.preffix + '/client/index';
-                    data.urlToCases = app.config.frontend_app_web_url + '/' + app.router.locale + '/page/view/clients';
+                    data.urlToCases = app.config.frontend_app_web_url + '/' + app.router.locale + '/clients';
                     loadTemplate(data);
                 });
     }

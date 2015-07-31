@@ -20,7 +20,7 @@ return [
                         // @var self $model
                         return
                             [
-                                'loc'        => \yii\helpers\Url::to('ru/article/view/' . $model->slug, true),
+                                'loc'        => \yii\helpers\Url::to('ru/article/' . $model->slug, true),
                                 'lastmod'    => strtotime($model->updated_at),
                                 'changefreq' => himiklab\sitemap\behaviors\SitemapBehavior::CHANGEFREQ_DAILY,
                                 'priority'   => 0.8
@@ -43,7 +43,7 @@ return [
                             'dataClosure' => function ($model) {
                             // @var self $model
                             return [
-                                'loc'        => \yii\helpers\Url::to('ru/project/view/' . $model->slug, true),
+                                'loc'        => \yii\helpers\Url::to('ru/project/' . $model->slug, true),
                                 'lastmod'    => strtotime($model->updated_at),
                                 'changefreq' => himiklab\sitemap\behaviors\SitemapBehavior::CHANGEFREQ_DAILY,
                                 'priority'   => 0.8
@@ -66,7 +66,7 @@ return [
                                 'dataClosure' => function ($model) {
                                 // @var self $model
                                 return [
-                                    'loc'        => \yii\helpers\Url::to('ru/page/view/' . $model->slug, true),
+                                    'loc'        => \yii\helpers\Url::to('ru/' . $model->slug, true),
                                     'lastmod'    => strtotime($model->updated_at),
                                     'changefreq' => himiklab\sitemap\behaviors\SitemapBehavior::CHANGEFREQ_DAILY,
                                     'priority'   => 0.8

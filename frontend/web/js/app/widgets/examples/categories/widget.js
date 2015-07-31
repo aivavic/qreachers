@@ -96,10 +96,10 @@
 
                         switch (app.router.controller) {
                             case 'article':
-                                data.items[key].url = app.view.helper.preffix + '/page/view/news';
+                                data.items[key].url = app.view.helper.preffix + '/news';
                                 break;
                             case 'project':
-                                data.items[key].url = app.view.helper.preffix + '/page/view/portfolio';
+                                data.items[key].url = app.view.helper.preffix + '/portfolio';
                                 break;
                         }
                     });

@@ -45,7 +45,7 @@
                     $.each(data.items, function (key, val) {
                         if (i != data.count) {
                             data.items[key].previewImg = val.thumbnail_base_url + '/' + val.thumbnail_path;
-                            data.items[key].viewUrl = app.view.helper.preffix + '/project/view/' + val.slug;
+                            data.items[key].viewUrl = app.view.helper.preffix + '/project/' + val.slug;
                             data.items[key].description = val.description;
                             data.items[key].previewVideo = val.video_base_url + '/' + val.video_path;
 
@@ -57,7 +57,7 @@
                     });
                     data.items = tmpItems;
                     app.logger.var(data.items);
-                    data.urlToPortfolio = app.view.helper.preffix + '/page/view/portfolio';
+                    data.urlToPortfolio = app.view.helper.preffix + '/portfolio';
 
                     loadTemplate(data);
                 });

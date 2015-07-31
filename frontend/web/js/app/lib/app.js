@@ -75,14 +75,9 @@ window.app = (function () {
 
     function process() {
         app.logger.func('process()');
-
-
-        if (isDefaultRoute()) {
-            changePage(app.config.frontend_app_default_route, '');
-        }
-        else {
-            app.router.run(location.pathname);
-        }
+        
+        app.router.run(location.pathname);
+        
     }
 
     function bindAjaxLinks() {
@@ -90,20 +85,6 @@ window.app = (function () {
         //bind ajax load to links 
         $('.ajaxLink').off('click');
         $('.ajaxLink').click(fClickAjaxLink);
-    }
-
-    function isDefaultRoute() {
-        app.logger.func('isDefaultRoute()');
-        //if first load, go to main page
-        var indexPage = ['', '/', '/index.php', 'index.php'];
-
-        if (-1 != indexPage.indexOf(location.pathname)) {
-            app.logger.text('DefaultRoute : ' + location.pathname);
-            return true;
-        }
-        else {
-            return false
-        }
     }
 
     function registerHandlebarsHelpers() {

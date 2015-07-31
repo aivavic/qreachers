@@ -13,10 +13,9 @@ window.app.view = (function () {
             document.title = app.page.title;
             app.page.widgets = getWidgetsFromBody(app.page.body);
             this.helper.preffix = app.config.frontend_app_web_url + '/' + app.router.locale
-                    
+
             beforePageRender();
             selectMenuItem();
-            changeHomeUrl();
             renderWidgets();
         },
         getCurrentWidget: function () {
@@ -129,8 +128,8 @@ window.app.view = (function () {
     }
 
     function beforePageRender() {
-        addHeader();  
-        
+        addHeader();
+
         //clear all
         app.container.html('');
 
@@ -144,22 +143,10 @@ window.app.view = (function () {
     function afterPageRender() {
         addFooter();
         app.bindAllAjaxLinks();
-        
+
         $.getScript(app.config.frontend_app_web_url + '/js/lib/afterRender.js');
         //add ga
         //$.getScript(app.config.frontend_app_web_url + '/js/lib/google.analytics.js');
-    }
-
-    function changeHomeUrl() {
-        if ('ru' == app.router.locale && 'page' == app.router.controller && 'view' == app.router.action && 'home' == app.router.slug) {
-            // Change url            
-            window.history.pushState(null, null, '/');
-        }
-
-        if ('en' == app.router.locale && 'page' == app.router.controller && 'view' == app.router.action && 'home' == app.router.slug) {
-            // Change url            
-            window.history.pushState(null, null, '/en');
-        }
     }
 
     function addHeader() {
@@ -191,12 +178,10 @@ window.app.view = (function () {
 
                     data.t = app.view.getTranslationsFromData(data);
 
-                    data.isRu = ('ru-RU' == app.config.frontend_app_locale) ? true : false;
-                    data.urlToRu = app.config.frontend_app_web_url + '/site/set-locale?locale=ru-RU';
+                    data.isRu = ('ru-RU' == app.config.frontend_app_locale) ? true : false;                    
                     data.isEn = ('en-US' == app.config.frontend_app_locale) ? true : false;
-                    data.urlToEn = app.config.frontend_app_web_url + '/site/set-locale?locale=en-US';
 
-                    data.urlToHome = app.view.helper.preffix + '/page/view/home';
+                    data.urlToHome = app.view.helper.preffix + '/home';
 
                     $.each(data.menu, function (key, val) {
                         if ('@frontend' == val.host) {
@@ -213,17 +198,19 @@ window.app.view = (function () {
                     app.templateLoader.getTemplateAjax(app.config.frontend_app_web_url + '/js/app/templates/header.html' + params, function (template) {
                         app.logger.var(data);
 
-                        $(template(data)).insertBefore(app.config.frontend_app_conainer);
+                        $(template(data)).insertBefore(app.config.frontend_app_conainer);                                                
                         app.view.headerLoaded = true;
+                        
+                        changeLangSwitchUrls();                        
                     });
                 });
     }
 
     function addFooter() {
-        if (app.router.slug != 'contact') {            
+        if (app.router.slug != 'contact') {
             $('#contacts').show();
-        }else {
-            $('#contacts').hide();            
+        } else {
+            $('#contacts').hide();
         }
 
         if (app.view.footerLoaded) {
@@ -275,6 +262,23 @@ window.app.view = (function () {
                         }
                     });
                 });
+    }
+
+    function changeLangSwitchUrls() {
+        $('a[short-lang]').each(function (k, v) {
+            var urlpath = location.pathname;
+            var linkLang = $(v).attr('short-lang');
+
+            if (urlpath && urlpath != '/') {                
+                urlpath = urlpath.replace(/^\/[\w]{2}/, '/' + linkLang);
+            }
+
+            if ('/' == urlpath) {
+                urlpath = urlpath + linkLang;
+            }
+
+            $(v).attr('href', app.config.frontend_app_frontend_url + urlpath);
+        })
     }
 
     return public;

@@ -1,20 +1,53 @@
 window.app.router = (function () {
 
     public = {
-        locale : null,
-        controller : null,
-        action : null,
-        slug : null,
-        
-        run: function (url) {                  
+        locale: null,
+        controller: null,
+        action: null,
+        slug: null,
+        run: function (url) {
             app.logger.prefix = '[app][router]';
             app.logger.func('router run ' + url);
 
-            arr = url.split('/');
-            this.locale = arr[1];
-            this.controller = arr[2];
-            this.action = arr[3];
-            this.slug = arr[4];
+            var arr = url.replace(/^\//, '').split('/');
+
+            app.logger.var(arr);
+
+            switch (arr.length) {
+                case 1:
+                    if (!arr[0]) {
+                        // empty url, default uk
+                        arr[0] = 'ru';
+                        arr[1] = 'page';
+                        arr[2] = 'view';
+                        arr[3] = 'home';
+                    } else {
+                        // /ru                  
+                        arr[0] = arr[0];
+                        arr[1] = 'page';
+                        arr[2] = 'view';
+                        arr[3] = 'home';
+                    }
+                    break;
+                case 2:
+                    //set default values
+                    //ru/news
+                    arr[3] = arr[1];
+                    arr[1] = 'page';
+                    arr[2] = 'view';
+                    break;
+                case 3:
+                    //set default values
+                    //ru/promo/helolo-moto
+                    arr[3] = arr[2];
+                    arr[2] = 'view'
+                    break;
+            }
+
+            this.locale = arr[0];
+            this.controller = arr[1];
+            this.action = arr[2];
+            this.slug = arr[3];
 
             app.logger.text('this.controller: ' + this.controller);
             app.logger.text('this.action: ' + this.action);

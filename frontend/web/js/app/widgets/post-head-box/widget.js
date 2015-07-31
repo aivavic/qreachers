@@ -37,7 +37,7 @@
                 params,
                 function (articlesData) {
                     $.extend(data, articlesData);
-                    data.urlToNews = app.view.helper.preffix + '/page/view/news';
+                    data.urlToNews = app.view.helper.preffix + '/news';
                     data.currentItem = {};
                     data.currentItem.title = data.items[0].title;
                     data.currentItem.image = data.items[0].image_base_url + '/' + data.items[0].image_path;
@@ -107,14 +107,14 @@
                     $.each(articlesData.items, function (key, val) {
                         if (val.slug == app.router.slug) {
                             if (articlesData.items[key - 1]) {
-                                data.prevUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[key - 1].slug;
+                                data.prevUrl = app.view.helper.preffix + '/article/' + articlesData.items[key - 1].slug;
                             } else {
-                                data.prevUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[articlesData.items.length - 1].slug;
+                                data.prevUrl = app.view.helper.preffix + '/article/' + articlesData.items[articlesData.items.length - 1].slug;
                             }
                             if (articlesData.items[key + 1]) {
-                                data.nextUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[key + 1].slug;
+                                data.nextUrl = app.view.helper.preffix + '/article/' + articlesData.items[key + 1].slug;
                             } else {
-                                data.nextUrl = app.view.helper.preffix + '/article/view/' + articlesData.items[0].slug;
+                                data.nextUrl = app.view.helper.preffix + '/article/' + articlesData.items[0].slug;
                             }
                         }
 

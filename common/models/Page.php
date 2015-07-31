@@ -11,6 +11,7 @@ use common\models\Article;
 use common\models\Project;
 use \yii\helpers\Url;
 use yii\web\NotFoundHttpException;
+use yii\web\Cookie;
 
 /**
  * This is the model class for table "page".
@@ -96,13 +97,13 @@ class Page extends \yii\db\ActiveRecord
         $tags   = [];
         $locale = null;
 
-        preg_match('/^(.+)\/(.+)\/(.+)\/(.+)/', Yii::$app->request->pathInfo, $matches);
+        $arr = self::parseUrl(Yii::$app->request->pathInfo);
 
-        if (!empty($matches[1]) and ! empty($matches[2]) and ! empty($matches[3])) {
-            $shortLocale = $matches[1];
-            $controller  = $matches[2];
-            $action      = $matches[3];
-            $slug        = $matches[4];
+        if (!empty($arr[0]) and ! empty($arr[1]) and ! empty($arr[2]) and ! empty($arr[3])) {
+            $shortLocale = $arr[0];
+            $controller  = $arr[1];
+            $action      = $arr[2];
+            $slug        = $arr[3];
 
             foreach (Yii::$app->params['availableLocales'] as $k => $v) {
                 if ($shortLocale == explode('-', $k)[0]) {
@@ -110,13 +111,16 @@ class Page extends \yii\db\ActiveRecord
                 }
             }
 
-
             switch ($controller) {
                 case 'page':
                     $model = self::find()->published()->andWhere(['slug' => $slug, 'locale' => $locale])->one();
+
                     break;
                 case 'article':
                     $model = Article::find()->published()->andWhere(['slug' => $slug, 'locale' => $locale])->one();
+                    break;
+                case 'promo':
+                    //$model = Promo::find()->published()->andWhere(['slug' => $slug, 'locale' => $locale])->one();
                     break;
                 case 'project':
                     $model = Project::find()->published()->andWhere(['slug' => $slug, 'locale' => $locale])->one();
@@ -229,47 +233,84 @@ class Page extends \yii\db\ActiveRecord
         return $model->slug;
     }
 
-    public static function switchToUrlLocale()
-    {
-        /* if ('site' == Yii::$app->controller->id and 'set-locale' == Yii::$app->controller->action->id) {
-          return;
-          } */
-
-        $url = Yii::$app->request->pathInfo;
-
-        $arr = explode('/', $url);
-
-        if (!empty($arr[0]) and ! empty($arr[1]) and ! empty($arr[2]) and ! empty($arr[3])) {
-            $locale     = $arr[0];
-            $controller = $arr[1];
-            $action     = $arr[2];
-            $slug       = $arr[3];
-
-            if ($locale != explode('-', Yii::$app->language)[0]) {
-                //echo $locale . '!=' . explode('-', Yii::$app->language)[0]; die();
-                $_SESSION['altRef'] = Yii::$app->request->absoluteUrl;
-                Yii::$app->response->redirect(Url::to(['/site/set-locale', 'locale' => $locale]));
-            }
-        } else {
-            //$_SESSION['altRef'] = Yii::$app->request->absoluteUrl;
-
-            if (!empty($arr[0]) and 'en' == $arr[0]) {
-                //Yii::$app->request->referrer = '/en/page/view/home';
-                $_SESSION['altRef'] = Yii::$app->request->absoluteUrl . '/page/view/home';
-                Yii::$app->response->redirect(Url::to(['/site/set-locale', 'locale' => 'en-US']));
-            } elseif (!empty($arr[0]) and 'ru' == $arr[0]) {
-                $_SESSION['altRef'] = Yii::$app->request->absoluteUrl . '/page/view/home';
-                Yii::$app->response->redirect(Url::to(['/site/set-locale', 'locale' => 'ru-RU']));
-            } else {
-                Yii::$app->response->redirect(Url::to(['/site/set-locale', 'locale' => Yii::$app->language]));
-            }
-        }
-    }
-
     public function afterDelete()
     {
         Page::deleteAll(['locale_group_id' => $this->locale_group_id]);
 
         return parent::afterDelete();
+    }
+
+    public static function switchToUrlLocale()
+    {
+        $arr = self::parseUrl(Yii::$app->request->pathInfo);
+
+        $shortLocale = $arr[0];
+        $controller  = $arr[1];
+        $action      = $arr[2];
+        $slug        = $arr[3];
+
+        foreach (Yii::$app->params['availableLocales'] as $key => $value) {
+            if ($shortLocale == explode('-', $key)[0]) {
+                $locale = $key;
+            }
+        }
+
+        if ($locale == Yii::$app->language) {
+            //current language = requested
+            return true;
+        }
+
+        if (empty(Yii::$app->params['availableLocales'])) {
+            //not aviable locale
+            return true;
+        }
+
+        $cookie = new Cookie([
+            'name'   => '_locale',
+            'value'  => $locale,
+            'expire' => time() + 60 * 60 * 24 * 365,
+            'domain' => '',
+        ]);
+
+        Yii::$app->getResponse()->getCookies()->add($cookie);
+        Yii::$app->language = $locale;
+    }
+
+    public static function parseUrl($url)
+    {
+        $arr = explode('/', trim($url, '/'));
+
+        switch (count($arr)) {
+            case '1':
+                if (empty($arr[0])) {
+                    // empty url, default uk
+                    $arr[0] = 'ru';
+                    $arr[1] = 'page';
+                    $arr[2] = 'view';
+                    $arr[3] = 'home';
+                } else {
+                    // /ru
+                    $arr[0] = $arr[0];
+                    $arr[1] = 'page';
+                    $arr[2] = 'view';
+                    $arr[3] = 'home';
+                }           
+                break;
+            case '2':
+                //set default controller/action
+                //ru/news
+                $arr[3] = $arr[1];
+                $arr[1] = 'page';
+                $arr[2] = 'view';
+                break;
+            case '3':
+                //set default controller/action
+                ///ru/article/news-1
+                $arr[3] = $arr[2];
+                $arr[2] = 'view';
+                break;
+        }
+
+        return $arr;
     }
 }

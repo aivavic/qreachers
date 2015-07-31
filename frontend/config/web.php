@@ -1,6 +1,6 @@
 <?php
 $config = [
-    'homeUrl'             => Yii::getAlias('@frontendUrl') . '/ru/page/view/home',
+    'homeUrl'             => Yii::getAlias('@frontendUrl') . '/ru/home',
     'controllerNamespace' => 'frontend\controllers',
     'defaultRoute'        => 'site/index',
     'layout'              => false, //'@frontend/views/layouts/ajax.php',

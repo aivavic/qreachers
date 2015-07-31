@@ -41,7 +41,7 @@
                     data.currentItem.title = data.items[0].title;
                     data.currentItem.video = data.items[0].video_base_url + '/' + data.items[0].video_path;
                     data.currentItem.category_id = (data.items[0].categories[0]) ? data.items[0].categories[0].id : '-';
-                    data.urlToPortfolio = app.view.helper.preffix + '/page/view/portfolio';
+                    data.urlToPortfolio = app.view.helper.preffix + '/portfolio';
                     data.category_title = getCategoryTitles(data.items[0].categories);
                     loadDataAll(data);
                 });
@@ -105,14 +105,14 @@
                     $.each(projectsData.items, function (key, val) {
                         if (val.slug == app.router.slug) {
                             if (projectsData.items[key - 1]) {
-                                data.prevUrl = app.view.helper.preffix + '/project/view/' + projectsData.items[key - 1].slug;
+                                data.prevUrl = app.view.helper.preffix + '/project/' + projectsData.items[key - 1].slug;
                             } else {
-                                data.prevUrl = app.view.helper.preffix + '/project/view/' + projectsData.items[projectsData.items.length - 1].slug;
+                                data.prevUrl = app.view.helper.preffix + '/project/' + projectsData.items[projectsData.items.length - 1].slug;
                             }
                             if (projectsData.items[key + 1]) {
-                                data.nextUrl = app.view.helper.preffix + '/project/view/' + projectsData.items[key + 1].slug;
+                                data.nextUrl = app.view.helper.preffix + '/project/' + projectsData.items[key + 1].slug;
                             } else {
-                                data.nextUrl = app.view.helper.preffix + '/project/view/' + projectsData.items[0].slug;
+                                data.nextUrl = app.view.helper.preffix + '/project/' + projectsData.items[0].slug;
                             }
                         }
 

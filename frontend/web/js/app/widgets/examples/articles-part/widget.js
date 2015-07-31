@@ -38,12 +38,12 @@
 
                     $.each(data.items, function (key, val) {
                         data.items[key].previewImg = val.thumbnail_base_url + '/' + val.thumbnail_path;
-                        data.items[key].viewUrl = app.view.helper.preffix + '/article/view/' + val.slug;
+                        data.items[key].viewUrl = app.view.helper.preffix + '/article/' + val.slug;
                         data.items[key].description = val.description;
                         data.items[key].previewVideo = val.video_base_url + '/' + val.video_path;
                     });
 
-                    data.urlToNews = app.view.helper.preffix + '/page/view/news';
+                    data.urlToNews = app.view.helper.preffix + '/news';
 
 
                     loadTemplate(data);

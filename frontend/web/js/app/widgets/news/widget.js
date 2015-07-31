@@ -122,7 +122,7 @@
                     var i = 0;
                     $.each(artData.items, function (key, val) {
                         artData.items[key].previewImg = val.thumbnail_base_url + '/' + val.thumbnail_path;
-                        artData.items[key].viewUrl = app.view.helper.preffix + '/article/view/' + val.slug;
+                        artData.items[key].viewUrl = app.view.helper.preffix + '/article/' + val.slug;
                         artData.items[key].dataFilterCategories = getDataFilterCategories(val.categories);
                         artData.items[key].categoryTitles = getCategoryTitles(val.categories);
                         if (i == 0 && !data.removeItemsTopBorder) {

@@ -16,7 +16,7 @@
         app.logger.func('loadData()');
 
         var data = widget;
-        data.urlToAbout = app.config.frontend_app_web_url + '/' + app.router.locale + '/page/view/about';
+        data.urlToAbout = app.config.frontend_app_web_url + '/' + app.router.locale + '/about';
         loadTemplate(data);
     }
 
