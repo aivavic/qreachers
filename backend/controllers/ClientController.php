@@ -87,6 +87,46 @@ class ClientController extends Controller
         return Yii::$app->response;
     }
     
+    public function actionAnimation()
+    {
+        $enum = [];
+        $enum[0] = 'fadeInLeft';
+        $enum[1] = 'fadeInRight';
+        $enum[2] = 'fadeIn';
+        $enum[3] = 'fadeInDown';
+        $enum[4] = 'zoomIn';
+
+
+        
+        Yii::$app->response->data = [
+            "items" => [
+                "type" => "string",
+                "enum" => $enum
+            ]
+        ];
+
+        Yii::$app->response->format = yii\web\Response::FORMAT_JSON;
+
+        return Yii::$app->response;
+    }
+    
+    public function actionStyle()
+    {
+        $enum = [];
+        $enum[0] = 'about__info-txt';
+        $enum[1] = 'about__info-sert';
+        
+        Yii::$app->response->data = [
+            "items" => [
+                "type" => "string",
+                "enum" => $enum
+            ]
+        ];
+
+        Yii::$app->response->format = yii\web\Response::FORMAT_JSON;
+
+        return Yii::$app->response;
+    }
     
     /**
      * Updates an existing Client model.

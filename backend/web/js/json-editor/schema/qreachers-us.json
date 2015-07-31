@@ -70,10 +70,11 @@
                         "title": "Some text.",
                         "default": "Default title..."
                     },
-                    "fade": {
-                        "type": "string",
-                        "title": "Animate image.",
-                        "default": "fadeIn"
+                    "animation": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "format": "select",
+                        "$ref": "/client/animation"
                     },
                     "img_src": {
                         "type": "string",

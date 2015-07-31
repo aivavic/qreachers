@@ -19,7 +19,7 @@
             },
             "default": "Services tools"
         },
-        "we-are-preview": {
+        "services-tools-preview": {
             "title": "Example:",
             "type": "string",
             "format": "hidden",
@@ -60,10 +60,11 @@
                         "title": "Some title.",
                         "default": "Default title"
                     },
-                    "fadeIn": {
-                        "type": "string",
-                        "title": "Animate items.",
-                        "default": "fadeIn"
+                    "animation": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "format": "select",
+                        "$ref": "/client/animation"
                     },
                     "text": {
                         "type": "string",

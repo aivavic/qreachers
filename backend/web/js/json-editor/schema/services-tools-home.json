@@ -70,10 +70,11 @@
                         "title": "class",
                         "default": "tools_box"
                     },
-                    "fadeIn": {
-                        "type": "string",
-                        "title": "Animate box.",
-                        "default": "fadeIn"
+                    "animation": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "format": "select",
+                        "$ref": "/client/animation"
                     },
                     "img_src": {
                         "type": "string",

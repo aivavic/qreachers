@@ -45,15 +45,17 @@
                     "collapsed": true
                 },
                 "properties": {
-                    "fadeIn": {
-                        "type": "string",
-                        "title": "fadeIn animate",
-                        "default": "fadeIn"
+                    "animation": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "format": "select",
+                        "$ref": "/client/animation"
                     },
-                    "class": {
-                        "type": "string",
-                        "title": "Class style",
-                        "default": "Class style ..."
+                    "style": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "format": "select",
+                        "$ref": "/client/style"
                     },
                     "text": {
                         "type": "string",

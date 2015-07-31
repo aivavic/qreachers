@@ -55,10 +55,11 @@
                         "title": "Time.",
                         "default": "Ttitle ..."
                     },
-                    "fadeIn": {
-                        "type": "string",
-                        "title": "Animate items.",
-                        "default": "fadeIn"
+                    "animation": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "format": "select",
+                        "$ref": "/client/animation"
                     },
                     "text": {
                         "type": "string",
