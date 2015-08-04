@@ -10,13 +10,13 @@ window.app.view = (function () {
                 return false;
 
             app.page = page;
-            document.title = app.page.title;
+            document.title = getTitleFromHead(app.page.head);
             app.page.widgets = getWidgetsFromBody(app.page.body);
             this.helper.preffix = app.config.frontend_app_web_url + '/' + app.router.locale
 
             beforePageRender();
             selectMenuItem();
-            changeLangSwitchUrls(); 
+            changeLangSwitchUrls();
             renderWidgets();
         },
         getCurrentWidget: function () {
@@ -179,7 +179,7 @@ window.app.view = (function () {
 
                     data.t = app.view.getTranslationsFromData(data);
 
-                    data.isRu = ('ru-RU' == app.config.frontend_app_locale) ? true : false;                    
+                    data.isRu = ('ru-RU' == app.config.frontend_app_locale) ? true : false;
                     data.isEn = ('en-US' == app.config.frontend_app_locale) ? true : false;
 
                     data.urlToHome = app.view.helper.preffix + '/home';
@@ -199,12 +199,12 @@ window.app.view = (function () {
                     app.templateLoader.getTemplateAjax(app.config.frontend_app_web_url + '/js/app/templates/header.html' + params, function (template) {
                         app.logger.var(data);
 
-                        $(template(data)).insertBefore(app.config.frontend_app_conainer);                                                
+                        $(template(data)).insertBefore(app.config.frontend_app_conainer);
                         app.view.headerLoaded = true;
-                        setTimeout(function() {
-                            changeLangSwitchUrls(); 
-                        },2000);
-                        
+                        setTimeout(function () {
+                            changeLangSwitchUrls();
+                        }, 2000);
+
                     });
                 });
     }
@@ -267,12 +267,12 @@ window.app.view = (function () {
                 });
     }
 
-    function changeLangSwitchUrls() {        
+    function changeLangSwitchUrls() {
         $('a[short-lang]').each(function (k, v) {
             var urlpath = location.pathname;
             var linkLang = $(v).attr('short-lang');
 
-            if (urlpath && urlpath != '/') {                
+            if (urlpath && urlpath != '/') {
                 urlpath = urlpath.replace(/^\/[\w]{2}/, '/' + linkLang);
             }
 
@@ -282,6 +282,28 @@ window.app.view = (function () {
 
             $(v).attr('href', app.config.frontend_app_frontend_url + urlpath);
         })
+    }
+
+    function getTitleFromHead(head) {
+        var title = null;
+        var obj = null;
+        
+        if (head) {
+            var obj = JSON.parse(head);
+        }
+        
+        app.logger.text('HEAD');
+        app.logger.var(obj);
+
+        if (obj && obj['common'] && obj['common']['title'] && obj['common']['title']['content']) {
+            title = obj['common']['title']['content'];
+        }
+
+        if (!title) {
+            title = app.page.title;
+        }
+
+        return title;
     }
 
     return public;
