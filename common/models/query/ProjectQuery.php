@@ -50,6 +50,28 @@ class ProjectQuery extends ActiveQuery
         return $this;
     }
 
+        /**
+     *
+     * @return $this
+     */
+    public function onlyCategorySecond($ids)
+    {
+        if (!empty($ids)) {
+            if (false === strpos($ids, ',')) {
+                $this->leftJoin('{{project_categories_second}}', '{{project_categories_second}}.project_id = {{%project}}.id');
+                $this->andWhere('{{project_categories_second.category_id}} = "' . $ids . '"');
+            } else {
+                $arr = explode(',', $ids);
+                $this->leftJoin('{{project_categories_second}}', '{{project_categories_second}}.project_id = {{%project}}.id');
+                $this->andWhere('{{project_categories_second.category_id}} in ("' . implode('","', $arr) . '")');
+            }
+
+            $this->groupBy(['{{%project}}.id']);
+        }
+
+        return $this;
+    }
+
     /**
      *
      * @return $this

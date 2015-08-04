@@ -1,16 +1,6 @@
 <?php
 $mId = strtolower($model::getClassNameNoNamespace());
 
-$categoriesList = \yii\helpers\ArrayHelper::map(
-        $categories, 'id', 'title', 'parent_id'
-);
-
-
-foreach ($categoriesList as $key => $value) {
-    if (!empty($key)) {
-        $multiCategories[$categoriesList[''][$key]] = $value;
-    }
-}
 //yii\helpers\VarDumper::dump($multiCategories, 11, 1);
 //die();
 
@@ -29,13 +19,21 @@ echo $form->field($model, 'slug')
 
 <?php
 
-
-
 echo $form->field($model, 'categoriesList')->dropDownList(
-    $multiCategories, ['prompt' => '', 'multiple' => true]
+    $categories, ['prompt' => '', 'multiple' => true]
 );
 
 $js = '$("#' . $mId . '-categorieslist").select2();';
+$this->registerJs($js);
+?>
+
+<?php
+
+echo $form->field($model, 'categoriesListSecond')->dropDownList(
+    $categoriesSecond, ['prompt' => '', 'multiple' => true]
+);
+
+$js = '$("#' . $mId . '-categorieslistsecond").select2();';
 $this->registerJs($js);
 ?>
 

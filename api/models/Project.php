@@ -18,7 +18,7 @@ class Project extends \common\models\Project implements Linkable
 
     public function extraFields()
     {
-        return ['category', 'categories', 'projectAttachments'];
+        return ['category', 'categories', 'categoriesSecond', 'projectAttachments'];
     }
 
     /**

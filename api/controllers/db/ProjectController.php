@@ -57,6 +57,7 @@ class ProjectController extends ActiveController
     { 
         $ignore         = Yii::$app->request->get('ignore', 0);
         $onlyCategory   = Yii::$app->request->get('category_id');
+        $onlyCategorySecond   = Yii::$app->request->get('category_second_id');
         $bothCategory   = Yii::$app->request->get('both_category_id');
         $where          = Yii::$app->request->get('where', []);
         $whereOperatorFormat = Yii::$app->request->get('where_operator_format', []);
@@ -66,6 +67,7 @@ class ProjectController extends ActiveController
                 ->published() 
                 ->ignore($ignore)
                 ->onlyCategory($onlyCategory)
+                ->onlyCategorySecond($onlyCategorySecond)
                 ->bothCategory($bothCategory)
                 ->andFilterWhere($where)
                 ->andFilterWhere($whereOperatorFormat)

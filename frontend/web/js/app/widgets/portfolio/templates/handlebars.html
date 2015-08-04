@@ -9,20 +9,28 @@
                 <div class="top_filters">
                     <div class="top_filters__sort">
                         <ul class="list-unstyled">
-                            <li class="desc">{{filter}}<div class="ico"></div></li>
+                            <li class="desc">{{t.filter}}<div class="ico"></div></li>
                         </ul>
                     </div><!--.top_filters__sort-->
                     
-                    {{#each categoryGroups}}
+                    
                     <div class="top_filters__multi" style="display: none;">
-                        <h4>{{title}}:</h4>
+                        <h4>{{t.company_type}}:</h4>
                         <ul class="list-unstyled">
-                            {{#each categories}}                                
+                            {{#each categories}}
                             <li class="project-category-item" data-filter=".data-filter-{{id}}" categoryId = "{{id}}">{{title}}<div class="ico"></div></li>
                             {{/each}}
                         </ul>
                     </div><!--.top_filters__multi-->
-                    {{/each}}
+                    
+                    <div class="top_filters__multi" style="display: none;">
+                        <h4>{{t.client}}:</h4>
+                        <ul class="list-unstyled">
+                            {{#each categoriesSecond}}                       
+                            <li class="project-category-second-item" data-filter=".data-filter-{{id}}" categoryId = "{{id}}">{{title}}<div class="ico"></div></li>
+                            {{/each}}
+                        </ul>
+                    </div><!--.top_filters__multi-->                    
 
                 </div><!--.top_filters-->
 
@@ -38,7 +46,7 @@
 
 
         <div class="more_btn">            
-            <a href="javascript:void(0);" id="portfolioShowMore" class="btn btn-bb animated">{{show_more}}</a>            
+            <a href="javascript:void(0);" id="portfolioShowMore" class="btn btn-bb animated">{{t.show_more}}</a>            
         </div>
 
     </div><!--.container-->

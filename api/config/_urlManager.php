@@ -13,6 +13,7 @@ return [
         ['class' => 'yii\rest\UrlRule', 'controller' => 'db/member-category', 'only' => ['index', 'view', 'options']],
         ['class' => 'yii\rest\UrlRule', 'controller' => 'db/project', 'only' => ['index', 'view', 'options']],
         ['class' => 'yii\rest\UrlRule', 'controller' => 'db/project-category', 'only' => ['index', 'view', 'options']],
+        ['class' => 'yii\rest\UrlRule', 'controller' => 'db/project-category-second', 'only' => ['index', 'view', 'options']],
         ['class' => 'yii\rest\UrlRule', 'controller' => 'db/user', 'only' => ['index', 'view', 'options']],
         ['class' => 'yii\rest\UrlRule', 'controller' => 'db/widget-text', 'only' => ['index', 'view', 'options']],
         ['class' => 'yii\rest\UrlRule', 'controller' => 'db/page', 'only' => ['index', 'view', 'options']],

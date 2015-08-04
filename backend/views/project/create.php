@@ -14,6 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php echo $this->render('_tab', [
         'model' => $model,
         'categories' => $categories,
+        'categoriesSecond' => $categoriesSecond,
         'domains' => $domains
     ]) ?>
 

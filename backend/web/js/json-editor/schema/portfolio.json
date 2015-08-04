@@ -30,22 +30,6 @@
                     "mediaType": "image"
                 }
             ]
-
-        },
-        "filter": {
-            "type": "string",
-            "title": "Filter button text.",
-            "default": "Filter"
-        },
-        "type": {
-            "type": "string",
-            "title": "Type company.",
-            "default": "Type company"
-        },
-        "client": {
-            "type": "string",
-            "title": "Client.",
-            "default": "Client"
         },
         "order_by": {
             "type": "string",
@@ -75,13 +59,34 @@
         },
         "count": {
             "type": "string",
-            "title": "News count.",
+            "title": "Cases count.",
             "default": "20"
         },
-        "show_more": {
-            "type": "string",
-            "title": "Show more text.",
-            "default": "Show more"
+        "t": {
+            "type": "array",
+            "format": "table",
+            "title": "Translations",
+            "uniqueItems": true,
+            "options": {
+                "collapsed": true
+            },
+            "items": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "options": {
+                            "input_width": "300px"
+                        }
+                    },
+                    "value": {
+                        "type": "string",
+                        "options": {
+                            "input_width": "400px"
+                        }
+                    }
+                }
+            }
         }
     }
 }

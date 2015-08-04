@@ -42,6 +42,7 @@ return [
         [ 'loc' => '/db/member-category'],
         [ 'loc' => '/db/project'],
         [ 'loc' => '/db/project-category'],
+        [ 'loc' => '/db/project-category-second'],
         [ 'loc' => '/db/user'],
         [ 'loc' => '/db/widget-text'],
         [ 'loc' => '/db/page'],

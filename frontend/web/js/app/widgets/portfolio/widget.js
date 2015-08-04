@@ -21,13 +21,37 @@
         app.logger.func('loadData()');
 
         data = widget;
+        data.t = app.view.getTranslationsFromData(data);
 
         //load categories
         $.getJSON(
                 app.config.frontend_app_api_url + '/db/project-categories',
                 function (catData) {
                     data.categories = catData.items;
-                    data.categoryGroups = getCategoryGroups(data.categories);
+
+                    /* var cids = [];
+                     $.each(data.categories, function (k, v) {
+                     if (v.parent_id) {
+                     cids.push(v.id);
+                     }                        
+                     });
+                     
+                     sessionStorage.setItem('projects.index.filter.category_id', cids.join(','));*/
+
+                    loadCategoriesSecond(data);
+                });
+    }
+
+    function loadCategoriesSecond(data) {
+        app.logger.func('loadCategoriesSecond(data)');
+        //load categories
+        $.getJSON(
+                app.config.frontend_app_api_url + '/db/project-category-second',
+                function (catData) {
+                    data.categoriesSecond = catData.items;
+
+                    //data.categoriesSecond = catData.items;
+                    //data.categoryGroups = getCategoryGroups(data.categories);
 
                     /* var cids = [];
                      $.each(data.categories, function (k, v) {
@@ -108,7 +132,14 @@
         var cid = sessionStorage.getItem('projects.index.filter.category_id');
 
         if (cid) {
-            params.both_category_id = cid;
+            //params.both_category_id = cid;
+            params.category_id = cid;
+        }
+
+        var cidSecond = sessionStorage.getItem('projects.index.filter.category_second_id');
+
+        if (cidSecond) {
+            params.category_second_id = cidSecond;
         }
 
         var page = sessionStorage.getItem('page.view.portfolio.portfolio.filter.page');
@@ -130,7 +161,7 @@
                         artData.items[key].viewUrl = app.view.helper.preffix + '/project/' + val.slug;
                         artData.items[key].video = val.video_base_url + '/' + val.video_path;
                         artData.items[key].dataFilterCategories = getDataFilterCategories(val.categories);
-                        artData.items[key].categoryTitles = getCategoryTitles(data, val.categories);
+                        artData.items[key].categoryTitles = getCategoryTitles(val.categories);
                         if (i == 0) {
                             artData.items[key].rows = 'col-md-offset-1';
                         } else if (i == 1) {
@@ -141,7 +172,7 @@
 
                     });
 
-                    //show more bitton logic
+                    //show more button logic
                     data.items = artData.items;
                     app.logger.var(data.items.length);
                     if (artData._meta.pageCount > 1 && artData._meta.currentPage != artData._meta.pageCount) {
@@ -212,30 +243,11 @@
         return result;
     }
 
-    function getCategoryTitles(data, categories) {
+    function getCategoryTitles(categories) {
         var result = [];
-        
-        // hardcode for hide clients title
-        var clientId = null;
-        var clientsArr = {};    
 
-        $.each(data.categories, function (k, v) {
-            if ('klient' == v.slug) {
-                clientId = v.id;
-            }
-        });
-                
-        $.each(data.categories, function (k, v) {
-            if (clientId == v.parent_id) {
-                clientsArr[v.id] = v;
-            }
-        });               
-
-        //
         $.each(categories, function (k, v) {
-            if (v.category_id && !clientsArr[v.category_id] ) {
-                result.push(app.view.projectCategories[v.category_id]);
-            }
+            result.push(app.view.projectCategories[v.category_id]);
         });
 
         return result.join(' / ');
@@ -247,9 +259,22 @@
             var cid = $(this).attr('categoryid');
 
             if ($(this).hasClass('active')) {
-                removeItemsWithCategory(cid);
+                removeItemsWithCategory(cid);                
             } else {
-                addItemsWithCategory(cid);
+                addItemsWithCategory(cid);                
+            }
+
+            data.removeItems = true;
+            loadProjects(data);
+        });
+
+        $('.project-category-second-item').on('click', function () {
+            var cid = $(this).attr('categoryid');
+
+            if ($(this).hasClass('active')) {
+                removeItemsWithCategorySecond(cid);
+            } else {
+                addItemsWithCategorySecond(cid);
             }
 
             data.removeItems = true;
@@ -261,6 +286,7 @@
         app.logger.text('remove cid:' + cid);
         sessionStorage.setItem('page.view.portfolio.portfolio.filter.page', 1);
 
+        //categories
         var cids = sessionStorage.getItem('projects.index.filter.category_id');
         cids = cids.split(',');
         var newCids = [];
@@ -272,10 +298,27 @@
         sessionStorage.setItem('projects.index.filter.category_id', newCids.join(','));
     }
 
+    function removeItemsWithCategorySecond(cid) {
+        app.logger.text('remove second cid:' + cid);
+        sessionStorage.setItem('page.view.portfolio.portfolio.filter.page', 1);
+
+        //categories second
+        var cids = sessionStorage.getItem('projects.index.filter.category_second_id');
+        cids = cids.split(',');
+        var newCids = [];
+        $.each(cids, function (k, v) {
+            if (v != cid) {
+                newCids.push(v);
+            }
+        });
+        sessionStorage.setItem('projects.index.filter.category_second_id', newCids.join(','));
+    }
+
     function addItemsWithCategory(cid) {
         app.logger.text('add cid:' + cid);
         sessionStorage.setItem('page.view.portfolio.portfolio.filter.page', 1);
 
+        //categories
         var cids = sessionStorage.getItem('projects.index.filter.category_id');
         if (!$.isEmptyObject(cids)) {
             cids = cids.split(',');
@@ -289,24 +332,23 @@
         sessionStorage.setItem('projects.index.filter.category_id', cids);
     }
 
-    function getCategoryGroups(categories) {
-        var root = {};
-        $.each(categories, function (k, v) {
-            if (!v.parent_id) {
-                root[v.id] = v;
-            }
-        })
+    function addItemsWithCategorySecond(cid) {
+        app.logger.text('add cid:' + cid);
+        sessionStorage.setItem('page.view.portfolio.portfolio.filter.page', 1);
 
-        $.each(categories, function (k, v) {
-            if (v.parent_id) {
-                if (!root[v.parent_id].categories) {
-                    root[v.parent_id].categories = [];
-                }
-                root[v.parent_id].categories.push(v);
-            }
-        })
+        //categories second        
 
-        return root;
+        var cids = sessionStorage.getItem('projects.index.filter.category_second_id');
+        if (!$.isEmptyObject(cids)) {
+            cids = cids.split(',');
+            cids.push(cid);
+            cids = cids.join(',');
+        }
+        else {
+            cids = cid;
+        }
+
+        sessionStorage.setItem('projects.index.filter.category_second_id', cids);
     }
 
 })();

@@ -157,12 +157,20 @@ use yii\widgets\Breadcrumbs;
                             ['label' => Yii::t('backend', 'Cases'), 'url' => ['/project/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
                             ['label' => Yii::t('backend', 'Clients'), 'url' => ['/client/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
                             ['label' => Yii::t('backend', 'Members'), 'url' => ['/member/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
-                            ['label' => Yii::t('backend', 'Blog Categories'), 'url' => ['/article-category/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
-                            ['label' => Yii::t('backend', 'Case Categories'), 'url' => ['/project-category/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
+                            ['label' => Yii::t('backend', 'Blog Categories'), 'url' => ['/article-category/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],                            
+                            [
+                                'label'   => Yii::t('backend', 'Case Categories'),
+                                'icon'    => '<i class="fa fa-angle-double-right"></i>',
+                                'options' => ['class' => 'treeview'],
+                                'items'   => [
+                                    ['label' => Yii::t('backend', 'Company types'), 'url' => ['/project-category/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
+                                    ['label' => Yii::t('backend', 'Clients'), 'url' => ['/project-category-second/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
+                                ]
+                            ],
                             ['label' => Yii::t('backend', 'Feedback forms'), 'url' => ['/feedback/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
                             ['label' => Yii::t('backend', 'Menu social'), 'url' => ['widget-text/index?WidgetTextSearch%5Bid%5D=&WidgetTextSearch%5Bkey%5D=menu'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
-                            //['label' => Yii::t('backend', 'Footer social'), 'url' => ['widget-text/index?WidgetTextSearch%5Bid%5D=&WidgetTextSearch%5Bkey%5D=footer'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
                             ['label' => Yii::t('backend', 'Common blocks'), 'url' => ['/block/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
+                        //['label' => Yii::t('backend', 'Footer social'), 'url' => ['widget-text/index?WidgetTextSearch%5Bid%5D=&WidgetTextSearch%5Bkey%5D=footer'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
                         ]
                     ],
                     [

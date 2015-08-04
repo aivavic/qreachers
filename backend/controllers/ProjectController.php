@@ -6,11 +6,13 @@ use Yii;
 use common\models\Project;
 use backend\models\search\ProjectSearch;
 use \common\models\ProjectCategory;
+use \common\models\ProjectCategorySecond;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\base\MultiModel;
 use common\models\ProjectCategories;
+use common\models\ProjectCategoriesSecond;
 
 /**
  * ProjectController implements the CRUD actions for Project model.
@@ -70,11 +72,12 @@ class ProjectController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && Project::multiSave($model)) {
             return $this->redirect(['index']);
-        } else {
+        } else {            
             return $this->render('create', [
-                    'model'      => $model,
-                    'categories' => ProjectCategory::find()->active()->all(),
-                    'domains'    => array_combine(explode(',', Yii::getAlias('@frontendUrls')), explode(',', Yii::getAlias('@frontendUrls')))
+                    'model'            => $model,
+                    'categories'       => \yii\helpers\ArrayHelper::map(ProjectCategory::find()->active()->all(), 'id', 'title'),
+                    'categoriesSecond' => \yii\helpers\ArrayHelper::map(ProjectCategorySecond::find()->active()->all(), 'id', 'title'),
+                    'domains'          => array_combine(explode(',', Yii::getAlias('@frontendUrls')), explode(',', Yii::getAlias('@frontendUrls')))
             ]);
         }
     }
@@ -90,14 +93,15 @@ class ProjectController extends Controller
         $firstModel = $this->findModel($id);
 
         foreach (Yii::$app->params['availableLocales'] as $key => $value) {
-            $currentModel              = Project::getLocaleInstance($key);
-            $dataModel                 = $currentModel::find()
+            $currentModel                    = Project::getLocaleInstance($key);
+            $dataModel                       = $currentModel::find()
                 ->andWhere([
                     'locale_group_id' => $firstModel->locale_group_id,
                     'locale'          => $key
                 ])
                 ->one();
-            $dataModel->categoriesList = $this->getCategoriesListIds($dataModel->id);
+            $dataModel->categoriesList       = $this->getCategoriesListIds($dataModel->id);
+            $dataModel->categoriesListSecond = $this->getCategoriesListSecondIds($dataModel->id);
 
             if (!empty($dataModel->domain)) {
                 $dataModel->domain = explode(',', $dataModel->domain);
@@ -108,15 +112,16 @@ class ProjectController extends Controller
             if (!$models[$key]) {
                 //\yii\helpers\VarDumper::dump($firstModel->attributes,11,1); die();
 
-                $currentModel->attributes      = $firstModel->attributes;
-                $currentModel->attachments     = $firstModel->attachments;
-                $currentModel->thumbnail       = $firstModel->thumbnail;
-                $currentModel->categoriesList  = $firstModel->categoriesList;
-                $currentModel->video           = $firstModel->video;
-                $currentModel->locale_group_id = $firstModel->locale_group_id;
-                $currentModel->locale          = $key;
-                $currentModel->title           = 'title ' . $key . ' ' . time();
-                $currentModel->slug            = '';
+                $currentModel->attributes           = $firstModel->attributes;
+                $currentModel->attachments          = $firstModel->attachments;
+                $currentModel->thumbnail            = $firstModel->thumbnail;
+                $currentModel->categoriesList       = $firstModel->categoriesList;
+                $currentModel->categoriesListSecond = $firstModel->categoriesListSecond;
+                $currentModel->video                = $firstModel->video;
+                $currentModel->locale_group_id      = $firstModel->locale_group_id;
+                $currentModel->locale               = $key;
+                $currentModel->title                = 'title ' . $key . ' ' . time();
+                $currentModel->slug                 = '';
 
                 $models[$key] = $currentModel;
             }
@@ -130,9 +135,10 @@ class ProjectController extends Controller
             return $this->redirect(['index']);
         } else {
             return $this->render('update', [
-                    'model'      => $model,
-                    'categories' => ProjectCategory::find()->active()->all(),
-                    'domains'    => array_combine(explode(',', Yii::getAlias('@frontendUrls')), explode(',', Yii::getAlias('@frontendUrls')))
+                    'model'            => $model,
+                    'categories'       => \yii\helpers\ArrayHelper::map(ProjectCategory::find()->active()->all(), 'id', 'title'),
+                    'categoriesSecond' => \yii\helpers\ArrayHelper::map(ProjectCategorySecond::find()->active()->all(), 'id', 'title'),
+                    'domains'          => array_combine(explode(',', Yii::getAlias('@frontendUrls')), explode(',', Yii::getAlias('@frontendUrls')))
             ]);
         }
     }
@@ -171,6 +177,19 @@ class ProjectController extends Controller
         $arr = [];
 
         $models = ProjectCategories::find()->andWhere(['project_id' => $id])->all();
+
+        foreach ($models as $model) {
+            $arr[] = $model->category_id;
+        }
+
+        return $arr;
+    }
+
+    private function getCategoriesListSecondIds($id)
+    {
+        $arr = [];
+
+        $models = ProjectCategoriesSecond::find()->andWhere(['project_id' => $id])->all();
 
         foreach ($models as $model) {
             $arr[] = $model->category_id;

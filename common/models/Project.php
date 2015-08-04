@@ -9,6 +9,7 @@ use yii\behaviors\BlameableBehavior;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use common\models\ProjectCategories;
+use common\models\ProjectCategoriesSecond;
 
 /**
  * This is the model class for table "project".
@@ -53,6 +54,11 @@ class Project extends \yii\db\ActiveRecord
      * @var array
      */
     public $categoriesList;
+
+    /**
+     * @var array
+     */
+    public $categoriesListSecond;
 
     /**
      * @var array
@@ -132,7 +138,7 @@ class Project extends \yii\db\ActiveRecord
             [['author_id', 'updater_id', 'status', 'weight'], 'integer'],
             [['slug', 'thumbnail_base_url', 'thumbnail_path', 'video_base_url', 'video_path', 'published_at'], 'string', 'max' => 1024],
             [['title', 'description'], 'string', 'max' => 512],
-            [['attachments', 'thumbnail', 'video', 'categoriesList', 'domain'], 'safe']
+            [['attachments', 'thumbnail', 'video', 'categoriesList', 'categoriesListSecond', 'domain'], 'safe']
         ];
     }
 
@@ -158,18 +164,18 @@ class Project extends \yii\db\ActiveRecord
             'created_at'     => Yii::t('common', 'Created At'),
             'updated_at'     => Yii::t('common', 'Updated At'),
             'weight'         => Yii::t('common', 'Weight'),
-            'categoriesList' => Yii::t('common', 'Categories list'),
+            'categoriesList' => Yii::t('common', 'Company types'),
+            'categoriesListSecond' => Yii::t('common', 'Clients'),
             'domain'         => Yii::t('common', 'Domain')
         ];
     }
 
     public function beforeSave($insert)
     {
-        if (parent::beforeSave($insert)) {       
+        if (parent::beforeSave($insert)) {
             if (!$this->published_at) {
                 $this->published_at = $this->created_at;
-            }
-            else {
+            } else {
                 $this->published_at = strtotime($this->published_at);
             }
 
@@ -202,8 +208,22 @@ class Project extends \yii\db\ActiveRecord
             }
         }
 
+        //delete all categories relations
+        $models = $this->getCategoriesSecond()->all();
 
+        foreach ($models as $model) {
+            $model->delete();
+        }
 
+        if (!empty($this->categoriesListSecond)) {
+            //add new rows
+            foreach ($this->categoriesListSecond as $categoryId) {
+                $model              = new ProjectCategoriesSecond();
+                $model->project_id  = $this->id;
+                $model->category_id = $categoryId;
+                $model->save();
+            }
+        }
 
         return parent::afterSave($insert, $changedAttributes);
     }
@@ -238,6 +258,14 @@ class Project extends \yii\db\ActiveRecord
     public function getCategories()
     {
         return $this->hasMany(ProjectCategories::className(), ['project_id' => 'id']);
+    }
+
+        /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategoriesSecond()
+    {
+        return $this->hasMany(ProjectCategoriesSecond::className(), ['project_id' => 'id']);
     }
 
     /**
