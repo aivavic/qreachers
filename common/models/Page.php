@@ -153,8 +153,7 @@ class Page extends \yii\db\ActiveRecord
             } else {
                 Yii::$app->view->title = $model->title;
             }
-
-            Yii::$app->view->title = $model->title;
+            
         }
         return $tags;
     }
