@@ -35,7 +35,7 @@
         "link_toSite": {
             "type": "string",
             "title": "Url to clients",
-            "default": "Url to clients"
+            "default": ""
         },
         "title_button": {
             "type": "string",
