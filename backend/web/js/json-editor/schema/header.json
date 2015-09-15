@@ -90,6 +90,26 @@
                     }
                 }
             }
+        },
+        "facebook_url": {
+            "type": "string",
+            "title": "Facebook url",
+            "default": "#"
+        },
+        "slideshare_url": {
+            "type": "string",
+            "title": "Slideshare url",
+            "default": "#"
+        },
+        "youtube_url": {
+            "type": "string",
+            "title": "Youtube url",
+            "default": "#"
+        },
+        "vimeo_url": {
+            "type": "string",
+            "title": "Vimeo url",
+            "default": "#"
         }
     }
 }
