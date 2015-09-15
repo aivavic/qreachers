@@ -1473,6 +1473,12 @@ top:0;}
 	text-transform: uppercase;
 }
 
+@media screen and (min-width: 992px) {
+    .main_slider h2 {
+        padding: 0 100px;
+    }
+}
+
 .main_slider .main_slider__in h2.animated,
 .main_slider .main_slider__in .btn.animated {
 	opacity: 0;
