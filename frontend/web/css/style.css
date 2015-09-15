@@ -3544,6 +3544,12 @@ top:0;}
 	height: 170px;
 }
 
+@media screen and (max-width: 991px) {
+    .about__info p {
+        margin-bottom: 30px;
+    }
+}
+
 
 .about_page__command {
 	padding: 100px 0 25px 0;
