@@ -3749,6 +3749,8 @@ top:0;}
 	left: 0;
     width: auto;
     height: auto;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 /* Cases */
