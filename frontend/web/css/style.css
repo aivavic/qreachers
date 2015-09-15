@@ -3539,10 +3539,9 @@ top:0;}
 
 .about__info-sert .thumb img {
 	display: inline-block;
-	width: 100%;
-	max-width: 166px;
-	height: auto;
-	margin-top: 30px;
+	width: auto;
+	max-width: initial;
+	height: 170px;
 }
 
 
