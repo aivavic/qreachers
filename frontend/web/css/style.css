@@ -3703,6 +3703,7 @@ top:0;}
 .clients_top__outer {
 	overflow: hidden;
 	height: 575px;
+    margin: 0 0 100px;
 }
 
 .clients_top {
