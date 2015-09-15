@@ -1417,6 +1417,7 @@ top:0;}
 	height: 100%;
 }
 
+.main_top img,
 .main_top video {
 	z-index: 0;
 	position: absolute;
