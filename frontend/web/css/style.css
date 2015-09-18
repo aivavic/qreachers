@@ -4984,5 +4984,11 @@ height:auto;}
     .about_page__command .col-sm-6 {
         width: 100% !important;
     }
+    
+    .type_item,
+    .type_item p,
+    .type_item h4 {
+        padding-left: 60px;
+    }
 }
 
