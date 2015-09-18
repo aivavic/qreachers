@@ -4992,5 +4992,9 @@ height:auto;}
         padding-left: 60px;
         background-position: left center !important;
     }
+    
+    .top__menu-btn {
+        margin: 8px 0 0 auto;
+    }
 }
 
