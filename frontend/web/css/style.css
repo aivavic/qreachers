@@ -4978,7 +4978,9 @@ height:auto;}
         height: auto;
         margin-bottom: 25px
     }
-    
+}
+
+@media screen and (max-width: 992px) and (min-width: 767px) {
     .about_page__command .col-sm-6 {
         width: 100% !important;
     }
