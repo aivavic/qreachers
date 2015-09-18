@@ -4989,6 +4989,8 @@ height:auto;}
     .type_item p,
     .type_item h4 {
         padding-left: 60px;
+        padding-left: 60px;
+        background-position: left center !important;
     }
 }
 
