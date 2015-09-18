@@ -4969,7 +4969,7 @@ height:auto;}
 }
 
 @media screen and (max-width: 400px) {
-    .about__info-sert .thumb img {
+    .about__info .thumb img {
         max-width: 100%;
         height: auto;
     }
@@ -4983,8 +4983,4 @@ height:auto;}
         width: 100% !important;
     }
 }
-
-
-
-
 
