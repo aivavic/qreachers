@@ -343,6 +343,7 @@ top:0;}
 .btn-320 {
 	width: 320px;
 	margin: 0 auto;
+    max-width: 80%;
 }
 
 .btn-bw {
@@ -2236,6 +2237,7 @@ top:0;}
 
 .tools_box__item {
 	margin: 0 0 60px 0;
+    padding: 60px 0 40px !important;
 }
 
 .tools_box__item .ico {
@@ -4717,8 +4719,7 @@ top:0;}
 
 	.services_page__info-ico {
 		border-right: 0;
-		
-		background-position-x: center;
+		background-position: center !important;
 	}
 
 	.services_page__type h3 {
@@ -4747,6 +4748,7 @@ top:0;}
 
 .footer__logo {
 	text-align: right;
+    visibility: hidden;
 }
 
 .footer__logo img {
@@ -4960,9 +4962,27 @@ height:auto;}
 
 
 
+@media screen and (max-width: 370px) {
+    .top__logo-full--active {
+        display: none;
+    }
+}
 
-
-
+@media screen and (max-width: 400px) {
+    .about__info-sert .thumb img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .about__info .thumb {
+        height: auto;
+        margin-bottom: 25px
+    }
+    
+    .about_page__command .col-sm-6 {
+        width: 100% !important;
+    }
+}
 
 
 
