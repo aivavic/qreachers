@@ -164,5 +164,3 @@ function unsetStringElement(old, id) {
 
     return arr.join(',');
 }
-
-//git test reset
