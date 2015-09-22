@@ -5047,17 +5047,18 @@ span.lang-item {
 .decorative-top, .decorative-bottom {
     content: ' ';
     position: absolute;
-    top: 0;
+    top: 6px;
     right: 0;
     left: 0;
     width: 35px;
-    height: 2px;
-    margin-left: 200px;
+    height: 3px;
+    margin-left: 100px;
     background-color: #DFE05C;
 }
 
 .decorative-bottom {
     top: 100%;
+    margin-top: -30px;
 }
 
 .relative-row {
@@ -5077,4 +5078,12 @@ span.lang-item {
 .case_page__insight .decorative-bottom {
     margin-top: -9px;
     margin-left: 100px;
+}
+
+.case_page__result .decorative-bottom {
+    margin-bottom: -10px;
+}
+
+.case_page__result .decorative-top {
+    top: -10px;
 }
