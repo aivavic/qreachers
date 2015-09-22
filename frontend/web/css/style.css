@@ -5039,4 +5039,7 @@ height:auto;}
     color: white;
 }
 
-/*===============*/
+span.lang-item {
+    font: normal 17px/100% "pantonregular", Arial;
+    color: #fff;
+}
