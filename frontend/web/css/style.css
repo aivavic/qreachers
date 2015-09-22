@@ -1679,10 +1679,14 @@ top:0;}
 }
 
 @media screen and (max-width: 991px) and (min-width: 767px) {
-    .project-box {
+    .cases_page .projects .project-box {
         position: static !important;
         display: block;
         margin: 0 auto !important;
+    }
+    
+    .cases_page .projects:after {
+        clear: both;
     }
 }
 
