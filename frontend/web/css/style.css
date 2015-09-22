@@ -679,7 +679,7 @@ top:0;}
 @media (max-width: 991px) {
 
 	.main_menu {
-		position: absolute;
+		position: fixed;
 		padding: 120px 0 0 0;
 	}
 
@@ -2503,10 +2503,17 @@ top:0;}
 .news_box__txt h4 {
 	margin: 0;
 	max-width: 205px;
-	min-height: 120px;
+    min-height: 110px;
+    margin-bottom: 10px;
 
 	font: normal 22px/27px "panton_semiboldregular", Arial;
 	color: #00567D;
+}
+
+@media screen and (max-width: 991px) {
+    .news_box__txt h4 {
+        overflow: hidden;
+    }
 }
 
 .news_box__txt span {
@@ -3757,7 +3764,7 @@ top:0;}
 
 /* Cases */
 .cases_body {
-	background-color: #FBF9F8;
+	background-color: white;
 }
 
 .cases_page {}
@@ -4981,8 +4988,8 @@ height:auto;}
 }
 
 @media screen and (max-width: 992px) and (min-width: 767px) {
-    .about_page__command .col-sm-6 {
-        width: 100% !important;
+    .about_page__command .cf.visible-sm {
+        display: none !important;
     }
     
     .type_item,
@@ -4997,4 +5004,3 @@ height:auto;}
         margin: 8px 0 0 auto;
     }
 }
-
