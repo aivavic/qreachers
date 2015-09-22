@@ -1687,6 +1687,8 @@ top:0;}
     
     .cases_page .projects:after {
         clear: both;
+        display: block;
+        content: "";
     }
 }
 
