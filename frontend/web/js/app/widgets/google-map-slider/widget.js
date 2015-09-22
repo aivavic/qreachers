@@ -82,7 +82,9 @@
             url: 'https://www.google.com.ua/maps/place/@' + lat + ',' + long + ',17z',
         });
         
-        $(".show-inmap a").click(function() {
+        
+        $(".show-inmap a").off('click');
+        $(".show-inmap a").click(function() {            
             window.open(marker.url);
             return false;
         });
