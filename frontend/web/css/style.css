@@ -1659,6 +1659,10 @@ top:0;}
 	.main_slider .flex-control-nav {
 		bottom: 35px;
 	}
+    
+    .bullets__nav--active .bullets__in {
+        display: none;
+    }
 
 }
 
@@ -2258,7 +2262,7 @@ top:0;}
 
 .tools_box__item {
 	margin: 0 0 60px 0;
-    padding: 60px 0 40px !important;
+    padding: 40px 0 40px !important;
 }
 
 .tools_box__item .ico {
