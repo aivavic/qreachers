@@ -5068,3 +5068,13 @@ span.lang-item {
 .btitle_name:after {
     display: none;
 }
+
+.case_page__insight .decorative-top {
+    top: 6px;
+    left: 100px;
+}
+
+.case_page__insight .decorative-bottom {
+    margin-top: -9px;
+    left: 100px;
+}
