@@ -2537,6 +2537,7 @@ top:0;}
 
 @media screen and (max-width: 991px) {
     .news_box__txt h4 {
+        height: 110px;
         overflow: hidden;
     }
 }
@@ -5032,4 +5033,8 @@ height:auto;}
     .top__menu-btn {
         margin: 8px 0 0 auto;
     }
+}
+
+.case_page__result ul, case_page__result ol {
+    color: white;
 }
