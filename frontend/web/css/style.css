@@ -5063,3 +5063,8 @@ span.lang-item {
 .relative-row {
     position: relative;
 }
+
+.btitle_name:before,
+.btitle_name:after {
+    display: none;
+}
