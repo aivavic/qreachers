@@ -1653,6 +1653,7 @@ top:0;}
 	.main_slider h2 {
 		font-size: 35px;
 		line-height: 130%;
+        padding: 0 160px;
 	}
 
 	.main_slider .flex-control-nav {
@@ -1672,6 +1673,7 @@ top:0;}
 	.main_slider h2 {
 		font-size: 30px;
 		line-height: 130%;
+        padding: 0 20px;
 	}
 
 }
