@@ -5000,7 +5000,7 @@ height:auto;}
         background-position: left center !important;
     }
     
-    .type_items .col-md-3.col-sm-6:nth-of-type(2n+1) {
+    .type_items .col-md-3.col-sm-6:nth-of-type(2n+1) .type-item {
         margin-bottom: 0;
     }
     
