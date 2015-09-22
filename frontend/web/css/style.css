@@ -5043,3 +5043,23 @@ span.lang-item {
     font: normal 17px/100% "pantonregular", Arial;
     color: #fff;
 }
+
+.decorative-top, .decorative-bottom {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 35px;
+    height: 2px;
+    margin-left: 200px;
+    background-color: #DFE05C;
+}
+
+.decorative-bottom {
+    top: 100%;
+}
+
+.relative-row {
+    position: relative;
+}
