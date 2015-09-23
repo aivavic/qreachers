@@ -1,4 +1,4 @@
-function run(fieldId, jsonEncodeOptions) {
+function run(frontendUrl, fieldId, jsonEncodeOptions) {
 
     var options = $.parseJSON(jsonEncodeOptions);
     var startval = $("#" + fieldId).val();
@@ -48,7 +48,11 @@ function run(fieldId, jsonEncodeOptions) {
 
     editor.on("change", function () {
         var editor = window.jsoneditorcsseditors[fieldId];
-        $("#" + fieldId).val(JSON.stringify(editor.getValue()));
+        var jsonField = JSON.stringify(editor.getValue());
+        jsonField = jsonField.replace(/\/frontend\/web\/img\/og_image_16on9\.jpg/g, frontendUrl + '/img/og_image.png');
+        jsonField = jsonField.replace(/16on9\ agency/g, 'Qreachers');
+        
+        $("#" + fieldId).val(jsonField);
     });
 
     var editor = window.jsoneditorcsseditors[fieldId].getEditor("root");
@@ -97,4 +101,4 @@ function run(fieldId, jsonEncodeOptions) {
     }
 }
 
-run(fieldId, jsonEncodeOptions);
+run(frontendUrl, fieldId, jsonEncodeOptions);

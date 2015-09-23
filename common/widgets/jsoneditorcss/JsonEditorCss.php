@@ -50,6 +50,7 @@ class JsonEditorCss extends Widget
 
         
         $js = 'var fieldId="' . $this->fieldId .'";';
+        $js .= 'var frontendUrl="' . Yii::getAlias('@frontendUrl') .'";';
         $js .= 'var jsonEncodeOptions = \'' . json_encode($this->options)  . '\';';
                 
         $js .= file_get_contents(Yii::getAlias('@common/widgets/jsoneditorcss/assets/js.js'));
