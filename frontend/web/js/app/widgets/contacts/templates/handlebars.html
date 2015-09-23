@@ -8,11 +8,11 @@
 
                 <div class="contacts_box__feedback">
 
-                    <p>По вопросам сотрудничества, пожалуйста,<br> заполните форму обратной связи<br> или напишите нам!</p>
+                    <p>{{{t.for_contact}}}</p>
 
                     <form action="#" id="contact_form">
                         <div class="inp-group">
-                            <input type="text" name="name" placeholder="ваше имя" class="inp-style">
+                            <input type="text" name="name" placeholder="{{t.your_name}}" class="inp-style">
                         </div>
 
                         <div class="inp-group">
@@ -20,19 +20,25 @@
                         </div>
 
                         <div class="inp-group">
-                            <textarea name="msg" rows="3" placeholder="приятные слова" class="inp-style"></textarea>
+                            <textarea name="msg" rows="3" placeholder="{{t.good_words}}" class="inp-style"></textarea>
                         </div>
 
-                        <input type="submit" value="ОТПРАВИТЬ" class="btn btn-bw">
+                        <input type="submit" value="{{t.send}}" class="btn btn-bw">
 
                     </form>
 
-                    {{{socialBox}}}
+                    <div class="socials-blue">
+                        <ul class="list-unstyled">
+                            <li class="fb"><a href="{{facebook_url}}" target="_blank">Facebook</a></li>
+                            <li class="sh"><a href="{{slideshare_url}}" target="_blank">Slideshare</a></li>
+                            <li class="yt"><a href="{{youtube_url}}" target="_blank">Youtube</a></li>
+                            <li class="vm"><a href="{{vimeo_url}}" target="_blank">Vimeo</a></li>
+                        </ul>
+                    </div>
 
                 </div><!--.contacts_box__feedback-->
                 <div class="contacts_box__thanks">
-                    СПАСИБО, МЫ СВЯЖЕМСЯ С ВАМИ<br>
-                    В БЛИЖАЙШЕЕ ВРЕМЯ!
+                    {{{t.thank_you}}}
                 </div> 
             </div>
 

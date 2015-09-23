@@ -18,23 +18,29 @@
         var data = widget;
 
         var params = {
-            "fields": 'id,key,body',
-            where: {
-                id: 31
-            }
+            "fields": 'id,slug,title,body',
+            "where": {
+                "slug": "footer",
+                "locale": app.config.frontend_app_locale
+            },
+            "where_operator_format": [
+                "like",
+                "domain",
+                location.protocol + '//' + location.hostname,
+            ]
         };
 
-
         $.getJSON(
-                app.config.frontend_app_api_url + '/db/widget-text',
+                app.config.frontend_app_api_url + '/db/blocks',
                 params,
-                function (Data) {
-                    data.socialBox = Data.items[0].body;
-                    loadTemplate(data);
+                function (data) {
+                    var body = data.items[0].body.replace(/^\[/, '').replace(/\]$/, '');
+                    data = JSON.parse(body);
+                    data.t = app.view.getTranslationsFromData(data);
 
-                });
+                loadTemplate(data);
+         });
     }
-
 
     function loadTemplate(data) {
         app.logger.func('loadTemplate(data)');
