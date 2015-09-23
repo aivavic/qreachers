@@ -56,14 +56,15 @@
         //$(".city").html(widget.items[mapIndex].city)
         //$(".street").html(widget.items[mapIndex].street)*/
         
-        
-        // Coordinates        
+        var widthBrows = $('body').width();
+
+        // Coordinates
         var myLatlng = new google.maps.LatLng(lat, long);
 
         // Map options
         var mapOptions = {
             disableDefaultUI: true,
-            center: new google.maps.LatLng(lat, Number(long)+0.004),
+            center: (widthBrows < 1000) ? new google.maps.LatLng(lat, long) : new google.maps.LatLng(lat, Number(long)+0.004),
             zoom: 17,
             scrollwheel: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
