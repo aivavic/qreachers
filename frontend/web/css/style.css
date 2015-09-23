@@ -5089,3 +5089,7 @@ span.lang-item {
 .case_page__result .decorative-top {
     top: -10px;
 }
+
+.flex-active-slide .col-md-6:nth-of-type(2) .news_box__txt-top {
+    display: none;
+}
