@@ -165,7 +165,7 @@
                         if (i == 0) {
                             artData.items[key].rows = 'col-md-offset-1';
                         } else if (i == 1) {
-                            artData.items[key].rows = 'hidden-sm hidden-xs';
+                            artData.items[key].rows = '';
                             return i = 0;
                         }
                         i++;
