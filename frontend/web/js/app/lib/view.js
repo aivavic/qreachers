@@ -17,7 +17,9 @@ window.app.view = (function () {
             beforePageRender();
             selectMenuItem();
             changeLangSwitchUrls();
-            renderWidgets();
+            setTimeout(function() {
+                renderWidgets();
+            }, 1000);            
         },
         getCurrentWidget: function () {
             return currentWidget;
