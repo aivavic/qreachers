@@ -5090,6 +5090,8 @@ span.lang-item {
     top: -10px;
 }
 
-.flex-active-slide .col-md-6:nth-of-type(2) .news_box__txt-top {
-    display: none;
+@media screen and (max-width: 991px) {
+    .flex-active-slide .col-md-6:nth-of-type(2) .news_box__txt-top {
+        display: none;
+    }
 }
