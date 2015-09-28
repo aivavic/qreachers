@@ -5094,3 +5094,15 @@ span.lang-item {
         display: none;
     }
 }
+
+.case_page__solution .btitle_name__in,
+.case_page__insight .btitle_name__in {
+    vertical-align: top;
+}
+
+.case_page__solution decorative-top,
+.case_page__solution decorative-bottom,
+.case_page__insight decorative-top,
+.case_page__insight decorative-bottom {
+    display: none;
+}
