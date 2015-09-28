@@ -4263,7 +4263,7 @@ top:0;}
 	background-color: #DC001D;
 }
 
-.case_page_result .btitle_name__body .row {
+.btitle_name__body .row {
     padding-left: 50px;
 }
 
@@ -4272,7 +4272,7 @@ top:0;}
 }
 
 @media screen and (max-width: 767px) {
-    .case_page_result .btitle_name__body .row {
+    .btitle_name__body .row {
         padding-left: 0px;
     }
 
