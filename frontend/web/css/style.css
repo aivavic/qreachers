@@ -5100,9 +5100,9 @@ span.lang-item {
     vertical-align: top;
 }
 
-.case_page__solution decorative-top,
-.case_page__solution decorative-bottom,
-.case_page__insight decorative-top,
-.case_page__insight decorative-bottom {
+.case_page__solution .decorative-top,
+.case_page__solution .decorative-bottom,
+.case_page__insight .decorative-top,
+.case_page__insight .decorative-bottom {
     display: none;
 }
