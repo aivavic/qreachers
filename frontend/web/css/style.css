@@ -3102,7 +3102,7 @@ top:0;}
 	color: #55565A;
 }
 
-.txt_style h4 {
+.txt_style h1 {
 	margin: 35px 0 25px 0;
 
 	font: normal 20px/140% "pantonregular", Arial;
@@ -3110,7 +3110,7 @@ top:0;}
 	text-transform: uppercase;
 }
 
-.txt_style h5 {
+.txt_style h2 {
 	margin: 0 0 25px 0;
 
 	font: normal 16px/140% "panton_semiboldregular", Arial;
