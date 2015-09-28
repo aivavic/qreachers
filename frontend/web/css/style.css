@@ -4263,6 +4263,29 @@ top:0;}
 	background-color: #DC001D;
 }
 
+.case_page_result .btitle_name__body .row {
+    padding-left: 50px;
+}
+
+.case_page__result ul, case_page__result ol {
+    margin-left: -25px;
+}
+
+@media screen and (max-width: 767px) {
+    .case_page_result .btitle_name__body .row {
+        padding-left: 0px;
+    }
+
+    .case_page__result ul, case_page__result ol {
+        margin-left: auto;
+    }
+    
+    .case_page__result .decorative-top,
+    .case_page__result .decorative-bottom {
+        display: none !important;
+    }
+}
+
 .case_page__result h3 {
 	margin: 0;
 	
