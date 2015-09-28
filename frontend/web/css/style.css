@@ -4295,7 +4295,13 @@ top:0;}
 }
 
 .case_page__result-stats {
-	text-align: center;
+	text-align: left;
+}
+
+@media screen and (max-width: 767px) {
+    .case_page__result-stats {
+        text-align: center;
+    }   
 }
 
 .case_page__result-stats span {
