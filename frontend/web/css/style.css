@@ -5135,3 +5135,10 @@ span.lang-item {
 .case_page__insight .decorative-bottom {
     display: none;
 }
+
+@media screen and (max-width: 400px) {
+    .txt_style p a {
+        display: inline-block;
+        margin: 0 0 0 -20px;
+    }
+}
