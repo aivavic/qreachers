@@ -128,7 +128,7 @@ class ArticleController extends Controller
             'models' => $models
         ]);
 
-        if ($model->load(Yii::$app->request->post()) && Article::multiSave($model)) {
+        if ($model->load(Yii::$app->request->post()) && Article::multiSaveUpdate($model)) {
             return $this->redirect(['index']);
         } else {
             return $this->render('update', [

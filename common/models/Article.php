@@ -275,7 +275,7 @@ class Article extends \yii\db\ActiveRecord
     public static function multiSave($model)
     {
 
-        //\yii\helpers\VarDumper::dump(Yii::$app->request->post(),11,1); die();
+        //\yii\helpers\VarDumper::dump($model->getModels(),11,1); die();
 
         $defaultAttributes = [];
 
@@ -307,6 +307,36 @@ class Article extends \yii\db\ActiveRecord
             }
 
             //\yii\helpers\VarDumper::dump($model->getModel($key),11,1);
+        }
+
+
+        return $model->save();
+    }
+
+    public static function multiSaveUpdate($model)
+    {
+
+        $defaultAttributes = [];
+
+        foreach ($model->getModels() as $key => $v) {
+
+            foreach ($model->getModel($key)->attributes() as $attrKey) {
+                if (empty($defaultAttributes[$attrKey])) {
+                    $defaultAttributes[$attrKey] = $model->getModel($key)->$attrKey;
+                }
+            }
+        }
+
+        unset($defaultAttributes['id']);
+        unset($defaultAttributes['locale']);
+        unset($defaultAttributes['locale_group_id']);
+        $groupId = self::getLastLocaleGroupId() + 1;
+
+        foreach ($model->getModels() as $key => $v) {
+            if (!$model->getModel($key)->locale_group_id) {
+                $model->getModel($key)->locale_group_id = $groupId;
+            }
+
         }
 
 
