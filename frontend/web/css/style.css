@@ -4817,7 +4817,6 @@ top:0;}
 
 .footer__logo {
 	text-align: right;
-    visibility: hidden;
 }
 
 .footer__logo img {
@@ -5151,5 +5150,10 @@ span.lang-item {
     .txt_style p a {
         display: inline-block;
         margin: 0 0 0 -20px;
+    }
+    
+    .about-box div span {
+        box-sizing: border-box;
+        padding: 0 20px;
     }
 }
