@@ -5155,5 +5155,6 @@ span.lang-item {
     .about_box div span {
         box-sizing: border-box;
         padding: 0 20px;
+        display: block;
     }
 }
