@@ -4241,6 +4241,12 @@ top:0;}
 	padding: 85px 0 0 0;
 }
 
+@media screen and (max-width: 991px) {
+    .case_page__solution {
+        padding-top: 0;
+    }
+}
+
 .case_page__solution h3 {
 	margin: 0;
 
