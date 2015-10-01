@@ -5136,6 +5136,11 @@ span.lang-item {
     display: none;
 }
 
+.txt_style p img {
+    max-width: 100%;
+    margin-left: -20px;
+}
+
 @media screen and (max-width: 400px) {
     .txt_style p a {
         display: inline-block;
