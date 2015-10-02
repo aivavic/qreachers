@@ -28,7 +28,8 @@ class CommonAsset extends AssetBundle
         'js/lib/owl.carousel.min.js',
         'js/lib/facebook.sdk.js',
         'js/lib/twitter.widget.js',*/        
-        'http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js',
+        'js/js/http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js',
+        'modernizr-custom.js',
         //'https://maps.googleapis.com/maps/api/js?v=3.exp',
         "https://maps.googleapis.com/maps/api/js",
         'js/js/jquery.html5Loader.min.js',

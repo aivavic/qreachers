@@ -1,0 +1,3 @@
+/*! modernizr 3.0.0 (Custom Build) | MIT *
+ * http://modernizr.com/download/?-backgroundsize-boxsizing-cssanimations-csstransforms !*/
+!function(e,s,n){var i=[],o={_version:"3.0.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,s){var n=this;setTimeout(function(){s(n[e])},0)},addTest:function(e,s,n){i.push({name:e,fn:s,options:n})},addAsyncTest:function(e){i.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=o,Modernizr=new Modernizr;var t="Moz O ms Webkit",f=o._config.usePrefixes?t.split(" "):[];o._cssomPrefixes=f;var a=o._config.usePrefixes?t.toLowerCase().split(" "):[];o._domPrefixes=a}(window,document);
