@@ -50,7 +50,7 @@ window.app = (function () {
 
             if (app.isFirstLoad) {
                 preloadLogoEnd();
-				console.log(Modernizr);
+				alert(Modernizr);
             }
             else {
                 preloadFadeOut();
