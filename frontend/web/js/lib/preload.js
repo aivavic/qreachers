@@ -1,6 +1,9 @@
 //on first load
 function preloadStart() {
-	console.log(Modernizr);
+	if(!Modernizr.cssanimations||!Modernizr.backgroundsize||!Modernizr.boxsizing||!Modernizr.csstransforms||!Modernizr.csstransitions){
+		runDummy();
+		return;
+	}
 
     runLoader();
 }
@@ -89,4 +92,10 @@ var fOnLoaderComplete = function () {
         $('.bullets__in').parent().addClass('bullets__nav--active');
         $('.scroll_arrow').addClass('scroll_arrow--active');
     }, 4000);
+}
+
+
+
+function runDummy(){
+	$('body').html('<div class="deprecated-box"> 	<div class="align"> 		<span class="icon icon-window"><img src="/img/deprecated/window.png" alt="" /></span> 		<div class="db-text"><span class="bold">Ваш браузер устарел.</span> Сайт будет работать некорректно.  Чтобы исправить проблему, пожалуйста, обновите браузер  на более позднюю версию или воспользуйтесь другим браузером.</div> 		<hr /> 		<a class="icon icon-browser-wrap"><span class="icon-text">Chrome</span><span class="icon"><img src="/img/deprecated/br_chrome.png" alt="" /></span></a> 	</div> </div>  <style type="text/css">  .deprecated-box, .deprecated-box *{ -webkit-box-sizing:content-box; -moz-box-sizing:content-box; box-sizing:content-box;}  .deprecated-box{ position:absolute; left:0; top:0; width:100%; height:100%; background:#00567d; font:18px/30px "pantonregular", Arial, sans-serif; color:#fff;}  .bold{ color:#dfe039; font-family: "pantonbold";}  .icon{ display:inline-block;}  .icon-window{ margin-bottom:30px;}  hr{ display:block; width:66px; height:2px; background:#e0e139; border-width:2px 0; border-style:solid; border-color:#69975d; margin:36px 0 48px;}  .icon-browser-wrap{ font:14px/20px "pantonregular"; text-decoration:none; color:#32c7fc;}  .icon-text{ display:inline-block;}  .icon-browser-wrap .icon-text{ display:block; margin-bottom:14px;}  .icon-browser-wrap:hover{ color:#fff;}  </style>            ');
 }
