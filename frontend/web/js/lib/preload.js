@@ -1,5 +1,7 @@
 //on first load
 function preloadStart() {
+	console.log(Modernizr);
+
     runLoader();
 }
 
