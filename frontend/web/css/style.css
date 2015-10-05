@@ -3123,6 +3123,7 @@ top:0;}
 	padding: 0 0 0 20px;
 }
 
+.txt_style ol li,
 .txt_style ul li {
 	margin: 0 0 0px 0;
 
@@ -3130,6 +3131,7 @@ top:0;}
 	color: #55565a;
 }
 
+.txt_style ol li p,
 .txt_style ul li p {
 	text-indent: 0;
 }
