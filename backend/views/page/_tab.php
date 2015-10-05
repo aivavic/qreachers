@@ -38,7 +38,7 @@ use yii\bootstrap\Tabs;
             $model->getModel('ru-RU')->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Update'), ['class' => $model->getModel('ru-RU')->isNewRecord
                     ? 'btn btn-success' : 'btn btn-primary'])
         ?>
-        <button type="button" class="btn btn-primary" id="previewButton">Preview</button>
+        <!-- <button type="button" class="btn btn-primary" id="previewButton">Preview</button> -->
     </div>
 
     <?php ActiveForm::end(); ?>
@@ -46,11 +46,11 @@ use yii\bootstrap\Tabs;
 </div>
 
 <?php
-$js = '$("#previewButton").click(function() {'
+/*$js = '$("#previewButton").click(function() {'
     . 'var url = "' . Yii::getAlias('@frontendUrl/page/preview/') . '" + $("#pageruru-slug").val();'
     . 'url = url + "?" + $("#' . $form->id . '").serialize();'
     . 'window.open(url,"Preview");'
     . '});';
 
-$this->registerJs($js);
+$this->registerJs($js);*/
 ?>
