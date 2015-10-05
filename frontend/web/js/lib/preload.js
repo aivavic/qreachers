@@ -1,14 +1,14 @@
 //on first load
 function preloadStart() {
 
-	alert('preloadStart()');
+	/*alert('preloadStart()');
 	console.log(Modernizr.cssanimations, Modernizr.backgroundsize, Modernizr.boxsizing, Modernizr.csstransforms, Modernizr.csstransitions);
 	alert(Modernizr.cssanimations, Modernizr.backgroundsize, Modernizr.boxsizing, Modernizr.csstransforms, Modernizr.csstransitions);
 	
 	if(!Modernizr.cssanimations||!Modernizr.backgroundsize||!Modernizr.boxsizing||!Modernizr.csstransforms||!Modernizr.csstransitions){
 		runDummy();
 		return;
-	}
+	}*/
 
     runLoader();
 }
