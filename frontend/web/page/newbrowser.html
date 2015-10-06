@@ -4,10 +4,57 @@
         <title>Пожалуйста, обновите браузер</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		
+		
     </head>
     <body>
-        <div class="deprecated-box"> 	<div class="align db-align"> 		<span class="icon icon-window"><img src="/img/deprecated/window.png" alt="" /></span> 		<div class="db-text"><span class="bold">Ваш браузер устарел.</span> Сайт будет работать некорректно<div class="br"></div>  Чтобы исправить проблему, пожалуйста, обновите браузер <br /> на более позднюю версию или воспользуйтесь другим браузером.</div> 		<hr /> 		<a class="icon icon-browser-wrap"><span class="icon-text">Chrome</span><span class="icon"><img src="/img/deprecated/br_chrome.png" alt="" /></span></a> 	</div> </div>
+        <div class="deprecated-box"> 	<div class="align db-align"> 		<span class="icon icon-window"><img src="/img/deprecated/window.png" alt="" /></span> 		<div class="db-text"><span class="bold">Ваш браузер устарел.</span> Сайт будет работать некорректно<div class="br"></div>  Чтобы исправить проблему, пожалуйста, обновите браузер <br /> на более позднюю версию или воспользуйтесь другим браузером.</div> 		<hr /> 		<a class="icon icon-browser-wrap"><span class="icon-text">Chrome</span><span class="icon icon-browser"></span></a> 	</div> </div>
 
+		<script type="text/javascript">
+			var browserName=navigator.userAgent,
+				browserVer=parseInt(navigator.appVersion),
+				browserPlatform=navigator.platform,
+				browserIcon=document.getElementsByClassName('icon-browser');
+				
+			if(browserPlatform.indexOf('Mac')>-1&&browserName.indexOf('Safari')>-1)
+				browserIcon.classList.add('icon-browser-safari');
+			else if(browserName.indexOf('OPR')>-1)
+				browserIcon.classList.add('icon-browser-opera');
+			else if(browserName.indexOf('Firefox')>-1)
+				browserIcon.classList.add('icon-browser-firefox');
+				
+				
+if(document.getElementsByClassName) {
+
+	getElementsByClass = function(classList, node) {    
+		return (node || document).getElementsByClassName(classList)
+	}
+
+} else {
+
+	getElementsByClass = function(classList, node) {			
+		var node = node || document,
+		list = node.getElementsByTagName('*'), 
+		length = list.length,  
+		classArray = classList.split(/\s+/), 
+		classes = classArray.length, 
+		result = [], i,j
+		for(i = 0; i < length; i++) {
+			for(j = 0; j < classes; j++)  {
+				if(list[i].className.search('\\b' + classArray[j] + '\\b') != -1) {
+					result.push(list[i])
+					break
+				}
+			}
+		}
+	
+		return result
+	}
+}
+
+		</script>
 
 
 		<style type="text/css">
@@ -39,6 +86,19 @@
 
 
 
-		.deprecated-box, .deprecated-box *{ -webkit-box-sizing:content-box; -moz-box-sizing:content-box; box-sizing:content-box;}  .deprecated-box{ position:absolute; left:0; top:0; width:100%; height:100%; background:#00567d; font:18px/30px "pantonregular", Arial, sans-serif; color:#fff;}  .db-align{ text-align:center; width:600px; position:absolute; left:50%; top:50%; margin:-202px 0 0 -300px;}  .bold{ color:#dfe039; font-family: "pantonbold";}  .icon{ display:inline-block;}  .icon-window{ margin-bottom:30px;}  hr{ display:block; width:66px; height:2px; margin: 36px auto 48px; background:#e0e139; border-width:2px 0; border-style:solid; border-color:#69975d;}  .icon-browser-wrap{ font:14px/20px "pantonregular"; text-decoration:none; color:#32c7fc;}  .icon-text{ display:inline-block;}  .icon-browser-wrap .icon-text{ display:block; margin-bottom:14px;}  .icon-browser-wrap:hover{ text-decoration:none; color:#fff;}  </style>            
-    </body>
+		.deprecated-box, .deprecated-box *{ -webkit-box-sizing:content-box; -moz-box-sizing:content-box; box-sizing:content-box;}  .deprecated-box{ position:absolute; left:0; top:0; width:100%; height:100%; background:#00567d; font:18px/30px "pantonregular", Arial, sans-serif; color:#fff;}  .db-align{ text-align:center; width:600px; position:absolute; left:50%; top:50%; margin:-202px 0 0 -300px;}  .bold{ color:#dfe039; font-family: "pantonbold";}  .icon{ display:inline-block;}  .icon-window{ margin-bottom:30px;}  hr{ display:block; width:66px; height:2px; margin: 36px auto 48px; background:#e0e139; border-width:2px 0; border-style:solid; border-color:#69975d;}  .icon-browser-wrap{ font:14px/20px "pantonregular"; text-decoration:none; color:#32c7fc;}  .icon-text{ display:inline-block;}  .icon-browser-wrap .icon-text{ display:block; margin-bottom:14px;}  .icon-browser-wrap:hover{ text-decoration:none; color:#fff;}
+	.icon-browser{
+	width:65px;
+	height:65px;
+	background: url(/img/deprecated/br_chrome.png) 50% no-repeat;}
+	
+	.icon-browser-opera{
+	background-image:url(/img/deprecated/br_opera.png);}
+	.icon-browser-firefox{
+	background-image:url(/img/deprecated/br_firefox.png);}
+	.icon-browser-safari{
+	background-image:url(/img/deprecated/br_safari.png);}  </style>            
+   
+	
+   </body>
 </html>
