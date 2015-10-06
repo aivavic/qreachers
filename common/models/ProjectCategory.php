@@ -61,6 +61,8 @@ class ProjectCategory extends \yii\db\ActiveRecord
             [['title'], 'string', 'max' => 512],
             [['slug'], 'unique'],
             [['slug'], 'string', 'max' => 1024],
+            [['locale'], 'required'],
+            [['locale'], 'string'],
             [['status', 'weight', 'parent_id'], 'integer']
         ];
     }
@@ -76,7 +78,8 @@ class ProjectCategory extends \yii\db\ActiveRecord
             'title' => Yii::t('common', 'Title'),
             'parent_id' => Yii::t('common', 'Parent Category'),
             'status' => Yii::t('common', 'Active'),
-            'weight' => Yii::t('common', 'Weight')
+            'weight' => Yii::t('common', 'Weight'),
+            'locale' => Yii::t('common', 'Locale')
         ];
     }
 

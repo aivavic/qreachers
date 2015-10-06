@@ -23,9 +23,19 @@
         data = widget;
         data.t = app.view.getTranslationsFromData(data);
 
+        var params = {
+            "fields": 'id,slug,title,parent_id,status,local',
+        };
+
+        params.where = {
+                locale: app.config.frontend_app_locale
+            };
+        data = widget;
+
         //load categories
         $.getJSON(
                 app.config.frontend_app_api_url + '/db/project-categories',
+                params,
                 function (catData) {
                     data.categories = catData.items;
 
@@ -44,9 +54,17 @@
 
     function loadCategoriesSecond(data) {
         app.logger.func('loadCategoriesSecond(data)');
+        var params = {
+            "fields": 'id,slug,title,parent_id,status,local',
+        };
+
+        params.where = {
+                locale: app.config.frontend_app_locale
+            };
         //load categories
         $.getJSON(
                 app.config.frontend_app_api_url + '/db/project-category-second',
+                params,
                 function (catData) {
                     data.categoriesSecond = catData.items;
 

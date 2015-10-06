@@ -26,6 +26,8 @@ use yii\bootstrap\ActiveForm;
         'id',
         'title'
     ), ['prompt'=>'']) ?>
+    
+    <?php echo $form->field($model, 'locale')->dropDownList(['ru-RU' => 'RU', 'en-US' => 'EN'],['prompt'=>'----Выбирите язык----']); ?>
 
     <?php echo $form->field($model, 'status')->checkbox() ?>
 

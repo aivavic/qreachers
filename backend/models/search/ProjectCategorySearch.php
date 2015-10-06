@@ -19,7 +19,7 @@ class ProjectCategorySearch extends ProjectCategory
     {
         return [
             [['id', 'status'], 'integer'],
-            [['slug', 'title','weight'], 'safe'],
+            [['slug', 'title','weight','locale'], 'safe'],
         ];
     }
 
@@ -55,7 +55,8 @@ class ProjectCategorySearch extends ProjectCategory
 
         $query->andFilterWhere(['like', 'slug', $this->slug])
             ->andFilterWhere(['like', 'weight', $this->weight])
-            ->andFilterWhere(['like', 'title', $this->title]);
+            ->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'locale', $this->locale]);
 
         return $dataProvider;
     }

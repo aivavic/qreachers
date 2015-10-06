@@ -20,11 +20,19 @@
     function loadData() {
         app.logger.func('loadData()');
 
+        var params = {
+            "fields": 'id,slug,title,parent_id,status,local',
+        };
+
+        params.where = {
+                locale: app.config.frontend_app_locale
+            };
         data = widget;
 
         //load categories
         $.getJSON(
                 app.config.frontend_app_api_url + '/db/article-categories',
+                params,
                 function (catData) {
                     data.categories = catData.items;
                     var cids = [];
@@ -145,6 +153,8 @@
                     else {
                         $('#newsShowMore').hide();
                     }
+
+                    console.log(app.config.frontend_app_locale); 
                     loadTemplateItems(data);
                 });
     }
