@@ -59,7 +59,7 @@ class ProjectCategorySecond extends \yii\db\ActiveRecord
         return [
             [['title'], 'required'],
             [['title'], 'string', 'max' => 512],
-            [['slug'], 'unique'],
+            //[['slug'], 'unique'],
             [['slug'], 'string', 'max' => 1024],
             [['locale'], 'required'],
             [['locale'], 'string'],
