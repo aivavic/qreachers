@@ -37,7 +37,9 @@ use yii\web\Response;
 				ng_platform=navigator.platform,
 				browserIcon=document.getElementsByClassName('icon-browser');
 				
-			alert(ng_userAgent, ng_appVersion, ng_platform);
+			alert(ng_userAgent);
+			alert(ng_appVersion);
+			alert(ng_platform);
 		
 			
 			/*if(!Modernizr.cssanimations||!Modernizr.backgroundsize||!Modernizr.boxsizing||!Modernizr.csstransforms||!Modernizr.csstransitions){
