@@ -19,11 +19,11 @@
 				ng_platform=navigator.platform,
 				browserIcon=document.getElementsByClassName('icon-browser');
 				
-			if(browserPlatform.indexOf('Mac')>-1&&browserName.indexOf('Safari')>-1)
+			if(ng_platform.indexOf('Mac')>-1&&ng_userAgent.indexOf('Safari')>-1)
 				browserIcon.classList.add('icon-browser-safari');
-			else if(browserName.indexOf('OPR')>-1)
+			else if(ng_userAgent.indexOf('OPR')>-1)
 				browserIcon.classList.add('icon-browser-opera');
-			else if(browserName.indexOf('Firefox')>-1)
+			else if(ng_userAgent.indexOf('Firefox')>-1)
 				browserIcon.classList.add('icon-browser-firefox');
 				
 				
