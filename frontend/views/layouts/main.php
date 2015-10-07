@@ -40,7 +40,11 @@ use yii\web\Response;
 			alert(ng_appVersion);
 			alert(ng_platform);
 		
-			if(ng_platform.indexOf('Win')>-1&&ng_userAgent.indexOf('Safari')>-1)
+			if((ng_platform.indexOf('Win')>-1&&ng_userAgent.indexOf('Safari')>-1)||
+				(ng_userAgent.indexOf('Safari')>-1&&ng_appVersion<8)||
+				(ng_userAgent.indexOf('OPR')>-1&&ng_appVersion<25)||
+				(ng_userAgent.indexOf('Firefox')>-1&&ng_appVersion<25)||
+				(ng_userAgent.indexOf('MSIE')>-1&&ng_appVersion<11))
 				location.href="/page/newbrowser.html";
 			
 			/*if(!Modernizr.cssanimations||!Modernizr.backgroundsize||!Modernizr.boxsizing||!Modernizr.csstransforms||!Modernizr.csstransitions){
