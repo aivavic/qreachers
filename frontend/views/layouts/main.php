@@ -37,31 +37,6 @@ use yii\web\Response;
 				ng_platform=navigator.platform,
 				br_name=null,
 				br_version=null;
-				
-			/*alert(ng_userAgent);
-			alert(ng_appVersion);
-			alert(ng_platform);*/
-			
-			
-		
-			/*if((ng_platform.indexOf('Win')>-1&&ng_userAgent.indexOf('Safari')>-1)||
-				(ng_userAgent.indexOf('Safari')>-1&&ng_appVersion<8)||
-				(ng_userAgent.indexOf('OPR')>-1&&ng_appVersion<25)||
-				(ng_userAgent.indexOf('Firefox')>-1&&ng_appVersion<25)||
-				(ng_userAgent.indexOf('MSIE')>-1&&ng_appVersion<11))
-				location.href="/page/newbrowser.html";*/
-				
-				
-				
-			/*console.log(ng_userAgent);
-			console.log(ng_appVersion);
-			console.log(ng_platform);*/
-			
-			/*if(!Modernizr.cssanimations||!Modernizr.backgroundsize||!Modernizr.boxsizing||!Modernizr.csstransforms||!Modernizr.csstransitions){
-				location.href="/page/newbrowser.html";
-			}*/
-			
-			
 			
 			var ua= navigator.userAgent, tem, 
 			M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
@@ -69,26 +44,36 @@ use yii\web\Response;
 				tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
 				//return 'IE '+(tem[1] || '');
 				br_name='MSIE';
-				br_version=tem[1];
+				br_version=parseInt(tem[1]);
+				
+				console.log(br_name, br_version);
 			}
 			else if(M[1]=== 'Chrome'){
 				tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
 				if(tem!= null){
 					//return tem.slice(1).join(' ').replace('OPR', 'Opera');
-					br_name='Opera';
-					br_version=tem[21];
+					br_name=tem.slice(1)[0];
+					br_version=parseInt(tem[2]);
 				}
+				else{
+					br_name=M[1];
+					br_version=parseInt(M[2]);
+				}
+				
+				console.log(br_name, br_version);
 			}
 			else{
 				M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
 				if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
 				
-				br_name=M[1];
-				br_version=M[2];
+				br_name=M[0];
+				br_version=parseInt(M[1]);
+				
+				console.log(br_name, br_version);
 			}
 			
 			if( (br_name=='Safari'&&br_version<8)||
-				(br_name=='Opera'&&br_version<25)||
+				(br_name=='OPR'&&br_version<25)||
 				(br_name=='Firefox'&&br_version<25)||
 				(br_name=='MSIE'&&br_version<11))
 				location.href="/page/newbrowser.html";
