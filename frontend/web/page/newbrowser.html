@@ -14,6 +14,11 @@
 
 		<script type="text/javascript">
 				
+			var ng_userAgent=navigator.userAgent,
+				ng_appVersion=parseInt(navigator.appVersion),
+				ng_platform=navigator.platform,
+				browserIcon=document.getElementsByClassName('icon-browser');
+				
 			if(browserPlatform.indexOf('Mac')>-1&&browserName.indexOf('Safari')>-1)
 				browserIcon.classList.add('icon-browser-safari');
 			else if(browserName.indexOf('OPR')>-1)

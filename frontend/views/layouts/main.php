@@ -34,13 +34,14 @@ use yii\web\Response;
 		
 			var ng_userAgent=navigator.userAgent,
 				ng_appVersion=parseInt(navigator.appVersion),
-				ng_platform=navigator.platform,
-				browserIcon=document.getElementsByClassName('icon-browser');
+				ng_platform=navigator.platform;
 				
 			alert(ng_userAgent);
 			alert(ng_appVersion);
 			alert(ng_platform);
 		
+			if(ng_platform.indexOf('Win')>-1&&ng_userAgent.indexOf('Safari')>-1)
+				location.href="/page/newbrowser.html";
 			
 			/*if(!Modernizr.cssanimations||!Modernizr.backgroundsize||!Modernizr.boxsizing||!Modernizr.csstransforms||!Modernizr.csstransitions){
 				location.href="/page/newbrowser.html";
