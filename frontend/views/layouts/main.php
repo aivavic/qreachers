@@ -47,7 +47,9 @@ use yii\web\Response;
 				(ng_userAgent.indexOf('MSIE')>-1&&ng_appVersion<11))
 				location.href="/page/newbrowser.html";*/
 				
-			console.log(ng_userAgent, ng_appVersion, ng_platform);
+			console.log(ng_userAgent);
+			console.log(ng_appVersion);
+			console.log(ng_platform);
 			
 			/*if(!Modernizr.cssanimations||!Modernizr.backgroundsize||!Modernizr.boxsizing||!Modernizr.csstransforms||!Modernizr.csstransitions){
 				location.href="/page/newbrowser.html";
