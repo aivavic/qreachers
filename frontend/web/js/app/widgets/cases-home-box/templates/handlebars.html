@@ -10,8 +10,9 @@
                     <div class="row wow fadeIn" data-wow-duration="0.3s" data-wow-delay="0.3s" data-wow-offset="50">
                         {{#each items}}
 
+                        
                         <div class="col-md-5 {{rows}}">
-
+                        <a href="{{viewUrl}}" class="ajaxLink">
                             <div class="projects_box__item">
                                 <div class="projects_box__thumb wow fadeInDownMin" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="200">
                                     <img src="{{previewImg}}" alt="#">
@@ -25,8 +26,10 @@
                                     </div>
                                 </div>
                             </div>
-
+                        </a>
                         </div><!--.col-->
+                        
+
                         {{/each}}
                     </div><!--.row-->
                 </li>
