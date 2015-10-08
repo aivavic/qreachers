@@ -69,11 +69,12 @@ use yii\web\Response;
 				console.log(br_name, br_version);
 			}
 			
+			alert(br_name+br_version)
+			
 			if( (br_name=='Safari'&&br_version<8)||
 				((br_name=='OPR'||br_name=='Opera')&&br_version<25)||
 				(br_name=='Firefox'&&br_version<25)||
 				(br_name=='MSIE'&&br_version<11)){
-				alert('test');
 				location.href="/page/newbrowser.html";
 			}
 			
