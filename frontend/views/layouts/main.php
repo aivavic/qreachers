@@ -29,7 +29,6 @@ use yii\web\Response;
         <title><?php echo Html::encode($this->title) ?></title>
         <link rel="icon" type="image/png" href="http://qreachers.com/favicon.ico">
 		
-		<script type="text/javascript" src="js/js/modernizr-custom.js"></script>
 		<script type="text/javascript">
 		
 			var ng_userAgent=navigator.userAgent,
