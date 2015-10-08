@@ -34,6 +34,11 @@
         },
         "title": {
             "type": "string",
+            "title": "Title",
+            "default": "Title"
+        },
+        "title_button": {
+            "type": "string",
             "title": "Title button.",
             "default": "Title button."
         },

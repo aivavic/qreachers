@@ -46,10 +46,10 @@
             "title": "Text.",
             "default": "Lorem ipsum dolor sit amet, consectetur adipiscing."
         },
-        "link": {
+        "button_title": {
             "type": "string",
-            "title": "Link",
-            "default": "Link ..."
+            "title": "Title button",
+            "default": "Title button ..."
         }
     }
 }

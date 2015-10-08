@@ -14,13 +14,34 @@
         loadData();
     }
 
-    function loadData() {
+  function loadData() {
         app.logger.func('loadData()');
 
         var data = widget;
-        data.t = app.view.getTranslationsFromData(data);
+        var params = {
+            "fields": 'id,slug,title,body',
+            "where": {
+                "slug": "footer",
+                "locale": app.config.frontend_app_locale
+            },
+            "where_operator_format": [
+                "like",
+                "domain",
+                location.protocol + '//' + location.hostname,
+            ]
+        };
 
-        loadTemplate(data);
+        $.getJSON(
+                app.config.frontend_app_api_url + '/db/blocks',
+                params,
+                function (data) {
+                    var body = data.items[0].body.replace(/^\[/, '').replace(/\]$/, '');
+                    data = JSON.parse(body);
+                    data.t = app.view.getTranslationsFromData(data);
+
+                loadTemplate(data);
+         });
+
     }
 
 
