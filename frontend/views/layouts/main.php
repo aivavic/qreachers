@@ -73,7 +73,7 @@ use yii\web\Response;
 			}
 			
 			if( (br_name=='Safari'&&br_version<8)||
-				(br_name=='OPR'&&br_version<25)||
+				((br_name=='OPR'||br_name=='Opera')&&br_version<25)||
 				(br_name=='Firefox'&&br_version<25)||
 				(br_name=='MSIE'&&br_version<11))
 				location.href="/page/newbrowser.html";
