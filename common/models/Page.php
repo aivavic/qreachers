@@ -261,6 +261,10 @@ class Page extends \yii\db\ActiveRecord
             }
         }
 
+        if (empty($locale)) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
         if ($locale == Yii::$app->language) {
             //current language = requested
             return true;

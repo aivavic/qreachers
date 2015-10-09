@@ -50,4 +50,12 @@ class SiteController extends Controller
     {
         var_dump($_POST);
     }
+
+    public function beforeAction($action)
+    {
+        if ($action->id == 'error')
+            $this->layout = 'main.php';
+
+        return parent::beforeAction($action);
+    }
 }
