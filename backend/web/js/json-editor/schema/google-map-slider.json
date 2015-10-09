@@ -47,8 +47,8 @@
                 "properties": {
                     "city": {
                         "type": "string",
-                        "title": "City.",
-                        "default": "Default city"
+                        "title": "Link map.",
+                        "default": ""
                     },
                     "latitude": {
                         "type": "string",

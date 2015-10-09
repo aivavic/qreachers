@@ -29,7 +29,7 @@
 							<a href="mailto:{{t.email_ua}}">{{t.email_ua}}</a>
 							
 							<div class="show-inmap">
-								<a href="http://www.google.com.ua/maps" class="btn btn-bb animated">
+								<a href="{{#if items.0.city}}{{items.0.city}}{{/if}}" class="btn btn-bb animated"  target="_blank">
 									{{t.title_buttons_map}}
 								</a>
 							</div>
@@ -41,7 +41,7 @@
 							<a href="mailto:{{t.email_kz}}">{{t.email_kz}}</a>
 
 							<div class="show-inmap">
-								<a href="http://www.google.com.ua/maps" class="btn btn-bb animated">
+								<a href="{{#if items.1.city}}{{items.1.city}}{{/if}}" class="btn btn-bb animated" target="_blank">
 									{{t.title_buttons_map}}
 								</a>
 							</div>

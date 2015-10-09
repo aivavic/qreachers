@@ -38,7 +38,8 @@
                     var body = data.items[0].body.replace(/^\[/, '').replace(/\]$/, '');
                     data = JSON.parse(body);
                     data.t = app.view.getTranslationsFromData(data);
-
+                    data.items = widget.items;
+                    console.log(data);
                 loadTemplate(data);
          });
 
@@ -101,15 +102,15 @@
             animation: google.maps.Animation.DROP,
             map: map,
             icon: '/img/ico-contacts_marker.png',
-            url: 'https://www.google.com.ua/maps/place/@' + lat + ',' + long + ',17z',
+            //url: 'https://www.google.com.ua/maps/place/@' + lat + ',' + long + ',17z',
         });
         
         
-        $(".show-inmap a").off('click');
+        /*$(".show-inmap a").off('click');
         $(".show-inmap a").click(function() {            
             window.open(marker.url);
             return false;
-        });
+        });*/
     }
 
     function registerUaButton() {
