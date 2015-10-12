@@ -33,7 +33,7 @@ class SiteController extends Controller
     }
 
     public function actionIndex()
-    {        
+    {
         $this->_checkBrowser();
 
         $this->layout = '@frontend/views/layouts/main.php';
@@ -61,12 +61,44 @@ class SiteController extends Controller
 
     private function _checkBrowser()
     {
-        $badBrowsers = file(Yii::getAlias('@frontend/config/browserList.txt'));
+        $currentBrowser = $this->_getBrowser($_SERVER['HTTP_USER_AGENT']);
+        $badBrowsers = file(Yii::getAlias('@frontend/config/badBrowserList.txt'));
 
-        //\yii\helpers\VarDumper::dump($badBrowsers, 11, 1);
-        //echo $_SERVER['HTTP_USER_AGENT'];
-        if (in_array($_SERVER['HTTP_USER_AGENT'], $badBrowsers)) {
-            $this->redirect(Yii::getAlias('@frontendUrl/page/newbrowser.html'));
+        foreach ($badBrowsers as $key => $value) {
+            $badBrowser        = trim(explode('<', $value)[0]);
+            $badBrowserVersion = trim(explode('<', $value)[1]);
+
+            if ($currentBrowser['browser'] == $badBrowser) {
+                if (-1 == version_compare($currentBrowser['version'], $badBrowserVersion)) {                    
+                    $this->redirect(Yii::getAlias('@frontendUrl/page/newbrowser.html'));
+                }
+            }
         }
+    }
+
+    private function _getBrowser($agent)
+    {
+        preg_match("/(MSIE|Opera|Firefox|Chrome|Version|Opera Mini|Netscape|Konqueror|SeaMonkey|Camino|Minefield|Iceweasel|K-Meleon|Maxthon)(?:\/| )([0-9.]+)/", $agent, $browser_info);
+        list(, $browser, $version) = $browser_info;
+        if (preg_match("/Opera ([0-9.]+)/i", $agent, $opera))
+                return 'Opera ' . $opera[1];
+        if ($browser == 'MSIE') {
+            preg_match("/(Maxthon|Avant Browser|MyIE2)/i", $agent, $ie);
+            if ($ie) return $ie[1] . ' based on IE ' . $version;
+            return 'IE ' . $version;
+        }
+        if ($browser == 'Firefox') {
+            preg_match("/(Flock|Navigator|Epiphany)\/([0-9.]+)/", $agent, $ff);
+            if ($ff) return $ff[1] . ' ' . $ff[2];
+        }
+        if ($browser == 'Opera' && $version == '9.80')
+                return 'Opera ' . substr($agent, -5);
+        if ($browser == 'Version') return 'Safari ' . $version;
+        if (!$browser && strpos($agent, 'Gecko'))
+                return 'Browser based on Gecko';
+        return [
+            'browser' => $browser,
+            'version' => $version
+        ];
     }
 }
