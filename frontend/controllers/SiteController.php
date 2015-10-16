@@ -79,10 +79,9 @@ class SiteController extends Controller
     }
 
     private function _getBrowser($agent)
-    {
-        \yii\helpers\VarDumper::dump($agent, 11, 1);
-        preg_match("/(MSIE|Opera|Firefox|Chrome|Version|Opera Mini|Netscape|Konqueror|SeaMonkey|Camino|Minefield|Iceweasel|K-Meleon|Maxthon)(?:\/| )([0-9.]+)/", $agent, $browser_info);
-        \yii\helpers\VarDumper::dump($browser_info, 11, 1); return;
+    {        
+        preg_match("/(MSIE|Opera|Firefox|Chrome|Version|Opera Mini|Netscape|Konqueror|SeaMonkey|Camino|Minefield|Iceweasel|K-Meleon|Maxthon|Trident)(?:\/| )([0-9.]+)/", $agent, $browser_info);
+
         list(, $browser, $version) = $browser_info;
 
         switch ($browser) {
@@ -95,6 +94,13 @@ class SiteController extends Controller
 
                 $browser = 'IE';
                 $version = $version;
+
+                break;
+            case 'Trident':
+                if ('7.0' == $version) {
+                    $browser = 'IE';
+                    $version = '11.0';
+                }
 
                 break;
             case 'Firefox':
