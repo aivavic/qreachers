@@ -63,7 +63,9 @@ class SiteController extends Controller
     {
         $currentBrowser = $this->_getBrowser($_SERVER['HTTP_USER_AGENT']);        
         $badBrowsers    = file(Yii::getAlias('@frontend/config/badBrowserList.txt'));
-
+        \yii\helpers\VarDumper::dump($currentBrowser, 11, 1);
+        \yii\helpers\VarDumper::dump($badBrowsers, 11, 1);
+        return;
         foreach ($badBrowsers as $key => $value) {
             $badBrowser        = trim(explode('<', $value)[0]);
             $badBrowserVersion = trim(explode('<', $value)[1]);
