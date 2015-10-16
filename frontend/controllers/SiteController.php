@@ -80,7 +80,9 @@ class SiteController extends Controller
 
     private function _getBrowser($agent)
     {
+        \yii\helpers\VarDumper::dump($agent, 11, 1);
         preg_match("/(MSIE|Opera|Firefox|Chrome|Version|Opera Mini|Netscape|Konqueror|SeaMonkey|Camino|Minefield|Iceweasel|K-Meleon|Maxthon)(?:\/| )([0-9.]+)/", $agent, $browser_info);
+        \yii\helpers\VarDumper::dump($browser_info, 11, 1); return;
         list(, $browser, $version) = $browser_info;
 
         switch ($browser) {
