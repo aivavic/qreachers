@@ -5148,6 +5148,15 @@ span.lang-item {
     margin-left: -20px;
 }
 
+@media screen and (max-width: 480px) {
+
+.blog_post__slide h2,
+.case_page__slide h2{
+font-size:22px;
+line-height:28px;}
+
+}
+
 @media screen and (max-width: 400px) {
     .txt_style p a {
         display: inline-block;
