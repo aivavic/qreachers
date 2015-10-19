@@ -47,7 +47,14 @@
 		});
 	}
 	
-	
+    $(document).ready(function() {
+        $(".main_slider__1").find("video").get(0).pause();    
+    });
+    
+	$(".flex-control-nav li a").click(function() {
+        $(".main_slider__1").find("video").get(0).pause();
+        $(".flex-active-slide").find("video").get(0).play();    
+    });
 
 	/* ajax height fix */
 
