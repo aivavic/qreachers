@@ -53,7 +53,7 @@
     
 	$(".flex-control-nav li a").click(function() {
         $(".main_slider__1").find("video").get(0).pause();
-        $(".flex-active-slide").find("video").get(0).play();    
+        setTimeout(function() {$(".flex-active-slide").find("video").get(0).play();},300);    
     });
 
 	/* ajax height fix */
