@@ -1,6 +1,5 @@
 <?php
 $mId = strtolower($model::getClassNameNoNamespace());
-
 ?>
 
 

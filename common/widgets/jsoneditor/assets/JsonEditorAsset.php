@@ -20,7 +20,8 @@ class JsonEditorAsset extends AssetBundle
     public $depends = [
         'yii\web\JqueryAsset',
         'yii\bootstrap\BootstrapAsset',
-        'common\widgets\jsoneditor\assets\SCEditorAsset',
+        //'common\widgets\jsoneditor\assets\SCEditorAsset',
+        'common\widgets\jsoneditor\assets\CKEditorAsset',
         'common\widgets\jsoneditor\assets\Select2Asset',
         'common\widgets\jsoneditor\assets\MagnificPopupAsset'
 

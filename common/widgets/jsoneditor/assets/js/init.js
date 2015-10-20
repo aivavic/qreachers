@@ -1,6 +1,6 @@
-function setGlobalOptions(conf) {    
+function setGlobalOptions(conf) {
     JSONEditor.plugins.sceditor.style = '//cdn.jsdelivr.net/sceditor/1.4.3/jquery.sceditor.default.min.css';
-    JSONEditor.plugins.sceditor.width = "754px";    
+    JSONEditor.plugins.sceditor.width = "754px";
     JSONEditor.plugins.sceditor.toolbar = "source|maximize|bold,font,size|pastetext,bulletlist,orderedlist,removeformat|link|image";
 
     // Global Select2 options
@@ -10,7 +10,7 @@ function setGlobalOptions(conf) {
     JSONEditor.defaults.options.upload = function (id, file, cbs) {
 
         var name = '_fileinput_' + id.replace(/\./g, '_');
-        
+
         $('div[data-schemapath="' + id + '"]:visible').find('input[type="file"]').attr('id', id);
         $('div[data-schemapath="' + id + '"]:visible').find('input[type="file"]').attr('name', name);
 
@@ -32,7 +32,7 @@ function setGlobalOptions(conf) {
                 cbs.success(data.files[0].url);
             }
         });
-        
+
         //url: "http://16on9.storage.dev/source/1/tlVu5m8CyGcxuADyIJIsfjYsIQgtRqTe.jpg"
         //delete_url: "/file-storage/upload-delete?path=1%2FtlVu5m8CyGcxuADyIJIsfjYsIQgtRqTe.jpg"
         //delete not allowed  http://16on9.backend.dev/file-storage/upload-delete?path=1/tlVu5m8CyGcxuADyIJIsfjYsIQgtRqTe.jpg
@@ -40,15 +40,15 @@ function setGlobalOptions(conf) {
 
 
     /*JSONEditor.defaults.resolvers.unshift(function (schema) {
-        if (schema.type === "string" && schema.format === "yiiUploadKit") {
-            log("yiiUploadKit");            
-            //jQuery('#w1').yiiUploadKit({"name":"root[common][image][content]","url":"/file-storage/upload?fileparam=_fileinput_w1","multiple":false,"sortable":false,"maxNumberOfFiles":1,"maxFileSize":5000000,"acceptFileTypes":null,"files":null});
-
-            return "string";
-        }
-
-        // If no valid editor is returned, the next resolver function will be used
-    });*/
+     if (schema.type === "string" && schema.format === "yiiUploadKit") {
+     log("yiiUploadKit");            
+     //jQuery('#w1').yiiUploadKit({"name":"root[common][image][content]","url":"/file-storage/upload?fileparam=_fileinput_w1","multiple":false,"sortable":false,"maxNumberOfFiles":1,"maxFileSize":5000000,"acceptFileTypes":null,"files":null});
+     
+     return "string";
+     }
+     
+     // If no valid editor is returned, the next resolver function will be used
+     });*/
 }
 
 function log(msg) {
@@ -78,6 +78,17 @@ function initialize(conf) {
 
     editor.on('change', function () {
         $("#" + conf.fieldId).val(JSON.stringify(editor.getValue()));
+        $('textarea[data-schemaformat="html"]').each(function (k, v) {
+            if (!$(v).attr('id') && $(v).attr('name')) {
+                var id = "id-" + Date.now() + '-' + Math.floor(Math.random() * 1000);
+                $(v).attr('id', id);
+                var name = $(v).attr('name').replace(/\]\[/,'.').replace(/\]/,'.').replace(/\[/,'.').replace(/\.$/,'')
+                console.log(name);
+                initSample(id, editor.getEditor(name));
+                
+            }
+        });
+
     });
 
 
