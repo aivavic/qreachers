@@ -180,6 +180,23 @@ use yii\widgets\Breadcrumbs;
                         'visible' => Yii::$app->user->can('administrator')
                     ],
                     [
+                        'label'   => Yii::t('backend', 'SEO'),
+                        'icon'    => '<i class="fa fa-edit"></i>',
+                        'options' => ['class' => 'treeview'],
+                        'items'   => [
+                            //manager
+                            //['label' => Yii::t('backend', 'Pages'), 'url' => ['/page/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
+                            ['label' => Yii::t('backend', 'robots.txt'), 'url' => ['widget-text/update?id=frontend.web.robots.txt'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
+                            [
+                                'label'    => Yii::t('backend', 'sitemap.xml'),
+                                'url'      => Url::to('@frontendUrl/sitemap.xml', 1),
+                                'icon'     => '<i class="fa fa-angle-double-right"></i>',
+                                'template' => '<a href="{url}" target="_blank"><i class="fa fa-angle-double-right"></i><span>{label}</span></a>'
+                            ],
+                            ['label' => Yii::t('backend', 'Third-party code'), 'url' => ['widget-text/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>']
+                        ]
+                    ],
+                    [
                         'label'   => Yii::t('backend', 'System'),
                         'icon'    => '<i class="fa fa-cogs"></i>',
                         'options' => ['class' => 'treeview'],
